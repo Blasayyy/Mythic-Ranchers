@@ -585,20 +585,50 @@
 											"top": 523,
 											"width": 326,
 											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAGGyJ0lwZS0Ztw=",
+											"_parent": {
+												"$ref": "AAAAAAGGvsQBpepOgEA="
+											},
+											"model": {
+												"$ref": "AAAAAAGGyJ0lvZSxQ84="
+											},
+											"font": "Arial;13;0",
+											"left": 1205,
+											"top": 538,
+											"width": 326,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
+											"_id": "AAAAAAGGyJ07/JS7pX8=",
+											"_parent": {
+												"$ref": "AAAAAAGGvsQBpepOgEA="
+											},
+											"model": {
+												"$ref": "AAAAAAGGyJ07+ZS4YM0="
+											},
+											"font": "Arial;13;0",
+											"left": 1205,
+											"top": 553,
+											"width": 326,
+											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1200,
 									"top": 383,
 									"width": 336,
-									"height": 158
+									"height": 188
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 1200,
 							"top": 360,
 							"width": 336,
-							"height": 181,
+							"height": 211,
 							"nameLabel": {
 								"$ref": "AAAAAAGGvsQBpepNvJs="
 							},
@@ -1804,6 +1834,26 @@
 							},
 							"name": "leech",
 							"type": "INTEGER",
+							"length": 0
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAGGyJ0lvZSxQ84=",
+							"_parent": {
+								"$ref": "AAAAAAGGvsQBpepKLAI="
+							},
+							"name": "slot",
+							"type": "VARCHAR",
+							"length": "30"
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAGGyJ07+ZS4YM0=",
+							"_parent": {
+								"$ref": "AAAAAAGGvsQBpepKLAI="
+							},
+							"name": "is_equipped",
+							"type": "BOOLEAN",
 							"length": 0
 						}
 					]
