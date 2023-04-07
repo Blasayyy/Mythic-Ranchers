@@ -28,5 +28,5 @@ public class Player : NetworkBehaviour
         rigidBody.velocity = rigidBody.velocity.normalized * speed;
     }
 
-    
+
 }
