@@ -14,6 +14,7 @@ public class LobbyManager : MonoBehaviour
     public const string KEY_PLAYER_NAME = "PlayerName";
     public const string KEY_PLAYER_CHARACTER = "Character";
     public const string KEY_KEY_LEVEL = "KeyLevel";
+    public const int MAX_PLAYERS = 4;
 
     private Lobby hostLobby;
     private Lobby joinedLobby;
@@ -25,7 +26,8 @@ public class LobbyManager : MonoBehaviour
 
 
     public event EventHandler <LobbyEventArgs> OnJoinedLobbyUpdate;
-    public event EventHandler<LobbyEventArgs> OnKickFromLobby;
+    public event EventHandler <LobbyEventArgs> OnKickFromLobby;
+    public event EventHandler<LobbyEventArgs> OnJoinedLobby;
 
 
     public class LobbyEventArgs : EventArgs
@@ -150,26 +152,29 @@ public class LobbyManager : MonoBehaviour
         return false;
     }
 
-    private async void CreateLobby()
+    private async void CreateLobby(string lobbyName, bool isPrivate, int keyLevel)
     {
         try
         {
-            string lobbyName = "MyLobby";
-            int maxPlayers = 4;
-            CreateLobbyOptions createLobbyOptions = new CreateLobbyOptions
+            Player player = GetPlayer();
+
+            CreateLobbyOptions options = new CreateLobbyOptions
             {
-                IsPrivate = false,
-                Player = GetPlayer(),
+                Player = player,
+                IsPrivate = isPrivate,
                 Data = new Dictionary<string, DataObject>
                 {
-                    {"KeyLevel", new DataObject(DataObject.VisibilityOptions.Public, "8") }
+                    {KEY_KEY_LEVEL, new DataObject(DataObject.VisibilityOptions.Public, keyLevel.ToString()) }
                 }
             };
-            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, createLobbyOptions);
 
-            hostLobby = lobby;
+            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, MAX_PLAYERS, options);
 
-            Debug.Log("Created Lobby! " + lobby.Name + " " + lobby.MaxPlayers + " " + lobby.Id + " " + lobby.LobbyCode);
+            joinedLobby = lobby;
+
+            OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
+
+            Debug.Log("Created Lobby " + lobby.Name);
         }
         catch(LobbyServiceException e )
         {
@@ -177,6 +182,8 @@ public class LobbyManager : MonoBehaviour
         }
         
     }
+
+    
 
     private async void ListLobbies()
     {
