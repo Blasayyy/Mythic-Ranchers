@@ -59,6 +59,24 @@ public class LobbyManager : MonoBehaviour
         HandleLobbyPollForUpdates();
     }
 
+    public async void Authenticate(string playerName)
+    {
+        this.playerName = playerName;
+        InitializationOptions initializationOptions = new InitializationOptions();
+        initializationOptions.SetProfile(playerName);
+
+        await UnityServices.InitializeAsync(initializationOptions);
+
+        AuthenticationService.Instance.SignedIn += () =>
+        {
+            Debug.Log("Signed in player: " + AuthenticationService.Instance.PlayerId);
+
+
+        };
+
+        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+    }
+
     private async void HandleLobbyHeartBeat()
     {
         if(hostLobby != null)
