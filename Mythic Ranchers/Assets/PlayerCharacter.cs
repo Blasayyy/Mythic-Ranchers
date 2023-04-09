@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class Player : NetworkBehaviour
+public class PlayerCharacter : NetworkBehaviour
 {
 
     private Rigidbody2D rigidBody;

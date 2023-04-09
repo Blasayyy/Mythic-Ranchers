@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,14 @@ using Unity.Services.Authentication;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 
-public class LobbyHandler : MonoBehaviour
+public class LobbyManager : MonoBehaviour
 {
+    public static LobbyManager Instance { get; private set; }
+
+    public const string KEY_PLAYER_NAME = "PlayerName";
+    public const string KEY_PLAYER_CHARACTER = "Character";
+    public const string KEY_KEY_LEVEL = "KeyLevel";
+
     private Lobby hostLobby;
     private Lobby joinedLobby;
     private float heartBeatTimer;
@@ -15,6 +22,22 @@ public class LobbyHandler : MonoBehaviour
     private float lobbyUpdateTimer;
     private float lobbyUpdateTimerMax = 1.1f;
     private string playerName;
+
+
+    public event EventHandler <LobbyEventArgs> OnJoinedLobbyUpdate;
+    public event EventHandler<LobbyEventArgs> OnKickFromLobby;
+
+
+    public class LobbyEventArgs : EventArgs
+    {
+        public Lobby lobby;
+    }
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     private async void Start()
@@ -52,7 +75,7 @@ public class LobbyHandler : MonoBehaviour
 
     private async void HandleLobbyPollForUpdates()
     {
-        if (hostLobby != null)
+        if (joinedLobby != null)
         {
             lobbyUpdateTimer -= Time.deltaTime;
             if (heartBeatTimer < 0f)
@@ -61,8 +84,33 @@ public class LobbyHandler : MonoBehaviour
 
                 Lobby lobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
                 joinedLobby = lobby;
+
+                OnJoinedLobbyUpdate?.Invoke(this, new LobbyEventArgs { lobby = joinedLobby });
+
+                if (!PlayerInLobby())
+                {
+                    Debug.Log("Kicked from lobby!");
+
+                    OnKickFromLobby?.Invoke(this, new LobbyEventArgs { lobby = joinedLobby });
+                    joinedLobby = null;
+                }
             }
         }
+    }
+
+    private bool PlayerInLobby()
+    {
+        if(joinedLobby != null && joinedLobby.Players != null)
+        {
+            foreach(Player player in joinedLobby.Players)
+            {
+                if(player.Id == AuthenticationService.Instance.PlayerId)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private async void CreateLobby()
