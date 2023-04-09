@@ -27,7 +27,8 @@ public class LobbyManager : MonoBehaviour
 
     public event EventHandler <LobbyEventArgs> OnJoinedLobbyUpdate;
     public event EventHandler <LobbyEventArgs> OnKickFromLobby;
-    public event EventHandler<LobbyEventArgs> OnJoinedLobby;
+    public event EventHandler <LobbyEventArgs> OnJoinedLobby;
+    public event EventHandler <OnLobbyListChangedEventArgs> OnLobbyListChanged;
 
 
     public class LobbyEventArgs : EventArgs
@@ -35,6 +36,10 @@ public class LobbyManager : MonoBehaviour
         public Lobby lobby;
     }
 
+    public class OnLobbyListChangedEventArgs : EventArgs
+    {
+        public List<Lobby> lobbyList;
+    }
 
     private void Awake()
     {
@@ -183,8 +188,6 @@ public class LobbyManager : MonoBehaviour
         
     }
 
-    
-
     private async void ListLobbies()
     {
         try
@@ -203,11 +206,7 @@ public class LobbyManager : MonoBehaviour
             };
             QueryResponse queryResponse = await Lobbies.Instance.QueryLobbiesAsync();
 
-            Debug.Log("Lobbies found : " + queryResponse.Results.Count);
-            foreach (Lobby lobby in queryResponse.Results)
-            {
-                Debug.Log(lobby.Name + " " + lobby.MaxPlayers);
-            }
+            OnLobbyListChanged?.Invoke(this, new OnLobbyListChangedEventArgs { lobbyList = queryResponse.Results });
         }
         catch (LobbyServiceException e)
         {
