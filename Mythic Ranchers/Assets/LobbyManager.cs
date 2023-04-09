@@ -86,7 +86,7 @@ public class LobbyManager : MonoBehaviour
             {
                 heartBeatTimer = heartBeatTimerMax;
 
-                await LobbyService.Instance.SendHeartbeatPingAsync(hostLobby.Id);
+                await LobbyService.Instance.SendHeartbeatPingAsync(joinedLobby.Id);
             }
         }
     }
@@ -114,6 +114,25 @@ public class LobbyManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public Lobby GetJoinedLobby()
+    {
+        return joinedLobby;
+    }
+
+    public bool IsLobbyHost()
+    {
+        return joinedLobby != null && joinedLobby.HostId == AuthenticationService.Instance.PlayerId;
+    }
+
+    private Player GetPlayer()
+    {
+        return new Player(AuthenticationService.Instance.PlayerId, null, new Dictionary<string, PlayerDataObject>
+        {
+            {KEY_PLAYER_NAME, new PlayerDataObject(PlayerDataObject.VisibilityOptions.Public, playerName) },
+            {KEY_PLAYER_CHARACTER, new PlayerDataObject(PlayerDataObject.VisibilityOptions.Public, "placeholder") }
+        });
     }
 
     private bool PlayerInLobby()
@@ -207,18 +226,6 @@ public class LobbyManager : MonoBehaviour
             Debug.Log(e);
         }
         
-    }
-
-    private Unity.Services.Lobbies.Models.Player GetPlayer()
-    {
-        return new Unity.Services.Lobbies.Models.Player
-        {
-            Data = new Dictionary<string, PlayerDataObject>
-                {
-                    { "PlayerName", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Public, playerName) }
-                }
-
-        };
     }
 
     private async void LeaveLobby()
