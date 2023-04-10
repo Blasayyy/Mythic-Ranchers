@@ -14,7 +14,7 @@ public class LobbyListEntryUI : MonoBehaviour
     private TextMeshProUGUI playerCountText;
 
     [SerializeField]
-    private TextMeshProUGUI gameModeText;
+    private TextMeshProUGUI keyLevelText;
 
     private Lobby lobby;
 
@@ -24,5 +24,14 @@ public class LobbyListEntryUI : MonoBehaviour
         {
             LobbyManager.Instance.JoinLobby(lobby);
         });
+    }
+
+    public void UpdateLobby(Lobby lobby)
+    {
+        this.lobby = lobby;
+
+        lobbyNameText.text = lobby.Name;
+        playerCountText.text = lobby.Players.Count + "/" + lobby.MaxPlayers;
+        keyLevelText.text = lobby.Data[LobbyManager.KEY_KEY_LEVEL].Value;
     }
 }
