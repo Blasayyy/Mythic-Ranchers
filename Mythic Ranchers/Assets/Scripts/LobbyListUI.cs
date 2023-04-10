@@ -27,7 +27,7 @@ public class LobbyListUI : MonoBehaviour
         Instance = this;
 
         lobbyEntryTemplate.gameObject.SetActive(false);
-        
+        refreshButton.onClick.AddListener(RefreshButtonClick);
     }
 
     // Start is called before the first frame update
@@ -42,7 +42,7 @@ public class LobbyListUI : MonoBehaviour
     
     private void LM_OnLobbyListChanged(object sender, LobbyManager.OnLobbyListChangedEventArgs e)
     {
-        
+        RefreshLobbyList(e.lobbyList);
     }
 
     private void LM_OnJoinedLobby(object sender, LobbyManager.LobbyEventArgs e)
@@ -80,6 +80,12 @@ public class LobbyListUI : MonoBehaviour
             }
         }
     }
+
+    private void RefreshButtonClick()
+    {
+        LobbyManager.Instance.ListLobbies();
+    }
+
 
     private void HideUI()
     {
