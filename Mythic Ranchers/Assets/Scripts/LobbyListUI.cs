@@ -75,7 +75,8 @@ public class LobbyListUI : MonoBehaviour
             {
                 Transform lobbyTransform = Instantiate(lobbyEntryTemplate, container);
                 lobbyTransform.gameObject.SetActive(true);
-                
+                LobbyListEntryUI lobbyListEntryUI = lobbyTransform.GetComponent<LobbyListEntryUI>();
+                lobbyListEntryUI.UpdateLobby(lobby);
             }
         }
     }
