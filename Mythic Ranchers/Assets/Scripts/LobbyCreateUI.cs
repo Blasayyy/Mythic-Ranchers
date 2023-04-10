@@ -17,8 +17,6 @@ public class LobbyCreateUI : MonoBehaviour
     [SerializeField]
     private Button publicPrivateButton;
 
-    [SerializeField]
-    private Button maxPlayersButton;
 
     [SerializeField]
     private TextMeshProUGUI lobbyNameText;
@@ -40,12 +38,7 @@ public class LobbyCreateUI : MonoBehaviour
         createButton.onClick.AddListener(() =>
         {
             LobbyManager.Instance.CreateLobby(lobbyName, isPrivate, keyLevel);
-            HideUI();
-        });
-
-        lobbyNameButton.onClick.AddListener(() =>
-        {
-            if(lobbyNameText != null)
+            if (lobbyNameText != null)
             {
                 lobbyName = lobbyNameText.text;
             }
@@ -53,15 +46,17 @@ public class LobbyCreateUI : MonoBehaviour
             {
                 lobbyName = "Lobby Name";
             }
-
-            UpdateText();
+            HideUI();
         });
+
 
         publicPrivateButton.onClick.AddListener(() =>
         {
             isPrivate = !isPrivate;
             UpdateText();
         });
+
+        Debug.Log("Instance of lobbycreateui created");
     }
 
 
