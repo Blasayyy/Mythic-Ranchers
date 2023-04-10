@@ -37,7 +37,6 @@ public class LobbyCreateUI : MonoBehaviour
 
         createButton.onClick.AddListener(() =>
         {
-            LobbyManager.Instance.CreateLobby(lobbyName, isPrivate, keyLevel);
             if (lobbyNameText != null)
             {
                 lobbyName = lobbyNameText.text;
@@ -46,6 +45,8 @@ public class LobbyCreateUI : MonoBehaviour
             {
                 lobbyName = "Lobby Name";
             }
+            LobbyManager.Instance.CreateLobby(lobbyName, isPrivate, keyLevel);
+           
             HideUI();
         });
 

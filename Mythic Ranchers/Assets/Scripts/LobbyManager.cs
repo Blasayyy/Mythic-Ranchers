@@ -206,6 +206,11 @@ public class LobbyManager : MonoBehaviour
             QueryResponse queryResponse = await Lobbies.Instance.QueryLobbiesAsync();
 
             OnLobbyListChanged?.Invoke(this, new OnLobbyListChangedEventArgs { lobbyList = queryResponse.Results });
+
+            foreach(Lobby lobby in queryResponse.Results)
+            {
+                Debug.Log(lobby.Name);
+            }
         }
         catch (LobbyServiceException e)
         {
