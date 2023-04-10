@@ -48,17 +48,15 @@ public class LobbyManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    private async void Start()
+    private void Start()
     {
-        await UnityServices.InitializeAsync();
-
-        AuthenticationService.Instance.SignedIn += () =>
-        {
-            Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
-        };
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
         playerName = "Rancher" + UnityEngine.Random.Range(10, 100);
+
+        Authenticate(playerName);
+
+        LobbyCreateUI.Instance.HideUI();
+
     }
 
     private void Update()
@@ -158,7 +156,7 @@ public class LobbyManager : MonoBehaviour
         return false;
     }
 
-    private async void CreateLobby(string lobbyName, bool isPrivate, int keyLevel)
+    public async void CreateLobby(string lobbyName, bool isPrivate, int keyLevel)
     {
         try
         {
