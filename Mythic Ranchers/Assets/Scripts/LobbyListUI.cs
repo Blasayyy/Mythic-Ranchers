@@ -69,17 +69,19 @@ public class LobbyListUI : MonoBehaviour
             {
                 continue;
             }
-
             Destroy(child.gameObject);
-
-            foreach(Lobby lobby in lobbyList)
-            {
-                Transform lobbyTransform = Instantiate(lobbyEntryTemplate, container);
-                lobbyTransform.gameObject.SetActive(true);
-                LobbyListEntryUI lobbyListEntryUI = lobbyTransform.GetComponent<LobbyListEntryUI>();
-                lobbyListEntryUI.UpdateLobby(lobby);
-            }
         }
+
+        foreach(Lobby lobby in lobbyList)
+        {
+            Transform lobbyTransform = Instantiate(lobbyEntryTemplate, container);
+            lobbyTransform.gameObject.SetActive(true);
+            LobbyListEntryUI lobbyListEntryUI = lobbyTransform.GetComponent<LobbyListEntryUI>();
+            lobbyListEntryUI.UpdateLobby(lobby);
+
+            Debug.Log(lobby.Name);
+        }
+        
     }
 
     private void RefreshButtonClick()

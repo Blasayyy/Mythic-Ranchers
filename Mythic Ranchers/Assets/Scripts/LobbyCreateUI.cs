@@ -57,7 +57,6 @@ public class LobbyCreateUI : MonoBehaviour
             UpdateText();
         });
 
-        Debug.Log("Instance of lobbycreateui created");
     }
 
 
