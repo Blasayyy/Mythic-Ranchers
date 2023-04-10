@@ -28,6 +28,7 @@ public class LobbyListUI : MonoBehaviour
 
         lobbyEntryTemplate.gameObject.SetActive(false);
         refreshButton.onClick.AddListener(RefreshButtonClick);
+        createLobbyButton.onClick.AddListener(CreateLobbyButtonClick);
     }
 
     // Start is called before the first frame update
@@ -86,6 +87,10 @@ public class LobbyListUI : MonoBehaviour
         LobbyManager.Instance.ListLobbies();
     }
 
+    public void CreateLobbyButtonClick()
+    {
+        LobbyCreateUI.Instance.ShowUI();
+    }
 
     private void HideUI()
     {
