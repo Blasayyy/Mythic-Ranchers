@@ -29,6 +29,7 @@ public class LobbyManager : MonoBehaviour
     public event EventHandler <LobbyEventArgs> OnKickFromLobby;
     public event EventHandler <LobbyEventArgs> OnJoinedLobby;
     public event EventHandler <OnLobbyListChangedEventArgs> OnLobbyListChanged;
+    public event EventHandler OnLeaveLobby;
 
 
     public class LobbyEventArgs : EventArgs
@@ -215,7 +216,26 @@ public class LobbyManager : MonoBehaviour
 
     }
 
-    private async void JoinLobbyByCode(string lobbyCode)
+    public async void JoinLobby(Lobby lobby)
+    {
+        try
+        {
+            JoinLobbyByIdOptions joinLobbyByIdOptions = new JoinLobbyByIdOptions
+            {
+                Player = GetPlayer()
+            };
+
+            joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id, joinLobbyByIdOptions);
+
+            Debug.Log("Joined Lobby: " + lobby.Id);
+        }
+        catch(LobbyServiceException e)
+        {
+            Debug.Log(e);
+        } 
+    }
+
+    public async void JoinLobbyByCode(string lobbyCode)
     {
         try
         {

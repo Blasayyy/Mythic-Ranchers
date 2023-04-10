@@ -36,6 +36,7 @@ public class LobbyListUI : MonoBehaviour
         LobbyManager.Instance.OnLobbyListChanged += LM_OnLobbyListChanged;
         LobbyManager.Instance.OnJoinedLobby += LM_OnJoinedLobby;
         LobbyManager.Instance.OnKickFromLobby += LM_OnJoinedLobby;
+        LobbyManager.Instance.OnLeaveLobby += LM_OnLeaveLobby;
     }
 
     
@@ -52,6 +53,31 @@ public class LobbyListUI : MonoBehaviour
     private void LM_OnKickFromLobby(object sender, LobbyManager.LobbyEventArgs e)
     {
         ShowUI();
+    }
+
+    private void LM_OnLeaveLobby(object sender, EventArgs e)
+    {
+        ShowUI();
+    }
+
+    private void RefreshLobbyList(List<Lobby> lobbyList)
+    {
+        foreach (Transform child in container)
+        {
+            if (child == lobbyEntryTemplate)
+            {
+                continue;
+            }
+
+            Destroy(child.gameObject);
+
+            foreach(Lobby lobby in lobbyList)
+            {
+                Transform lobbyTransform = Instantiate(lobbyEntryTemplate, container);
+                lobbyTransform.gameObject.SetActive(true);
+                
+            }
+        }
     }
 
     private void HideUI()
