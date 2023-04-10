@@ -189,7 +189,7 @@ public class LobbyManager : MonoBehaviour
         
     }
 
-    private async void ListLobbies()
+    public async void ListLobbies()
     {
         try
         {
