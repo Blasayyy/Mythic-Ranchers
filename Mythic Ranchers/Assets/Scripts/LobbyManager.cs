@@ -257,7 +257,7 @@ public class LobbyManager : MonoBehaviour
         
     }
 
-    private async void LeaveLobby()
+    public async void LeaveLobby()
     {
         try
         {
@@ -269,7 +269,7 @@ public class LobbyManager : MonoBehaviour
         }
     }
 
-    private async void KickPlayer(string playerId)
+    public async void KickPlayer(string playerId)
     {
         try
         {
