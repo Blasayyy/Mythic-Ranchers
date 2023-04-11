@@ -102,7 +102,7 @@ public class LobbyManager : MonoBehaviour
         if (joinedLobby != null)
         {
             lobbyUpdateTimer -= Time.deltaTime;
-            if (heartBeatTimer < 0f)
+            if (lobbyUpdateTimer < 0f)
             {
                 lobbyUpdateTimer = lobbyUpdateTimerMax;
 
@@ -230,6 +230,8 @@ public class LobbyManager : MonoBehaviour
 
             joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id, joinLobbyByIdOptions);
 
+            OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
+
             Debug.Log("Joined Lobby: " + lobby.Id);
         }
         catch(LobbyServiceException e)
@@ -246,7 +248,9 @@ public class LobbyManager : MonoBehaviour
             {
                 Player = GetPlayer()
             };
-            Lobby joinedLobby = await Lobbies.Instance.JoinLobbyByCodeAsync(lobbyCode, joinLobbyByCodeOptions);
+            joinedLobby = await Lobbies.Instance.JoinLobbyByCodeAsync(lobbyCode, joinLobbyByCodeOptions);
+            
+            OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = joinedLobby });
 
             Debug.Log("Joined Lobby with code: " + lobbyCode);
         }
@@ -262,6 +266,10 @@ public class LobbyManager : MonoBehaviour
         try
         {
             await LobbyService.Instance.RemovePlayerAsync(joinedLobby.Id, AuthenticationService.Instance.PlayerId);
+
+            joinedLobby = null;
+
+            OnLeaveLobby?.Invoke(this, EventArgs.Empty);
         }
         catch (LobbyServiceException e)
         {
