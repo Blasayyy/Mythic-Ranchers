@@ -19,7 +19,7 @@ public class LobbyManager : MonoBehaviour
     private Lobby hostLobby;
     private Lobby joinedLobby;
     private float heartBeatTimer;
-    private float heartBeatTimerMax = 15;
+    private float heartBeatTimerMax = 3;
     private float lobbyUpdateTimer;
     private float lobbyUpdateTimerMax = 1.1f;
     private string playerName;
@@ -83,17 +83,15 @@ public class LobbyManager : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    private async void HandleLobbyHeartBeat()
+    private void HandleLobbyHeartBeat()
     {
-        if(hostLobby != null)
+        heartBeatTimer -= Time.deltaTime;
+        if(heartBeatTimer < 0f)
         {
-            heartBeatTimer -= Time.deltaTime;
-            if(heartBeatTimer < 0f)
-            {
-                heartBeatTimer = heartBeatTimerMax;
+            heartBeatTimer = heartBeatTimerMax;
 
-                await LobbyService.Instance.SendHeartbeatPingAsync(joinedLobby.Id);
-            }
+            ListLobbies();
+            
         }
     }
 

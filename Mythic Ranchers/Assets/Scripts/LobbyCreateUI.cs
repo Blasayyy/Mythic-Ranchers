@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,12 +25,11 @@ public class LobbyCreateUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI publicPrivateText;
 
-
-
     private string lobbyName;
     private bool isPrivate;
     private int keyLevel;
 
+        
 
     private void Awake()
     {
@@ -46,7 +46,6 @@ public class LobbyCreateUI : MonoBehaviour
                 lobbyName = "Lobby Name";
             }
             LobbyManager.Instance.CreateLobby(lobbyName, isPrivate, keyLevel);
-           
             HideUI();
         });
 
