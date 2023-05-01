@@ -19,7 +19,7 @@ public class LobbyManager : MonoBehaviour
     private Lobby hostLobby;
     private Lobby joinedLobby;
     private float heartBeatTimer;
-    private float heartBeatTimerMax = 15;
+    private float heartBeatTimerMax = 3;
     private float lobbyUpdateTimer;
     private float lobbyUpdateTimerMax = 1.1f;
     private string playerName;
@@ -83,17 +83,15 @@ public class LobbyManager : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    private async void HandleLobbyHeartBeat()
+    private void HandleLobbyHeartBeat()
     {
-        if(hostLobby != null)
+        heartBeatTimer -= Time.deltaTime;
+        if(heartBeatTimer < 0f)
         {
-            heartBeatTimer -= Time.deltaTime;
-            if(heartBeatTimer < 0f)
-            {
-                heartBeatTimer = heartBeatTimerMax;
+            heartBeatTimer = heartBeatTimerMax;
 
-                await LobbyService.Instance.SendHeartbeatPingAsync(joinedLobby.Id);
-            }
+            ListLobbies();
+            
         }
     }
 
@@ -102,7 +100,7 @@ public class LobbyManager : MonoBehaviour
         if (joinedLobby != null)
         {
             lobbyUpdateTimer -= Time.deltaTime;
-            if (heartBeatTimer < 0f)
+            if (lobbyUpdateTimer < 0f)
             {
                 lobbyUpdateTimer = lobbyUpdateTimerMax;
 
@@ -230,6 +228,8 @@ public class LobbyManager : MonoBehaviour
 
             joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id, joinLobbyByIdOptions);
 
+            OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
+
             Debug.Log("Joined Lobby: " + lobby.Id);
         }
         catch(LobbyServiceException e)
@@ -246,7 +246,9 @@ public class LobbyManager : MonoBehaviour
             {
                 Player = GetPlayer()
             };
-            Lobby joinedLobby = await Lobbies.Instance.JoinLobbyByCodeAsync(lobbyCode, joinLobbyByCodeOptions);
+            joinedLobby = await Lobbies.Instance.JoinLobbyByCodeAsync(lobbyCode, joinLobbyByCodeOptions);
+            
+            OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = joinedLobby });
 
             Debug.Log("Joined Lobby with code: " + lobbyCode);
         }
@@ -257,11 +259,15 @@ public class LobbyManager : MonoBehaviour
         
     }
 
-    private async void LeaveLobby()
+    public async void LeaveLobby()
     {
         try
         {
             await LobbyService.Instance.RemovePlayerAsync(joinedLobby.Id, AuthenticationService.Instance.PlayerId);
+
+            joinedLobby = null;
+
+            OnLeaveLobby?.Invoke(this, EventArgs.Empty);
         }
         catch (LobbyServiceException e)
         {
@@ -269,7 +275,7 @@ public class LobbyManager : MonoBehaviour
         }
     }
 
-    private async void KickPlayer(string playerId)
+    public async void KickPlayer(string playerId)
     {
         try
         {

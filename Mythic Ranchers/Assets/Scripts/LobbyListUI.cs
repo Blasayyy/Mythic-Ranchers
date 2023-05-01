@@ -36,8 +36,9 @@ public class LobbyListUI : MonoBehaviour
     {
         LobbyManager.Instance.OnLobbyListChanged += LM_OnLobbyListChanged;
         LobbyManager.Instance.OnJoinedLobby += LM_OnJoinedLobby;
-        LobbyManager.Instance.OnKickFromLobby += LM_OnJoinedLobby;
+        LobbyManager.Instance.OnKickFromLobby += LM_OnKickFromLobby;
         LobbyManager.Instance.OnLeaveLobby += LM_OnLeaveLobby;
+
     }
 
     
