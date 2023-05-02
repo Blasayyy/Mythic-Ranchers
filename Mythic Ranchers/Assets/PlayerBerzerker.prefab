@@ -12,9 +12,12 @@ GameObject:
   - component: {fileID: 1392955181756033393}
   - component: {fileID: 878291776186102532}
   - component: {fileID: 4582462818867966759}
+  - component: {fileID: 2189785700629182162}
   - component: {fileID: -1773382139877535400}
   - component: {fileID: 6638589563152314856}
-  - component: {fileID: -7761346679048935775}
+  - component: {fileID: 8067310530666581063}
+  - component: {fileID: 403597039529258458}
+  - component: {fileID: 8760278415561259737}
   m_Layer: 6
   m_Name: PlayerBerzerker
   m_TagString: Untagged
@@ -131,6 +134,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2189785700629182162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685705375135910251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eca5f664d7703d44be20bbd3920d81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList:
+  - Layer: 0
+    OriginatingState: 229373857
+    DestinationState: 1080829965
+    TransitionDuration: 0
+    TriggerNameHash: -2123461723
+    TransitionIndex: 1
+  - Layer: 0
+    OriginatingState: 229373857
+    DestinationState: 299077384
+    TransitionDuration: 0
+    TriggerNameHash: 299077384
+    TransitionIndex: 2
+  m_Animator: {fileID: 878291776186102532}
 --- !u!61 &-1773382139877535400
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,7 +201,33 @@ MonoBehaviour:
   control: 1
   speed: 1
   taux: 0.001
---- !u!114 &-7761346679048935775
+--- !u!114 &8067310530666581063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685705375135910251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d8321f2debaea4eb5d02bd697b1e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 0
+  SyncRotAngleX: 0
+  SyncRotAngleY: 0
+  SyncRotAngleZ: 0
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  InLocalSpace: 0
+  Interpolate: 1
+--- !u!114 &403597039529258458
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,3 +243,15 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &8760278415561259737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685705375135910251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
