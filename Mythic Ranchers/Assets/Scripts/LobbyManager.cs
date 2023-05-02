@@ -133,6 +133,7 @@ public class LobbyManager : MonoBehaviour
                     else
                     {
                         Loader.LoadNetwork(Loader.Scene.GameScene);
+                        
                     }
                     joinedLobby = null;
 
@@ -200,6 +201,9 @@ public class LobbyManager : MonoBehaviour
 
             OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
 
+            NetworkManager.Singleton.StartHost();
+            Debug.Log("started host");
+
             Debug.Log("Created Lobby " + lobby.Name);
         }
         catch(LobbyServiceException e )
@@ -253,6 +257,8 @@ public class LobbyManager : MonoBehaviour
             joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id, joinLobbyByIdOptions);
 
             OnJoinedLobby?.Invoke(this, new LobbyEventArgs { lobby = lobby });
+
+            NetworkManager.Singleton.StartClient();
 
             Debug.Log("Joined Lobby: " + lobby.Id);
         }
@@ -330,6 +336,23 @@ public class LobbyManager : MonoBehaviour
 
                 joinedLobby = lobby;
 
+                
+            }
+            catch(LobbyServiceException e)
+            {
+                Debug.Log(e);
+            }
+        }
+    }
+
+    public async void DeleteLobby()
+    {
+        if(joinedLobby != null)
+        {
+            try
+            {
+                await LobbyService.Instance.DeleteLobbyAsync(joinedLobby.Id);
+                joinedLobby = null;
             }
             catch(LobbyServiceException e)
             {

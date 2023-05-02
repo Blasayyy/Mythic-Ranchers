@@ -44,8 +44,7 @@ public class Relay : MonoBehaviour
 
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
-            NetworkManager.Singleton.StartHost();
-            Debug.Log("started host");
+           
             return joinCode;
         }
         catch(RelayServiceException e)
@@ -61,11 +60,14 @@ public class Relay : MonoBehaviour
     {
         try
         {
+            
             JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
 
             RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
 
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
+
+            
         }
         catch(RelayServiceException e)
         {
