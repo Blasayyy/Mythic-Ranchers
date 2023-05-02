@@ -6,6 +6,8 @@ using Unity.Services.Core;
 using Unity.Services.Authentication;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
+using UnityEngine.SceneManagement;
+using Unity.Netcode;
 
 public class LobbyManager : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class LobbyManager : MonoBehaviour
     public const string KEY_PLAYER_NAME = "PlayerName";
     public const string KEY_PLAYER_CHARACTER = "Character";
     public const string KEY_KEY_LEVEL = "KeyLevel";
+    public const string KEY_RELAY_START = "KeyRelayStart";
     public const int MAX_PLAYERS = 4;
 
     private Lobby hostLobby;
@@ -29,6 +32,7 @@ public class LobbyManager : MonoBehaviour
     public event EventHandler <LobbyEventArgs> OnKickFromLobby;
     public event EventHandler <LobbyEventArgs> OnJoinedLobby;
     public event EventHandler <OnLobbyListChangedEventArgs> OnLobbyListChanged;
+    public event EventHandler <LobbyEventArgs> OnGameStarted;
     public event EventHandler OnLeaveLobby;
 
 
@@ -97,6 +101,7 @@ public class LobbyManager : MonoBehaviour
 
     private async void HandleLobbyPollForUpdates()
     {
+        Debug.Log(NetworkManager.Singleton);
         if (joinedLobby != null)
         {
             lobbyUpdateTimer -= Time.deltaTime;
@@ -115,6 +120,24 @@ public class LobbyManager : MonoBehaviour
 
                     OnKickFromLobby?.Invoke(this, new LobbyEventArgs { lobby = joinedLobby });
                     joinedLobby = null;
+                }
+
+                if (joinedLobby.Data[KEY_RELAY_START].Value != "0")
+                {
+                    if (!IsLobbyHost())
+                    {
+                        Relay.Instance.JoinRelay(joinedLobby.Data[KEY_RELAY_START].Value);
+                        Debug.Log("joined relay");
+                        
+                    }
+                    else
+                    {
+                        Loader.LoadNetwork(Loader.Scene.GameScene);
+                    }
+                    joinedLobby = null;
+
+                    
+                    
                 }
             }
         }
@@ -166,7 +189,8 @@ public class LobbyManager : MonoBehaviour
                 IsPrivate = isPrivate,
                 Data = new Dictionary<string, DataObject>
                 {
-                    {KEY_KEY_LEVEL, new DataObject(DataObject.VisibilityOptions.Public, keyLevel.ToString()) }
+                    {KEY_KEY_LEVEL, new DataObject(DataObject.VisibilityOptions.Public, keyLevel.ToString()) },
+                    {KEY_RELAY_START, new DataObject(DataObject.VisibilityOptions.Member, "0") }
                 }
             };
 
@@ -284,6 +308,33 @@ public class LobbyManager : MonoBehaviour
         catch (LobbyServiceException e)
         {
             Debug.Log(e);
+        }
+    }
+
+    public async void StartGame()
+    {
+        if (IsLobbyHost())
+        {
+            try
+            {
+                Debug.Log("Start Game");
+                string relayCode = await Relay.Instance.CreateRelay();
+
+                Lobby lobby = await Lobbies.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
+                {
+                    Data = new Dictionary<string, DataObject>
+                    {
+                        {KEY_RELAY_START, new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
+                    }
+                });
+
+                joinedLobby = lobby;
+
+            }
+            catch(LobbyServiceException e)
+            {
+                Debug.Log(e);
+            }
         }
     }
 }
