@@ -166,7 +166,7 @@ Transform:
   m_Children:
   - {fileID: 783217353}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &352276157
 GameObject:
@@ -305,6 +305,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352276157}
   m_CullTransparentMesh: 1
+--- !u!1001 &362183759
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 776193183182181899, guid: 10a66a85516d5464ba854f000168b2ed,
+        type: 3}
+      propertyPath: m_Name
+      value: ZombiePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745510971767525955, guid: 10a66a85516d5464ba854f000168b2ed,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745510971767525955, guid: 10a66a85516d5464ba854f000168b2ed,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.111014
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745510971767525955, guid: 10a66a85516d5464ba854f000168b2ed,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16271216
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745510971767525955, guid: 10a66a85516d5464ba854f000168b2ed,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745510971767525955, guid: 10a66a85516d5464ba854f000168b2ed,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745510971767525955, guid: 10a66a85516d5464ba854f000168b2ed,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745510971767525955, guid: 10a66a85516d5464ba854f000168b2ed,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745510971767525955, guid: 10a66a85516d5464ba854f000168b2ed,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745510971767525955, guid: 10a66a85516d5464ba854f000168b2ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745510971767525955, guid: 10a66a85516d5464ba854f000168b2ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745510971767525955, guid: 10a66a85516d5464ba854f000168b2ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 10a66a85516d5464ba854f000168b2ed, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2682,7 +2751,7 @@ MonoBehaviour:
   ConnectionData:
     Address: 127.0.0.1
     Port: 7777
-    ServerListenAddress: 
+    ServerListenAddress: 127.0.0.1
   DebugSimulator:
     PacketDelayMS: 0
     PacketJitterMS: 0
@@ -2704,15 +2773,10 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 1034586853}
-    PlayerPrefab: {fileID: 3140535870025117206, guid: 8864b6f8be5d09f4a8f8295d18cd4db1,
+    PlayerPrefab: {fileID: 8685705375135910251, guid: c84856c2c4523c34bb3a353ce896a406,
       type: 3}
-    NetworkPrefabs:
-    - Override: 0
-      Prefab: {fileID: 3140535870025117206, guid: 8864b6f8be5d09f4a8f8295d18cd4db1,
-        type: 3}
-      SourcePrefabToOverride: {fileID: 0}
-      SourceHashToOverride: 0
-      OverridingTargetPrefab: {fileID: 0}
+    Prefabs:
+      NetworkPrefabsLists: []
     TickRate: 64
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
@@ -2728,6 +2792,13 @@ MonoBehaviour:
     LoadSceneTimeOut: 120
     SpawnTimeout: 1
     EnableNetworkLogs: 1
+    OldPrefabList:
+    - Override: 0
+      Prefab: {fileID: 3140535870025117206, guid: 8864b6f8be5d09f4a8f8295d18cd4db1,
+        type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
 --- !u!4 &1034586855
 Transform:
   m_ObjectHideFlags: 0
@@ -2741,7 +2812,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1054705958
 GameObject:
@@ -3033,7 +3104,7 @@ Transform:
   m_Children:
   - {fileID: 1791972649}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1164913368
 MonoBehaviour:
@@ -3238,7 +3309,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1791972648
 GameObject:
