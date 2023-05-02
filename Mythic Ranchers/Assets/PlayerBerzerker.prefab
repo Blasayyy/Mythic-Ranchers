@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   control: 1
-  speed: 1
+  speed: 4
   taux: 0.001
 --- !u!114 &8067310530666581063
 MonoBehaviour:
