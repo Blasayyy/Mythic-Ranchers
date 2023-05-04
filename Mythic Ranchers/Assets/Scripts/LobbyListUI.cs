@@ -41,7 +41,14 @@ public class LobbyListUI : MonoBehaviour
 
     }
 
-    
+    private void OnDestroy()
+    {
+        LobbyManager.Instance.OnLobbyListChanged -= LM_OnLobbyListChanged;
+        LobbyManager.Instance.OnJoinedLobby -= LM_OnJoinedLobby;
+        LobbyManager.Instance.OnKickFromLobby -= LM_OnKickFromLobby;
+        LobbyManager.Instance.OnLeaveLobby -= LM_OnLeaveLobby;
+    }
+
     private void LM_OnLobbyListChanged(object sender, LobbyManager.OnLobbyListChangedEventArgs e)
     {
         RefreshLobbyList(e.lobbyList);
