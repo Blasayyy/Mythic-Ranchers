@@ -44,7 +44,6 @@ public class Relay : MonoBehaviour
 
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
-           
             return joinCode;
         }
         catch(RelayServiceException e)

@@ -22,7 +22,6 @@ public class LobbyManager : MonoBehaviour
     public const string KEY_RELAY_START = "KeyRelayStart";
     public const int MAX_PLAYERS = 4;
 
-    private Lobby hostLobby;
     private Lobby joinedLobby;
     private float heartBeatTimer;
     private float heartBeatTimerMax = 3;
@@ -92,8 +91,6 @@ public class LobbyManager : MonoBehaviour
         AuthenticationService.Instance.SignedIn += () =>
         {
             Debug.Log("Signed in player: " + AuthenticationService.Instance.PlayerId);
-
-
         };
 
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
@@ -132,8 +129,6 @@ public class LobbyManager : MonoBehaviour
                     OnKickFromLobby?.Invoke(this, new LobbyEventArgs { lobby = joinedLobby });
                     joinedLobby = null;
                 }
-
-               
             }
         }
     }
