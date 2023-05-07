@@ -60,12 +60,17 @@ public class LobbyUI : MonoBehaviour
         HideUI();
     }
 
-
+    private void OnDestroy()
+    {
+        LobbyManager.Instance.OnJoinedLobby -= UpdateLobbyEvent;
+        LobbyManager.Instance.OnJoinedLobbyUpdate -= UpdateLobbyEvent;
+        LobbyManager.Instance.OnLeaveLobby -= OnLeftLobbyEvent;
+        LobbyManager.Instance.OnKickFromLobby -= OnLeftLobbyEvent;
+    }
 
     private void UpdateLobbyEvent(object sender, LobbyManager.LobbyEventArgs e)
     {
         UpdateLobby(LobbyManager.Instance.GetJoinedLobby());
-        
     }
 
     private void OnLeftLobbyEvent(object sender, System.EventArgs e)

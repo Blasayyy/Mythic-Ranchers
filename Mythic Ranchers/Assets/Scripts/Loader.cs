@@ -13,7 +13,6 @@ public static class Loader
         Lobby
     }
 
-    private static Scene targetScene;
 
     public static void LoadNetwork(Scene targetScene)
     {
