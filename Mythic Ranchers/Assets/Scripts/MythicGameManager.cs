@@ -6,6 +6,8 @@ using UnityEngine;
 public class MythicGameManager : NetworkBehaviour
 {
 
+
+
     public static MythicGameManager Instance { get; private set; }
 
     [SerializeField]
@@ -36,12 +38,23 @@ public class MythicGameManager : NetworkBehaviour
         }
     }
 
+    public enum ArmorTypes
+    {
+        Cloth,
+        Leather,
+        Mail
+    }
+
     private void SceneManager_OnLoadEventCompleted1(string sceneName, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
     {
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
         {
             Transform playerTransform = Instantiate(playerPrefab);
+            PlayerUnit player = playerTransform.GetComponent<PlayerUnit>();
+            object[] stats = player.createVariables();
+            player.AssignVaribles(stats);
             playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
+
         }
     }
 }
