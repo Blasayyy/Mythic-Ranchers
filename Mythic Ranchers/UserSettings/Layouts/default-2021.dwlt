@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2048
     height: 1068.8
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 61
+  controlID: 29
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 480.80005
     height: 1018.80005
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 62
+  controlID: 17
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 63
+  controlID: 18
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -439,22 +439,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 77
   m_LastFolders:
-  - Assets
+  - Assets/Scripts
   m_LastFoldersGridSize: 77
   m_LastProjectPath: C:\Users\pelle\Desktop\Mythic-Ranchers\Mythic Ranchers
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 4c6c0000
-    m_LastClickedID: 27724
-    m_ExpandedIDs: 000000004c6c00004e6c0000506c0000526c0000546c0000566c0000586c00005a6c0000826c0000806f000060770000be88000000ca9a3b
+    m_SelectedIDs: 9a6b0000
+    m_LastClickedID: 27546
+    m_ExpandedIDs: 000000005c6b00005e6b0000606b0000626b0000646b0000666b0000686b00006a6b00006c6b00006e6b0000706b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -482,7 +482,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000004c6c00004e6c0000506c0000526c0000546c0000566c0000586c00005a6c00005c6c0000
+    m_ExpandedIDs: 000000005c6b00005e6b0000606b0000626b0000646b0000666b0000686b00006a6b00006c6b00006e6b0000706b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -614,9 +614,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 400c0000
       m_LastClickedID: 0
-      m_ExpandedIDs: 4439ffff8a39ffffb439ffffe039ffffea39fffffc3bffff423cfffff63dffff223effff2e3effff5243ffff9643ffff4a45ffff7645ffff8245ffffe44effff284fffffd450ffff0051ffff0c51ffff1a5fffff625fffff0e61ffff3a61ffff4661ffffa269ffffd869ffff8c6bffffb86bffffc46bffff5a7fffff8e7fffff4281ffff6e81ffff7a81ffff9c8dffffc090ffff2091ffff6894ffff9c94ffff0495ffff4a95ffff7e95ffffae95ffffa09bffffd49bffff8a9dffffd29dffffdc9dfffffca9ffffaac8fffff0c8ffffa6caffffd2caffffdecafffff8dbffff3cdcfffff2ddffff1edeffff2adeffff3ce6fffff2e7ffffbaeaffff5eecffff64f2ffffaaf2ffff6cf6fffff8f6ffff22fbffffb6c10000dec10000
+      m_ExpandedIDs: 24d7ffff26d7ffff2ed7ffff32d7ffff34d7ffffb2e8fffff2ecfffff4ecffff74f6ffffe2f6ffff76f7ffffa8f8fffffaf8ffff7cf9ffff22fbffff366c00007c6e0000846f000076700000fc700000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -889,9 +889,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 561.63574, y: 312.22516, z: 39.779976}
+    m_Target: {x: 578.5631, y: 350.37265, z: 46.00471}
     speed: 2
-    m_Value: {x: 534.91724, y: 306.93207, z: 39.964916}
+    m_Value: {x: 578.5631, y: 350.37265, z: 46.00471}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -942,9 +942,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 429.47556
+    m_Target: 464.6731
     speed: 2
-    m_Value: 410.98138
+    m_Value: 464.6731
   m_Ortho:
     m_Target: 1
     speed: 2
