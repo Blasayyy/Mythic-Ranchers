@@ -3857,9 +3857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   registerButton: {fileID: 249147819}
   usernameText: {fileID: 293818173}
-  passwordInputField: {fileID: 385695675}
-  username: 
-  password: 
+  passwordInputField: {fileID: 398011954}
 --- !u!1 &1462978241
 GameObject:
   m_ObjectHideFlags: 0
@@ -4082,6 +4080,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1535146454}
   - component: {fileID: 1535146453}
+  - component: {fileID: 1535146455}
   m_Layer: 0
   m_Name: DatabaseManager
   m_TagString: Untagged
@@ -4116,6 +4115,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1535146455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535146452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7adf4ca130bffae4fb85d074c6f5a08f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1634805387
 GameObject:
   m_ObjectHideFlags: 0
