@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -263736909743110972}
   - component: {fileID: 9092643796491710497}
   m_Layer: 5
-  m_Name: InventorySlot
+  m_Name: GearSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 290116783, guid: 859c7833d387a5f49b8b8d0c7f75261b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6f63329575ee964d85aaf6c640091ae, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -117,7 +117,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hotkeyText: {fileID: 1414750486732647586}
   slotType: 0
-  gearSlot: 7
   image: {fileID: 36325662654857688}
   selectedColor: {r: 0.9716981, g: 0.81693953, b: 0.61877, a: 1}
   notSelectedColor: {r: 1, g: 1, b: 1, a: 1}

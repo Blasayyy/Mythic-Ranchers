@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 public class PlayerUnit : PlayerClass
 {
+
+    public static PlayerUnit instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public void AssignVaribles(object[] playerInfo)
     {
         this.PlayerName = (string)playerInfo[0];
@@ -24,7 +32,7 @@ public class PlayerUnit : PlayerClass
         this.Inventory = (string[])playerInfo[13];
         this.Abilities = (string[])playerInfo[14];
         this.Stats = (string[])playerInfo[15];
-        this.ArmorType = (ArmorTypes)playerInfo[16];
+        this.ArmorType = (ArmorType)playerInfo[16];
         this.KeyLevel = (int)playerInfo[17];
     }
 
@@ -32,7 +40,7 @@ public class PlayerUnit : PlayerClass
     {
         object[] playerInfo = new object[18];
         playerInfo[0] = "Whutz";
-        playerInfo[1] = "Necromancer";
+        playerInfo[1] = "Berzerker";
         playerInfo[2] = new Vector2(0, 0);
         playerInfo[3] = 2.0f;
         playerInfo[4] = 5.0f;
@@ -47,7 +55,7 @@ public class PlayerUnit : PlayerClass
         playerInfo[13] = new string[] { "inventory1", "inventory2", "inventory3" };
         playerInfo[14] = new string[] { "ability1", "ability2", "ability3" };
         playerInfo[15] = new string[] { "stat1", "stat2", "stat3" };
-        playerInfo[16] = ArmorTypes.Mail;
+        playerInfo[16] = ArmorType.Mail;
         playerInfo[17] = 1;
 
         return playerInfo;

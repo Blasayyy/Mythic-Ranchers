@@ -9,6 +9,9 @@ public class Item : ScriptableObject
     [Header("Only gameplay")]
     public TileBase tile;
     public ItemType type;
+    public GearSlot gearSlot;
+    public ArmorType ArmorType;
+
     //public ActionType actionType;
     //public Vector2Int range = new Vector2Int(5, 4);
 
@@ -21,9 +24,30 @@ public class Item : ScriptableObject
 
 public enum ItemType
 {
-    Equipement,
+    Gear,
     Key,
     Potion
+}
+
+public enum GearSlot
+{
+    Head,
+    Hands,
+    Weapon,
+    Neck,
+    Chest,
+    Feet,
+    OffHand,
+    None
+}
+
+public enum ArmorType
+{
+    Cloth,
+    Leather,
+    Mail,
+    Misc,
+    None
 }
 
 //public enum ActionType

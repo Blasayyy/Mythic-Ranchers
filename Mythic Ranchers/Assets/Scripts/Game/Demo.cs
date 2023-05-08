@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class Demo : MonoBehaviour
 {
 
     public InventoryManager inventoryManager;
     public Item[] itemsToPickup;
+    [SerializeField]
+    private Transform playerPrefab;
+    public Item[] testGear;
+
+
     public void PickupItems(int id)
     {
         bool result = inventoryManager.AddItem(itemsToPickup[id]);
@@ -43,6 +49,27 @@ public class Demo : MonoBehaviour
         else
         {
             Debug.Log("No item used");
+        }
+    }
+
+    public void SpawnPlayer()
+    {
+        NetworkManager.Singleton.StartHost();
+    }
+
+    public void SpawnTestGear()
+    {
+        for (int i=0; i < testGear.Length; i++)
+        {
+            bool result = inventoryManager.AddItem(testGear[i]);
+            if (result == true)
+            {
+                Debug.Log("Item added");
+            }
+            else
+            {
+                Debug.Log("Inventory is full");
+            }
         }
     }
 

@@ -10,6 +10,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     [SerializeField]
     public TMP_Text hotkeyText;
     public SlotType slotType;
+    public GearSlot gearSlot;
 
     public Image image;
     public Color selectedColor, notSelectedColor;
@@ -19,7 +20,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         Inventory,
         ActionBar,
         TalentTree,
-        CharacterEquipement
+        CharacterGear
     }
 
     private void Awake()
@@ -53,10 +54,29 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         {
             Debug.Log("Can't put abilities in the inventory");
         }
+        else if (this.slotType == SlotType.CharacterGear)
+        {
+            if (PlayerUnit.instance.ArmorType == inventoryItem.item.ArmorType || inventoryItem.item.ArmorType == ArmorType.Misc)
+            {
+                if (inventoryItem.item.gearSlot == this.gearSlot)
+                {
+                    inventoryItem.parentAfterDrag = transform;
+                }
+                else
+                {
+                    Debug.Log("Wrong gear slot");
+                }
+            }
+            else
+            {
+                Debug.Log("Your character cannot equip this armor type");
+            }
+        }
         else if (transform.childCount == 1)
         {
             inventoryItem.parentAfterDrag = transform;
         }
+        
         //else if (transform.childCount == (2) && inventoryItem.item == transform.GetChild(1).item && inventoryItem.count < InventoryManager.instance.maxItemStacks)
         //{
         //    inventoryItem.parentAfterDrag = transform;

@@ -20,6 +20,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public Ability ability;
 
 
+
     public void InitializeItem(Item newItem)
     {
         item = newItem;
@@ -57,7 +58,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         image.raycastTarget = false;
-    
+        GearManager.instance.UpdateGearUI();
+
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -75,5 +78,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             Destroy(this.gameObject);
         }
+        GearManager.instance.UpdateGearUI();
     }
 }
