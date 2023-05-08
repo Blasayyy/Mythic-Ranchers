@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using System.Linq;
 
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -13,15 +14,23 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Image image;
     public TMP_Text countText;
 
-    [HideInInspector] public Transform parentAfterDrag;
+    [HideInInspector] public Transform parentAfterDrag, parentBeforeDrag;
     [HideInInspector] public int count = 1;
     [HideInInspector] public Item item;
+    [HideInInspector] public Ability ability;
 
 
     public void InitializeItem(Item newItem)
     {
         item = newItem;
         image.sprite = newItem.image;
+        RefreshCount();
+    }
+
+    public void InitializeAbility(Ability newAbility)
+    {
+        ability = newAbility;
+        image.sprite = newAbility.image;
         RefreshCount();
     }
 
@@ -35,12 +44,20 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     // drag and drop
     public void OnBeginDrag(PointerEventData eventData)
     {
+
+        if (this.ability != null)
+        {
+            Debug.Log("Ability");
+            TalentTreeManager.instance.AddDuplicate(ability, transform.parent);
+        }
+
         countText.raycastTarget = false;
         parentAfterDrag = transform.parent;
-        
+        parentBeforeDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         image.raycastTarget = false;
+    
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -53,5 +70,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         countText.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
         image.raycastTarget = true;
+
+        if (this.ability != null && parentAfterDrag == parentBeforeDrag)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -51,10 +51,7 @@ public class MythicGameManager : NetworkBehaviour
         {
             Transform playerTransform = Instantiate(playerPrefab);
             PlayerUnit player = playerTransform.GetComponent<PlayerUnit>();
-            object[] stats = player.createVariables();
-            player.AssignVaribles(stats);
             playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
-
         }
     }
 }

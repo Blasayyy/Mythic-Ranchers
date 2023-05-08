@@ -9,9 +9,18 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 {
     [SerializeField]
     public TMP_Text hotkeyText;
+    public SlotType slotType;
 
     public Image image;
     public Color selectedColor, notSelectedColor;
+
+    public enum SlotType
+    {
+        Inventory,
+        ActionBar,
+        TalentTree,
+        CharacterEquipement
+    }
 
     private void Awake()
     {
@@ -33,11 +42,28 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (transform.childCount == 1)
+        GameObject dropped = eventData.pointerDrag;
+        InventoryItem inventoryItem = dropped.GetComponent<InventoryItem>();
+
+        if (this.slotType == SlotType.TalentTree)
         {
-            GameObject dropped = eventData.pointerDrag;
-            InventoryItem inventoryItem = dropped.GetComponent<InventoryItem>();
+            Debug.Log("Can't put anything in the talent tree");
+        }
+        else if (this.slotType == SlotType.Inventory && inventoryItem.ability != null)
+        {
+            Debug.Log("Can't put abilities in the inventory");
+        }
+        else if (transform.childCount == 1)
+        {
             inventoryItem.parentAfterDrag = transform;
         }
+        //else if (transform.childCount == (2) && inventoryItem.item == transform.GetChild(1).item && inventoryItem.count < InventoryManager.instance.maxItemStacks)
+        //{
+        //    inventoryItem.parentAfterDrag = transform;
+        //    inventoryItem.count++;
+        //    inventoryItem.RefreshCount();
+        //}
+
+
     }
 }

@@ -6,41 +6,37 @@ using System.Threading.Tasks;
 
 public class PlayerUnit : PlayerClass
 {
-
-    PlayerUnit player;
-
-
-
     public void AssignVaribles(object[] playerInfo)
     {
-        player.PlayerName = (string)playerInfo[0];
-        player.ClassName = (string)playerInfo[1];
-        player.Position = (Vector2)playerInfo[2];
-        player.MoveSpeed = (float)playerInfo[3];
-        player.Hp = (float)playerInfo[4]; 
-        player.BasicAtkDmg = (float)playerInfo[5];
-        player.BasicAtkSpeed = (float)playerInfo[6];
-        player.Ressource = (float)playerInfo[7];
-        player.Level = (int)playerInfo[8];
-        player.Talents = (string[])playerInfo[9];
-        player.TalentPointsAvailable = (int)playerInfo[10];
-        player.Xp = (int)playerInfo[11];
-        player.Equipment = (string[])playerInfo[12];
-        player.Inventory = (string[])playerInfo[13];
-        player.Abilities = (string[])playerInfo[14];
-        player.Stats = (string[])playerInfo[15];
-        player.ArmorType = (ArmorTypes)playerInfo[16];
-        player.KeyLevel = (int)playerInfo[17];
+        this.PlayerName = (string)playerInfo[0];
+        this.ClassName = (string)playerInfo[1];
+        this.Position = (Vector2)playerInfo[2];
+        this.MoveSpeed = (float)playerInfo[3];
+        this.Hp = (float)playerInfo[4]; 
+        this.BasicAtkDmg = (float)playerInfo[5];
+        this.BasicAtkSpeed = (float)playerInfo[6];
+        this.Ressource = (float)playerInfo[7];
+        this.Level = (int)playerInfo[8];
+        this.Talents = (string[])playerInfo[9];
+        this.TalentPointsAvailable = (int)playerInfo[10];
+        this.Xp = (int)playerInfo[11];
+        this.Equipment = (string[])playerInfo[12];
+        this.Inventory = (string[])playerInfo[13];
+        this.Abilities = (string[])playerInfo[14];
+        this.Stats = (string[])playerInfo[15];
+        this.ArmorType = (ArmorTypes)playerInfo[16];
+        this.KeyLevel = (int)playerInfo[17];
     }
 
     public object[] createVariables()
     {
         object[] playerInfo = new object[18];
         playerInfo[0] = "Whutz";
-        playerInfo[1] = "Berzeker";
+        playerInfo[1] = "Necromancer";
         playerInfo[2] = new Vector2(0, 0);
         playerInfo[3] = 2.0f;
-        playerInfo[5] = 1.0f;
+        playerInfo[4] = 5.0f;
+        playerInfo[5] = 1.5f;
         playerInfo[6] = 1.0f;
         playerInfo[7] = 1.0f;
         playerInfo[8] = 1;
@@ -57,38 +53,11 @@ public class PlayerUnit : PlayerClass
         return playerInfo;
     }
 
-
-
-
-    //private Rigidbody2D rig;
-    //private Vector2 movement;
-    //private Animator anim;
-    //private FacingDirection lastFacingDirection;
-    //private SpriteRenderer fonduRectangle;
-    //private bool alive = true;
-    ////public bool control = true;
-    //private bool facingRight = true;
-
-    //[SerializeField]
-    //public float speed;
-    //[SerializeField]
-    //private float taux = 0.001f;
-
-
-    //public enum FacingDirection
-    //{
-    //    Left,
-    //    Right,
-    //    Down,
-    //    Up
-    //}
-    // Start is called before the first frame update
     void Start()
     {
+        object[] stats = createVariables();
+        this.AssignVaribles(stats);
         base.Start();
-        //rig = GetComponent<Rigidbody2D>();
-        //anim = GetComponent<Animator>();
-        //lastFacingDirection = FacingDirection.Right;
     }
 
     private void Update()
@@ -101,91 +70,4 @@ public class PlayerUnit : PlayerClass
     {
         base.FixedUpdate();
     }
-
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    base.Update();
-    //    //if (GetHP() <= 0)
-    //    //{
-    //    //    alive = false;
-    //    //    anim.SetBool("Alive", false);
-    //    //}
-
-    //    //if (!IsOwner) return;
-    //    //if (control && alive)
-    //    //{
-    //    //    movement.x = Input.GetAxisRaw("Horizontal");
-    //    //    movement.y = Input.GetAxisRaw("Vertical");
-    //    //    if (Input.GetKey(KeyCode.Space))
-    //    //    {
-    //    //        anim.SetTrigger("Attacking");
-    //    //    }
-    //    //    else if (Input.GetKey(KeyCode.X))
-    //    //    {
-    //    //        anim.SetTrigger("Startled");
-    //    //    }
-
-    //    //    anim.SetFloat("Vertical", movement.y);
-    //    //    anim.SetFloat("Horizontal", movement.x);
-
-    //    //    if (movement.x > 0 && !facingRight)
-    //    //    {
-    //    //        lastFacingDirection = FacingDirection.Right;
-    //    //        Flip();
-    //    //    }
-    //    //    else if (movement.x < 0 && facingRight)
-    //    //    {
-    //    //        lastFacingDirection = FacingDirection.Left;
-    //    //        Flip();
-    //    //    }
-    //    //}
-    //    //else
-    //    //{
-    //    //    movement.x = 0;
-    //    //    movement.y = 0;
-    //    //}
-
-    //    //anim.SetFloat("Left", lastFacingDirection == FacingDirection.Left ? 1 : 0);
-    //    //anim.SetFloat("Right", lastFacingDirection == FacingDirection.Right ? 1 : 0);
-
-    //}
-
-    //void Flip()
-    //{
-    //    Vector3 currentScale = gameObject.transform.localScale;
-    //    currentScale.x *= -1;
-    //    gameObject.transform.localScale = currentScale;
-
-    //    facingRight = !facingRight;
-    //}
-
-    //private void FixedUpdate()
-    //{
-    //    base.FixedUpdate();
-    //    //rig.velocity = movement * speed;
-    //    //rig.velocity = rig.velocity.normalized * speed;
-    //}
-
-    //private async void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (LayerMask.LayerToName(collision.gameObject.layer) == "Ennemies" && control)
-    //    {
-    //        float damage = 1;
-    //        TakeDamage(damage);
-    //        Debug.Log(GetHP());
-    //    }
-    //}
-
-    //private async void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (LayerMask.LayerToName(collision.gameObject.layer) == "Oeuf")
-    //    {
-    //        alive = false;
-    //        StartCoroutine(FonduOut());
-    //        await Task.Delay(1000);
-    //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    //    }
-    //}
-
 }

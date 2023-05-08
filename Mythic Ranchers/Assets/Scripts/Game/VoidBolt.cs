@@ -10,8 +10,11 @@ public class VoidBolt : MonoBehaviour
 
     void Start()
     {
+        Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 direction = cursorPosition - transform.position;
+        direction.Normalize();
         rig = GetComponent<Rigidbody2D>();
-        rig.velocity = new Vector2(1.0f, 0.0f) * vitesse;
+        rig.velocity = direction * vitesse;
     }
 
     //OnCollision pour des objets durs qui se cognent
