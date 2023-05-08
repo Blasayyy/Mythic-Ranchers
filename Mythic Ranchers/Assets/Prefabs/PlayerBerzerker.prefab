@@ -15,11 +15,10 @@ GameObject:
   - component: {fileID: 2189785700629182162}
   - component: {fileID: -1773382139877535400}
   - component: {fileID: 6638589563152314856}
-  - component: {fileID: -7761346679048935775}
-  - component: {fileID: 1953498821796048167}
   - component: {fileID: 8067310530666581063}
   - component: {fileID: 403597039529258458}
   - component: {fileID: 8760278415561259737}
+  - component: {fileID: 2909088349848762973}
   m_Layer: 6
   m_Name: PlayerBerzerker
   m_TagString: Player
@@ -151,7 +150,7 @@ MonoBehaviour:
   TransitionStateInfoList:
   - Layer: 0
     OriginatingState: 229373857
-    DestinationState: 1080829965
+    DestinationState: 1504273457
     TransitionDuration: 0
     TriggerNameHash: -2123461723
     TransitionIndex: 1
@@ -161,6 +160,12 @@ MonoBehaviour:
     TransitionDuration: 0
     TriggerNameHash: 299077384
     TransitionIndex: 2
+  - Layer: 0
+    OriginatingState: 229373857
+    DestinationState: -1577721112
+    TransitionDuration: 0
+    TriggerNameHash: -2123461723
+    TransitionIndex: 3
   m_Animator: {fileID: 878291776186102532}
 --- !u!61 &-1773382139877535400
 BoxCollider2D:
@@ -203,9 +208,6 @@ MonoBehaviour:
   control: 1
   prefabVoidBolt: {fileID: 1032712518703657247, guid: 3d874e1cb32d4bf4f8e17d1918d8b223,
     type: 3}
---- !u!114 &-7761346679048935775
-  speed: 4
-  taux: 0.001
 --- !u!114 &8067310530666581063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +250,6 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &1953498821796048167
 --- !u!114 &8760278415561259737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +265,13 @@ MonoBehaviour:
   control: 1
   prefabVoidBolt: {fileID: 1032712518703657247, guid: 3d874e1cb32d4bf4f8e17d1918d8b223,
     type: 3}
+--- !u!114 &2909088349848762973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685705375135910251}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}

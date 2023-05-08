@@ -12,7 +12,7 @@ public class PasswordHasher: MonoBehaviour
         Instance = this;
     }
 
-    public static string HashPassword(string password)
+    public string HashPassword(string password)
     {
         using (SHA256 sha256 = SHA256.Create())
         {
@@ -22,7 +22,7 @@ public class PasswordHasher: MonoBehaviour
         }
     }
 
-    public static bool VerifyPassword(string password, string storedHash)
+    public bool VerifyPassword(string password, string storedHash)
     {
         string passwordHash = HashPassword(password);
         return passwordHash == storedHash;
