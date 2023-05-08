@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CharacterCreationManager : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class CharacterCreationManager : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI nameText;
+
+    [SerializeField]
+    private TextMeshProUGUI classNameText;
 
     [SerializeField]
     private Button leftButton;
@@ -25,6 +29,9 @@ public class CharacterCreationManager : MonoBehaviour
 
     [SerializeField]
     private Button createButton;
+
+    [SerializeField]
+    private Button backButton;
 
     [SerializeField]
     private TextMeshProUGUI errorText;
@@ -50,6 +57,7 @@ public class CharacterCreationManager : MonoBehaviour
         leftButton.onClick.AddListener(GoLeft);
         rightButton.onClick.AddListener(GoRight);
         createButton.onClick.AddListener(CreateCharacter);
+        backButton.onClick.AddListener(Back);
     }
 
 
@@ -85,6 +93,7 @@ public class CharacterCreationManager : MonoBehaviour
         if(await DatabaseManager.Instance.CreateCharacter(AccountManager.Instance.Username, nameText.text, classes[currentIndex] ,1, 0, 1, emptyEquipment, "00000000000"))
         {
             PopUpBoxCharacterCreation.Instance.ShowUI();
+            AccountManager.Instance.GetUserData(AccountManager.Instance.Username);
         }
         else
         {
@@ -95,7 +104,7 @@ public class CharacterCreationManager : MonoBehaviour
     private void SetInfo(int currentIndex)
     {
         string className = classes[currentIndex];
-        nameText.text = className;
+        classNameText.text = className;
 
         string description = "";
 
@@ -117,5 +126,10 @@ public class CharacterCreationManager : MonoBehaviour
         classDecription.text = description;
 
 
+    }
+
+    private void Back()
+    {
+        SceneManager.LoadScene("CharacterSelectScene");
     }
 }

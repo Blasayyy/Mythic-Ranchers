@@ -11,6 +11,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI accountName;
 
+    [SerializeField]
+    private TextMeshProUGUI characterNameText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,9 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         accountName.text = "Logged in as: " + AccountManager.Instance.Username;
+
+        string characterName = "Selected character: " + AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter].Name + "(" + AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter].ClassName + ")";
+        characterNameText.text = characterName;
     }
 
     public void PlayGame()
@@ -43,7 +49,7 @@ public class MainMenu : MonoBehaviour
 
     public void GoToCharacterScreen()
     {
-        SceneManager.LoadScene("CharacterCreationScene");
+        SceneManager.LoadScene("CharacterSelectScene");
     }
 
     public void LogOut()

@@ -1,30 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PopUpBoxCharacterCreation : MonoBehaviour
+public class DeleteConfirmPopUp : MonoBehaviour
 {
+    public static DeleteConfirmPopUp Instance { get; private set; }
+
     [SerializeField]
-    private Button okButton;
+    private Button yesButton;
 
+    [SerializeField]
+    private Button noButton;
 
-    public static PopUpBoxCharacterCreation Instance { get; private set; }
 
     private void Awake()
     {
         Instance = this;
         HideUI();
 
-        okButton.onClick.AddListener(GoNext);
-
+        noButton.onClick.AddListener(HideUI);
+        yesButton.onClick.AddListener(DeleteCharacter);
     }
 
-    private void GoNext()
+    private void DeleteCharacter()
     {
+        CharacterSelectManager.Instance.DeleteCharacter();
         HideUI();
-        SceneManager.LoadScene("CharacterSelectScene");
     }
 
     public void HideUI()
