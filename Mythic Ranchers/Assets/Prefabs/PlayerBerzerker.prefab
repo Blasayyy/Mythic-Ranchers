@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8067310530666581063}
   - component: {fileID: 403597039529258458}
   - component: {fileID: 8760278415561259737}
-  - component: {fileID: 2909088349848762973}
+  - component: {fileID: 2232848846330322220}
   m_Layer: 6
   m_Name: PlayerBerzerker
   m_TagString: Player
@@ -265,7 +265,7 @@ MonoBehaviour:
   control: 1
   prefabVoidBolt: {fileID: 1032712518703657247, guid: 3d874e1cb32d4bf4f8e17d1918d8b223,
     type: 3}
---- !u!114 &2909088349848762973
+--- !u!114 &2232848846330322220
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
