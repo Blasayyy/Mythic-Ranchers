@@ -31,18 +31,11 @@ public class PlayerClass : NetworkBehaviour
     private string[] inventory;
     private string[] abilities;
     private string[] stats; //dictionary
-    private ArmorTypes armorType;
+    private ArmorType armorType;
     private int keyLevel;
 
     [SerializeField]
     private Transform prefabVoidBolt;
-
-    public enum ArmorTypes
-    {
-        Cloth,
-        Leather,
-        Mail
-    }
 
     public enum FacingDirection
     {
@@ -273,7 +266,7 @@ public class PlayerClass : NetworkBehaviour
         set { stats = value; }
     }
 
-    public ArmorTypes ArmorType
+    public ArmorType ArmorType
     {
         get { return armorType; }
         set { armorType = value; }

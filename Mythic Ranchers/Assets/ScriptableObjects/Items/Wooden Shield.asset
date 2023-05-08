@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efcc91c4f79c92a40860da0d88696c0b, type: 3}
-  m_Name: Sword
+  m_Name: Wooden Shield
   m_EditorClassIdentifier: 
   tile: {fileID: 0}
   type: 0
+  gearSlot: 6
+  ArmorType: 2
   stackable: 0
-  image: {fileID: -1253750921, guid: dbe0e5f51ba527a47a5dc9393d195d8d, type: 3}
+  image: {fileID: 1488049383, guid: e1b2719642a27584cbe694cde8c76de1, type: 3}
