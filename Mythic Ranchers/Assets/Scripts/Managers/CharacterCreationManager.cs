@@ -34,6 +34,9 @@ public class CharacterCreationManager : MonoBehaviour
     private Button backButton;
 
     [SerializeField]
+    private Button logOutButton;
+
+    [SerializeField]
     private TextMeshProUGUI errorText;
 
     public Sprite BerzerkerSprite;
@@ -58,6 +61,16 @@ public class CharacterCreationManager : MonoBehaviour
         rightButton.onClick.AddListener(GoRight);
         createButton.onClick.AddListener(CreateCharacter);
         backButton.onClick.AddListener(Back);
+        logOutButton.onClick.AddListener(LogOut);
+
+        if(AccountManager.Instance.CharacterDatas == null || AccountManager.Instance.CharacterDatas.Count <= 0)
+        {
+            backButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            backButton.gameObject.SetActive(true);
+        }
     }
 
 
@@ -131,5 +144,11 @@ public class CharacterCreationManager : MonoBehaviour
     private void Back()
     {
         SceneManager.LoadScene("CharacterSelectScene");
+    }
+
+    private void LogOut()
+    {
+        MainMenu.Instance.LogOut();
+        SceneManager.LoadScene("MenuScene");
     }
 }
