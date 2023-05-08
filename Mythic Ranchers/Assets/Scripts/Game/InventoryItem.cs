@@ -14,7 +14,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Image image;
     public TMP_Text countText;
 
-    [HideInInspector] public Transform parentAfterDrag;
+    [HideInInspector] public Transform parentAfterDrag, parentBeforeDrag;
     [HideInInspector] public int count = 1;
     [HideInInspector] public Item item;
     [HideInInspector] public Ability ability;
@@ -41,11 +41,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         countText.gameObject.SetActive(textActive);
     }
 
-    public void DestroyItem()
-    {
-        Destroy(this);
-    }
-
     // drag and drop
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -58,7 +53,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         countText.raycastTarget = false;
         parentAfterDrag = transform.parent;
-        
+        parentBeforeDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         image.raycastTarget = false;
@@ -75,5 +70,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         countText.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
         image.raycastTarget = true;
+
+        if (this.ability != null && parentAfterDrag == parentBeforeDrag)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
