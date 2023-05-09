@@ -10,9 +10,10 @@ public class InventoryManager : MonoBehaviour
     public int maxItemStacks = 4;
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
+    public GameObject felBombPrefab;
+    public GameObject voidboltPrefab;
     public string hotkey;
-
-    int selectedSlot = -1;
+    public int selectedSlot = -1;
 
     private void Awake()
     {
@@ -158,6 +159,10 @@ public class InventoryManager : MonoBehaviour
             Item item = itemInSlot.item;
             if (use)
             {
+                //if (itemInSlot.ability)
+                //{
+                                       
+                //}
                 itemInSlot.count--;
                 if (itemInSlot.count <= 0)
                 {
@@ -173,5 +178,31 @@ public class InventoryManager : MonoBehaviour
         }
         return null;
     }
+    public bool UseAbility(Vector3 target, Vector3 playerPos)
+    {
+        InventorySlot slot = inventorySlots[selectedSlot];
+        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
+        if (itemInSlot.ability)
+        {
+            if (itemInSlot.ability.type == AbilityType.AoeTargetted)
+            {
+                Instantiate(felBombPrefab, target, Quaternion.identity);
+                return true;
+            }            
+            else if (itemInSlot.ability.type == AbilityType.Projectile)
+            {
+                Instantiate(voidboltPrefab, playerPos, Quaternion.identity);
+                return true;
+            }
+            return false;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
 
 }

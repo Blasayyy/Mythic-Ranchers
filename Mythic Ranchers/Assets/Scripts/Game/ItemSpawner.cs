@@ -9,7 +9,7 @@ public class ItemSpawner : MonoBehaviour
 
     void Start()
     {
-        Vector3 randomPosition = new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(-10f, 10f));
+        Vector3 randomPosition = new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0f);
         GameObject loot = Instantiate(itemPrefab, randomPosition, Quaternion.identity);
         //loot.GetComponent<Loot>().Initialize(item);
     }

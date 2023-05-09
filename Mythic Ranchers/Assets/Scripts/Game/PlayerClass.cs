@@ -50,13 +50,14 @@ public class PlayerClass : NetworkBehaviour
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         facingDirection = FacingDirection.Right;
-        moveSpeed = 2;
-        Hp = 5;
+        //moveSpeed = 2;
+        //Hp = 5;
     }
 
     public void Update()
     {
         if (!IsOwner) return;
+        //Debug.Log(control);
         CheckIfDead();
         GetInput();
     }
@@ -81,11 +82,21 @@ public class PlayerClass : NetworkBehaviour
             movement.y = Input.GetAxisRaw("Vertical");
             anim.ResetTrigger("Attacking");
             anim.ResetTrigger("Startled");
+            if (Input.GetMouseButtonDown(0))
+            {
+                InventorySlot slot = InventoryManager.instance.inventorySlots[InventoryManager.instance.selectedSlot];
+                InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+                if (itemInSlot != null && itemInSlot.ability)
+                {
+                    Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    target.z = 0;
+                    InventoryManager.instance.UseAbility(target, transform.position);
+                }
+            }
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 anim.SetTrigger("Attacking");
-                Instantiate(prefabVoidBolt, transform.position, Quaternion.identity);
-
+                //Instantiate(prefabVoidBolt, transform.position, Quaternion.identity);
             }
             else if (Input.GetKeyUp(KeyCode.X))
             {
@@ -168,6 +179,11 @@ public class PlayerClass : NetworkBehaviour
             //bool canAdd = InventoryManager.instance.AddItem()
             Debug.Log("Collision with pot");
         }
+    }
+
+    public void ControllToggle()
+    {
+        this.control = false;
     }
 
     public string PlayerName

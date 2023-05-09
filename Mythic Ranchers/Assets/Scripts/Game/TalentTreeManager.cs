@@ -62,6 +62,12 @@ public class TalentTreeManager : MonoBehaviour
     {
         
     }
+
+    //void SpawnAbility(Ability ability, Vector3 position)
+    //{
+    //    GameObject newItemGo = Instantiate(inventoryItemPrefab, position.trans);
+    //    InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
+    //}
 }
 
 public static class ArrayExtensions

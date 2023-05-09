@@ -60,6 +60,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             {
                 if (inventoryItem.item.gearSlot == this.gearSlot)
                 {
+                    //success
                     inventoryItem.parentAfterDrag = transform;
                 }
                 else

@@ -71,7 +71,6 @@ public class PlayerUnit : PlayerClass
     private void Update()
     {
         base.Update();
-        Debug.Log(this.BasicAtkDmg);
     }
 
     private void FixedUpdate()
