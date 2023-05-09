@@ -7,16 +7,27 @@ public class AbilityManager : MonoBehaviour
 {
     public static AbilityManager instance;
 
+    //public PlayerUnit ownerPlayerUnit;
+
     public Ability[] abilities;
     public InventorySlot[] talentTreeSlots;
 
     public GameObject inventoryItemPrefab;
     public GameObject felBombPrefab;
     public GameObject voidboltPrefab;
+    public GameObject arcaneNovaPrefab;
 
     private void Awake()
     {
         instance = this;
+    }
+
+    void Start()
+    {
+        for (int i = 0; i < abilities.Length; i++)
+        {
+            FindSlot(abilities[i]);
+        }
     }
 
     public void FindSlot(Ability ability)
@@ -48,7 +59,6 @@ public class AbilityManager : MonoBehaviour
             InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
             inventoryItem.InitializeAbility(ability);
         }
-
     }
 
     public bool UseAbility(Vector3 target, Vector3 playerPos)
@@ -56,42 +66,31 @@ public class AbilityManager : MonoBehaviour
         InventorySlot slot = InventoryManager.instance.inventorySlots[InventoryManager.instance.selectedSlot];
         InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
 
-        if (itemInSlot.ability)
-        {
-            if (itemInSlot.UseSpell())
-            {
-                if (itemInSlot.ability.type == AbilityType.AoeTargetted)
-                {
-                    Instantiate(felBombPrefab, target, Quaternion.identity);
-                    return true;
-                }
-                else if (itemInSlot.ability.type == AbilityType.Projectile)
-                {
-                    Instantiate(voidboltPrefab, playerPos, Quaternion.identity);
-                    return true;
-                }
-            }
-            return false;
-        }
-        else
+        if (!itemInSlot.ability)
         {
             return false;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        for (int i = 0; i < abilities.Length; i++)
+        if (!itemInSlot.UseSpell())
         {
-            FindSlot(abilities[i]);
+            return false;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        // a changer
+        if (itemInSlot.ability.type == AbilityType.AoeTargetted)
+        {
+            Instantiate(felBombPrefab, target, Quaternion.identity);
+            return true;
+        }
+        else if (itemInSlot.ability.type == AbilityType.Projectile)
+        {
+            Instantiate(voidboltPrefab, playerPos, Quaternion.identity);
+            return true;
+        }
+        else if (itemInSlot.ability.type == AbilityType.AoeStandard)
+        {
+            Instantiate(arcaneNovaPrefab, playerPos, Quaternion.identity);
+            return true;
+        }
+        return false;
     }
 }
 

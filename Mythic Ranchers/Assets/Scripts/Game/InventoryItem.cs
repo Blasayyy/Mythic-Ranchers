@@ -113,7 +113,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         if (this.ability != null)
         {
-            Debug.Log("Ability");
             AbilityManager.instance.AddDuplicate(ability, transform.parent);
         }
 

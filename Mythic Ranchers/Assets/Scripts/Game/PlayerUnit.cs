@@ -9,6 +9,9 @@ public class PlayerUnit : PlayerClass
 
     public static PlayerUnit instance;
 
+    //[SerializeField]
+    //private GameObject abilityManagerPrefab;
+
     private void Awake()
     {
         instance = this;
@@ -63,6 +66,10 @@ public class PlayerUnit : PlayerClass
 
     void Start()
     {
+        //GameObject abilityManagerObject = Instantiate(abilityManagerPrefab, transform);
+        //AbilityManager abilityManager = abilityManagerObject.GetComponent<AbilityManager>();
+        //abilityManager.ownerPlayerUnit = this;
+
         object[] stats = createVariables();
         this.AssignVaribles(stats);
         CameraFollowPlayer.instance.SetCameraFollowPlayer(this.transform);
