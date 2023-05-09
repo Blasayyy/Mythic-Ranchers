@@ -274,4 +274,68 @@ public class DatabaseManager : MonoBehaviour
     }
 
 
+    public async Task<List<BsonDocument>> GetCharactersForAccount(string username)
+    {
+        try
+        {
+            var collection = GetCollection(CHARACTERS_COLLECTION);
+            FilterDefinition<BsonDocument> filter = Builders<BsonDocument>.Filter.Eq("username", username);
+
+            var characters = await collection.FindAsync(filter).Result.ToListAsync();
+
+            return characters;
+        }
+        catch (MongoConfigurationException ex)
+        {
+            Debug.LogError("MongoDB configuration exception: " + ex.Message);
+        }
+        catch (MongoConnectionException ex)
+        {
+            Debug.LogError("MongoDB connection exception: " + ex.Message);
+        }
+        catch (MongoException ex)
+        {
+            Debug.LogError("MongoDB exception: " + ex.Message);
+        }
+
+        return null;
+    }
+
+
+    public async Task<bool> DeleteCharacter(string characterName)
+    {
+        try
+        {
+            var collection = GetCollection(CHARACTERS_COLLECTION);
+            var filter = Builders<BsonDocument>.Filter.Eq("name", characterName);
+            var result = await collection.DeleteOneAsync(filter);
+
+            if (result.DeletedCount > 0)
+            {
+                Debug.Log("Character " + characterName + " deleted successfully.");
+                return true;
+            }
+            else
+            {
+                Debug.Log("No character found with the provided name.");
+            }
+        }
+        catch (MongoConfigurationException ex)
+        {
+            Debug.LogError("MongoDB configuration exception: " + ex.Message);
+        }
+        catch (MongoConnectionException ex)
+        {
+            Debug.LogError("MongoDB connection exception: " + ex.Message);
+        }
+        catch (MongoException ex)
+        {
+            Debug.LogError("MongoDB exception: " + ex.Message);
+        }
+
+        return false;
+    }
+
 }
+
+

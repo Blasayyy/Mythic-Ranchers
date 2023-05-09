@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoginUI : MonoBehaviour
@@ -9,10 +10,10 @@ public class LoginUI : MonoBehaviour
     public static LoginUI Instance { get; private set; }
 
     [SerializeField]
-    private TextMeshProUGUI usernameText;
+    public TextMeshProUGUI usernameText;
 
     [SerializeField]
-    private TMP_InputField passwordInputField;
+    public TMP_InputField passwordInputField;
 
     [SerializeField]
     private TextMeshProUGUI errorText;
@@ -36,6 +37,8 @@ public class LoginUI : MonoBehaviour
         loginButton.onClick.AddListener(Login);
         registerButton.onClick.AddListener(ShowRegistration);
         errorText.gameObject.SetActive(false);
+
+        DontDestroyOnLoad(this);
     }
 
     private async void Login()
@@ -57,6 +60,12 @@ public class LoginUI : MonoBehaviour
                 AccountManager.Instance.GetUserData(username);
                 
                 HideUI();
+                if (AccountManager.Instance.CharacterDatas == null || AccountManager.Instance.CharacterDatas.Count <= 0)
+                {
+                    SceneManager.LoadScene("CharacterCreationScene");
+                }
+                    
+
             }
             else
             {

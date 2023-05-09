@@ -11,16 +11,40 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI accountName;
 
+    [SerializeField]
+    private TextMeshProUGUI characterNameText;
+
+
+    private void Awake()
+    {
+        Instance = this;
+        DontDestroyOnLoad(this);
+    }
     // Start is called before the first frame update
     void Start()
     {
         RegisterUI.Instance.HideUI();
+
 
         if(PlayerPrefs.GetString("username") != null && PlayerPrefs.GetString("username") != "" && PlayerPrefs.GetString("password") != null)
         {
             LoginUI.Instance.HideUI();
             AccountManager.Instance.GetUserData(PlayerPrefs.GetString("username"));
         }
+
+        if(AccountManager.Instance.Username != null && AccountManager.Instance.Username != "")
+        {
+            LoginUI.Instance.HideUI();
+            if (AccountManager.Instance.CharacterDatas == null || AccountManager.Instance.CharacterDatas.Count <= 0)
+            {
+                SceneManager.LoadScene("CharacterCreationScene");
+            }
+        }
+        else
+        {
+            LoginUI.Instance.ShowUI();
+        }
+
 
         accountName.text = "Logged in as: " + AccountManager.Instance.Username;
     }
@@ -29,6 +53,17 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         accountName.text = "Logged in as: " + AccountManager.Instance.Username;
+        if (AccountManager.Instance.CharacterDatas != null)
+        {
+            if(AccountManager.Instance.CharacterDatas.Count > 0)
+            {
+                string characterName = "Selected character: " + AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter].Name + "(" + AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter].ClassName + ")";
+                characterNameText.text = characterName;
+            }
+            
+        }
+        
+        
     }
 
     public void PlayGame()
@@ -43,7 +78,7 @@ public class MainMenu : MonoBehaviour
 
     public void GoToCharacterScreen()
     {
-        SceneManager.LoadScene("CharacterCreationScene");
+        SceneManager.LoadScene("CharacterSelectScene");
     }
 
     public void LogOut()
@@ -51,6 +86,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetString("username", null);
         PlayerPrefs.SetString("password", null);
         AccountManager.Instance.Username = "";
-        LoginUI.Instance.ShowUI();
+        AccountManager.Instance.GetUserData("");
+
     }
 }

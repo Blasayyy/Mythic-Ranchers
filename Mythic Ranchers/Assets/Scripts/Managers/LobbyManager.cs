@@ -74,7 +74,7 @@ public class LobbyManager : MonoBehaviour
         if(UnityServices.State != ServicesInitializationState.Initialized)
         {
             await UnityServices.InitializeAsync();
-            playerName = "Rancher" + UnityEngine.Random.Range(10, 100);
+            playerName = AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter].Name;
             Authenticate(playerName);
         }
         
