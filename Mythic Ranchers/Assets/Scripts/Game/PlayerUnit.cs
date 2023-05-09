@@ -18,7 +18,7 @@ public class PlayerUnit : PlayerClass
     {
         this.PlayerName = (string)playerInfo[0];
         this.ClassName = (string)playerInfo[1];
-        this.Position = (Vector2)playerInfo[2];
+        this.Position = (Vector3)playerInfo[2];
         this.MoveSpeed = (float)playerInfo[3];
         this.Hp = (float)playerInfo[4]; 
         this.BasicAtkDmg = (float)playerInfo[5];
@@ -41,7 +41,7 @@ public class PlayerUnit : PlayerClass
         object[] playerInfo = new object[18];
         playerInfo[0] = "Whutz";
         playerInfo[1] = "Berzerker";
-        playerInfo[2] = new Vector2(0, 0);
+        playerInfo[2] = new Vector3(0, 0, 0);
         playerInfo[3] = 2.0f;
         playerInfo[4] = 5.0f;
         playerInfo[5] = 1.5f;
@@ -65,13 +65,13 @@ public class PlayerUnit : PlayerClass
     {
         object[] stats = createVariables();
         this.AssignVaribles(stats);
+        CameraFollowPlayer.instance.SetCameraFollowPlayer(this.transform);
         base.Start();
     }
 
     private void Update()
     {
         base.Update();
-        Debug.Log(this.BasicAtkDmg);
     }
 
     private void FixedUpdate()

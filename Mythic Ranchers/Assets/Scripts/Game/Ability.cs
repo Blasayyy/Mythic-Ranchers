@@ -12,6 +12,8 @@ public class Ability : ScriptableObject
     public float range;
     public float damage;
     public float aoeRange;
+    public float ressourceCost;
+    public float cooldown;
 
     [Header("UI")]
     public Sprite image;

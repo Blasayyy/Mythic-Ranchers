@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class TalentTreeManager : MonoBehaviour
+public class AbilityManager : MonoBehaviour
 {
-    public static TalentTreeManager instance;
+    public static AbilityManager instance;
 
     public Ability[] abilities;
     public InventorySlot[] talentTreeSlots;
+
     public GameObject inventoryItemPrefab;
+    public GameObject felBombPrefab;
+    public GameObject voidboltPrefab;
 
     private void Awake()
     {
@@ -48,6 +51,34 @@ public class TalentTreeManager : MonoBehaviour
 
     }
 
+    public bool UseAbility(Vector3 target, Vector3 playerPos)
+    {
+        InventorySlot slot = InventoryManager.instance.inventorySlots[InventoryManager.instance.selectedSlot];
+        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
+        if (itemInSlot.ability)
+        {
+            if (itemInSlot.UseSpell())
+            {
+                if (itemInSlot.ability.type == AbilityType.AoeTargetted)
+                {
+                    Instantiate(felBombPrefab, target, Quaternion.identity);
+                    return true;
+                }
+                else if (itemInSlot.ability.type == AbilityType.Projectile)
+                {
+                    Instantiate(voidboltPrefab, playerPos, Quaternion.identity);
+                    return true;
+                }
+            }
+            return false;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +91,7 @@ public class TalentTreeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
 

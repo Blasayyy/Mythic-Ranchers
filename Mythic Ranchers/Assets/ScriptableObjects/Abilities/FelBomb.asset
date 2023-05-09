@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e66be03168e97c346a3aefd115a9a542, type: 3}
-  m_Name: VoidBolt
+  m_Name: FelBomb
   m_EditorClassIdentifier: 
   tile: {fileID: 0}
-  type: 0
-  range: 7
+  type: 2
+  range: 4
   damage: 2
-  aoeRange: 0
+  aoeRange: 5
   ressourceCost: 0
-  cooldown: 2
-  image: {fileID: 515776072, guid: 75a86578299c2f74e8da3a215b5fa665, type: 3}
+  cooldown: 5
+  image: {fileID: -1188426393, guid: 7d763f88190d8e348b945e0df40550c9, type: 3}

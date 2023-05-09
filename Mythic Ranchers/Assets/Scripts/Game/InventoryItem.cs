@@ -14,12 +14,77 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Image image;
     public TMP_Text countText;
 
+    [SerializeField]
+    private Image imageCooldown;
+    [SerializeField]
+    private TMP_Text textCooldown;
+
     [HideInInspector] public Transform parentAfterDrag, parentBeforeDrag;
     [HideInInspector] public int count = 1;
     [HideInInspector] public Item item;
     [HideInInspector] public Ability ability;
 
+    private bool isOnCooldown = false;
+    private float cooldownTime = 0.0f;
+    private float cooldownTimer = 0.0f;
 
+    void Start()
+    {
+        if (this.ability)
+        {
+            textCooldown.gameObject.SetActive(false);
+            imageCooldown.fillAmount = 0.0f;
+            cooldownTime = ability.cooldown;
+        }
+        else
+        {
+            textCooldown.gameObject.SetActive(false);
+            imageCooldown.gameObject.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        if (isOnCooldown)
+        {
+            ApplyCooldown();
+        }
+    }
+
+    public bool UseSpell()
+    {
+        if (isOnCooldown)
+        {
+            // sound effect? spell is on cd
+            Debug.Log("Spell is on cd");
+            return false;
+        }
+        else
+        {
+            isOnCooldown = true;
+            textCooldown.gameObject.SetActive(true);
+            cooldownTimer = cooldownTime;
+            return true;
+        }
+    }
+
+    void ApplyCooldown()
+    {
+        // substract time since last called
+        cooldownTimer -= Time.deltaTime;
+
+        if (cooldownTimer < 0.0f)
+        {
+            isOnCooldown = false;
+            textCooldown.gameObject.SetActive(false);
+            imageCooldown.fillAmount = 0.0f;
+        }
+        else
+        {
+            textCooldown.text = Mathf.RoundToInt(cooldownTimer).ToString();
+            imageCooldown.fillAmount = cooldownTimer / cooldownTime;
+        }
+    }
 
     public void InitializeItem(Item newItem)
     {
@@ -49,10 +114,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         if (this.ability != null)
         {
             Debug.Log("Ability");
-            TalentTreeManager.instance.AddDuplicate(ability, transform.parent);
+            AbilityManager.instance.AddDuplicate(ability, transform.parent);
         }
 
         countText.raycastTarget = false;
+        imageCooldown.raycastTarget = false;
         parentAfterDrag = transform.parent;
         parentBeforeDrag = transform.parent;
         transform.SetParent(transform.root);
@@ -73,6 +139,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         countText.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
         image.raycastTarget = true;
+        imageCooldown.raycastTarget = true;
 
         if (this.ability != null && parentAfterDrag == parentBeforeDrag)
         {
