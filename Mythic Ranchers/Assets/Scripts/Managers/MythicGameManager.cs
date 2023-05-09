@@ -10,6 +10,9 @@ public class MythicGameManager : NetworkBehaviour
 
     public static MythicGameManager Instance { get; private set; }
 
+    private Dictionary<ulong, CharacterData> playerCharacterData = new Dictionary<ulong, CharacterData>();
+
+
     [SerializeField]
     private Transform playerPrefab;
 
@@ -54,4 +57,17 @@ public class MythicGameManager : NetworkBehaviour
             playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
         }
     }
+
+    public void AddPlayerCharacterData(ulong clientId, CharacterData characterData)
+    {
+        if (!playerCharacterData.ContainsKey(clientId))
+        {
+            playerCharacterData.Add(clientId, characterData);
+        }
+    }
+
+
+
+
+
 }
