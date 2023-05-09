@@ -58,7 +58,7 @@ public class PlayerClass : NetworkBehaviour
     public void Update()
     {
         if (!IsOwner) return;
-        Debug.Log(control);
+        //Debug.Log(control);
         CheckIfDead();
         GetInput();
     }
@@ -91,8 +91,7 @@ public class PlayerClass : NetworkBehaviour
                 {
                     Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     target.z = 0;
-                    //InventoryManager.instance.UseAbility(target, transform.position);
-                    SpellCooldown.instance.UseAbility(target, transform.position);
+                    AbilityManager.instance.UseAbility(target, transform.position);
 
                 }
             }

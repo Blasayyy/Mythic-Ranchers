@@ -12,7 +12,7 @@ public class FelBomb : MonoBehaviour
     void Start()
     { 
         // hardcoded until we link to db
-        range = TalentTreeManager.instance.abilities[1].range;
+        range = AbilityManager.instance.abilities[1].range;
 
         cursorWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorWorldPosition.z = 0;

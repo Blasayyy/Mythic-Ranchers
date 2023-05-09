@@ -17,4 +17,6 @@ MonoBehaviour:
   range: 4
   damage: 2
   aoeRange: 5
+  ressourceCost: 0
+  cooldown: 5
   image: {fileID: -1188426393, guid: 7d763f88190d8e348b945e0df40550c9, type: 3}

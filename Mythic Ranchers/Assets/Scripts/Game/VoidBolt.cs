@@ -13,7 +13,7 @@ public class VoidBolt : MonoBehaviour
 
     void Start()
     {
-        range = TalentTreeManager.instance.abilities[0].range;
+        range = AbilityManager.instance.abilities[0].range;
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

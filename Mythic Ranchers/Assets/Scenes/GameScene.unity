@@ -8726,7 +8726,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 51.8, y: 49.47}
+  m_AnchoredPosition: {x: 51.80005, y: 49.46997}
   m_SizeDelta: {x: 49.2791, y: 67.154}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &884395326
@@ -13809,7 +13809,7 @@ GameObject:
   - component: {fileID: 1640677791}
   - component: {fileID: 1640677790}
   m_Layer: 0
-  m_Name: TalentTreeManager
+  m_Name: AbilityManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13824,7 +13824,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1640677789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f6fae94b1a7c6b48811c7dfe7b7d54a, type: 3}
+  m_Script: {fileID: 11500000, guid: bb25f3edc2367d947b3991dce43e76ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   abilities:
@@ -13844,6 +13844,10 @@ MonoBehaviour:
   - {fileID: 1745805739}
   - {fileID: 1909262556}
   inventoryItemPrefab: {fileID: 8647086848954568262, guid: 46210baf526604843a9a664ad811314a,
+    type: 3}
+  felBombPrefab: {fileID: 1850953107961914946, guid: dcd6f281da0c5eb40bf07b451eb08683,
+    type: 3}
+  voidboltPrefab: {fileID: 1850953107961914946, guid: 3d874e1cb32d4bf4f8e17d1918d8b223,
     type: 3}
 --- !u!4 &1640677791
 Transform:
