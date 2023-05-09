@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FelBomb
   m_EditorClassIdentifier: 
   tile: {fileID: 0}
-  type: 0
-  range: 0
-  damage: 0
-  aoeRange: 0
-  image: {fileID: 0}
+  type: 2
+  range: 4
+  damage: 2
+  aoeRange: 5
+  image: {fileID: -1188426393, guid: 7d763f88190d8e348b945e0df40550c9, type: 3}

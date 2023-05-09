@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bda5e3ceecc07984da2bb5b7cdd8ca6b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - cameraFollowScript: {instanceID: 0}
+  - target: {fileID: 4687180269806577471, guid: c84856c2c4523c34bb3a353ce896a406,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

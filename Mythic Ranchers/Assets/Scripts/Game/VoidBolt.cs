@@ -20,8 +20,8 @@ public class VoidBolt : MonoBehaviour
         cursorPosition.z = 0;
         Vector3 direction = cursorPosition - transform.position;
         initialPosition = transform.position;
-
         direction.Normalize();
+
         if (direction.x < 0)
         {
             anim.SetFloat("Left", 1);
@@ -30,6 +30,7 @@ public class VoidBolt : MonoBehaviour
         {
             anim.SetFloat("Right", 1);
         }
+
         rig = GetComponent<Rigidbody2D>();
         rig.velocity = direction * 5.0f;
     }

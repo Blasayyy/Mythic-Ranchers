@@ -10,14 +10,14 @@ public class PlayerClass : NetworkBehaviour
     private Animator anim;
     private FacingDirection facingDirection;
     //private SpriteRenderer fonduRectangle;
-    private bool alive = true;
-    public bool control = true;
-    private bool facingRight = true;
+    private bool alive;
+    public bool control;
+    private bool facingRight;
 
     private string playerName;
     private string className;
     //private Controller controller; ??
-    private Vector2 position;
+    private Vector3 position;
     private float moveSpeed;
     private float hp;
     private float basicAtkDmg;
@@ -50,14 +50,15 @@ public class PlayerClass : NetworkBehaviour
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         facingDirection = FacingDirection.Right;
-        //moveSpeed = 2;
-        //Hp = 5;
+        alive = true;
+        control = true;
+        facingRight = true;
     }
 
     public void Update()
     {
         if (!IsOwner) return;
-        //Debug.Log(control);
+        Debug.Log(control);
         CheckIfDead();
         GetInput();
     }
@@ -82,7 +83,7 @@ public class PlayerClass : NetworkBehaviour
             movement.y = Input.GetAxisRaw("Vertical");
             anim.ResetTrigger("Attacking");
             anim.ResetTrigger("Startled");
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1))
             {
                 InventorySlot slot = InventoryManager.instance.inventorySlots[InventoryManager.instance.selectedSlot];
                 InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
@@ -124,25 +125,26 @@ public class PlayerClass : NetworkBehaviour
             {
                 facingDirection = FacingDirection.Down;
             }
+
+            anim.SetFloat("Up", facingDirection == FacingDirection.Up ? 1 : 0);
+            anim.SetFloat("Down", facingDirection == FacingDirection.Down ? 1 : 0);
+            anim.SetFloat("Left", facingDirection == FacingDirection.Left ? 1 : 0);
+            anim.SetFloat("Right", facingDirection == FacingDirection.Right ? 1 : 0);
+            anim.SetFloat("FacingRight", facingRight == true ? 1 : 0);
+            anim.SetFloat("FacingLeft", facingRight == false ? 1 : 0);
         }
         else
         {
             movement.x = 0;
             movement.y = 0;
         }
-
-        anim.SetFloat("Up", facingDirection == FacingDirection.Up ? 1 : 0);
-        anim.SetFloat("Down", facingDirection == FacingDirection.Down ? 1 : 0);
-        anim.SetFloat("Left", facingDirection == FacingDirection.Left ? 1 : 0);
-        anim.SetFloat("Right", facingDirection == FacingDirection.Right ? 1 : 0);
-        anim.SetFloat("FacingRight", facingRight == true ? 1 : 0);
-        anim.SetFloat("FacingLeft", facingRight == false ? 1 : 0);
     }
 
     private void Move()
     {
         rig.velocity = movement * moveSpeed;
         rig.velocity = rig.velocity.normalized * moveSpeed;
+        this.Position = transform.position;
     }
 
     private void Flip(int side)
@@ -181,7 +183,12 @@ public class PlayerClass : NetworkBehaviour
         }
     }
 
-    public void ControllToggle()
+    public void SetControllOff()
+    {
+        this.control = false;
+    } 
+    
+    public void SetControllOn()
     {
         this.control = false;
     }
