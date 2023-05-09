@@ -178,30 +178,30 @@ public class InventoryManager : MonoBehaviour
         }
         return null;
     }
-    public bool UseAbility(Vector3 target, Vector3 playerPos)
-    {
-        InventorySlot slot = inventorySlots[selectedSlot];
-        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+    //public bool UseAbility(Vector3 target, Vector3 playerPos)
+    //{
+    //    InventorySlot slot = inventorySlots[selectedSlot];
+    //    InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
 
-        if (itemInSlot.ability)
-        {
-            if (itemInSlot.ability.type == AbilityType.AoeTargetted)
-            {
-                Instantiate(felBombPrefab, target, Quaternion.identity);
-                return true;
-            }            
-            else if (itemInSlot.ability.type == AbilityType.Projectile)
-            {
-                Instantiate(voidboltPrefab, playerPos, Quaternion.identity);
-                return true;
-            }
-            return false;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    //    if (itemInSlot.ability)
+    //    {
+    //        if (itemInSlot.ability.type == AbilityType.AoeTargetted)
+    //        {
+    //            Instantiate(felBombPrefab, target, Quaternion.identity);
+    //            return true;
+    //        }            
+    //        else if (itemInSlot.ability.type == AbilityType.Projectile)
+    //        {
+    //            Instantiate(voidboltPrefab, playerPos, Quaternion.identity);
+    //            return true;
+    //        }
+    //        return false;
+    //    }
+    //    else
+    //    {
+    //        return false;
+    //    }
+    //}
 
 
 

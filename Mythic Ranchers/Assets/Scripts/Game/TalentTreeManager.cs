@@ -60,14 +60,8 @@ public class TalentTreeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
 
-    //void SpawnAbility(Ability ability, Vector3 position)
-    //{
-    //    GameObject newItemGo = Instantiate(inventoryItemPrefab, position.trans);
-    //    InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
-    //}
+    }
 }
 
 public static class ArrayExtensions

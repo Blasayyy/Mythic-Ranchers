@@ -91,7 +91,9 @@ public class PlayerClass : NetworkBehaviour
                 {
                     Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     target.z = 0;
-                    InventoryManager.instance.UseAbility(target, transform.position);
+                    //InventoryManager.instance.UseAbility(target, transform.position);
+                    SpellCooldown.instance.UseAbility(target, transform.position);
+
                 }
             }
             if (Input.GetKeyUp(KeyCode.Space))

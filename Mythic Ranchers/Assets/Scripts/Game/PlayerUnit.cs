@@ -65,6 +65,7 @@ public class PlayerUnit : PlayerClass
     {
         object[] stats = createVariables();
         this.AssignVaribles(stats);
+        CameraFollowPlayer.instance.SetCameraFollowPlayer(this.transform);
         base.Start();
     }
 

@@ -13,6 +13,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [Header("UI")]
     public Image image;
     public TMP_Text countText;
+    public Image cooldown;
 
     [HideInInspector] public Transform parentAfterDrag, parentBeforeDrag;
     [HideInInspector] public int count = 1;
@@ -53,6 +54,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
 
         countText.raycastTarget = false;
+        cooldown.raycastTarget = false;
         parentAfterDrag = transform.parent;
         parentBeforeDrag = transform.parent;
         transform.SetParent(transform.root);
@@ -73,6 +75,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         countText.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
         image.raycastTarget = true;
+        cooldown.raycastTarget = true;
 
         if (this.ability != null && parentAfterDrag == parentBeforeDrag)
         {
