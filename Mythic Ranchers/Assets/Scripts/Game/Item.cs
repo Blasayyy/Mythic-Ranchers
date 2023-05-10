@@ -11,6 +11,7 @@ public class Item : ScriptableObject
     public ItemType type;
     public GearSlot gearSlot;
     public ArmorType ArmorType;
+    public float RestoresHealth;
 
     //public ActionType actionType;
     //public Vector2Int range = new Vector2Int(5, 4);

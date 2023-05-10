@@ -34,9 +34,6 @@ public class PlayerClass : NetworkBehaviour
     private ArmorType armorType;
     private int keyLevel;
 
-    [SerializeField]
-    private Transform prefabVoidBolt;
-
     public enum FacingDirection
     {
         Left,
@@ -74,6 +71,8 @@ public class PlayerClass : NetworkBehaviour
         Hp -= damage;
     }
 
+    
+
 
     private void GetInput()
     {
@@ -93,6 +92,10 @@ public class PlayerClass : NetworkBehaviour
                     target.z = 0;
                     AbilityManager.instance.UseAbility(target, transform.position);
 
+                }
+                if (itemInSlot != null && itemInSlot.item)
+                {
+                    Item item = InventoryManager.instance.GetSelectedItem(true);
                 }
             }
             if (Input.GetKeyUp(KeyCode.Space))
@@ -174,7 +177,8 @@ public class PlayerClass : NetworkBehaviour
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Ennemies" && control)
         {
             float damage = 1;
-            TakeDamage(damage);
+            Hp -= damage;
+            HealthBar.instance.SetHealth(Hp);
             Debug.Log(Hp);
         }
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Items" && control)

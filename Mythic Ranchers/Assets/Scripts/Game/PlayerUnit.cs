@@ -45,12 +45,15 @@ public class PlayerUnit : PlayerClass
 
     void Start()
     {
-        
+
         //GameObject abilityManagerObject = Instantiate(abilityManagerPrefab, transform);
         //AbilityManager abilityManager = abilityManagerObject.GetComponent<AbilityManager>();
         //abilityManager.ownerPlayerUnit = this;
 
+        Hp = 5;
+
         CameraFollowPlayer.instance.SetCameraFollowPlayer(this.transform);
+        HealthBar.instance.SetMaxHealth(Hp);
         base.Start();
     }
 
