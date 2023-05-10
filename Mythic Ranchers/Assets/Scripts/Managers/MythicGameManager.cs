@@ -16,6 +16,7 @@ public class MythicGameManager : NetworkBehaviour
     public void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(this);
     }
 
 

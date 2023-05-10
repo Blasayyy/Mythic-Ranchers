@@ -88,5 +88,9 @@ public class MainMenu : MonoBehaviour
         AccountManager.Instance.Username = "";
         AccountManager.Instance.GetUserData("");
 
+        if(LoginUI.Instance != null)
+        {
+            LoginUI.Instance.ShowUI();
+        }
     }
 }
