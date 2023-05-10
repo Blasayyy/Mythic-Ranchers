@@ -20,28 +20,6 @@ public class PlayerUnit : PlayerClass
 
     
 
-    public void AssignVaribles(object[] playerInfo)
-    {
-        this.PlayerName = (string)playerInfo[0];
-        this.ClassName = (string)playerInfo[1];
-        this.Position = (Vector3)playerInfo[2];
-        this.MoveSpeed = (float)playerInfo[3];
-        this.Hp = (float)playerInfo[4]; 
-        this.BasicAtkDmg = (float)playerInfo[5];
-        this.BasicAtkSpeed = (float)playerInfo[6];
-        this.Ressource = (float)playerInfo[7];
-        this.Level = (int)playerInfo[8];
-        this.Talents = "";
-        this.TalentPointsAvailable = (int)playerInfo[10];
-        this.Xp = (int)playerInfo[11];
-        this.Equipment = null;
-        this.Inventory = (string[])playerInfo[13];
-        this.Abilities = (string[])playerInfo[14];
-        this.Stats = null;
-        this.ArmorType = (ArmorType)playerInfo[16];
-        this.KeyLevel = (int)playerInfo[17];
-    }
-
     public void SetCharacterData(CharacterData characterData)
     {
         this.CharacterData = characterData;
@@ -72,8 +50,6 @@ public class PlayerUnit : PlayerClass
         //AbilityManager abilityManager = abilityManagerObject.GetComponent<AbilityManager>();
         //abilityManager.ownerPlayerUnit = this;
 
-        object[] stats = createVariables();
-        this.AssignVaribles(stats);
         CameraFollowPlayer.instance.SetCameraFollowPlayer(this.transform);
         base.Start();
     }
