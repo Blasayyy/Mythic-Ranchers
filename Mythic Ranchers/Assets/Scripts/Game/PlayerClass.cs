@@ -24,13 +24,13 @@ public class PlayerClass : NetworkBehaviour
     private float basicAtkSpeed;
     private float ressource;
     private int level;
-    private string[] talents;
+    private string talents;
     private int talentPointsAvailable;
     private int xp;
-    private string[] equipment;
+    private List<EquipmentData> equipment;
     private string[] inventory;
     private string[] abilities;
-    private string[] stats; //dictionary
+    private Dictionary<string, int> stats; //dictionary
     private ArmorType armorType;
     private int keyLevel;
 
@@ -248,7 +248,7 @@ public class PlayerClass : NetworkBehaviour
         set { level = value; }
     }
 
-    public string[] Talents
+    public string Talents
     {
         get { return talents; }
         set { talents = value; }
@@ -266,7 +266,7 @@ public class PlayerClass : NetworkBehaviour
         set { xp = value; }
     }
 
-    public string[] Equipment
+    public List<EquipmentData> Equipment
     {
         get { return equipment; }
         set { equipment = value; }
@@ -284,7 +284,7 @@ public class PlayerClass : NetworkBehaviour
         set { abilities = value; }
     }
 
-    public string[] Stats
+    public Dictionary<string, int> Stats
     {
         get { return stats; }
         set { stats = value; }

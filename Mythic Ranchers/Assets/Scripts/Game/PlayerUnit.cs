@@ -9,10 +9,14 @@ public class PlayerUnit : PlayerClass
 
     public static PlayerUnit instance;
 
+    private CharacterData CharacterData;
+
     private void Awake()
     {
         instance = this;
     }
+
+    
 
     public void AssignVaribles(object[] playerInfo)
     {
@@ -25,46 +29,43 @@ public class PlayerUnit : PlayerClass
         this.BasicAtkSpeed = (float)playerInfo[6];
         this.Ressource = (float)playerInfo[7];
         this.Level = (int)playerInfo[8];
-        this.Talents = (string[])playerInfo[9];
+        this.Talents = "";
         this.TalentPointsAvailable = (int)playerInfo[10];
         this.Xp = (int)playerInfo[11];
-        this.Equipment = (string[])playerInfo[12];
+        this.Equipment = null;
         this.Inventory = (string[])playerInfo[13];
         this.Abilities = (string[])playerInfo[14];
-        this.Stats = (string[])playerInfo[15];
+        this.Stats = null;
         this.ArmorType = (ArmorType)playerInfo[16];
         this.KeyLevel = (int)playerInfo[17];
     }
 
-    public object[] createVariables()
+    public void SetCharacterData(CharacterData characterData)
     {
-        object[] playerInfo = new object[18];
-        playerInfo[0] = "Whutz";
-        playerInfo[1] = "Berzerker";
-        playerInfo[2] = new Vector3(0, 0, 0);
-        playerInfo[3] = 2.0f;
-        playerInfo[4] = 5.0f;
-        playerInfo[5] = 1.5f;
-        playerInfo[6] = 1.0f;
-        playerInfo[7] = 1.0f;
-        playerInfo[8] = 1;
-        playerInfo[9] = new string[] { "talent1", "talent2", "talent3" };
-        playerInfo[10] = 0;
-        playerInfo[11] = 0;
-        playerInfo[12] = new string[] { "equipment1", "equipment2", "equipment3" };
-        playerInfo[13] = new string[] { "inventory1", "inventory2", "inventory3" };
-        playerInfo[14] = new string[] { "ability1", "ability2", "ability3" };
-        playerInfo[15] = new string[] { "stat1", "stat2", "stat3" };
-        playerInfo[16] = ArmorType.Mail;
-        playerInfo[17] = 1;
+        this.CharacterData = characterData;
 
-        return playerInfo;
+        this.PlayerName = characterData.Name;
+        this.ClassName = characterData.ClassName;
+        this.Position = new Vector3(0, 0, 0);
+        this.MoveSpeed = characterData.Stats["haste"] + 2.0f;
+        this.Hp = characterData.Stats["stamina"] * 10 + 100;
+        this.BasicAtkDmg = characterData.Stats["strength"] * 1.5f + 5f;
+        this.BasicAtkSpeed = characterData.Stats["haste"] + 5f;
+        this.Ressource = characterData.Stats["intellect"] * 10 + 100f;
+        this.Level = characterData.Level;
+        this.Talents = characterData.Talents;
+        this.Xp = characterData.Experience_points;
+        this.Equipment = characterData.EquipmentList;
+        this.Inventory = null; //todo
+        this.Abilities = null; //todo
+        this.Stats = characterData.Stats;
+        this.ArmorType = ArmorType.Cloth; // todo
+        this.KeyLevel = characterData.Current_key;
     }
 
     void Start()
     {
-        object[] stats = createVariables();
-        this.AssignVaribles(stats);
+        
         CameraFollowPlayer.instance.SetCameraFollowPlayer(this.transform);
         base.Start();
     }

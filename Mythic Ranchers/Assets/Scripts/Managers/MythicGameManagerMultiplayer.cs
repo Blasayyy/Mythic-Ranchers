@@ -23,6 +23,8 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
     {
         NetworkManager.Singleton.ConnectionApprovalCallback += NetworkManager_ConnectionApprovalCallback;
         NetworkManager.Singleton.StartHost();
+
+        MythicGameManager.Instance.AddPlayerCharacterData(NetworkManager.Singleton.LocalClientId, AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter]);
     }
 
     private void NetworkManager_ConnectionApprovalCallback(NetworkManager.ConnectionApprovalRequest connectionApprovalRequest, NetworkManager.ConnectionApprovalResponse connectionApprovalResponse)
@@ -47,6 +49,7 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
     public void StartClient()
     {
         NetworkManager.Singleton.StartClient();
+        MythicGameManager.Instance.AddPlayerCharacterData(NetworkManager.Singleton.LocalClientId, AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter]);
     }
 
     

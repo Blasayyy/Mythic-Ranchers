@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class MythicGameManager : NetworkBehaviour
 {
-
-
-
     public static MythicGameManager Instance { get; private set; }
 
     private Dictionary<ulong, CharacterData> playerCharacterData = new Dictionary<ulong, CharacterData>();
@@ -21,17 +18,6 @@ public class MythicGameManager : NetworkBehaviour
         Instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public override void OnNetworkSpawn()
     {
@@ -54,6 +40,12 @@ public class MythicGameManager : NetworkBehaviour
         {
             Transform playerTransform = Instantiate(playerPrefab);
             PlayerUnit player = playerTransform.GetComponent<PlayerUnit>();
+
+            if (playerCharacterData.TryGetValue(clientId, out CharacterData characterData))
+            {
+                player.SetCharacterData(characterData);
+            }
+
             playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
         }
     }
@@ -65,9 +57,6 @@ public class MythicGameManager : NetworkBehaviour
             playerCharacterData.Add(clientId, characterData);
         }
     }
-
-
-
 
 
 }

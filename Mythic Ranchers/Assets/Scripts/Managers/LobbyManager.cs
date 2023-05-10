@@ -201,6 +201,7 @@ public class LobbyManager : MonoBehaviour
 
             MythicGameManagerMultiplayer.Instance.StartHost();
 
+
             Debug.Log("started host");
             
         }

@@ -47,6 +47,7 @@ public class CharacterData
     private List<EquipmentData> equipmentList;
     private string talents;
     private Dictionary<string, int> stats;
+
     public CharacterData(string name, string username, int level, int experience_points, string className, int current_key, List<EquipmentData> equipmentList, string talents)
     {
         this.name = name;
