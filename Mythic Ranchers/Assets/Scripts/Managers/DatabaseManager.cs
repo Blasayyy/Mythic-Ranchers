@@ -175,7 +175,17 @@ public class DatabaseManager : MonoBehaviour
             BsonArray equipmentArray = new BsonArray();
             foreach (var equipment in equipmentList)
             {
-                equipmentArray.Add(new BsonDocument { { "name", equipment.Name } });
+                equipmentArray.Add(new BsonDocument { 
+                    { "name", equipment.Name },
+                    { "slot", equipment.Slot },
+                    { "stamina", equipment.Stamina },
+                    { "strength", equipment.Strength },
+                    { "intellect", equipment.Intellect },
+                    { "agility", equipment.Agility },
+                    { "armor", equipment.Armor },
+                    { "haste", equipment.Haste },
+                    { "leech", equipment.Leech }
+                });
             }
 
             BsonDocument document = new BsonDocument
