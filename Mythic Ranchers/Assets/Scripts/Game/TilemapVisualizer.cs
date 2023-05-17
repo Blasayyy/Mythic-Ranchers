@@ -9,26 +9,67 @@ public class TilemapVisualizer : MonoBehaviour
     [SerializeField]
     private Tilemap floorTilemap, wallTileMap;
 
+    [SerializeField]
+    private List<TileBase> floorTiles, wallTopTiles, wallSideRightTiles;
 
     [SerializeField]
-    private TileBase floorTile, wallTop, wallSideRight, wallSideLeft, wallBottom, wallFull, wallInnerCornerDownLeft, wallInnerCornerDownRight, wallInnerCornerUpLeft, wallInnerCornerUpRight ,wallDiagonalCornerDownRight, wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft;
+    private TileBase pillar, wallSideRight, wallSideLeft, wallBottom, wallFull, wallInnerCornerDownLeft, wallInnerCornerDownRight, wallInnerCornerUpLeft, wallInnerCornerUpRight ,wallDiagonalCornerDownRight, wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft;
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
     {
-        PaintFloorTiles(floorPositions, floorTilemap, floorTile);
+        PaintFloorTiles(floorPositions, floorTilemap, floorTiles);
     }
 
     internal void PaintSingleBasicWall(Vector2Int position, string binaryType)
     {
         int typeAsInt = Convert.ToInt32(binaryType, 2);
         TileBase tile = null;
-        if (WallTypesHelper.wallTop.Contains(typeAsInt))
+
+        if (WallTypesHelper.pillar.Contains(typeAsInt))
         {
-            tile = wallTop;
+            tile = pillar;
+        }
+        else if (WallTypesHelper.wallTop.Contains(typeAsInt))
+        {
+            float rand = UnityEngine.Random.value;
+
+            if (rand < 0.80f)
+            {
+                tile = wallTopTiles[0];
+            }
+            else if (rand < 0.86f)
+            {
+                tile = wallTopTiles[1];
+            }
+            else if(rand < 0.93f)
+            {
+                tile = wallTopTiles[2];
+            }
+            else
+            {
+                tile = wallTopTiles[3];
+            }
         }
         else if (WallTypesHelper.wallSideRight.Contains(typeAsInt))
         {
-            tile = wallSideRight;
+            float rand = UnityEngine.Random.value;
+
+            if (rand < 0.80f)
+            {
+                tile = wallSideRightTiles[0];
+            }
+            else if (rand < 0.86f)
+            {
+                tile = wallSideRightTiles[1];
+            }
+            else if (rand < 0.93f)
+            {
+                tile = wallSideRightTiles[2];
+            }
+            else
+            {
+                tile = wallSideRightTiles[3];
+            }
         }
         else if (WallTypesHelper.wallSideLeft.Contains(typeAsInt))
         {
@@ -50,10 +91,30 @@ public class TilemapVisualizer : MonoBehaviour
         
     }
 
-    private void PaintFloorTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)
+    private void PaintFloorTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, List<TileBase> tiles)
     {
+        TileBase tile = null;
+
         foreach (var position in positions)
         {
+            float rand = UnityEngine.Random.value;
+
+            if (rand < 0.45f)
+            {
+                tile = tiles[0];
+            }
+            else if (rand < 0.9f)
+            {
+                tile = tiles[1];
+            }
+            else if (rand < 0.95f)
+            {
+                tile = tiles[2];
+            }
+            else
+            {
+                tile = tiles[3];
+            }
             PaintSingleTile(tilemap, tile, position);
         }
     }

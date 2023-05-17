@@ -6,7 +6,6 @@ public static class WallTypesHelper
 {
     public static HashSet<int> wallTop = new HashSet<int>
     {
-        0b1111,
         0b0110,
         0b0011,
         0b0010,
@@ -15,6 +14,11 @@ public static class WallTypesHelper
         0b1110,
         0b1011,
         0b0111
+    };
+
+    public static HashSet<int> pillar = new HashSet<int>
+    {
+        0b1111
     };
 
     public static HashSet<int> wallSideLeft = new HashSet<int>
