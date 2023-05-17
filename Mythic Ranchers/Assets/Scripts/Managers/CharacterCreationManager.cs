@@ -66,10 +66,12 @@ public class CharacterCreationManager : MonoBehaviour
         if(AccountManager.Instance.CharacterDatas == null || AccountManager.Instance.CharacterDatas.Count <= 0)
         {
             backButton.gameObject.SetActive(false);
+            logOutButton.gameObject.SetActive(true);
         }
         else
         {
             backButton.gameObject.SetActive(true);
+            logOutButton.gameObject.SetActive(false);
         }
     }
 
