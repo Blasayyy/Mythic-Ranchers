@@ -6,7 +6,8 @@ using UnityEngine.Tilemaps;
 
 public class TilemapVisualizer : MonoBehaviour
 {
-    [SerializeField]
+    public static TilemapVisualizer Instance { get; set; }
+
     private Tilemap floorTilemap, wallTileMap;
 
     [SerializeField]
@@ -14,6 +15,18 @@ public class TilemapVisualizer : MonoBehaviour
 
     [SerializeField]
     private TileBase pillar, wallSideRight, wallSideLeft, wallBottom, wallFull, wallInnerCornerDownLeft, wallInnerCornerDownRight, wallInnerCornerUpLeft, wallInnerCornerUpRight ,wallDiagonalCornerDownRight, wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft;
+
+    private void Awake()
+    {
+        Instance = this;
+        DontDestroyOnLoad(this);
+    }
+
+    public void SetTilemaps(Tilemap tilemapFloor, Tilemap tilemapWalls)
+    {
+        floorTilemap = tilemapFloor;
+        wallTileMap = tilemapWalls;
+    }
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
     {

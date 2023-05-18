@@ -200,6 +200,7 @@ public class LobbyManager : MonoBehaviour
             });
 
             MythicGameManagerMultiplayer.Instance.StartHost();
+            MythicGameManager.Instance.mapData = RoomFirstDungeonGenerator.Instance.CreateRooms(); 
 
 
             Debug.Log("started host");
