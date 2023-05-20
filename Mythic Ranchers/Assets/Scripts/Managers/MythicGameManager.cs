@@ -9,9 +9,14 @@ public class MythicGameManager : NetworkBehaviour
 
     private Dictionary<ulong, CharacterData> playerCharacterData = new Dictionary<ulong, CharacterData>();
 
+    public (List<BoundsInt>, List<Vector2Int>, HashSet<Vector2Int>, (List<(Vector2Int, string)>, List<(Vector2Int, string)>)) mapData; 
+
 
     [SerializeField]
     private Transform playerPrefab;
+
+    [SerializeField]
+    private TilemapVisualizer tilemapVisualizer;
 
     public void Awake()
     {
@@ -48,7 +53,24 @@ public class MythicGameManager : NetworkBehaviour
             }
 
             playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
+            Vector3 firstRoomCenter = mapData.Item1[0].center;
+            playerTransform.position = firstRoomCenter;
+            
         }
+
+        tilemapVisualizer.Clear();
+        tilemapVisualizer.PaintFloorTiles(mapData.Item3);
+        (List<(Vector2Int, string)>, List<(Vector2Int, string)>) wallData = mapData.Item4;
+
+        foreach (var wall in wallData.Item1)
+        {
+            tilemapVisualizer.PaintSingleBasicWall(wall.Item1, wall.Item2);
+        }
+        foreach(var wall in wallData.Item2)
+        {
+            tilemapVisualizer.PaintSingleCornerWall(wall.Item1, wall.Item2);
+        }
+
     }
 
     public void AddPlayerCharacterData(ulong clientId, CharacterData characterData)

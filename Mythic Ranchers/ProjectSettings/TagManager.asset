@@ -26,7 +26,7 @@ TagManager:
   - 
   - 
   - Layer 1
-  - Layer 2
+  - Walls
   - Floor
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Walls
+    uniqueID: 4002092245
     locked: 0
   - name: Layer 3
     uniqueID: 4189426099
