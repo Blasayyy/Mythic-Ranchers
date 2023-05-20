@@ -11,10 +11,10 @@ public class TilemapVisualizer : MonoBehaviour
     private Tilemap floorTilemap, wallTileMap;
 
     [SerializeField]
-    private List<TileBase> floorTiles, wallTopTiles, wallSideRightTiles;
+    private List<TileBase> floorTiles, wallTopTiles, wallSideRightTiles, wallSideLeftTiles, wallBottomTiles;
 
     [SerializeField]
-    private TileBase pillar, wallSideRight, wallSideLeft, wallBottom, wallFull, wallInnerCornerDownLeft, wallInnerCornerDownRight, wallInnerCornerUpLeft, wallInnerCornerUpRight ,wallDiagonalCornerDownRight, wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft;
+    private TileBase pillar, wallFull, wallBottom, wallInnerCornerDownLeft, wallInnerCornerDownRight, wallInnerCornerUpLeft, wallInnerCornerUpRight ,wallDiagonalCornerDownRight, wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft;
 
     private void Awake()
     {
@@ -86,11 +86,45 @@ public class TilemapVisualizer : MonoBehaviour
         }
         else if (WallTypesHelper.wallSideLeft.Contains(typeAsInt))
         {
-            tile = wallSideLeft;
+            float rand = UnityEngine.Random.value;
+
+            if (rand < 0.80f)
+            {
+                tile = wallSideLeftTiles[0];
+            }
+            else if (rand < 0.86f)
+            {
+                tile = wallSideLeftTiles[1];
+            }
+            else if (rand < 0.93f)
+            {
+                tile = wallSideLeftTiles[2];
+            }
+            else
+            {
+                tile = wallSideLeftTiles[3];
+            }
         }
         else if (WallTypesHelper.wallBottom.Contains(typeAsInt))
         {
-            tile = wallBottom;
+            float rand = UnityEngine.Random.value;
+
+            if (rand < 0.80f)
+            {
+                tile = wallBottomTiles[0];
+            }
+            else if (rand < 0.86f)
+            {
+                tile = wallBottomTiles[1];
+            }
+            else if (rand < 0.93f)
+            {
+                tile = wallBottomTiles[2];
+            }
+            else
+            {
+                tile = wallBottomTiles[3];
+            }
         }
         else if (WallTypesHelper.wallFull.Contains(typeAsInt))
         {
