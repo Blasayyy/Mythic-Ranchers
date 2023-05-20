@@ -14,9 +14,13 @@ public class Ability : ScriptableObject
     public float aoeRange;
     public float ressourceCost;
     public float cooldown;
+    public float cost;
 
     [Header("UI")]
     public Sprite image;
+
+    [Header("Both")]
+    public string tooltip;
 }
 
 public enum AbilityType

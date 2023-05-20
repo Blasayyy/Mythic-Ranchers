@@ -16,5 +16,7 @@ MonoBehaviour:
   type: 0
   gearSlot: 2
   ArmorType: 1
+  RestoresHealth: 0
   stackable: 0
   image: {fileID: 1173276333, guid: e1b2719642a27584cbe694cde8c76de1, type: 3}
+  tooltip: Wooden Sword / +1 basic attack damage

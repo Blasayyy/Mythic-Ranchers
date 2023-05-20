@@ -13,14 +13,12 @@ public class Item : ScriptableObject
     public ArmorType ArmorType;
     public float RestoresHealth;
 
-    //public ActionType actionType;
-    //public Vector2Int range = new Vector2Int(5, 4);
-
     [Header("Only UI")]
     public bool stackable;
 
     [Header("Both")]
     public Sprite image;
+    public string tooltip;
 }
 
 public enum ItemType
@@ -50,8 +48,3 @@ public enum ArmorType
     Misc,
     None
 }
-
-//public enum ActionType
-//{
-
-//}

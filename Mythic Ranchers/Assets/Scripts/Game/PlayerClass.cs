@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Unity.Netcode;
 
 public class PlayerClass : NetworkBehaviour
 {
+    public HealthBar healthBar;
+    public RessourceBar ressourceBar;
     private Rigidbody2D rig;
     private Vector2 movement;
     private Animator anim;
@@ -19,10 +22,12 @@ public class PlayerClass : NetworkBehaviour
     //private Controller controller; ??
     private Vector3 position;
     private float moveSpeed;
-    private float hp;
+    private float maxHp;
+    private float currentHp;
     private float basicAtkDmg;
     private float basicAtkSpeed;
-    private float ressource;
+    private float currentRessource;
+    private float maxRessource;
     private int level;
     private string talents;
     private int talentPointsAvailable;
@@ -46,10 +51,13 @@ public class PlayerClass : NetworkBehaviour
     {
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        //healthBar = GetComponentInChildren<Slider>();
         facingDirection = FacingDirection.Right;
         alive = true;
         control = true;
         facingRight = true;
+        healthBar.SetHealth(currentHp, maxHp);
+        ressourceBar.SetRessource(CurrentRessource, MaxRessource);
     }
 
     public void Update()
@@ -58,6 +66,8 @@ public class PlayerClass : NetworkBehaviour
         //Debug.Log(control);
         CheckIfDead();
         GetInput();
+        healthBar.SetHealth(CurrentHp, MaxHp);
+        ressourceBar.SetRessource(CurrentRessource, MaxRessource);
     }
 
     public void FixedUpdate()
@@ -68,7 +78,7 @@ public class PlayerClass : NetworkBehaviour
 
     public void TakeDamage(float damage)
     {
-        Hp -= damage;
+        CurrentHp -= damage;
     }
 
     
@@ -88,9 +98,15 @@ public class PlayerClass : NetworkBehaviour
                 InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
                 if (itemInSlot != null && itemInSlot.ability)
                 {
-                    Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    target.z = 0;
-                    AbilityManager.instance.UseAbility(target, transform.position);
+                    if (itemInSlot.ability.cost <= CurrentRessource)
+                    {
+                        Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        target.z = 0;
+                        AbilityManager.instance.UseAbility(target, transform.position);
+                        CurrentRessource -= itemInSlot.ability.cost;
+                        Debug.Log(itemInSlot.ability.cost);
+                        Debug.Log(CurrentRessource);
+                    }
 
                 }
                 if (itemInSlot != null && itemInSlot.item)
@@ -165,7 +181,7 @@ public class PlayerClass : NetworkBehaviour
 
     private void CheckIfDead()
     {
-        if (Hp <= 0)
+        if (CurrentHp <= 0)
         {
             alive = false;
             anim.SetBool("Alive", false);
@@ -176,10 +192,11 @@ public class PlayerClass : NetworkBehaviour
     {
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Ennemies" && control)
         {
+            Debug.Log(currentHp);
             float damage = 1;
-            Hp -= damage;
-            HealthBar.instance.SetHealth(Hp);
-            Debug.Log(Hp);
+            TakeDamage(damage);
+            healthBar.SetHealth(CurrentHp, MaxHp);
+
         }
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Items" && control)
         {
@@ -222,10 +239,16 @@ public class PlayerClass : NetworkBehaviour
         set { moveSpeed = value; }
     }
 
-    public float Hp
+    public float MaxHp
     {
-        get { return hp; }
-        set { hp = value; }
+        get { return maxHp; }
+        set { maxHp = value; }
+    }
+
+    public float CurrentHp
+    {
+        get { return currentHp; }
+        set { currentHp = value; }
     }
 
     public float BasicAtkDmg
@@ -240,10 +263,16 @@ public class PlayerClass : NetworkBehaviour
         set { basicAtkSpeed = value; }
     }
 
-    public float Ressource
+    public float CurrentRessource
     {
-        get { return ressource; }
-        set { ressource = value; }
+        get { return currentRessource; }
+        set { currentRessource = value; }
+    }
+
+    public float MaxRessource
+    {
+        get { return maxRessource; }
+        set { maxRessource = value; }
     }
 
     public int Level

@@ -7,7 +7,7 @@ using TMPro;
 using System.Linq;
 
 
-public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     [Header("UI")]
@@ -18,11 +18,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private Image imageCooldown;
     [SerializeField]
     private TMP_Text textCooldown;
-
+ 
     [HideInInspector] public Transform parentAfterDrag, parentBeforeDrag;
     [HideInInspector] public int count = 1;
     [HideInInspector] public Item item;
     [HideInInspector] public Ability ability;
+    [HideInInspector] public string tooltip;
 
     private bool isOnCooldown = false;
     private float cooldownTime = 0.0f;
@@ -35,11 +36,13 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             textCooldown.gameObject.SetActive(false);
             imageCooldown.fillAmount = 0.0f;
             cooldownTime = ability.cooldown;
+            tooltip = ability.tooltip;
         }
         else
         {
             textCooldown.gameObject.SetActive(false);
             imageCooldown.gameObject.SetActive(false);
+            tooltip = item.tooltip;
         }
     }
 
@@ -105,6 +108,16 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         countText.text = count.ToString();
         bool textActive = count > 1;
         countText.gameObject.SetActive(textActive);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Tooltip.instance.ShowTooltip(tooltip);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Tooltip.instance.HideTooltip();
     }
 
     // drag and drop

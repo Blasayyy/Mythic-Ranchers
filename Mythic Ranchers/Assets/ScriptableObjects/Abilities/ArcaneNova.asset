@@ -19,4 +19,6 @@ MonoBehaviour:
   aoeRange: 0
   ressourceCost: 0
   cooldown: 10
+  cost: 6
   image: {fileID: 1574953989, guid: 6264a84849fa3f04ea57f86bc952ced2, type: 3}
+  tooltip: Emits a burst of arcane energy, damaging nearby enemies for 5 damage.

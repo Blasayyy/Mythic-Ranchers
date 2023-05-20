@@ -30,7 +30,6 @@ public class Loot : MonoBehaviour
             {
                 StartCoroutine(MoveAndCollect(collision.transform));
             }
-            
         }
     }
 
@@ -45,6 +44,17 @@ public class Loot : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    private void OnMouseOver()
+    {
+        Debug.Log("hovering loot");
+        Tooltip.instance.ShowTooltip("Loot");
+    }
+
+    private void OnMouseExit()
+    {
+        Tooltip.instance.HideTooltip();
     }
 
 }

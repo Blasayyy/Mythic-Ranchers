@@ -19,4 +19,5 @@ MonoBehaviour:
   aoeRange: 0
   ressourceCost: 0
   cooldown: 2
+  cost: 2
   image: {fileID: 515776072, guid: 75a86578299c2f74e8da3a215b5fa665, type: 3}

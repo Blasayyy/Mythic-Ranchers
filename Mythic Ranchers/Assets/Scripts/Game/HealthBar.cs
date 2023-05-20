@@ -2,25 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-public class HealthBar : MonoBehaviour
+public class HealthBar : NetworkBehaviour
 {
-    public static HealthBar instance;
     public Slider healthSlider;
+    [SerializeField]
+    public Color lowColor, highColor;
+    [SerializeField]
+    public Vector3 offset;
 
-    private void Awake()
-    {
-        instance = this;
-    }
-
-    public void SetMaxHealth(float maxHealth)
-    {
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = maxHealth;
-    }
-
-    public void SetHealth(float health)
+    public void SetHealth(float health, float maxHealth)
     {
         healthSlider.value = health;
+        healthSlider.maxValue = maxHealth;
+        healthSlider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(lowColor, highColor, healthSlider.normalizedValue);
+    }
+
+    private void FixedUpdate()
+    {        
+        healthSlider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
     }
 }

@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.Netcode;
 
 public class AbilityManager : MonoBehaviour
 {
     public static AbilityManager instance;
-
-    //public PlayerUnit ownerPlayerUnit;
 
     public Ability[] abilities;
     public InventorySlot[] talentTreeSlots;
@@ -82,8 +81,10 @@ public class AbilityManager : MonoBehaviour
         }
         else if (itemInSlot.ability.type == AbilityType.Projectile)
         {
+
             Instantiate(voidboltPrefab, playerPos, Quaternion.identity);
             return true;
+
         }
         else if (itemInSlot.ability.type == AbilityType.AoeStandard)
         {

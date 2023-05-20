@@ -159,8 +159,7 @@ public class InventoryManager : MonoBehaviour
             Item item = itemInSlot.item;
             if (use)
             {
-                PlayerUnit.instance.Hp += item.RestoresHealth;
-                HealthBar.instance.SetHealth(PlayerUnit.instance.Hp);
+                PlayerUnit.instance.CurrentHp += item.RestoresHealth;
 
                 itemInSlot.count--;
                 if (itemInSlot.count <= 0)
