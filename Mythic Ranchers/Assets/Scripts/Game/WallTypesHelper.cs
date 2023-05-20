@@ -18,6 +18,7 @@ public static class WallTypesHelper
 
     public static HashSet<int> pillar = new HashSet<int>
     {
+        0b1101,
         0b1111
     };
 
@@ -123,7 +124,6 @@ public static class WallTypesHelper
     {
         0b1101,
         0b0101,
-        0b1101,
         0b1001
 
     };

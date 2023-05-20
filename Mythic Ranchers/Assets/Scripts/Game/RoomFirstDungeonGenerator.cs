@@ -32,7 +32,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         CreateRooms();
     }
 
-    public (List<BoundsInt>, List<Vector2Int>, HashSet<Vector2Int>, (List<(Vector2Int, string)>, List<(Vector2Int, string)>)) CreateRooms()
+    public (List<BoundsInt>, List<Vector2Int>, HashSet<Vector2Int>, (List<(Vector2Int, string)>, List<(Vector2Int, string)>), HashSet<Vector2Int> propData) CreateRooms()
     {
         var roomList = ProceduralGenerationAlgorithm.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPosition, new Vector3Int(dungeonWidth, dungeonHeight, 0)), minRoomWidth, minRoomHeight);
 
@@ -61,7 +61,9 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         //tilemapVisualizer.PaintFloorTiles(floor);
         var wallData  = WallGenerator.CreateWalls(floor, tilemapVisualizer);
 
-        return (roomList, roomCenters, floor, wallData);
+        var propData = CreateProps(floor, Direction2D.cardinalDirectionsList);
+
+        return (roomList, roomCenters, floor, wallData, propData);
     }
 
     private HashSet<Vector2Int> CreateRoomsRandomly(List<BoundsInt> roomsList)
@@ -185,5 +187,23 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         }
 
         return floor;
+    }
+
+    private HashSet<Vector2Int> CreateProps(HashSet<Vector2Int> floorPositions, List<Vector2Int> directionsList)
+    {
+        HashSet<Vector2Int> propPositions = new HashSet<Vector2Int>();
+        foreach (var position in floorPositions)
+        {
+            float rand = UnityEngine.Random.value;
+
+            if(rand > 0.75)
+            {
+                var newPos = position;
+                newPos.x += 1;
+                newPos.y += 1;
+                propPositions.Add(newPos);
+            }
+        }
+        return propPositions;
     }
 }

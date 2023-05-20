@@ -25,7 +25,7 @@ TagManager:
   - 
   - 
   - 
-  - Layer 1
+  - Props
   - Walls
   - Floor
   - 
@@ -47,7 +47,7 @@ TagManager:
   - name: Walls
     uniqueID: 4002092245
     locked: 0
-  - name: Layer 3
+  - name: Props
     uniqueID: 4189426099
     locked: 0
   - name: Spells
