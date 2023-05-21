@@ -8,7 +8,7 @@ public class RessourceBar : NetworkBehaviour
 {
     public Slider ressourceSlider;
     [SerializeField]
-    public Color ressourceColor;
+    public Color manaColor, rageColor, energyColor;    
     [SerializeField]
     public Vector3 offset;
 
@@ -17,7 +17,18 @@ public class RessourceBar : NetworkBehaviour
         ressourceSlider.value = currentRessource;
         ressourceSlider.maxValue = maxRessource;
 
-        ressourceSlider.fillRect.GetComponentInChildren<Image>().color = ressourceColor;
+        if (PlayerUnit.instance.Ressource == "mana")
+        {
+            ressourceSlider.fillRect.GetComponentInChildren<Image>().color = manaColor;
+        }
+        else if (PlayerUnit.instance.Ressource == "rage")
+        {
+            ressourceSlider.fillRect.GetComponentInChildren<Image>().color = rageColor;
+        }
+        else if (PlayerUnit.instance.Ressource == "energy")
+        {
+            ressourceSlider.fillRect.GetComponentInChildren<Image>().color = energyColor;
+        }
     }
 
     private void FixedUpdate()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.Netcode;
+using System.Threading.Tasks;
 
 public class PlayerClass : NetworkBehaviour
 {
@@ -16,9 +17,11 @@ public class PlayerClass : NetworkBehaviour
     private bool alive;
     public bool control;
     private bool facingRight;
+    private int frameCount;
 
     private string playerName;
     private string className;
+    private string ressource;
     //private Controller controller; ??
     private Vector3 position;
     private float moveSpeed;
@@ -36,6 +39,7 @@ public class PlayerClass : NetworkBehaviour
     private string[] inventory;
     private string[] abilities;
     private Dictionary<string, int> stats; //dictionary
+    private Dictionary<string, int> initialStats; //dictionary
     private ArmorType armorType;
     private int keyLevel;
 
@@ -72,6 +76,11 @@ public class PlayerClass : NetworkBehaviour
     {
         if (!IsOwner) return;
         Move();
+        if (RegenTick())
+        {
+            Regeneration();
+        }
+        Debug.Log(Stats["stamina"]);
     }
 
     public void LoseHealth(float amount)
@@ -108,6 +117,25 @@ public class PlayerClass : NetworkBehaviour
         {
             CurrentRessource = CurrentRessource + gain;
         }
+    }
+
+    public bool RegenTick()
+    {
+        frameCount += 1;
+
+        if (frameCount >= 120)
+        {
+            frameCount = 0;
+            return true;
+        }
+
+        return false;
+    }
+
+    public void Regeneration()
+    {
+        GetHealed(Stats["stamina"] * 0.1f);
+        GainRessource(Stats["intellect"] * 0.1f);
     }
 
 
@@ -203,12 +231,19 @@ public class PlayerClass : NetworkBehaviour
         }
     }
 
-    private void CheckIfDead()
+    private async void CheckIfDead()
     {
         if (CurrentHp <= 0)
         {
             alive = false;
             anim.SetBool("Alive", false);
+            await Task.Delay(5000);
+            alive = true;
+            control = true;
+            anim.SetBool("Alive", true);
+            CurrentHp = MaxHp / 2;
+            CurrentRessource = MaxRessource / 2;
+            transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
         }
     }
 
@@ -249,6 +284,12 @@ public class PlayerClass : NetworkBehaviour
     {
         get { return className; }
         set { className = value; }
+    }
+
+    public string Ressource
+    {
+        get { return ressource; }
+        set { ressource = value; }
     }
 
     public Vector2 Position
@@ -345,6 +386,12 @@ public class PlayerClass : NetworkBehaviour
     {
         get { return stats; }
         set { stats = value; }
+    }
+    
+    public Dictionary<string, int> InitialStats
+    {
+        get { return initialStats; }
+        set { initialStats = value; }
     }
 
     public ArmorType ArmorType

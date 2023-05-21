@@ -20,11 +20,7 @@ public class Item : ScriptableObject
     [Header("Both")]
     public Sprite image;
     public string tooltip;
-
-    public string FormatTooltip(string tooltip)
-    {
-        return StringLineBreak.InsertLineBreaks(tooltip, 10);
-    }
+    public int stamina, strength, intellect, agility, armor, haste, leech;
 }
 
 public enum ItemType

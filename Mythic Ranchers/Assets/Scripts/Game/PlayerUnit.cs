@@ -26,7 +26,7 @@ public class PlayerUnit : PlayerClass
         this.ClassName = characterData.ClassName;
         this.Position = new Vector3(0, 0, 0);
         this.MoveSpeed = characterData.Stats["haste"] + 2.0f;
-        this.MaxHp = characterData.Stats["stamina"] * 10 + 100;
+        this.MaxHp = characterData.Stats["stamina"] * 10 + 100f;
         this.BasicAtkDmg = characterData.Stats["strength"] * 1.5f + 5f;
         this.BasicAtkSpeed = characterData.Stats["haste"] + 5f;
         this.MaxRessource = characterData.Stats["intellect"] * 10 + 100f;
@@ -37,13 +37,13 @@ public class PlayerUnit : PlayerClass
         this.Inventory = null; //todo
         this.Abilities = null; //todo
         this.Stats = characterData.Stats;
+        this.InitialStats = characterData.Stats;
         this.ArmorType = ArmorType.Mail; // todo
         this.KeyLevel = characterData.Current_key;
     }
 
     void Start()
     {
-
         //GameObject abilityManagerObject = Instantiate(abilityManagerPrefab, transform);
         //AbilityManager abilityManager = abilityManagerObject.GetComponent<AbilityManager>();
         //abilityManager.ownerPlayerUnit = this;
@@ -52,6 +52,7 @@ public class PlayerUnit : PlayerClass
         CurrentHp = MaxHp;
         MaxRessource = 20;
         CurrentRessource = MaxRessource;
+        Ressource = "mana";
 
         CameraFollowPlayer.instance.SetCameraFollowPlayer(this.transform);
         base.Start();

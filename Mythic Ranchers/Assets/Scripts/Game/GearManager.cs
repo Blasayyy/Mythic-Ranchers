@@ -25,6 +25,9 @@ public class GearManager : MonoBehaviour
 
     public void UpdateGearUI()
     {
+    
+        // not working
+        PlayerUnit.instance.Stats = PlayerUnit.instance.InitialStats;
         for (int i = 0; i < gearSlots.Length; i++)
         {
             InventorySlot slot = gearSlots[i];
@@ -32,11 +35,24 @@ public class GearManager : MonoBehaviour
             if (itemInSlot != null)
             {
                 slot.image.sprite = iconList[7].sprite;
+                UpdateStats(itemInSlot.item);
             }
             else
             {
                 slot.image.sprite = iconList[i].sprite;
             }
         }
+    }
+
+    public void UpdateStats(Item item)
+    {
+        PlayerUnit player = PlayerUnit.instance;
+        player.Stats["stamina"] += item.stamina;
+        player.Stats["strength"] += item.strength;
+        player.Stats["intellect"] += item.intellect;
+        player.Stats["agility"] += item.agility;
+        player.Stats["armor"] += item.armor;
+        player.Stats["haste"] += item.haste;
+        player.Stats["leech"] += item.leech;
     }
 }

@@ -91,13 +91,13 @@ public class CharacterData
                 break;
         }
 
-        Stats["stamina"] = (int) Math.Round(Level * assignedDict["staminaMultiplier"]);
-        Stats["strength"] = (int)Math.Round(Level * assignedDict["strengthMultiplier"]);
-        Stats["intellect"] = (int)Math.Round(Level * assignedDict["intellectMultiplier"]);
-        Stats["agility"] = (int)Math.Round(Level * assignedDict["agilityMultiplier"]);
-        Stats["armor"] = (int)Math.Round(Level * assignedDict["armorMultiplier"]);
-        Stats["haste"] = (int)Math.Round(Level * assignedDict["hasteMultiplier"]);
-        Stats["leech"] = (int)Math.Round(Level * assignedDict["leechMultiplier"]);
+        Stats["stamina"] = (int) Math.Round(Level * assignedDict["staminaMultiplier"]) + 1;
+        Stats["strength"] = (int)Math.Round(Level * assignedDict["strengthMultiplier"]) + 1;
+        Stats["intellect"] = (int)Math.Round(Level * assignedDict["intellectMultiplier"]) + 1;
+        Stats["agility"] = (int)Math.Round(Level * assignedDict["agilityMultiplier"]) + 1;
+        Stats["armor"] = (int)Math.Round(Level * assignedDict["armorMultiplier"]) + 1;
+        Stats["haste"] = (int)Math.Round(Level * assignedDict["hasteMultiplier"]) + 1;
+        Stats["leech"] = (int)Math.Round(Level * assignedDict["leechMultiplier"]) +1;
     }
 
 
