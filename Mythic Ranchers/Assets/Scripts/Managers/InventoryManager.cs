@@ -159,7 +159,11 @@ public class InventoryManager : MonoBehaviour
             Item item = itemInSlot.item;
             if (use)
             {
-                PlayerUnit.instance.CurrentHp += item.RestoresHealth;
+                PlayerUnit.instance.GetHealed(item.RestoresHealth);
+                PlayerUnit.instance.GainRessource(item.RestoresMana);
+
+                Debug.Log("mana pot consumed + " + item.RestoresMana + " mana");
+
 
                 itemInSlot.count--;
                 if (itemInSlot.count <= 0)
@@ -176,31 +180,4 @@ public class InventoryManager : MonoBehaviour
         }
         return null;
     }
-    //public bool UseAbility(Vector3 target, Vector3 playerPos)
-    //{
-    //    InventorySlot slot = inventorySlots[selectedSlot];
-    //    InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-
-    //    if (itemInSlot.ability)
-    //    {
-    //        if (itemInSlot.ability.type == AbilityType.AoeTargetted)
-    //        {
-    //            Instantiate(felBombPrefab, target, Quaternion.identity);
-    //            return true;
-    //        }            
-    //        else if (itemInSlot.ability.type == AbilityType.Projectile)
-    //        {
-    //            Instantiate(voidboltPrefab, playerPos, Quaternion.identity);
-    //            return true;
-    //        }
-    //        return false;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }
-    //}
-
-
-
 }

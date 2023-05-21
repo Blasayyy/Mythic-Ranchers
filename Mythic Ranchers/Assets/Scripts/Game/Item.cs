@@ -12,6 +12,7 @@ public class Item : ScriptableObject
     public GearSlot gearSlot;
     public ArmorType ArmorType;
     public float RestoresHealth;
+    public float RestoresMana;
 
     [Header("Only UI")]
     public bool stackable;
@@ -19,6 +20,11 @@ public class Item : ScriptableObject
     [Header("Both")]
     public Sprite image;
     public string tooltip;
+
+    public string FormatTooltip(string tooltip)
+    {
+        return StringLineBreak.InsertLineBreaks(tooltip, 10);
+    }
 }
 
 public enum ItemType

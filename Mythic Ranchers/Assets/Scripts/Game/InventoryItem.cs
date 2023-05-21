@@ -25,7 +25,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public Ability ability;
     [HideInInspector] public string tooltip;
 
-    private bool isOnCooldown = false;
+    public bool isOnCooldown = false;
     private float cooldownTime = 0.0f;
     private float cooldownTimer = 0.0f;
 
@@ -137,8 +137,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.SetAsLastSibling();
         image.raycastTarget = false;
         GearManager.instance.UpdateGearUI();
-
-
     }
 
     public void OnDrag(PointerEventData eventData)
