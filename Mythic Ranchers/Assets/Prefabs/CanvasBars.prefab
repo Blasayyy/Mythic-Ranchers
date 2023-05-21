@@ -649,7 +649,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ressourceSlider: {fileID: 1633589550754054589}
-  ressourceColor: {r: 0, g: 0, b: 1, a: 1}
+  manaColor: {r: 0, g: 0, b: 1, a: 1}
+  rageColor: {r: 0.6132076, g: 0, b: 0, a: 1}
+  energyColor: {r: 1, g: 1, b: 0, a: 1}
   offset: {x: 0, y: 0.19, z: 0}
 --- !u!1 &8807292498125936677
 GameObject:

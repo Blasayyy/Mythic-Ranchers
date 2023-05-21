@@ -65,8 +65,8 @@ public class MythicGameManager : NetworkBehaviour
 
             playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
             Vector3 firstRoomCenter = mapData.Item1[0].center;
-            playerTransform.position = firstRoomCenter;
-            
+            //playerTransform.position = firstRoomCenter;
+
         }
 
         

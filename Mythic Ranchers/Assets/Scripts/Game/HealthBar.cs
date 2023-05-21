@@ -20,7 +20,7 @@ public class HealthBar : NetworkBehaviour
     }
 
     private void FixedUpdate()
-    {        
+    {
         healthSlider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
     }
 }

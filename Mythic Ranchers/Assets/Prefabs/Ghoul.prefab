@@ -152,8 +152,8 @@ MonoBehaviour:
   maxHp: 40
   currentRessource: 0
   maxRessource: 5
-  healthBar: {fileID: 0}
-  ressourceBar: {fileID: 0}
+  healthBar: {fileID: 7755802456960329756}
+  ressourceBar: {fileID: 1146966077849260367}
 --- !u!114 &313718024571396091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,9 +319,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac178f9b1e5adce449b8506b01ee74de, type: 3}
+--- !u!114 &1146966077849260367 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1444602528298515307, guid: ac178f9b1e5adce449b8506b01ee74de,
+    type: 3}
+  m_PrefabInstance: {fileID: 2010458980018416164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774242b3fb4923d44b35d09390114c7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6747295897077884819 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5063629367980772791, guid: ac178f9b1e5adce449b8506b01ee74de,
     type: 3}
   m_PrefabInstance: {fileID: 2010458980018416164}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7755802456960329756 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8089785393761026616, guid: ac178f9b1e5adce449b8506b01ee74de,
+    type: 3}
+  m_PrefabInstance: {fileID: 2010458980018416164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 652fe38ec6bb5094580cfeef8d88401a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
