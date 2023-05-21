@@ -988,4 +988,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 4011315609469267738}
   ressourceBar: {fileID: 6044953196025943625}
-  control: 0
+  control: 1

@@ -8,8 +8,8 @@ public class TilemapSetter : MonoBehaviour
 
     [SerializeField] private Tilemap tilemapFloor;
     [SerializeField] private Tilemap tilemapWalls;
-    // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
         TilemapVisualizer.Instance.SetTilemaps(tilemapFloor, tilemapWalls);
     }

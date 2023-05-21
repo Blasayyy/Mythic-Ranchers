@@ -24,6 +24,9 @@ public class MythicGameManager : NetworkBehaviour
     [SerializeField]
     private GameObject moveablePropPrefab, torchPrefab, rollablePrefab, nonMoveablePrefab;
 
+
+    private bool hasLoaded = false;
+
     public void Awake()
     {
         Instance = this;
@@ -48,6 +51,8 @@ public class MythicGameManager : NetworkBehaviour
 
     private void SceneManager_OnLoadEventCompleted1(string sceneName, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
     {
+        if (hasLoaded) return;
+        hasLoaded = true;
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
         {
             Transform playerTransform = Instantiate(playerPrefab);
@@ -60,10 +65,11 @@ public class MythicGameManager : NetworkBehaviour
 
             playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
             Vector3 firstRoomCenter = mapData.Item1[0].center;
-            //playerTransform.position = firstRoomCenter;
+            playerTransform.position = firstRoomCenter;
             
         }
 
+        
         tilemapVisualizer.Clear();
         tilemapVisualizer.PaintFloorTiles(mapData.Item3);
         foreach (var position in mapData.Item5)

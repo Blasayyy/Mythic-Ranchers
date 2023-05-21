@@ -174,8 +174,15 @@ public class TilemapVisualizer : MonoBehaviour
 
     public void Clear()
     {
-        floorTilemap.ClearAllTiles();
-        wallTileMap.ClearAllTiles();
+        try
+        {
+            floorTilemap.ClearAllTiles();
+            wallTileMap.ClearAllTiles();
+        }
+        catch
+        {
+            
+        }
     }
 
     internal void PaintSingleCornerWall(Vector2Int position, string binaryType)
