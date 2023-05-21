@@ -6,7 +6,7 @@ public class CameraFollowPlayer : MonoBehaviour
 {
 
     public static CameraFollowPlayer instance;
-    public Transform target;
+    private Transform target;
     public bool isSet;
 
     private void Awake()

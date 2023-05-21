@@ -52,13 +52,16 @@ public class PlayerUnit : PlayerClass
         CurrentHp = MaxHp;
         MaxRessource = 20;
         CurrentRessource = MaxRessource;
-
-        CameraFollowPlayer.instance.SetCameraFollowPlayer(this.transform);
+        
         base.Start();
     }
 
     private void Update()
     {
+        if (IsOwner)
+        {
+            CameraFollowPlayer.instance.SetCameraFollowPlayer(this.transform);
+        }
         base.Update();
     }
 

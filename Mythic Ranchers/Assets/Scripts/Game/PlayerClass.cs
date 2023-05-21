@@ -61,17 +61,24 @@ public class PlayerClass : NetworkBehaviour
 
     public void Update()
     {
-        if (!IsOwner) return;
-        CheckIfDead();
-        GetInput();
-        healthBar.SetHealth(CurrentHp, MaxHp);
-        ressourceBar.SetRessource(CurrentRessource, MaxRessource);
+        if (IsOwner)
+        {
+            
+            CheckIfDead();
+            GetInput();
+            healthBar.SetHealth(CurrentHp, MaxHp);
+            ressourceBar.SetRessource(CurrentRessource, MaxRessource);
+        }
+        
     }
 
     public void FixedUpdate()
     {
-        if (!IsOwner) return;
-        Move();
+        if (IsOwner)
+        {
+            Move();
+        }
+        
     }
 
     public void LoseHealth(float amount)
