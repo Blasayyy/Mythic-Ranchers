@@ -52,11 +52,6 @@ public class Demo : MonoBehaviour
         }
     }
 
-    public void SpawnPlayer()
-    {
-        NetworkManager.Singleton.StartHost();
-    }
-
     public void SpawnTestGear()
     {
         for (int i=0; i < testGear.Length; i++)

@@ -51,7 +51,6 @@ public class PlayerClass : NetworkBehaviour
     {
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        //healthBar = GetComponentInChildren<Slider>();
         facingDirection = FacingDirection.Right;
         alive = true;
         control = true;
@@ -63,7 +62,6 @@ public class PlayerClass : NetworkBehaviour
     public void Update()
     {
         if (!IsOwner) return;
-        //Debug.Log(control);
         CheckIfDead();
         GetInput();
         healthBar.SetHealth(CurrentHp, MaxHp);
@@ -76,12 +74,41 @@ public class PlayerClass : NetworkBehaviour
         Move();
     }
 
-    public void TakeDamage(float damage)
+    public void LoseHealth(float amount)
     {
-        CurrentHp -= damage;
+        CurrentHp -= amount;
     }
 
-    
+    public void LoseRessource(float amount)
+    {
+        CurrentRessource -= amount;
+    }
+
+    public void GetHealed(float hp)
+    {
+        float healthAfterHeal = CurrentHp + hp;
+        if (healthAfterHeal > MaxHp)
+        {
+            CurrentHp = MaxHp;
+        }
+        else
+        {
+            CurrentHp = CurrentHp + hp;
+        }
+    }
+
+    public void GainRessource(float gain)
+    {
+        float ressourceAfterGain = CurrentRessource + gain;
+        if (ressourceAfterGain > MaxRessource)
+        {
+            CurrentRessource = MaxRessource;
+        }
+        else
+        {
+            CurrentRessource = CurrentRessource + gain;
+        }
+    }
 
 
     private void GetInput()
@@ -98,14 +125,12 @@ public class PlayerClass : NetworkBehaviour
                 InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
                 if (itemInSlot != null && itemInSlot.ability)
                 {
-                    if (itemInSlot.ability.cost <= CurrentRessource)
+                    if (itemInSlot.ability.cost <= CurrentRessource && !itemInSlot.isOnCooldown)
                     {
-                        Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                        target.z = 0;
-                        AbilityManager.instance.UseAbility(target, transform.position);
-                        CurrentRessource -= itemInSlot.ability.cost;
-                        Debug.Log(itemInSlot.ability.cost);
-                        Debug.Log(CurrentRessource);
+                        anim.SetTrigger("Attacking");
+                        Vector3 target = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
+                        AbilityManager.instance.UseAbility(target, transform.position);                        
+                        LoseRessource(itemInSlot.ability.cost);
                     }
 
                 }
@@ -117,7 +142,6 @@ public class PlayerClass : NetworkBehaviour
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 anim.SetTrigger("Attacking");
-                //Instantiate(prefabVoidBolt, transform.position, Quaternion.identity);
             }
             else if (Input.GetKeyUp(KeyCode.X))
             {
@@ -194,7 +218,7 @@ public class PlayerClass : NetworkBehaviour
         {
             Debug.Log(currentHp);
             float damage = 1;
-            TakeDamage(damage);
+            LoseHealth(damage);
             healthBar.SetHealth(CurrentHp, MaxHp);
 
         }

@@ -81,10 +81,8 @@ public class AbilityManager : MonoBehaviour
         }
         else if (itemInSlot.ability.type == AbilityType.Projectile)
         {
-
             Instantiate(voidboltPrefab, playerPos, Quaternion.identity);
             return true;
-
         }
         else if (itemInSlot.ability.type == AbilityType.AoeStandard)
         {
