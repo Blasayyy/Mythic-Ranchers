@@ -20,7 +20,7 @@ public class GearManager : MonoBehaviour
 
     void Start()
     {
-        UpdateGearUI();
+        //UpdateGearUI();
     }
 
     public void UpdateGearUI()

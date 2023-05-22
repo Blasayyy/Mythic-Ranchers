@@ -8,8 +8,10 @@ public class PlayerUnit : PlayerClass
 {
 
     public static PlayerUnit instance;
-
     private CharacterData CharacterData;
+
+    private bool isSetCharacterData = false;
+
     //[SerializeField]
     //private GameObject abilityManagerPrefab;
 
@@ -42,12 +44,19 @@ public class PlayerUnit : PlayerClass
         this.KeyLevel = characterData.Current_key;
     }
 
+
     void Start()
     {
 
         //GameObject abilityManagerObject = Instantiate(abilityManagerPrefab, transform);
         //AbilityManager abilityManager = abilityManagerObject.GetComponent<AbilityManager>();
         //abilityManager.ownerPlayerUnit = this;
+
+        if (!isSetCharacterData)
+        {
+            SetCharacterData(AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter]);
+            isSetCharacterData = true;
+        }
 
         MaxHp = 5;
         CurrentHp = MaxHp;

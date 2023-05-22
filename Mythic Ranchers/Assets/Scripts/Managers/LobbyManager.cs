@@ -145,12 +145,16 @@ public class LobbyManager : MonoBehaviour
 
     private Player GetPlayer()
     {
+        CharacterData characterData = AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter];
+        string characterJson = JsonUtility.ToJson(characterData);
+
         return new Player(AuthenticationService.Instance.PlayerId, null, new Dictionary<string, PlayerDataObject>
         {
             {KEY_PLAYER_NAME, new PlayerDataObject(PlayerDataObject.VisibilityOptions.Public, playerName) },
-            {KEY_PLAYER_CHARACTER, new PlayerDataObject(PlayerDataObject.VisibilityOptions.Public, "placeholder") }
+            {KEY_PLAYER_CHARACTER, new PlayerDataObject(PlayerDataObject.VisibilityOptions.Public, characterJson) }
         });
     }
+
 
     private bool PlayerInLobby()
     {
@@ -249,9 +253,10 @@ public class LobbyManager : MonoBehaviour
     {
         try
         {
+            Player player = GetPlayer();
             JoinLobbyByIdOptions joinLobbyByIdOptions = new JoinLobbyByIdOptions
             {
-                Player = GetPlayer()
+                Player = player
             };
 
             joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id, joinLobbyByIdOptions);

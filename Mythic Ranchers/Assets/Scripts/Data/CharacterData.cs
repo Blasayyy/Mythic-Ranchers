@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CharacterData 
 {
     private readonly Dictionary<string, float> BERZERKER_MULTIPLIERS = new Dictionary<string, float>()

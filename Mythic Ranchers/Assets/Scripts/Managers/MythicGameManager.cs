@@ -58,14 +58,10 @@ public class MythicGameManager : NetworkBehaviour
             Transform playerTransform = Instantiate(playerPrefab);
             PlayerUnit player = playerTransform.GetComponent<PlayerUnit>();
 
-            if (playerCharacterData.TryGetValue(clientId, out CharacterData characterData))
-            {
-                player.SetCharacterData(characterData);
-            }
 
             playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
             Vector3 firstRoomCenter = mapData.Item1[0].center;
-            //playerTransform.position = firstRoomCenter;
+            playerTransform.position = firstRoomCenter;
 
         }
 
