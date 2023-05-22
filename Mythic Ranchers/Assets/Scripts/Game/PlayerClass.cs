@@ -28,6 +28,7 @@ public class PlayerClass : NetworkBehaviour
     private float basicAtkSpeed;
     private float currentRessource;
     private float maxRessource;
+    private string ressourceType;
     private int level;
     private string talents;
     private int talentPointsAvailable;
@@ -36,6 +37,7 @@ public class PlayerClass : NetworkBehaviour
     private string[] inventory;
     private string[] abilities;
     private Dictionary<string, int> stats; //dictionary
+    private Dictionary<string, int> initialStats; //dictionary
     private ArmorType armorType;
     private int keyLevel;
 
@@ -306,6 +308,12 @@ public class PlayerClass : NetworkBehaviour
         set { maxRessource = value; }
     }
 
+    public string RessourceType
+    {
+        get { return ressourceType; }
+        set { ressourceType = value; }
+    }
+
     public int Level
     {
         get { return level; }
@@ -352,6 +360,12 @@ public class PlayerClass : NetworkBehaviour
     {
         get { return stats; }
         set { stats = value; }
+    }
+
+    public Dictionary<string, int> InitialStats
+    {
+        get { return initialStats; }
+        set { initialStats = value; }
     }
 
     public ArmorType ArmorType

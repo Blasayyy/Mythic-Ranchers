@@ -17,15 +17,15 @@ public class RessourceBar : NetworkBehaviour
         ressourceSlider.value = currentRessource;
         ressourceSlider.maxValue = maxRessource;
 
-        if (PlayerUnit.instance.Ressource == "mana")
+        if (PlayerUnit.instance.RessourceType == "mana")
         {
             ressourceSlider.fillRect.GetComponentInChildren<Image>().color = manaColor;
         }
-        else if (PlayerUnit.instance.Ressource == "rage")
+        else if (PlayerUnit.instance.RessourceType == "rage")
         {
             ressourceSlider.fillRect.GetComponentInChildren<Image>().color = rageColor;
         }
-        else if (PlayerUnit.instance.Ressource == "energy")
+        else if (PlayerUnit.instance.RessourceType == "energy")
         {
             ressourceSlider.fillRect.GetComponentInChildren<Image>().color = energyColor;
         }

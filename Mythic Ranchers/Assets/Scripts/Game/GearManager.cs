@@ -25,9 +25,9 @@ public class GearManager : MonoBehaviour
 
     public void UpdateGearUI()
     {
-    
-        // not working
-        PlayerUnit.instance.Stats = PlayerUnit.instance.InitialStats;
+        Dictionary<string, int> tempInitialStats = new Dictionary<string, int>(PlayerUnit.instance.InitialStats);
+        PlayerUnit.instance.Stats = tempInitialStats;
+        
         for (int i = 0; i < gearSlots.Length; i++)
         {
             InventorySlot slot = gearSlots[i];

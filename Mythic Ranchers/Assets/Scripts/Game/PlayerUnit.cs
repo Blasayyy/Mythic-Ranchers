@@ -37,6 +37,7 @@ public class PlayerUnit : PlayerClass
         this.Inventory = null; //todo
         this.Abilities = null; //todo
         this.Stats = characterData.Stats;
+        this.InitialStats = characterData.Stats;
         this.ArmorType = ArmorType.Mail; // todo
         this.KeyLevel = characterData.Current_key;
     }
