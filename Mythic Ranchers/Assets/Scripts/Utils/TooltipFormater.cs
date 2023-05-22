@@ -12,10 +12,10 @@ public class TooltipFormater : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(this);
         foreach (Item item in itemList)
         {
-            item.tooltip = FormatTooltip(item.tooltip, characterLimitPerLine);
-            DontDestroyOnLoad(this);
+            item.tooltip = FormatTooltip(item.tooltip, characterLimitPerLine);   
         }
     }
 

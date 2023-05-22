@@ -145,7 +145,7 @@ public class PlayerClass : NetworkBehaviour
                 }
                 if (itemInSlot != null && itemInSlot.item)
                 {
-                    Item item = InventoryManager.instance.GetSelectedItem(true);
+                    Item item = InventoryManager.instance.GetSelectedItem(itemInSlot.item.useable);
                 }
             }
             if (Input.GetKeyUp(KeyCode.Space))

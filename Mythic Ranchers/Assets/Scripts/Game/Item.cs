@@ -16,6 +16,7 @@ public class Item : ScriptableObject
 
     [Header("Only UI")]
     public bool stackable;
+    public bool useable;
 
     [Header("Both")]
     public Sprite image;

@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemList:
   - {fileID: 11400000, guid: 8d5fec7decfd46749b91ebda74677038, type: 2}
-  characterLimitPerLine: 30
+  characterLimitPerLine: 40
 --- !u!1 &25549450
 GameObject:
   m_ObjectHideFlags: 0

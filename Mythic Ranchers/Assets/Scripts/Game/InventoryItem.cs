@@ -136,7 +136,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         image.raycastTarget = false;
-        GearManager.instance.UpdateGearUI();
+        GearManager.instance.UpdateGear();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -155,6 +155,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             Destroy(this.gameObject);
         }
-        GearManager.instance.UpdateGearUI();
+        GearManager.instance.UpdateGear();
     }
 }

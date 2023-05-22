@@ -62,6 +62,7 @@ public class PlayerUnit : PlayerClass
         CurrentHp = MaxHp;
         MaxRessource = 20;
         CurrentRessource = MaxRessource;
+        RessourceType = "mana";
         
         base.Start();
     }
