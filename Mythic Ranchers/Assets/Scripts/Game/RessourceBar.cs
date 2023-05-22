@@ -12,6 +12,14 @@ public class RessourceBar : NetworkBehaviour
     [SerializeField]
     public Vector3 offset;
 
+
+    private PlayerUnit playerUnit;
+
+    public void SetPlayerUnit(PlayerUnit playerUnit)
+    {
+        this.playerUnit = playerUnit;
+    }
+
     public void SetRessource(float currentRessource, float maxRessource)
     {
         ressourceSlider.value = currentRessource;

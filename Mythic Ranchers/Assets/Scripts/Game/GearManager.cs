@@ -7,7 +7,7 @@ using TMPro;
 public class GearManager : MonoBehaviour
 {
 
-    public static GearManager instance;
+    public static GearManager instance { get; set; }
 
     public Item[] gear;
     public InventorySlot[] gearSlots;
@@ -15,6 +15,8 @@ public class GearManager : MonoBehaviour
     public Image[] iconList;
     [SerializeField]
     public TextMeshProUGUI stamina, strength, intellect, agility, armor, haste, leech;
+
+    private PlayerUnit player;
 
     private void Awake()
     {
@@ -24,6 +26,11 @@ public class GearManager : MonoBehaviour
     void Start()
     {
         UpdateGear();
+    }
+
+    public void SetPlayerUnit(PlayerUnit playerUnit)
+    {
+        this.player = playerUnit;
     }
 
     public void UpdateGear()
@@ -50,7 +57,6 @@ public class GearManager : MonoBehaviour
 
     public void UpdateStats(Item item)
     {
-        PlayerUnit player = PlayerUnit.instance;
         player.Stats["stamina"] += item.stamina;
         player.Stats["strength"] += item.strength;
         player.Stats["intellect"] += item.intellect;
@@ -63,7 +69,6 @@ public class GearManager : MonoBehaviour
 
     public void UpdateStatsUI()
     {
-        PlayerUnit player = PlayerUnit.instance;
         stamina.SetText(player.Stats["stamina"].ToString());
         strength.SetText(player.Stats["strength"].ToString());
         intellect.SetText(player.Stats["intellect"].ToString());

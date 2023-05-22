@@ -58,6 +58,13 @@ public class PlayerUnit : PlayerClass
             isSetCharacterData = true;
         }
 
+        if (IsOwner)
+        {
+            GearManager.instance.SetPlayerUnit(this);
+        }
+
+        this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
+
         MaxHp = 5;
         CurrentHp = MaxHp;
         MaxRessource = 20;

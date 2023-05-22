@@ -204,7 +204,10 @@ public class LobbyManager : MonoBehaviour
             });
 
             MythicGameManagerMultiplayer.Instance.StartHost();
-            MythicGameManager.Instance.mapData = RoomFirstDungeonGenerator.Instance.CreateRooms(); 
+            MythicGameManager.Instance.mapData = RoomFirstDungeonGenerator.Instance.CreateRooms();
+            MapDataClass mapDataClass = new MapDataClass(MythicGameManager.Instance.mapData);
+            MythicGameManagerMultiplayer.Instance.mapDataJson = JsonUtility.ToJson(mapDataClass);
+
 
 
             Debug.Log("started host");
@@ -268,6 +271,7 @@ public class LobbyManager : MonoBehaviour
             await Relay.Instance.JoinRelay(relayJoinCode);
 
             MythicGameManagerMultiplayer.Instance.StartClient();
+
 
             Debug.Log("Joined Lobby: " + lobby.Id);
         }

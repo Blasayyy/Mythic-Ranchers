@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using Unity.Multiplayer.Samples.Utilities.ClientAuthority;
 
 public class MythicGameManager : NetworkBehaviour
 {
@@ -14,16 +15,6 @@ public class MythicGameManager : NetworkBehaviour
 
     [SerializeField]
     private Transform playerPrefab;
-
-    [SerializeField]
-    private TilemapVisualizer tilemapVisualizer;
-
-    [SerializeField]
-    private List<Sprite> moveableSprites, nonMoveableSprites, rollableSprites;
-
-    [SerializeField]
-    private GameObject moveablePropPrefab, torchPrefab, rollablePrefab, nonMoveablePrefab;
-
 
     private bool hasLoaded = false;
 
@@ -63,54 +54,8 @@ public class MythicGameManager : NetworkBehaviour
             Vector3 firstRoomCenter = mapData.Item1[0].center;
             playerTransform.position = firstRoomCenter;
 
-        }
+            Debug.Log("player : " + clientId + "spawned at location " + playerTransform.position);
 
-        
-        tilemapVisualizer.Clear();
-        tilemapVisualizer.PaintFloorTiles(mapData.Item3);
-        foreach (var position in mapData.Item5)
-        {
-            float rand = UnityEngine.Random.value;
-
-            if(rand < 0.3)
-            {
-                PropsSpawner.SpawnSprites(position, moveablePropPrefab, moveableSprites);
-            }
-            else if(rand < 0.6)
-            {
-                PropsSpawner.SpawnSprites(position, rollablePrefab, rollableSprites);
-            }
-            else if(rand < 0.9)
-            {
-                PropsSpawner.SpawnSprites(position, nonMoveablePrefab, nonMoveableSprites);
-            }
-            else
-            {
-                PropsSpawner.SpawnSprites(position, torchPrefab);
-            }
-            
-        }
-        
-
-        (List<(Vector2Int, string)>, List<(Vector2Int, string)>) wallData = mapData.Item4;
-
-        foreach (var wall in wallData.Item1)
-        {
-            tilemapVisualizer.PaintSingleBasicWall(wall.Item1, wall.Item2);
-        }
-        foreach(var wall in wallData.Item2)
-        {
-            tilemapVisualizer.PaintSingleCornerWall(wall.Item1, wall.Item2);
-        }
-        
-
-    }
-
-    public void AddPlayerCharacterData(ulong clientId, CharacterData characterData)
-    {
-        if (!playerCharacterData.ContainsKey(clientId))
-        {
-            playerCharacterData.Add(clientId, characterData);
         }
     }
 
