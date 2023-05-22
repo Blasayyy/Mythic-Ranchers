@@ -48,8 +48,7 @@ public class Loot : MonoBehaviour
 
     private void OnMouseOver()
     {
-        Debug.Log("hovering loot");
-        Tooltip.instance.ShowTooltip("Loot");
+        Tooltip.instance.ShowTooltip(item.tooltip);
     }
 
     private void OnMouseExit()

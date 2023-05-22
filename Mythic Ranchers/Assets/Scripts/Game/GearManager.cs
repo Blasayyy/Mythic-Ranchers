@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GearManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GearManager : MonoBehaviour
     public InventorySlot[] gearSlots;
     public GameObject inventoryItemPrefab;
     public Image[] iconList;
+    [SerializeField]
+    public TextMeshProUGUI stamina, strength, intellect, agility, armor, haste, leech;
 
     private void Awake()
     {
@@ -20,10 +23,10 @@ public class GearManager : MonoBehaviour
 
     void Start()
     {
-        UpdateGearUI();
+        UpdateGear();
     }
 
-    public void UpdateGearUI()
+    public void UpdateGear()
     {
         Dictionary<string, int> tempInitialStats = new Dictionary<string, int>(PlayerUnit.instance.InitialStats);
         PlayerUnit.instance.Stats = tempInitialStats;
@@ -42,6 +45,7 @@ public class GearManager : MonoBehaviour
                 slot.image.sprite = iconList[i].sprite;
             }
         }
+        UpdateStatsUI();
     }
 
     public void UpdateStats(Item item)
@@ -54,5 +58,19 @@ public class GearManager : MonoBehaviour
         player.Stats["armor"] += item.armor;
         player.Stats["haste"] += item.haste;
         player.Stats["leech"] += item.leech;
+        
     }
+
+    public void UpdateStatsUI()
+    {
+        PlayerUnit player = PlayerUnit.instance;
+        stamina.SetText(player.Stats["stamina"].ToString());
+        strength.SetText(player.Stats["strength"].ToString());
+        intellect.SetText(player.Stats["intellect"].ToString());
+        agility.SetText(player.Stats["agility"].ToString());
+        armor.SetText(player.Stats["armor"].ToString());
+        haste.SetText(player.Stats["haste"].ToString());
+        leech.SetText(player.Stats["leech"].ToString());
+    }
+
 }

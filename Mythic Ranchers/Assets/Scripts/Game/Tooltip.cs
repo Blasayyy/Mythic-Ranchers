@@ -6,7 +6,7 @@ using Unity.Netcode;
 using TMPro;
 
 
-public class Tooltip : NetworkBehaviour
+public class Tooltip : MonoBehaviour
 {
     [SerializeField]
     private RectTransform canvasRect;
@@ -38,13 +38,13 @@ public class Tooltip : NetworkBehaviour
     {
         Vector2 anchoredPosition = Input.mousePosition / canvasRect.localScale.x;
 
+        //tooltip on the right side of the sreen
         if (anchoredPosition.x + backgroundRect.rect.width > canvasRect.rect.width)
-        //tooltip on the left side of the sreen
         {
             anchoredPosition.x = canvasRect.rect.width - backgroundRect.rect.width;
         }
-        if (anchoredPosition.y + backgroundRect.rect.height > canvasRect.rect.height)
         //tooltip on the top of the sreen
+        if (anchoredPosition.y + backgroundRect.rect.height > canvasRect.rect.height)        
         {
             anchoredPosition.y = canvasRect.rect.height - backgroundRect.rect.height;
         }
