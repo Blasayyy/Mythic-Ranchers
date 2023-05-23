@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -9094217267439285997}
   - component: {fileID: -2626035083342543816}
   - component: {fileID: 8194360750843146836}
+  - component: {fileID: 5896740700783022449}
   m_Layer: 0
   m_Name: moveablePropPrefab
   m_TagString: Untagged
@@ -190,3 +191,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5896740700783022449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171946848311347336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7ff6f97f1d954479f3102fdb887554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: ff51088d4836824498b556b3278cd279, type: 3}
+  - {fileID: 21300000, guid: 7f2f681ab60668c4e95580dc976d2a87, type: 3}
+  - {fileID: 21300000, guid: 8bb59574067e1eb46a78eb82b6ae05a6, type: 3}
+  - {fileID: 21300000, guid: 54a45d033779fc442a0707d1aaa85b73, type: 3}
+  - {fileID: 21300000, guid: 4cc488ce89888a84c9b70677ced40377, type: 3}

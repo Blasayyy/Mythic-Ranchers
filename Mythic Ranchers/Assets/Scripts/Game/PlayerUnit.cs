@@ -64,6 +64,9 @@ public class PlayerUnit : PlayerClass
         }
 
         this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
 
         MaxHp = 5;
         CurrentHp = MaxHp;

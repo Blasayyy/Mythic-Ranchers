@@ -13899,28 +13899,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemapFloor: {fileID: 783217355}
   tilemapWalls: {fileID: 1559103820}
-  tilemapVisualizer: {fileID: 0}
-  moveableSprites:
-  - {fileID: 21300000, guid: ff51088d4836824498b556b3278cd279, type: 3}
-  - {fileID: 21300000, guid: 7f2f681ab60668c4e95580dc976d2a87, type: 3}
-  - {fileID: 21300000, guid: 8bb59574067e1eb46a78eb82b6ae05a6, type: 3}
-  - {fileID: 21300000, guid: 4cc488ce89888a84c9b70677ced40377, type: 3}
-  - {fileID: 21300000, guid: d0840d0b89d8ca747872eaf5fd895c63, type: 3}
-  nonMoveableSprites:
-  - {fileID: 21300000, guid: ba2aa3c7b9349b14a818895604527031, type: 3}
-  - {fileID: 21300000, guid: f96c05b8f41915a48a05b3ca65ef70c7, type: 3}
-  rollableSprites:
-  - {fileID: 21300000, guid: d80aa54db9d2b3d47b5b13841ff38372, type: 3}
-  - {fileID: 21300000, guid: d20dc587555b46645a7717f280c9f9ea, type: 3}
-  - {fileID: 21300000, guid: 856e7886319e1004da3bfd57f8a3d8ac, type: 3}
-  moveablePropPrefab: {fileID: 4171946848311347336, guid: 07c3617b9ae8e60458faa9c83d2456bf,
-    type: 3}
-  torchPrefab: {fileID: 6241685661239744160, guid: 7d57fbad909175443a08a77fe8176abc,
-    type: 3}
-  rollablePrefab: {fileID: 4171946848311347336, guid: f52edfb6db21b42449836ae3aa4ef077,
-    type: 3}
-  nonMoveablePrefab: {fileID: 4171946848311347336, guid: c075fb54db91ad64681a7c76ea696858,
-    type: 3}
 --- !u!4 &1419737580
 Transform:
   m_ObjectHideFlags: 0
@@ -15620,6 +15598,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3747677e93e31464ba489d7eb1c8ec40, type: 3}
+--- !u!1 &1809138931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1809138933}
+  - component: {fileID: 1809138932}
+  m_Layer: 0
+  m_Name: PropSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1809138932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809138931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60dfcbccc90de274a91c55b43ef2de0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveableSprites:
+  - {fileID: 21300000, guid: ff51088d4836824498b556b3278cd279, type: 3}
+  - {fileID: 21300000, guid: 7f2f681ab60668c4e95580dc976d2a87, type: 3}
+  - {fileID: 21300000, guid: 8bb59574067e1eb46a78eb82b6ae05a6, type: 3}
+  - {fileID: 21300000, guid: 54a45d033779fc442a0707d1aaa85b73, type: 3}
+  - {fileID: 21300000, guid: 4cc488ce89888a84c9b70677ced40377, type: 3}
+  nonMoveableSprites:
+  - {fileID: 21300000, guid: ba2aa3c7b9349b14a818895604527031, type: 3}
+  - {fileID: 21300000, guid: f96c05b8f41915a48a05b3ca65ef70c7, type: 3}
+  - {fileID: 21300000, guid: eabfea36c89588e4d8c039e444f1987a, type: 3}
+  rollableSprites:
+  - {fileID: 21300000, guid: d20dc587555b46645a7717f280c9f9ea, type: 3}
+  - {fileID: 21300000, guid: 856e7886319e1004da3bfd57f8a3d8ac, type: 3}
+  - {fileID: 21300000, guid: d80aa54db9d2b3d47b5b13841ff38372, type: 3}
+  moveablePropPrefab: {fileID: 4171946848311347336, guid: 07c3617b9ae8e60458faa9c83d2456bf,
+    type: 3}
+  torchPrefab: {fileID: 6241685661239744160, guid: 7d57fbad909175443a08a77fe8176abc,
+    type: 3}
+  rollablePrefab: {fileID: 4171946848311347336, guid: f52edfb6db21b42449836ae3aa4ef077,
+    type: 3}
+  nonMoveablePrefab: {fileID: 4171946848311347336, guid: c075fb54db91ad64681a7c76ea696858,
+    type: 3}
+--- !u!4 &1809138933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809138931}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.976013, y: 5.464052, z: 22.05935}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1818932480
 PrefabInstance:
   m_ObjectHideFlags: 0
