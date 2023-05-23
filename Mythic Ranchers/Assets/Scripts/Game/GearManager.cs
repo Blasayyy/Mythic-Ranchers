@@ -7,36 +7,34 @@ using TMPro;
 public class GearManager : MonoBehaviour
 {
 
-    public static GearManager instance { get; set; }
+    public static GearManager instance;
 
     public Item[] gear;
     public InventorySlot[] gearSlots;
     public GameObject inventoryItemPrefab;
     public Image[] iconList;
     [SerializeField]
-    public TextMeshProUGUI stamina, strength, intellect, agility, armor, haste, leech;
+    public TextMeshProUGUI staminaValue, strengthValue, intellectValue, agilityValue, armorValue, hasteValue, leechValue;
+    [SerializeField]
+    public StatText staminaText, strengthText, intellectText, agilityText, armorText, hasteText, leechText;
 
     private PlayerUnit player;
+
+    public void SetPlayerUnit(PlayerUnit playerUnit)
+    {
+        this.player = playerUnit;
+        UpdateGear();
+    }
 
     private void Awake()
     {
         instance = this;
     }
 
-    void Start()
-    {
-        UpdateGear();
-    }
-
-    public void SetPlayerUnit(PlayerUnit playerUnit)
-    {
-        this.player = playerUnit;
-    }
-
     public void UpdateGear()
     {
-        Dictionary<string, int> tempInitialStats = new Dictionary<string, int>(PlayerUnit.instance.InitialStats);
-        PlayerUnit.instance.Stats = tempInitialStats;
+        Dictionary<string, int> tempInitialStats = new Dictionary<string, int>(player.InitialStats);
+        player.Stats = tempInitialStats;
         
         for (int i = 0; i < gearSlots.Length; i++)
         {
@@ -69,13 +67,20 @@ public class GearManager : MonoBehaviour
 
     public void UpdateStatsUI()
     {
-        stamina.SetText(player.Stats["stamina"].ToString());
-        strength.SetText(player.Stats["strength"].ToString());
-        intellect.SetText(player.Stats["intellect"].ToString());
-        agility.SetText(player.Stats["agility"].ToString());
-        armor.SetText(player.Stats["armor"].ToString());
-        haste.SetText(player.Stats["haste"].ToString());
-        leech.SetText(player.Stats["leech"].ToString());
+        staminaValue.SetText(player.Stats["stamina"].ToString());
+        staminaText.tooltipText = ("Increases HP by " + (player.Stats["stamina"] * 10f + 100f).ToString());
+        strengthValue.SetText(player.Stats["strength"].ToString());
+        strengthText.tooltipText = ("Increases basic attack power by " + (player.Stats["strength"] * 1.5f + 100f).ToString());
+        intellectValue.SetText(player.Stats["intellect"].ToString());
+        intellectText.tooltipText = ("Increases mana by " + (player.Stats["intellect"] * 10f + 100f).ToString());
+        agilityValue.SetText(player.Stats["agility"].ToString());
+        agilityText.tooltipText = ("Increases agility by " + player.Stats["agility"].ToString());
+        armorValue.SetText(player.Stats["armor"].ToString());
+        armorText.tooltipText = ("Increases armor by " + player.Stats["armor"].ToString());
+        hasteValue.SetText(player.Stats["haste"].ToString());
+        hasteText.tooltipText = ("Increases haste by " + player.Stats["haste"].ToString());
+        leechValue.SetText(player.Stats["leech"].ToString());
+        leechText.tooltipText = ("Increases leech by " + player.Stats["leech"].ToString());
     }
 
 }

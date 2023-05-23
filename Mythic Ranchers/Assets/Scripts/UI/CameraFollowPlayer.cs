@@ -9,6 +9,13 @@ public class CameraFollowPlayer : MonoBehaviour
     private Transform target;
     public bool isSet;
 
+    private PlayerUnit player;
+
+    public void SetPlayerUnit(PlayerUnit playerUnit)
+    {
+        this.player = playerUnit;
+    }
+
     private void Awake()
     {
         instance = this;
@@ -31,7 +38,7 @@ public class CameraFollowPlayer : MonoBehaviour
         {
             if (target != null)
             {
-                SetCameraFollowPlayer(PlayerUnit.instance.transform);
+                SetCameraFollowPlayer(player.transform);
                 isSet = true;
             }
 

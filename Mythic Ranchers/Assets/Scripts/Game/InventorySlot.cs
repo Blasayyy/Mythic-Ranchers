@@ -56,7 +56,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         }
         else if (this.slotType == SlotType.CharacterGear)
         {
-            if (PlayerUnit.instance.ArmorType == inventoryItem.item.ArmorType || inventoryItem.item.ArmorType == ArmorType.Misc)
+
+            //cheeky appel de instance player
+
+            if (InventoryManager.instance.player.ArmorType == inventoryItem.item.ArmorType || inventoryItem.item.ArmorType == ArmorType.Misc)
             {
                 if (inventoryItem.item.gearSlot == this.gearSlot)
                 {

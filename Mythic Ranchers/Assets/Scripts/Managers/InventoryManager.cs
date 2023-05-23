@@ -15,6 +15,13 @@ public class InventoryManager : MonoBehaviour
     public string hotkey;
     public int selectedSlot = -1;
 
+    public PlayerUnit player;
+
+    public void SetPlayerUnit(PlayerUnit playerUnit)
+    {
+        this.player = playerUnit;
+    }
+
     private void Awake()
     {
         instance = this;
@@ -159,8 +166,8 @@ public class InventoryManager : MonoBehaviour
             Item item = itemInSlot.item;
             if (use)
             {
-                PlayerUnit.instance.GetHealed(item.RestoresHealth);
-                PlayerUnit.instance.GainRessource(item.RestoresMana);
+                player.GetHealed(item.RestoresHealth);
+                player.GainRessource(item.RestoresMana);
 
                 Debug.Log("mana pot consumed + " + item.RestoresMana + " mana");
 
