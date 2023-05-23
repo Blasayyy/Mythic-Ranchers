@@ -12,9 +12,6 @@ public class PlayerUnit : PlayerClass
 
     private bool isSetCharacterData = false;
 
-    //[SerializeField]
-    //private GameObject abilityManagerPrefab;
-
     private void Awake()
     {
         instance = this;
@@ -61,6 +58,8 @@ public class PlayerUnit : PlayerClass
         if (IsOwner)
         {
             GearManager.instance.SetPlayerUnit(this);
+            InventoryManager.instance.SetPlayerUnit(this);
+            CameraFollowPlayer.instance.SetPlayerUnit(this);
         }
 
         this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;

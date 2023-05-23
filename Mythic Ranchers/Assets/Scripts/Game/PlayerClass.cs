@@ -12,7 +12,6 @@ public class PlayerClass : NetworkBehaviour
     private Vector2 movement;
     private Animator anim;
     private FacingDirection facingDirection;
-    //private SpriteRenderer fonduRectangle;
     private bool alive;
     public bool control;
     private bool facingRight;
@@ -80,7 +79,6 @@ public class PlayerClass : NetworkBehaviour
         {
             Move();
         }
-        
     }
 
     public void LoseHealth(float amount)
@@ -379,37 +377,4 @@ public class PlayerClass : NetworkBehaviour
         get { return keyLevel; }
         set { keyLevel = value; }
     }
-
-    //IEnumerator FonduIn()
-    //{
-    //    Color colTemp = Color.black;
-    //    fonduRectangle.color = colTemp;
-    //    while (fonduRectangle.color.a > 0.0f)
-    //    {
-    //        colTemp.a -= taux;
-    //        fonduRectangle.color = colTemp;
-    //        yield return new WaitForEndOfFrame(); //� Chaque update
-    //    }
-    //    //Pour ne pas avoir de alpha negatif
-    //    colTemp.a = 0.0f;
-    //    fonduRectangle.color = colTemp;
-    //}
-
-    //IEnumerator FonduOut()
-    //{
-    //    Color colTemp = Color.black;
-    //    colTemp.a = 0.0f;
-    //    fonduRectangle.color = colTemp;
-    //    while (fonduRectangle.color.a < 1f)
-    //    {
-    //        colTemp.a += taux;
-    //        fonduRectangle.color = colTemp;
-    //        yield return new WaitForEndOfFrame(); //� Chaque update
-    //    }
-    //    //Pour ne pas avoir de alpha plus que 1
-    //    colTemp.a = 1f;
-    //    fonduRectangle.color = colTemp;
-    //}
-
-
 }

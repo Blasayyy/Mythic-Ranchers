@@ -11,13 +11,12 @@ public class RessourceBar : NetworkBehaviour
     public Color manaColor, rageColor, energyColor;    
     [SerializeField]
     public Vector3 offset;
+    private PlayerUnit player;
 
 
-    private PlayerUnit playerUnit;
-
-    public void SetPlayerUnit(PlayerUnit playerUnit)
+    private void Start()
     {
-        this.playerUnit = playerUnit;
+        player = GetComponentInParent<PlayerUnit>();
     }
 
     public void SetRessource(float currentRessource, float maxRessource)
@@ -25,15 +24,15 @@ public class RessourceBar : NetworkBehaviour
         ressourceSlider.value = currentRessource;
         ressourceSlider.maxValue = maxRessource;
 
-        if (PlayerUnit.instance.RessourceType == "mana")
+        if (player.RessourceType == "mana")
         {
             ressourceSlider.fillRect.GetComponentInChildren<Image>().color = manaColor;
         }
-        else if (PlayerUnit.instance.RessourceType == "rage")
+        else if (player.RessourceType == "rage")
         {
             ressourceSlider.fillRect.GetComponentInChildren<Image>().color = rageColor;
         }
-        else if (PlayerUnit.instance.RessourceType == "energy")
+        else if (player.RessourceType == "energy")
         {
             ressourceSlider.fillRect.GetComponentInChildren<Image>().color = energyColor;
         }

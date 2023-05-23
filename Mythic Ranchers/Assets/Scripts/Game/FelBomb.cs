@@ -16,7 +16,7 @@ public class FelBomb : MonoBehaviour
 
         cursorWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorWorldPosition.z = 0;
-        playerPosition = PlayerUnit.instance.transform.position;
+        playerPosition = transform.position;
 
         direction = cursorWorldPosition - playerPosition;
         direction.Normalize();
