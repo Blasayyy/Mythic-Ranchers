@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -9,11 +10,8 @@ public class TilemapSetter : MonoBehaviour
     [SerializeField] private Tilemap tilemapFloor;
     [SerializeField] private Tilemap tilemapWalls;
 
-    [SerializeField]
-    private List<Sprite> moveableSprites, nonMoveableSprites, rollableSprites;
-
-    [SerializeField]
-    private GameObject moveablePropPrefab, torchPrefab, rollablePrefab, nonMoveablePrefab;
+ 
+    
 
     void Awake()
     {
@@ -33,29 +31,11 @@ public class TilemapSetter : MonoBehaviour
     {
         TilemapVisualizer.Instance.Clear();
         TilemapVisualizer.Instance.PaintFloorTiles(mapData.Item3);
-        foreach (var position in mapData.Item5)
+
+        if (NetworkManager.Singleton.IsHost)
         {
-            float rand = UnityEngine.Random.value;
-
-            if (rand < 0.3)
-            {
-                PropsSpawner.SpawnSprites(position, moveablePropPrefab, moveableSprites);
-            }
-            else if (rand < 0.6)
-            {
-                PropsSpawner.SpawnSprites(position, rollablePrefab, rollableSprites);
-            }
-            else if (rand < 0.9)
-            {
-                PropsSpawner.SpawnSprites(position, nonMoveablePrefab, nonMoveableSprites);
-            }
-            else
-            {
-                PropsSpawner.SpawnSprites(position, torchPrefab);
-            }
-
+            SpawnProps(mapData.Item5);
         }
-
 
         (List<(Vector2Int, string)>, List<(Vector2Int, string)>) wallData = mapData.Item4;
 
@@ -68,4 +48,10 @@ public class TilemapSetter : MonoBehaviour
             TilemapVisualizer.Instance.PaintSingleCornerWall(wall.Item1, wall.Item2);
         }
     }
+
+    private void SpawnProps(HashSet<Vector2Int> propData)
+    {
+        PropsSpawner.Instance.SpawnProps(propData);
+    }
+    
 }
