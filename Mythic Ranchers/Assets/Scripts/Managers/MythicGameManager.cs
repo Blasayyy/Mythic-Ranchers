@@ -14,7 +14,7 @@ public class MythicGameManager : NetworkBehaviour
 
 
     [SerializeField]
-    private Transform playerPrefab;
+    private Transform berzerkerPrefab, necroPrefab;
 
     private bool hasLoaded = false;
 
@@ -42,11 +42,21 @@ public class MythicGameManager : NetworkBehaviour
 
     private void SceneManager_OnLoadEventCompleted1(string sceneName, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
     {
+        Transform playerTransform;
         if (hasLoaded) return;
         hasLoaded = true;
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
         {
-            Transform playerTransform = Instantiate(playerPrefab);
+            CharacterData data = AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter];
+            if (data.ClassName == "berzerker")
+            {
+                 playerTransform = Instantiate(berzerkerPrefab);
+            } 
+            else
+                //(data.ClassName == "necromancer")
+            {
+                playerTransform = Instantiate(necroPrefab);
+            }
             PlayerUnit player = playerTransform.GetComponent<PlayerUnit>();
 
 

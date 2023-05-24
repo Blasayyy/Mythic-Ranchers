@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class CameraFollowPlayer : MonoBehaviour
 {
-
     public static CameraFollowPlayer instance;
-    private Transform target;
-    public bool isSet;
 
     private PlayerUnit player;
 
@@ -21,32 +18,11 @@ public class CameraFollowPlayer : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
+    private void Update()
     {
-        isSet = false;
-        target = null;
-    }
-
-    public void SetCameraFollowPlayer(Transform player)
-    {
-        this.target = player;
-    }
-
-    void LateUpdate()
-    {
-        if (!isSet)
+        if (player)
         {
-            if (target != null)
-            {
-                SetCameraFollowPlayer(player.transform);
-                isSet = true;
-            }
-
-        }
-
-        if (target != null)
-        {
-            transform.position = target.position;
+            transform.position = this.player.transform.position;
         }
     }
 }

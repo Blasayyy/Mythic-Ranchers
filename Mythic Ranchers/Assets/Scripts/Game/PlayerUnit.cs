@@ -33,7 +33,7 @@ public class PlayerUnit : PlayerClass
         this.Talents = characterData.Talents;
         this.Xp = characterData.Experience_points;
         this.Equipment = characterData.EquipmentList;
-        this.Inventory = null; //todo
+        this.Inventory = null; //todo 
         this.Abilities = null; //todo
         this.Stats = characterData.Stats;
         this.InitialStats = characterData.Stats;
@@ -44,11 +44,6 @@ public class PlayerUnit : PlayerClass
 
     void Start()
     {
-
-        //GameObject abilityManagerObject = Instantiate(abilityManagerPrefab, transform);
-        //AbilityManager abilityManager = abilityManagerObject.GetComponent<AbilityManager>();
-        //abilityManager.ownerPlayerUnit = this;
-
         if (!isSetCharacterData)
         {
             SetCharacterData(AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter]);
@@ -62,7 +57,8 @@ public class PlayerUnit : PlayerClass
             CameraFollowPlayer.instance.SetPlayerUnit(this);
         }
 
-        this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
+        //this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
+        transform.position = new Vector3(0, 0, 0);
 
         MaxHp = 5;
         CurrentHp = MaxHp;
@@ -75,10 +71,6 @@ public class PlayerUnit : PlayerClass
 
     private void Update()
     {
-        if (IsOwner)
-        {
-            CameraFollowPlayer.instance.SetCameraFollowPlayer(this.transform);
-        }
         base.Update();
     }
 

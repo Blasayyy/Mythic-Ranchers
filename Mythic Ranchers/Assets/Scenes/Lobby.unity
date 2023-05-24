@@ -5793,7 +5793,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde384a1b9668f140864073a93477aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 4687180269806577471, guid: c84856c2c4523c34bb3a353ce896a406,
+  berzerkerPrefab: {fileID: 4687180269806577471, guid: c84856c2c4523c34bb3a353ce896a406,
+    type: 3}
+  necroPrefab: {fileID: 4687180269806577471, guid: 9bd30bcf351aca54d8e21c04bda4f315,
     type: 3}
 --- !u!4 &2008329251
 Transform:

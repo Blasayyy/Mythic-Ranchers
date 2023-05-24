@@ -14,7 +14,14 @@ public class PlayerClass : NetworkBehaviour
     private FacingDirection facingDirection;
     private bool alive;
     public bool control;
+    public bool invulnerable;
     private bool facingRight;
+    public float flickerDuration = 0.1f;
+    public int flickerCount = 5;
+    private Color originalColor;
+    private Color originalColor1;
+    private Color flickerColor = Color.red;
+    private SpriteRenderer spriteRenderer;
 
     private string playerName;
     private string className;
@@ -52,19 +59,21 @@ public class PlayerClass : NetworkBehaviour
     {
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         facingDirection = FacingDirection.Right;
         alive = true;
         control = true;
         facingRight = true;
         healthBar.SetHealth(currentHp, maxHp);
         ressourceBar.SetRessource(CurrentRessource, MaxRessource);
+        originalColor = spriteRenderer.color;
+        originalColor1 = spriteRenderer.material.color;
     }
 
     public void Update()
     {
         if (IsOwner)
-        {
-            
+        {            
             CheckIfDead();
             GetInput();
             healthBar.SetHealth(CurrentHp, MaxHp);
@@ -221,12 +230,13 @@ public class PlayerClass : NetworkBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (LayerMask.LayerToName(collision.gameObject.layer) == "Ennemies" && control)
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Ennemies" && control && !invulnerable)
         {
             Debug.Log(currentHp);
             float damage = 1;
             LoseHealth(damage);
             healthBar.SetHealth(CurrentHp, MaxHp);
+            StartCoroutine(DamageFlicker());
 
         }
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Items" && control)
@@ -234,6 +244,21 @@ public class PlayerClass : NetworkBehaviour
             //bool canAdd = InventoryManager.instance.AddItem()
             Debug.Log("Collision with pot");
         }
+    }
+
+    private IEnumerator DamageFlicker()
+    {
+        invulnerable = true;
+        for (int i = 0; i < flickerCount; i++)
+        {
+            spriteRenderer.color = flickerColor;
+            yield return new WaitForSeconds(flickerDuration);
+
+            spriteRenderer.color = Color.white;
+            yield return new WaitForSeconds(flickerDuration);
+        }
+        invulnerable = false;
+
     }
 
     public void SetControllOff()

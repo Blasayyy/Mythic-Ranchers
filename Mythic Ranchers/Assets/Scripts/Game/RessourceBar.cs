@@ -16,15 +16,17 @@ public class RessourceBar : NetworkBehaviour
 
     private void Start()
     {
-        player = GetComponentInParent<PlayerUnit>();
+        if (GetComponentInParent<PlayerUnit>())
+        {
+            player = GetComponentInParent<PlayerUnit>();
+        }
     }
 
     public void SetRessource(float currentRessource, float maxRessource)
     {
         ressourceSlider.value = currentRessource;
         ressourceSlider.maxValue = maxRessource;
-
-        if (player.RessourceType == "mana")
+        if (!player || player.RessourceType == "mana")
         {
             ressourceSlider.fillRect.GetComponentInChildren<Image>().color = manaColor;
         }
