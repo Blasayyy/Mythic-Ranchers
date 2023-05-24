@@ -28,9 +28,42 @@ public class Enemy : NetworkBehaviour
         ressourceBar.SetRessource(currentRessource, maxRessource);
     }
 
+    public void LoseHealth(float amount)
+    {
+        CurrentHp -= amount;
+    }
+
+    public void LoseRessource(float amount)
+    {
+        CurrentRessource -= amount;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        currentHp -= 1;
-        currentRessource -= 1;
+        //currentHp -= 1;
+    }
+
+    public float CurrentHp
+    {
+        get { return currentHp; }
+        set { currentHp = value; }
+    }
+
+    public float MaxHp
+    {
+        get { return maxHp; }
+        set { maxHp = value; }
+    }
+
+    public float CurrentRessource
+    {
+        get { return currentRessource; }
+        set { currentRessource = value; }
+    }
+
+    public float MaxRessource
+    {
+        get { return maxRessource; }
+        set { maxRessource = value; }
     }
 }

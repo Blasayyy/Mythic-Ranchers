@@ -126,6 +126,32 @@ public class PlayerClass : NetworkBehaviour
         }
     }
 
+    public void AnimationTrigger(AbilityType abilityType)
+    {
+        if (ClassName == "berzerker")
+        {
+            anim.SetTrigger("Attacking");
+        }
+        else if (ClassName == "necromancer")
+        {
+            switch (abilityType)
+            {
+                case AbilityType.Projectile:
+                    anim.SetTrigger("Cast2");
+                    break;
+                case AbilityType.AoeStandard:
+                    anim.SetTrigger("Cast1");
+                    break;
+                case AbilityType.AoeTargetted:
+                    anim.SetTrigger("Cast1");
+                    break;
+                case AbilityType.Frontal:
+                    anim.SetTrigger("Cast1");
+                    break;
+            }
+        }
+
+    }
 
     private void GetInput()
     {
@@ -143,7 +169,7 @@ public class PlayerClass : NetworkBehaviour
                 {
                     if (itemInSlot.ability.cost <= CurrentRessource && !itemInSlot.isOnCooldown)
                     {
-                        anim.SetTrigger("Attacking");
+                        AnimationTrigger(itemInSlot.ability.type);
                         Vector3 target = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
                         AbilityManager.instance.UseAbility(target, transform.position);                        
                         LoseRessource(itemInSlot.ability.cost);
@@ -159,7 +185,7 @@ public class PlayerClass : NetworkBehaviour
             {
                 anim.SetTrigger("Attacking");
             }
-            else if (Input.GetKeyUp(KeyCode.X))
+            else if (Input.GetKeyUp(KeyCode.X) && ClassName == "berzerker")
             {
                 anim.SetTrigger("Startled");
             }

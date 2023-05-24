@@ -59,16 +59,20 @@ public class PlayerUnit : PlayerClass
 
         //this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
         transform.position = new Vector3(0, 0, 0);
-        this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
+        //this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
 
+
+        // temporaire pour tester
         MaxHp = 5;
         CurrentHp = MaxHp;
         MaxRessource = 20;
         CurrentRessource = MaxRessource;
         RessourceType = "mana";
+        ClassName = "necromancer";
+        //
         
         base.Start();
     }

@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class FelBomb : MonoBehaviour
+public class FelBomb : NetworkBehaviour
 {
     [SerializeField]
     private float duration;
     private float range;
+    private float damage = 2f;
+    private float damageInterval = 1f;
+    private float timer;
     private Vector3 target, cursorWorldPosition, playerPosition, direction;
 
     void Start()
@@ -36,9 +40,18 @@ public class FelBomb : MonoBehaviour
         Destroy(gameObject, duration);
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        //Destroy(this.gameObject);
+        if (collision.gameObject.GetComponent<Enemy>())
+        {
+            collision.gameObject.GetComponent<Rigidbody2D>().WakeUp();
+            timer += Time.deltaTime;
+            if (timer >= damageInterval)
+            {
+                collision.gameObject.GetComponent<Enemy>().LoseHealth(damage);
+                timer = 0f;
+            }            
+        }
     }
+
 }
