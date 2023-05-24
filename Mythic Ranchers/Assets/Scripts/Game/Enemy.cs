@@ -38,11 +38,6 @@ public class Enemy : NetworkBehaviour
         CurrentRessource -= amount;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //currentHp -= 1;
-    }
-
     public float CurrentHp
     {
         get { return currentHp; }

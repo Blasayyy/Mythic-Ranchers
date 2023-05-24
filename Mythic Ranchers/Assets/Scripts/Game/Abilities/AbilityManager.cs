@@ -69,12 +69,13 @@ public class AbilityManager : MonoBehaviour
         {
             return false;
         }
-        if (!itemInSlot.UseSpell())
+        if (!itemInSlot.IsCastable())
         {
             return false;
         }
+
         // a changer
-        if (itemInSlot.ability.type == AbilityType.AoeTargetted)
+        if (itemInSlot.ability.abilityName == "Fel Bomb")
         {
             Instantiate(felBombPrefab, target, Quaternion.identity);
             return true;
@@ -84,7 +85,7 @@ public class AbilityManager : MonoBehaviour
             Instantiate(voidboltPrefab, playerPos, Quaternion.identity);
             return true;
         }
-        else if (itemInSlot.ability.type == AbilityType.AoeStandard)
+        else if (itemInSlot.ability.abilityName == "Arcane Nova")
         {
             Instantiate(arcaneNovaPrefab, playerPos, Quaternion.identity);
             return true;

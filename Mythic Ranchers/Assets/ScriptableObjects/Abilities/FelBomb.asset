@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66be03168e97c346a3aefd115a9a542, type: 3}
   m_Name: FelBomb
   m_EditorClassIdentifier: 
-  tile: {fileID: 0}
   type: 2
+  abilityName: Fel Bomb
   range: 4
   damage: 2
-  aoeRange: 5
-  ressourceCost: 0
-  cooldown: 5
+  aoeRange: 2
+  cooldown: 10
   cost: 4
+  duration: 5
+  tick: 1
   image: {fileID: -1188426393, guid: 7d763f88190d8e348b945e0df40550c9, type: 3}
+  tooltip: 'AoE periodic damage ability, deals damage every 1 second for '
