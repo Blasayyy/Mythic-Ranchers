@@ -111,14 +111,6 @@ public class Enemy : NetworkBehaviour
         
     }
 
-    public IEnumerator PreventKnockback()
-    {
-        rig.isKinematic = false;
-        yield return new WaitForSeconds(0.1f);
-        rig.isKinematic = true;
-
-    }
-
     IEnumerator Slowed(float slowDuration, float slowAmount)
     {
         slowed = true;
@@ -194,11 +186,6 @@ public class Enemy : NetworkBehaviour
     public void GetSlowed(float slowDuration, float slowAmount)
     {
         StartCoroutine(Slowed(slowDuration, slowAmount));
-    }
-
-    public void NoKnockback()
-    {
-        StartCoroutine(PreventKnockback());
     }
 
     public void LoseHealth(float amount)
