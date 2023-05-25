@@ -10,11 +10,8 @@ public class AbilityManager : MonoBehaviour
 
     public Ability[] abilities;
     public InventorySlot[] talentTreeSlots;
-
     public GameObject inventoryItemPrefab;
-    public GameObject felBombPrefab;
-    public GameObject voidboltPrefab;
-    public GameObject arcaneNovaPrefab;
+    public GameObject[] abilitiesPrefab;
 
     private void Awake()
     {
@@ -28,6 +25,7 @@ public class AbilityManager : MonoBehaviour
             FindSlot(abilities[i]);
         }
     }
+
 
     public void FindSlot(Ability ability)
     {
@@ -60,7 +58,7 @@ public class AbilityManager : MonoBehaviour
         }
     }
 
-    public bool UseAbility(Vector3 target, Vector3 playerPos)
+    public bool UseAbility(Vector3 playerPos)
     {
         InventorySlot slot = InventoryManager.instance.inventorySlots[InventoryManager.instance.selectedSlot];
         InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
@@ -73,22 +71,16 @@ public class AbilityManager : MonoBehaviour
         {
             return false;
         }
-
-        // a changer
-        if (itemInSlot.ability.abilityName == "Fel Bomb")
+        int counter = 0;
+        foreach (Ability ability in abilities)
         {
-            Instantiate(felBombPrefab, target, Quaternion.identity);
-            return true;
-        }
-        else if (itemInSlot.ability.type == AbilityType.Projectile)
-        {
-            Instantiate(voidboltPrefab, playerPos, Quaternion.identity);
-            return true;
-        }
-        else if (itemInSlot.ability.abilityName == "Arcane Nova")
-        {
-            Instantiate(arcaneNovaPrefab, playerPos, Quaternion.identity);
-            return true;
+            string abilityName = ability.abilityName;
+            if (abilityName == itemInSlot.ability.abilityName)
+            {
+                Instantiate(abilitiesPrefab[counter], playerPos, Quaternion.identity);
+                return true;
+            }
+            counter++;
         }
         return false;
     }

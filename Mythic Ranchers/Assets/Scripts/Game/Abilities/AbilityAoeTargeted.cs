@@ -5,6 +5,7 @@ using Unity.Netcode;
 
 public class AbilityAoeTargeted : NetworkBehaviour
 {
+    [SerializeField]
     private Ability ability;
     private float timer = 0;
     private Vector3 target, cursorWorldPosition, playerPosition, direction;
@@ -17,7 +18,7 @@ public class AbilityAoeTargeted : NetworkBehaviour
 
         direction = cursorWorldPosition - playerPosition;
         direction.Normalize();
-        transform.localScale *= ability.aoeRange;
+        transform.localScale *= ability.radius;
 
         // Check if the target position is within the range
         if (Mathf.Abs(Vector3.Distance(cursorWorldPosition, playerPosition)) <= ability.range)
