@@ -13,6 +13,8 @@ public class Enemy : NetworkBehaviour
     public float waitTimeMin = 1.0f;
     public float waitTimeMax = 3.0f;
     public string type;
+    public GameObject abilityPrefab;
+    public Ability abilityScriptable;
     private EnemyState currentState;
     private Transform target;
     private bool isWandering = false;
@@ -44,6 +46,7 @@ public class Enemy : NetworkBehaviour
         {
             StartCoroutine(Wander());
         }
+
     }
 
     // Update is called once per frame
