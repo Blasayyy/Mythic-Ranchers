@@ -15,12 +15,15 @@ MonoBehaviour:
   type: 0
   abilityName: GhastProjectile
   range: 10
-  potency: 2
+  potency: 1
   radius: 1
   cooldown: 0
   cost: 0
   duration: 0
   tick: 0
   helpful: 0
+  slow: 0
+  slowDuration: 0
+  slowAmount: 0
   image: {fileID: 0}
   tooltip: 
