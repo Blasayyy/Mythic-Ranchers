@@ -67,7 +67,7 @@ public class PlayerUnit : PlayerClass
         }
 
         //transform.position = new Vector3(0, 0, 0);
-        //this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
+        this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
         Rigidbody2D rig = GetComponent<Rigidbody2D>();
         rig.bodyType = RigidbodyType2D.Dynamic;
         rig.interpolation = RigidbodyInterpolation2D.Interpolate;
