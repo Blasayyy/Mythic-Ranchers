@@ -12,6 +12,12 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
 
     private const int MAX_PLAYER_COUNT = 4;
 
+    public NetworkVariable<int> PlayerCount { get; private set; } = new NetworkVariable<int>(0);
+    public NetworkVariable<int> DungeonKeyLevel { get; private set; } = new NetworkVariable<int>(0);
+    public NetworkVariable<int> EnemiesCount { get; private set; } = new NetworkVariable<int>(0);
+    public NetworkVariable<int> DeathsCount { get; private set; } = new NetworkVariable<int>(0);
+    public NetworkVariable<float> TimerCount { get; private set; } = new NetworkVariable<float>(0f);
+
     public string mapDataJson;
 
     public const int MAX_CHUNK_SIZE = 900;
@@ -162,13 +168,26 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
         playerCharacterClasses.Add(senderId, characterClass);
     }
 
+    public void StartTimer()
+    {
+        StartCoroutine(TimerRoutine());
+    }
 
-
+    private IEnumerator TimerRoutine()
+    {
+        while (TimerCount.Value > 0)
+        {
+            yield return new WaitForSeconds(1.0f);
+            TimerCount.Value--;
+        }
+    }
 
     public void AddHostCharacterClass()
     {
         ulong clientId = NetworkManager.Singleton.LocalClientId;
         playerCharacterClasses[clientId] = AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter].ClassName;
+        DungeonKeyLevel.Value = AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter].Current_key;
+
     }
 
 }

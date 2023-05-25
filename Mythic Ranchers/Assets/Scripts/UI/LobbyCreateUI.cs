@@ -45,7 +45,7 @@ public class LobbyCreateUI : MonoBehaviour
             {
                 lobbyName = "Lobby Name";
             }
-            LobbyManager.Instance.CreateLobby(lobbyName, isPrivate, keyLevel);
+            LobbyManager.Instance.CreateLobby(lobbyName, isPrivate, AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter].Current_key);
             HideUI();
         });
 

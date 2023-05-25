@@ -271,6 +271,8 @@ public class PlayerClass : NetworkBehaviour
     {
         if (CurrentHp <= 0)
         {
+            MythicGameManagerMultiplayer.Instance.DeathsCount.Value += 1;
+            MythicGameManagerMultiplayer.Instance.TimerCount.Value -= 10;
             alive = false;
             anim.SetBool("Alive", false);
             await Task.Delay(3000);
@@ -280,6 +282,7 @@ public class PlayerClass : NetworkBehaviour
             CurrentHp = MaxHp / 2;
             CurrentRessource = MaxRessource / 2;
             anim.SetBool("Alive", true);
+
         }
     }
 

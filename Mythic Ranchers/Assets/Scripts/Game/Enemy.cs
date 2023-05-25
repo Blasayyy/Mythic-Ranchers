@@ -87,7 +87,7 @@ public class Enemy : NetworkBehaviour
         {
             NetworkObject netO = GetComponent<NetworkObject>();
             netO.Despawn();
-            
+            MythicGameManagerMultiplayer.Instance.EnemiesCount.Value -= 1;
         }
 
     }

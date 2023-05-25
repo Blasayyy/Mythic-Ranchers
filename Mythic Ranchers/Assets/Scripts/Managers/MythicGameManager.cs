@@ -71,6 +71,7 @@ public class MythicGameManager : NetworkBehaviour
 
             playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
             Vector3 firstRoomCenter = mapData.Item1[0].center;
+            MythicGameManagerMultiplayer.Instance.PlayerCount.Value += 1;
             //playerTransform.position = firstRoomCenter;
 
             Debug.Log("player : " + clientId + "spawned at location " + playerTransform.position);
@@ -78,6 +79,17 @@ public class MythicGameManager : NetworkBehaviour
         }
 
         SpawnEnemiesOnMap();
+        MythicGameManagerMultiplayer.Instance.TimerCount.Value = CalculateTimer();
+        MythicGameManagerMultiplayer.Instance.StartTimer();
+    }
+
+    private float CalculateTimer()
+    {
+        float time = 0;
+        int roomsCount = mapData.roomsList.Count;
+        int enemiesCount = MythicGameManagerMultiplayer.Instance.EnemiesCount.Value;
+        time = 60 * roomsCount + 3 * enemiesCount;
+        return time;
     }
 
     public void SpawnEnemiesOnMap()
@@ -125,6 +137,7 @@ public class MythicGameManager : NetworkBehaviour
 
                 var enemyTransform = Instantiate(enemyPrefab, new Vector3(tileToSpawnOn.x + 0.5f, tileToSpawnOn.y + 0.5f, 0), Quaternion.identity);
                 enemyTransform.GetComponent<NetworkObject>().Spawn();
+                MythicGameManagerMultiplayer.Instance.EnemiesCount.Value += 1;
 
                 floorTilesInRoom.RemoveAt(randomIndex);
             }
