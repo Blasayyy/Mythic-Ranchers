@@ -20,11 +20,11 @@ public class Enemy : NetworkBehaviour
     private bool isWandering = false;
     public HealthBar healthBar;
     public RessourceBar ressourceBar;
-    private Rigidbody2D rb;
+    private Rigidbody2D rig;
     private SpriteRenderer spriteRenderer;
     public float flickerDuration = 0.1f;
     public int flickerCount = 2;
-    private Color flickerColor = Color.red;
+    private bool slowed;
 
     public enum EnemyState
     {
@@ -35,7 +35,7 @@ public class Enemy : NetworkBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rig = GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
@@ -63,8 +63,8 @@ public class Enemy : NetworkBehaviour
         if (IsHost && currentState == EnemyState.Chasing)
         {
             Vector2 direction = (target.position - transform.position).normalized;
-            rb.velocity = direction * moveSpeed;
             StopCoroutine(Wander());
+            rig.velocity = direction * moveSpeed;
 
             if(type == "ghast")
             {
@@ -94,14 +94,45 @@ public class Enemy : NetworkBehaviour
 
     IEnumerator DamageFlicker()
     {
+        if (slowed) 
+            yield break;
+
         for (int i = 0; i < flickerCount; i++)
         {
-            spriteRenderer.color = flickerColor;
+            spriteRenderer.color = Color.red;
             yield return new WaitForSeconds(flickerDuration);
 
             spriteRenderer.color = Color.white;
             yield return new WaitForSeconds(flickerDuration);
         }
+        
+    }
+
+    IEnumerator Slowed(float slowDuration, float slowAmount)
+    {
+        slowed = true;
+        float normalSpeed = MoveSpeed;
+        if (slowAmount == 1f)
+        {
+            rig.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else
+        {
+            MoveSpeed *= 1 - slowAmount;
+        }
+        spriteRenderer.color = new Color(0, 200, 255, 255);
+        yield return new WaitForSeconds(slowDuration);
+        spriteRenderer.color = Color.white;
+        if (slowAmount == 1f)
+        {
+            rig.constraints = RigidbodyConstraints2D.None;
+            rig.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+        else
+        {
+            MoveSpeed = normalSpeed;
+        }
+        slowed = false;
     }
 
     IEnumerator Wander()
@@ -115,8 +146,8 @@ public class Enemy : NetworkBehaviour
         float wanderStartTime = Time.time;
         while (Time.time < wanderStartTime + randomWaitTime)
         {
-            rb.velocity = randomDirection * moveSpeed;
-            rb.velocity = rb.velocity.normalized * moveSpeed;
+            rig.velocity = randomDirection * moveSpeed;
+            rig.velocity = rig.velocity.normalized * moveSpeed;
             yield return null;
         }
 
@@ -147,6 +178,11 @@ public class Enemy : NetworkBehaviour
                 currentState = EnemyState.Idle;
             }
         }
+    }
+
+    public void GetSlowed(float slowDuration, float slowAmount)
+    {
+        StartCoroutine(Slowed(slowDuration, slowAmount));
     }
 
     public void LoseHealth(float amount)
@@ -182,5 +218,11 @@ public class Enemy : NetworkBehaviour
     {
         get { return maxRessource; }
         set { maxRessource = value; }
+    }
+
+    public float MoveSpeed
+    {
+        get { return moveSpeed; }
+        set { moveSpeed = value; }
     }
 }

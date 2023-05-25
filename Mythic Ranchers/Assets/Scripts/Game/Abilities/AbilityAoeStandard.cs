@@ -19,14 +19,15 @@ public class AbilityAoeStandard : NetworkBehaviour
     {
         if (collision.GetContact(0).collider is BoxCollider2D)
         {
-            if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>())
+            collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);
+        }
+        if (!ability.helpful && collision.gameObject.GetComponent<Enemy>())
+        {
+            if (ability.slow)
             {
-                collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);
+                collision.gameObject.GetComponent<Enemy>().GetSlowed(ability.slowDuration, ability.slowAmount);
             }
-            if (!ability.helpful && collision.gameObject.GetComponent<Enemy>())
-            {
-                collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);
-            }
+            collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);
         }
     }
 }

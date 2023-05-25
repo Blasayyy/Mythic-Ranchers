@@ -48,5 +48,14 @@ public class AbilityProjectile : NetworkBehaviour
             }
             Destroy(this.gameObject);
         }
+        if (!ability.helpful && collision.gameObject.GetComponent<Enemy>())
+        {
+            if (ability.slow)
+            {
+                collision.gameObject.GetComponent<Enemy>().GetSlowed(ability.slowDuration, ability.slowAmount);
+            }
+            collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);
+        }
+        Destroy(this.gameObject);
     }
 }
