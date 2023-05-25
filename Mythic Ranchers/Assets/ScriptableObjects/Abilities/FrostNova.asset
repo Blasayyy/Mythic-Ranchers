@@ -16,10 +16,10 @@ MonoBehaviour:
   abilityName: Frost Nova
   range: 0
   potency: 3
-  radius: 3
+  radius: 5
   cooldown: 10
   cost: 6
-  duration: 3
+  duration: 1.02
   tick: 0
   helpful: 0
   slow: 1
