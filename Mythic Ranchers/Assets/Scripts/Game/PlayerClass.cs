@@ -19,9 +19,9 @@ public class PlayerClass : NetworkBehaviour
     private bool facingRight;
     public float flickerDuration = 0.1f;
     public int flickerCount = 5;
-    private Color flickerColor = Color.red;
     private SpriteRenderer spriteRenderer;
     private int frameCount;
+    private bool slowed;
 
     private string playerName;
     private string className;
@@ -291,7 +291,11 @@ public class PlayerClass : NetworkBehaviour
             float damage = 1;
             LoseHealth(damage);
             healthBar.SetHealth(CurrentHp, MaxHp);
-            StartCoroutine(DamageFlicker());
+            StartCoroutine(Slowed(2f, 0.25f));
+            if (!slowed)
+            {
+                StartCoroutine(DamageFlicker());
+            }
 
         }
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Items" && control)
@@ -306,13 +310,47 @@ public class PlayerClass : NetworkBehaviour
         invulnerable = true;
         for (int i = 0; i < flickerCount; i++)
         {
-            spriteRenderer.color = flickerColor;
+            spriteRenderer.color = Color.red;
             yield return new WaitForSeconds(flickerDuration);
 
             spriteRenderer.color = Color.white;
             yield return new WaitForSeconds(flickerDuration);
         }
         invulnerable = false;
+    }
+
+    private IEnumerator Slowed(float slowDuration, float slowAmount)
+    {
+        slowed = true;
+        float normalSpeed = MoveSpeed;
+        if (slowAmount == 1f)
+        {
+            rig.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else
+        {
+            MoveSpeed *=  1 - slowAmount;
+        }
+        if (ClassName == "Berzerker")
+        {
+            spriteRenderer.color = new Color(0, 150, 255, 255);
+        }
+        else if (ClassName == "Necromancer")
+        {
+            spriteRenderer.color = new Color(75, 255, 255, 255);
+        }
+        yield return new WaitForSeconds(slowDuration);
+        spriteRenderer.color = Color.white;
+        if (slowAmount == 1f)
+        {
+            rig.constraints = RigidbodyConstraints2D.None;
+            rig.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+        else
+        {                        
+            MoveSpeed = normalSpeed;
+        }
+        slowed = false;
     }
 
     public void SetControllOff()

@@ -26,7 +26,6 @@ public class AbilityManager : MonoBehaviour
         }
     }
 
-
     public void FindSlot(Ability ability)
     {
         for (int i = 0; i < talentTreeSlots.Length; i++)

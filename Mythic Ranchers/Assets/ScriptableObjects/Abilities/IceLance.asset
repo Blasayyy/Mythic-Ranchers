@@ -16,13 +16,16 @@ MonoBehaviour:
   abilityName: Ice Lance
   range: 7
   potency: 4
-  radius: 2
+  radius: 1
   cooldown: 4
   cost: 3
   duration: 0
   tick: 0
   helpful: 0
+  slow: 1
+  slowDuration: 2
+  slowAmount: 0.25
   image: {fileID: -292507228, guid: c2fe9ec6522f9f44582cf0fdf0b61dd8, type: 3}
-  tooltip: "Ice Lance\n-\r\nProjectile\n-\r\nCosts: 4 Mana\r\n-\r\nLaunches an ice
-    lance at your target location, dealing 4 damage\n at the first enemy hit and
-    slows them for 2 seconds"
+  tooltip: "Ice Lance\n-\r\nProjectile - Slow\n-\r\nCosts: 4 Mana\r\n-\r\nLaunches
+    an ice lance at your target location, dealing 4 damage\n at the first enemy hit
+    and slows them by 25% for 2 seconds"

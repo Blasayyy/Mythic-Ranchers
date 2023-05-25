@@ -262,6 +262,9 @@ MonoBehaviour:
   healthBar: {fileID: 8315317484443068076}
   ressourceBar: {fileID: 1669995014673588223}
   control: 1
+  invulnerable: 0
+  flickerDuration: 0.1
+  flickerCount: 5
 --- !u!1001 &225533776457360532
 PrefabInstance:
   m_ObjectHideFlags: 0

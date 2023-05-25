@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class AbilityProjectile : NetworkBehaviour
+public class EnemyProjectile : NetworkBehaviour
 {
     [SerializeField]
     private Ability ability;
@@ -46,7 +46,7 @@ public class AbilityProjectile : NetworkBehaviour
     {
         if (collision.gameObject.GetComponent<Enemy>())
         {
-            collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.damage);
+            collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);
         }
         Destroy(this.gameObject);
     }

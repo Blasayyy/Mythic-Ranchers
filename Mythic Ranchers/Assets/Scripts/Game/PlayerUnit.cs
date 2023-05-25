@@ -70,7 +70,6 @@ public class PlayerUnit : PlayerClass
         MaxRessource = 20;
         CurrentRessource = MaxRessource;
         RessourceType = "mana";
-        ClassName = "necromancer";
         //
         
         base.Start();

@@ -42,7 +42,7 @@ public class CharacterData
     private string name;
     private string username;
     private int level;
-    private int experiencPoints;
+    private int experiencePoints;
     private string className;
     private int currentKey;
     private List<EquipmentData> equipmentList;
@@ -54,7 +54,7 @@ public class CharacterData
         this.name = name;
         this.username = username;
         this.level = level;
-        this.experiencPoints = experience_points;
+        this.experiencePoints = experience_points;
         this.className = className;
         this.currentKey = current_key;
         this.equipmentList = equipmentList;
@@ -67,7 +67,7 @@ public class CharacterData
     public string Name { get => name; set => name = value; }
     public string Username { get => username; set => username = value; }
     public int Level { get => level; set => level = value; }
-    public int Experience_points { get => experiencPoints; set => experiencPoints = value; }
+    public int Experience_points { get => experiencePoints; set => experiencePoints = value; }
     public string ClassName { get => className; set => className = value; }
     public int Current_key { get => currentKey; set => currentKey = value; }
     public List<EquipmentData> EquipmentList { get => equipmentList; set => equipmentList = value; }

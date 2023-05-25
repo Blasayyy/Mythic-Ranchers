@@ -23,6 +23,10 @@ public class AbilityAoeStandard : NetworkBehaviour
         }
         if (!ability.helpful && collision.gameObject.GetComponent<Enemy>())
         {
+            if (ability.slow)
+            {
+                collision.gameObject.GetComponent<Enemy>().GetSlowed(ability.slowDuration, ability.slowAmount);
+            }
             collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);
         }
     }

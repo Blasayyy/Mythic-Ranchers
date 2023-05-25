@@ -159,8 +159,12 @@ MonoBehaviour:
   waitTimeMin: 1
   waitTimeMax: 3
   type: ghoul
+  abilityPrefab: {fileID: 0}
+  abilityScriptable: {fileID: 0}
   healthBar: {fileID: 7755802456960329756}
   ressourceBar: {fileID: 1146966077849260367}
+  flickerDuration: 0.1
+  flickerCount: 2
 --- !u!114 &313718024571396091
 MonoBehaviour:
   m_ObjectHideFlags: 0
