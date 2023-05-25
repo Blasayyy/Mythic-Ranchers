@@ -12,10 +12,20 @@ public class Enemy : NetworkBehaviour
     public float moveSpeed = 2f;
     public float waitTimeMin = 1.0f;
     public float waitTimeMax = 3.0f;
+    public string type;
+    private EnemyState currentState;
+    private Transform target;
     private bool isWandering = false;
     public HealthBar healthBar;
     public RessourceBar ressourceBar;
     private Rigidbody2D rb;
+
+    public enum EnemyState
+    {
+        Wandering,
+        Chasing,
+        Idle
+    }
 
 
     private void Awake()
@@ -30,6 +40,10 @@ public class Enemy : NetworkBehaviour
         currentRessource = maxRessource;
         healthBar.SetHealth(currentHp, maxHp);
         ressourceBar.SetRessource(currentRessource, maxRessource);
+        if (IsServer)
+        {
+            StartCoroutine(Wander());
+        }
     }
 
     // Update is called once per frame
@@ -38,19 +52,22 @@ public class Enemy : NetworkBehaviour
         healthBar.SetHealth(currentHp, maxHp);
         ressourceBar.SetRessource(currentRessource, maxRessource);
 
-        if (IsHost)
+        if (IsHost && currentState == EnemyState.Chasing)
         {
-            if (!isWandering)
-            {
-                StartCoroutine(Wander());
-            }
+            Vector2 direction = (target.position - transform.position).normalized;
+            rb.velocity = direction * moveSpeed;
         }
-        
+        else if(IsHost && currentState == EnemyState.Idle && !isWandering)
+        {
+            StartCoroutine(Wander());
+        }
+
     }
 
     IEnumerator Wander()
     {
         isWandering = true;
+        currentState = EnemyState.Wandering;
 
         Vector2 randomDirection = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
         float randomWaitTime = Random.Range(waitTimeMin, waitTimeMax);
@@ -65,7 +82,31 @@ public class Enemy : NetworkBehaviour
 
         yield return new WaitForSeconds(randomWaitTime);
 
+        currentState = EnemyState.Idle;
         isWandering = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (IsHost)
+        {
+            if (LayerMask.LayerToName(other.gameObject.layer) == "Player")
+            {
+                target = other.transform;
+                currentState = EnemyState.Chasing;
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (IsHost)
+        {
+            if (LayerMask.LayerToName(other.gameObject.layer) == "Player")
+            {
+                currentState = EnemyState.Idle;
+            }
+        }
     }
 
     public void LoseHealth(float amount)
