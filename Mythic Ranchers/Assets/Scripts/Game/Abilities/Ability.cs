@@ -20,6 +20,7 @@ public class Ability : ScriptableObject
     public Sprite image;
 
     [Header("Both")]
+    [TextArea(3, 10)]
     public string tooltip;
 }
 
@@ -27,7 +28,7 @@ public enum AbilityType
 {
     Projectile,
     Frontal,
-    AoeTargetted,
+    AoeTargeted,
     AoeStandard,
     Passive
 }

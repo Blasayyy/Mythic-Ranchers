@@ -8,6 +8,8 @@ public class TooltipFormater : MonoBehaviour
     [SerializeField]
     private Item[] itemList;
     [SerializeField]
+    private Ability[] abilityList;
+    [SerializeField]
     private int characterLimitPerLine;
 
     private void Awake()
@@ -16,6 +18,10 @@ public class TooltipFormater : MonoBehaviour
         foreach (Item item in itemList)
         {
             item.tooltip = FormatTooltip(item.tooltip, characterLimitPerLine);   
+        }
+        foreach (Ability ability in abilityList)
+        {
+            ability.tooltip = FormatTooltip(ability.tooltip, characterLimitPerLine);   
         }
     }
 
@@ -36,7 +42,15 @@ public class TooltipFormater : MonoBehaviour
             }
 
             int spaceIndex = input.LastIndexOf(' ', currentIndex + interval, interval);
-            if (spaceIndex != -1 && spaceIndex >= currentIndex)
+            int hyphenIndex = input.IndexOf('-', currentIndex, interval);
+
+            if (hyphenIndex != -1 && hyphenIndex < currentIndex + interval)
+            {
+                stringBuilder.Append(input.Substring(currentIndex, hyphenIndex - currentIndex));
+                stringBuilder.Append("\n");
+                currentIndex = hyphenIndex + 1;
+            }
+            else if (spaceIndex != -1 && spaceIndex >= currentIndex)
             {
                 stringBuilder.Append(input.Substring(currentIndex, spaceIndex - currentIndex));
                 stringBuilder.Append("\n");

@@ -19,6 +19,7 @@ public class Item : ScriptableObject
 
     [Header("Both")]
     public Sprite image;
+    [TextArea(3, 10)]
     public string tooltip;
     public int stamina, strength, intellect, agility, armor, haste, leech;
 }

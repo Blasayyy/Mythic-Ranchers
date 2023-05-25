@@ -164,7 +164,7 @@ public class PlayerClass : NetworkBehaviour
                 case AbilityType.AoeStandard:
                     anim.SetTrigger("Cast1");
                     break;
-                case AbilityType.AoeTargetted:
+                case AbilityType.AoeTargeted:
                     anim.SetTrigger("Cast1");
                     break;
                 case AbilityType.Frontal:

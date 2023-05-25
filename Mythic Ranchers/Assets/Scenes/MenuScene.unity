@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8759f3076ba044dba9546e58812d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemList:
-  - {fileID: 11400000, guid: 8d5fec7decfd46749b91ebda74677038, type: 2}
+  itemList: []
+  abilityList: []
   characterLimitPerLine: 40
 --- !u!1 &25549450
 GameObject:

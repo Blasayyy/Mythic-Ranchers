@@ -16,10 +16,26 @@ MonoBehaviour:
   abilityName: Void Bolt
   range: 7
   damage: 2
-  aoeRange: 0
+  radius: 0
   cooldown: 2
   cost: 2
   duration: 0
   tick: 0
   image: {fileID: 515776072, guid: 75a86578299c2f74e8da3a215b5fa665, type: 3}
-  tooltip: Launches a void bolt projectile at the target location
+  tooltip: 'Void Bolt
+
+    -
+
+    Projectile
+
+    -
+
+    Costs: 2 Mana
+
+    -
+
+    Launches
+    a void bolt at the target location,
+
+    dealing 2 damage at the first enemy
+    hit'

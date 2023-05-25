@@ -10,17 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e66be03168e97c346a3aefd115a9a542, type: 3}
-  m_Name: ArcaneNova
+  m_Name: FelVortex
   m_EditorClassIdentifier: 
-  type: 3
-  abilityName: Arcane Nova
-  range: 0
-  damage: 6
-  radius: 4
+  type: 2
+  abilityName: Fel Bomb
+  range: 4
+  damage: 2
+  radius: 2
   cooldown: 10
-  cost: 6
-  duration: 3
-  tick: 0
-  image: {fileID: 1574953989, guid: 6264a84849fa3f04ea57f86bc952ced2, type: 3}
-  tooltip: "Arcane Nova\n-\nAoE\n-\nCosts: 6 Mana\n-\nEmits a burst of arcane energy,
-    knocking and \ndamaging nearby enemies for 5 damage"
+  cost: 4
+  duration: 5
+  tick: 1
+  image: {fileID: -1188426393, guid: 7d763f88190d8e348b945e0df40550c9, type: 3}
+  tooltip: 'Fel Vortex
+
+    -
+
+    AoE Targeted
+
+    -
+
+    Costs: 4 Mana
+
+    -
+
+    Spawns
+    a swirling fel vortex, damaging enemies
+
+    within it every 1 second for 5 seconds'

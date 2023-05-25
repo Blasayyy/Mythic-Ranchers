@@ -37,14 +37,29 @@ public class AbilityAoeTargeted : NetworkBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Enemy>())
+        if (ability.tick == 0)
         {
+            return;
+        }
+        if (collision.gameObject.GetComponent<Enemy>())
+        {            
             collision.gameObject.GetComponent<Rigidbody2D>().WakeUp();
             timer += Time.deltaTime;
             if (timer >= ability.tick)
             {
                 collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.damage);
                 timer = 0f;
+            }            
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Enemy>())
+        {
+            if (ability.tick == 0)
+            {
+                collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.damage);
             }
         }
     }

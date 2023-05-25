@@ -22,4 +22,20 @@ MonoBehaviour:
   duration: 1
   tick: 0
   image: {fileID: 21300000, guid: 8347f15af9064b8469c27bd285ea7b76, type: 3}
-  tooltip: Hit the gorund with titanic force, knocking and damaging nearby enemies
+  tooltip: 'Titanic Impact
+
+    -
+
+    AoE
+
+    -
+
+    Costs: 3 Rage
+
+    -
+
+    Slam
+    the gorund with titanic force, knocking and
+
+    damaging nearby enemies for
+    10 damage'
