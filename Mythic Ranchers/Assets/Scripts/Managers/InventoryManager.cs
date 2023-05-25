@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour
 
     public int maxItemStacks = 4;
     public InventorySlot[] inventorySlots;
+    public InventorySlot[] actionBarSlots;
     public GameObject inventoryItemPrefab;
     public GameObject felBombPrefab;
     public GameObject voidboltPrefab;
@@ -106,6 +107,20 @@ public class InventoryManager : MonoBehaviour
             {
                 ChangeSelectedSlot(10);
             }
+        }
+
+        foreach (InventorySlot slot in actionBarSlots)
+        {
+            Ability ability = slot.GetComponentInChildren<InventoryItem>()?.ability;
+            if (ability != null)
+                if (player.CurrentRessource < ability.cost)
+                {
+                    slot.NoRessourceColor();
+                }
+                else
+                {
+                    slot.EnoughRessourceColor();
+                }
         }
     }
 

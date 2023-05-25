@@ -54,7 +54,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
     }
 
-    public bool UseSpell()
+    public bool IsCastable()
     {
         if (isOnCooldown)
         {

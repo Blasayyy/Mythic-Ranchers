@@ -928,6 +928,7 @@ MonoBehaviour:
   image: {fileID: 0}
   selectedColor: {r: 0, g: 0, b: 0, a: 0}
   notSelectedColor: {r: 0, g: 0, b: 0, a: 0}
+  noRessourceColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &58595276 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9092643796491710497, guid: 3747677e93e31464ba489d7eb1c8ec40,
@@ -4866,6 +4867,18 @@ MonoBehaviour:
   - {fileID: 1747968638}
   - {fileID: 410553534}
   - {fileID: 315717603}
+  actionBarSlots:
+  - {fileID: 58595276}
+  - {fileID: 1901994695}
+  - {fileID: 306144459}
+  - {fileID: 128419554}
+  - {fileID: 848828752}
+  - {fileID: 1383480991}
+  - {fileID: 921993012}
+  - {fileID: 437646336}
+  - {fileID: 2123617216}
+  - {fileID: 635970002}
+  - {fileID: 1977295566}
   inventoryItemPrefab: {fileID: 8647086848954568262, guid: 46210baf526604843a9a664ad811314a,
     type: 3}
   felBombPrefab: {fileID: 1850953107961914946, guid: dcd6f281da0c5eb40bf07b451eb08683,
@@ -12480,6 +12493,7 @@ MonoBehaviour:
   image: {fileID: 0}
   selectedColor: {r: 0, g: 0, b: 0, a: 0}
   notSelectedColor: {r: 0, g: 0, b: 0, a: 0}
+  noRessourceColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1174202011 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9092643796491710497, guid: 3747677e93e31464ba489d7eb1c8ec40,
@@ -16868,6 +16882,7 @@ MonoBehaviour:
   image: {fileID: 0}
   selectedColor: {r: 0, g: 0, b: 0, a: 0}
   notSelectedColor: {r: 0, g: 0, b: 0, a: 0}
+  noRessourceColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1863434498 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9092643796491710497, guid: 3747677e93e31464ba489d7eb1c8ec40,

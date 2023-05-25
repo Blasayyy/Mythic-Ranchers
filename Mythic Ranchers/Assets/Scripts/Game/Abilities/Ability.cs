@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 [CreateAssetMenu(menuName = "Scriptable object/Abilities")]
 public class Ability : ScriptableObject
 {
     [Header("Gameplay")]
-    public TileBase tile;
     public AbilityType type;
+    public string abilityName;
     public float range;
     public float damage;
     public float aoeRange;
-    public float ressourceCost;
     public float cooldown;
     public float cost;
+    public float duration;
+    public float tick;
 
     [Header("UI")]
     public Sprite image;

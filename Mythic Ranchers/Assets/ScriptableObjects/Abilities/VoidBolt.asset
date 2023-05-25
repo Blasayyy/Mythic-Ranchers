@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66be03168e97c346a3aefd115a9a542, type: 3}
   m_Name: VoidBolt
   m_EditorClassIdentifier: 
-  tile: {fileID: 0}
   type: 0
+  abilityName: Void Bolt
   range: 7
   damage: 2
   aoeRange: 0
-  ressourceCost: 0
   cooldown: 2
   cost: 2
+  duration: 0
+  tick: 0
   image: {fileID: 515776072, guid: 75a86578299c2f74e8da3a215b5fa665, type: 3}
+  tooltip: Launches a void bolt projectile at the target location

@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66be03168e97c346a3aefd115a9a542, type: 3}
   m_Name: ArcaneNova
   m_EditorClassIdentifier: 
-  tile: {fileID: 0}
   type: 3
+  abilityName: Arcane Nova
   range: 0
   damage: 5
-  aoeRange: 0
-  ressourceCost: 0
+  aoeRange: 4
   cooldown: 10
   cost: 6
+  duration: 3
+  tick: 0
   image: {fileID: 1574953989, guid: 6264a84849fa3f04ea57f86bc952ced2, type: 3}
   tooltip: Emits a burst of arcane energy, damaging nearby enemies for 5 damage.

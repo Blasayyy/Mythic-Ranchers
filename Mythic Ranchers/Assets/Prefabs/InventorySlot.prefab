@@ -121,6 +121,9 @@ MonoBehaviour:
   image: {fileID: 36325662654857688}
   selectedColor: {r: 0.9716981, g: 0.81693953, b: 0.61877, a: 1}
   notSelectedColor: {r: 1, g: 1, b: 1, a: 1}
+  noRessourceColor: {r: 0.509434, g: 0.507031, b: 0.507031, a: 1}
+  noRessourceSelectedColor: {r: 0.5849056, g: 0.53368443, b: 0.41660732, a: 1}
+  selected: 0
 --- !u!1 &4245724356072542555
 GameObject:
   m_ObjectHideFlags: 0

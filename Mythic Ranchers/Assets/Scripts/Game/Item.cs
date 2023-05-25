@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 [CreateAssetMenu(menuName = "Scriptable object/Item")]
 public class Item : ScriptableObject
 {
     [Header("Only gameplay")]
-    public TileBase tile;
+    public string itemName;
     public ItemType type;
     public GearSlot gearSlot;
     public ArmorType ArmorType;

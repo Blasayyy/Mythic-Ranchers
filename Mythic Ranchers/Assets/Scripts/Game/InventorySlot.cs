@@ -12,8 +12,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public SlotType slotType;
     public GearSlot gearSlot;
 
+
     public Image image;
-    public Color selectedColor, notSelectedColor;
+    public Color selectedColor, notSelectedColor, noRessourceColor, noRessourceSelectedColor;
+    public bool selected;
 
     public enum SlotType
     {
@@ -26,11 +28,13 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     private void Awake()
     {
         Deselect();
+        selected = false;
     }
 
     public void Select()
     {
         image.color = selectedColor;
+        selected = true;
     }
 
     public void Deselect()
@@ -38,8 +42,40 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (image)
         {
             image.color = notSelectedColor;
+            selected = false;
         }
     }
+
+    public void NoRessourceColor()
+    {
+        if (image)
+        {
+            if (!selected)
+            {
+                image.color = noRessourceColor;
+            }
+            else if (selected)
+            {
+                image.color = noRessourceSelectedColor;
+            }
+        }
+    }
+
+    public void EnoughRessourceColor()
+    {
+        if (image)
+        {
+            if (!selected)
+            {
+                image.color = notSelectedColor;
+            }
+            else if (selected)
+            {
+                image.color = selectedColor;
+            }
+        }
+    }
+
 
     public void OnDrop(PointerEventData eventData)
     {
