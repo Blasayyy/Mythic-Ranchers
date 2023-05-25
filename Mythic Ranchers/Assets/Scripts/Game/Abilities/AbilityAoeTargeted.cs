@@ -40,6 +40,7 @@ public class AbilityAoeTargeted : NetworkBehaviour
         {
             return;
         }
+
         if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>())
         {
             collision.gameObject.GetComponent<Rigidbody2D>().WakeUp();
@@ -50,27 +51,44 @@ public class AbilityAoeTargeted : NetworkBehaviour
                 timer = 0f;
             }            
         }
-        if (!ability.helpful && collision.gameObject.GetComponent<Enemy>())
+        BoxCollider2D boxCollider = collision.gameObject.GetComponent<BoxCollider2D>();
+        if (boxCollider != null)
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().WakeUp();
-            timer += Time.deltaTime;
-            if (timer >= ability.tick)
+            float distance = Vector2.Distance(this.transform.position, boxCollider.bounds.center);
+            if (distance <= ability.range)
             {
-                collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);
-                timer = 0f;
+                if (!ability.helpful && collision.gameObject.GetComponent<Enemy>())
+                {
+                    collision.gameObject.GetComponent<Rigidbody2D>().WakeUp();
+                    timer += Time.deltaTime;
+                    if (timer >= ability.tick)
+                    {
+                        collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);
+                        timer = 0f;
+                    }
+                }
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>() && ability.tick == 0)
-        {            
-            collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);                        
-        }
-        if (!ability.helpful && collision.gameObject.GetComponent<Enemy>() && ability.tick ==0)
-        {            
-            collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);            
+        BoxCollider2D boxCollider = collision.gameObject.GetComponent<BoxCollider2D>();
+        if (boxCollider != null)
+        {
+            float distance = Vector2.Distance(this.transform.position, boxCollider.bounds.center);
+            if (distance <= ability.range)
+            {
+
+                if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>() && ability.tick == 0)
+                {
+                    collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);
+                }
+                if (!ability.helpful && collision.gameObject.GetComponent<Enemy>() && ability.tick == 0)
+                {
+                    collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);
+                }
+            }
         }
     }
 }

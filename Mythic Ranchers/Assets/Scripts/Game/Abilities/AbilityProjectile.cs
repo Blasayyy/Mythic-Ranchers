@@ -36,9 +36,17 @@ public class AbilityProjectile : NetworkBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>())
+        if (collision.GetContact(0).collider is BoxCollider2D)
         {
-            collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);
+            if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>())
+            {
+                collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);
+            }
+            if (!ability.helpful && collision.gameObject.GetComponent<Enemy>())
+            {
+                collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);
+            }
+            Destroy(this.gameObject);
         }
         if (!ability.helpful && collision.gameObject.GetComponent<Enemy>())
         {

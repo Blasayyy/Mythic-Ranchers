@@ -94,7 +94,7 @@ public class PlayerClass : NetworkBehaviour
 
     public void LoseHealth(float amount)
     {
-        CurrentHp -= amount;
+        CurrentHp -= amount * (1 - 0.01f * stats["armor"]);
     }
 
     public void LoseRessource(float amount)
@@ -273,7 +273,7 @@ public class PlayerClass : NetworkBehaviour
         {
             alive = false;
             anim.SetBool("Alive", false);
-            await Task.Delay(5000);
+            await Task.Delay(3000);
             alive = true;
             control = true;
             anim.SetBool("Alive", true);

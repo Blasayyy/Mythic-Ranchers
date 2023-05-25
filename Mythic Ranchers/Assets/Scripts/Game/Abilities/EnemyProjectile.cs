@@ -8,28 +8,25 @@ public class EnemyProjectile : NetworkBehaviour
     [SerializeField]
     private Ability ability;
     private Rigidbody2D rig;
-    private Animator anim;
     Vector3 initialPosition;
+    private Vector3 direction;
 
     public void Start()
     {
         rig = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorPosition.z = 0;
-        Vector3 direction = cursorPosition - transform.position;
-        direction.Normalize();
         initialPosition = transform.position;
-        rig.velocity = direction * 5.0f;
+        transform.localScale *= ability.radius;
+        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+    }
 
-        if (direction.x < 0)
-        {
-            anim.SetFloat("Left", 1);
-        }
-        else
-        {
-            anim.SetFloat("Right", 1);
-        }
+    public void SetDirection(Vector3 targetPosition)
+    {
+        rig = GetComponent<Rigidbody2D>();
+        direction = (targetPosition - transform.position).normalized;
+        rig.velocity = direction * 5.0f;
     }
 
     private void Update()
@@ -44,16 +41,11 @@ public class EnemyProjectile : NetworkBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Enemy>())
+        if (collision.gameObject.GetComponent<PlayerUnit>())
         {
-            collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);
+            collision.gameObject.GetComponent<PlayerUnit>().LoseHealth(ability.potency);
         }
-        Destroy(this.gameObject);
-    }
 
-    public Ability Ability
-    {
-        get { return ability; }
-        set { ability = value; }
+        Destroy(this.gameObject);
     }
 }

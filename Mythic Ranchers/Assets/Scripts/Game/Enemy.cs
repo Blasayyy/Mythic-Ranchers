@@ -51,6 +51,7 @@ public class Enemy : NetworkBehaviour
             StartCoroutine(Wander());
         }
 
+        
     }
 
     // Update is called once per frame
@@ -63,10 +64,29 @@ public class Enemy : NetworkBehaviour
         {
             Vector2 direction = (target.position - transform.position).normalized;
             rig.velocity = direction * moveSpeed;
+
+            if(type == "ghast")
+            {
+                int random = Random.Range(0, 10);
+                if(random > 8)
+                {
+                    GameObject projectile = Instantiate(abilityPrefab, transform.position, Quaternion.identity);
+                    projectile.GetComponent<EnemyProjectile>().SetDirection(target.position);
+                }
+                
+            }
+            
         }
         else if(IsHost && currentState == EnemyState.Idle && !isWandering)
         {
             StartCoroutine(Wander());
+        }
+
+        if(currentHp <= 0)
+        {
+            NetworkObject netO = GetComponent<NetworkObject>();
+            netO.Despawn();
+            
         }
 
     }

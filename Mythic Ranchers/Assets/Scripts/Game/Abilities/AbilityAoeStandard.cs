@@ -17,7 +17,7 @@ public class AbilityAoeStandard : NetworkBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>())
+        if (collision.GetContact(0).collider is BoxCollider2D)
         {
             collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);
         }
