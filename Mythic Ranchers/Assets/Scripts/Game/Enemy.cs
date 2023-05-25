@@ -21,6 +21,10 @@ public class Enemy : NetworkBehaviour
     public HealthBar healthBar;
     public RessourceBar ressourceBar;
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+    public float flickerDuration = 0.1f;
+    public int flickerCount = 2;
+    private Color flickerColor = Color.red;
 
     public enum EnemyState
     {
@@ -28,7 +32,6 @@ public class Enemy : NetworkBehaviour
         Chasing,
         Idle
     }
-
 
     private void Awake()
     {
@@ -38,6 +41,7 @@ public class Enemy : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentHp = maxHp;
         currentRessource = maxRessource;
         healthBar.SetHealth(currentHp, maxHp);
@@ -78,6 +82,18 @@ public class Enemy : NetworkBehaviour
             StartCoroutine(Wander());
         }
 
+    }
+
+    IEnumerator DamageFlicker()
+    {
+        for (int i = 0; i < flickerCount; i++)
+        {
+            spriteRenderer.color = flickerColor;
+            yield return new WaitForSeconds(flickerDuration);
+
+            spriteRenderer.color = Color.white;
+            yield return new WaitForSeconds(flickerDuration);
+        }
     }
 
     IEnumerator Wander()
@@ -128,6 +144,7 @@ public class Enemy : NetworkBehaviour
     public void LoseHealth(float amount)
     {
         CurrentHp -= amount;
+        StartCoroutine(DamageFlicker());
     }
 
     public void LoseRessource(float amount)

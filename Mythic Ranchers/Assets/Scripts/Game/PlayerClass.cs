@@ -313,7 +313,6 @@ public class PlayerClass : NetworkBehaviour
             yield return new WaitForSeconds(flickerDuration);
         }
         invulnerable = false;
-
     }
 
     public void SetControllOff()
