@@ -57,9 +57,8 @@ public class PlayerUnit : PlayerClass
             CameraFollowPlayer.instance.SetPlayerUnit(this);
         }
 
-        //this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
-        transform.position = new Vector3(0, 0, 0);
-        //this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
+        //transform.position = new Vector3(0, 0, 0);
+        this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;

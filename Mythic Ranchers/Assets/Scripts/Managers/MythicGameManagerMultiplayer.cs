@@ -16,7 +16,7 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
 
     public const int MAX_CHUNK_SIZE = 900;
     private Dictionary<ulong, List<string>> mapDataChunks = new Dictionary<ulong, List<string>>();
-
+    public Dictionary<ulong, string> playerCharacterClasses = new Dictionary<ulong, string>();
 
     private void Awake()
     {
@@ -28,11 +28,12 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
     {
         NetworkManager.Singleton.ConnectionApprovalCallback += NetworkManager_ConnectionApprovalCallback;
         NetworkManager.Singleton.StartHost();
+        AddHostCharacterClass();
     }
 
     private void NetworkManager_ConnectionApprovalCallback(NetworkManager.ConnectionApprovalRequest connectionApprovalRequest, NetworkManager.ConnectionApprovalResponse connectionApprovalResponse)
-    {
-        if(SceneManager.GetActiveScene().name != Loader.Scene.Lobby.ToString())
+    {   
+        if (SceneManager.GetActiveScene().name != Loader.Scene.Lobby.ToString())
         {
             connectionApprovalResponse.Approved = false;
             connectionApprovalResponse.Reason = "Game has already started!";
@@ -59,6 +60,7 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
     {
         Debug.Log("About to call RequestToJoinServerRpc...");
         RequestToJoinServerRpc();
+        RequestCharacterClassServerRpc();
     }
 
     [ClientRpc]
@@ -128,5 +130,45 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
         }
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void RequestCharacterClassServerRpc(ServerRpcParams serverRpcParams = default)
+    {
+        Debug.Log("RequestCharacterClassServerRpc");
+        ulong senderId = serverRpcParams.Receive.SenderClientId;
+        RequestCharacterClassClientRpc(senderId);
+    }
+
+    [ClientRpc]
+    public void RequestCharacterClassClientRpc(ulong senderId, ClientRpcParams clientRpcParams = default)
+    {
+
+        Debug.Log("RequestCharacterClassClientRpc");
+
+        if (NetworkManager.Singleton.IsHost)
+        {
+            return;
+        }
+        // Here we extract the character class from the account manager
+        string className = AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter].ClassName;
+
+        // The client sends back the character class to the server
+        SendCharacterClassServerRpc(className, senderId);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SendCharacterClassServerRpc(string characterClass, ulong senderId, ServerRpcParams serverRpcParams = default)
+    {
+        Debug.Log("SendCharacterClassServerRpc");
+        playerCharacterClasses.Add(senderId, characterClass);
+    }
+
+
+
+
+    public void AddHostCharacterClass()
+    {
+        ulong clientId = NetworkManager.Singleton.LocalClientId;
+        playerCharacterClasses[clientId] = AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter].ClassName;
+    }
 
 }
