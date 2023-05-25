@@ -94,7 +94,7 @@ public class PlayerClass : NetworkBehaviour
 
     public void LoseHealth(float amount)
     {
-        CurrentHp -= amount;
+        CurrentHp -= amount * (1 - 0.01f * stats["armor"]);
     }
 
     public void LoseRessource(float amount)
