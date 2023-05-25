@@ -16,7 +16,7 @@ MonoBehaviour:
   abilityName: Arcane Nova
   range: 0
   damage: 5
-  aoeRange: 4
+  radius: 4
   cooldown: 10
   cost: 6
   duration: 3

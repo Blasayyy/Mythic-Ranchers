@@ -929,6 +929,8 @@ MonoBehaviour:
   selectedColor: {r: 0, g: 0, b: 0, a: 0}
   notSelectedColor: {r: 0, g: 0, b: 0, a: 0}
   noRessourceColor: {r: 0, g: 0, b: 0, a: 0}
+  noRessourceSelectedColor: {r: 0, g: 0, b: 0, a: 0}
+  selected: 0
 --- !u!114 &58595276 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9092643796491710497, guid: 3747677e93e31464ba489d7eb1c8ec40,
@@ -12494,6 +12496,8 @@ MonoBehaviour:
   selectedColor: {r: 0, g: 0, b: 0, a: 0}
   notSelectedColor: {r: 0, g: 0, b: 0, a: 0}
   noRessourceColor: {r: 0, g: 0, b: 0, a: 0}
+  noRessourceSelectedColor: {r: 0, g: 0, b: 0, a: 0}
+  selected: 0
 --- !u!114 &1174202011 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9092643796491710497, guid: 3747677e93e31464ba489d7eb1c8ec40,
@@ -16255,9 +16259,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilities:
-  - {fileID: 11400000, guid: 163f428c75ade7a48aaa8f7d81c68677, type: 2}
-  - {fileID: 11400000, guid: fa47c34d0fda16f4994c9b6fb9d4f0dd, type: 2}
   - {fileID: 11400000, guid: 6b2ab6a94e75a6841b6ce850dc17f538, type: 2}
+  - {fileID: 11400000, guid: fa47c34d0fda16f4994c9b6fb9d4f0dd, type: 2}
+  - {fileID: 11400000, guid: 9cf16aeaf1a641b4fa15115f85080f45, type: 2}
+  - {fileID: 11400000, guid: 163f428c75ade7a48aaa8f7d81c68677, type: 2}
   talentTreeSlots:
   - {fileID: 1863434498}
   - {fileID: 593203772}
@@ -16273,6 +16278,11 @@ MonoBehaviour:
   - {fileID: 1909262556}
   inventoryItemPrefab: {fileID: 8647086848954568262, guid: 46210baf526604843a9a664ad811314a,
     type: 3}
+  abilitiesPrefab:
+  - {fileID: 7754910131343894669, guid: 9e830c47724f45d4d93fa736ec863b16, type: 3}
+  - {fileID: 1850953107961914946, guid: dcd6f281da0c5eb40bf07b451eb08683, type: 3}
+  - {fileID: 519648873323228977, guid: c9f4648dd9d2eca40a4a7df6212b4a95, type: 3}
+  - {fileID: 1850953107961914946, guid: 3d874e1cb32d4bf4f8e17d1918d8b223, type: 3}
   felBombPrefab: {fileID: 1850953107961914946, guid: dcd6f281da0c5eb40bf07b451eb08683,
     type: 3}
   voidboltPrefab: {fileID: 1850953107961914946, guid: 3d874e1cb32d4bf4f8e17d1918d8b223,
@@ -16883,6 +16893,8 @@ MonoBehaviour:
   selectedColor: {r: 0, g: 0, b: 0, a: 0}
   notSelectedColor: {r: 0, g: 0, b: 0, a: 0}
   noRessourceColor: {r: 0, g: 0, b: 0, a: 0}
+  noRessourceSelectedColor: {r: 0, g: 0, b: 0, a: 0}
+  selected: 0
 --- !u!114 &1863434498 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9092643796491710497, guid: 3747677e93e31464ba489d7eb1c8ec40,

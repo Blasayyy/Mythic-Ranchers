@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.Netcode;
+using System.Threading.Tasks;
 
 public class PlayerClass : NetworkBehaviour
 {
@@ -18,10 +19,9 @@ public class PlayerClass : NetworkBehaviour
     private bool facingRight;
     public float flickerDuration = 0.1f;
     public int flickerCount = 5;
-    private Color originalColor;
-    private Color originalColor1;
     private Color flickerColor = Color.red;
     private SpriteRenderer spriteRenderer;
+    private int frameCount;
 
     private string playerName;
     private string className;
@@ -66,8 +66,6 @@ public class PlayerClass : NetworkBehaviour
         facingRight = true;
         healthBar.SetHealth(currentHp, maxHp);
         ressourceBar.SetRessource(CurrentRessource, MaxRessource);
-        originalColor = spriteRenderer.color;
-        originalColor1 = spriteRenderer.material.color;
     }
 
     public void Update()
@@ -87,6 +85,10 @@ public class PlayerClass : NetworkBehaviour
         if (IsOwner)
         {
             Move();
+            if (RegenTick())
+            {
+                Regeneration();
+            }
         }
     }
 
@@ -125,6 +127,26 @@ public class PlayerClass : NetworkBehaviour
             CurrentRessource = CurrentRessource + gain;
         }
     }
+
+    public bool RegenTick()
+    {
+        frameCount += 1;
+
+        if (frameCount >= 120)
+        {
+            frameCount = 0;
+            return true;
+        }
+
+        return false;
+    }
+
+    public void Regeneration()
+    {
+        GetHealed(Stats["stamina"] * 0.1f);
+        GainRessource(Stats["intellect"] * 0.5f);
+    }
+
 
     public void AnimationTrigger(AbilityType abilityType)
     {
@@ -170,8 +192,8 @@ public class PlayerClass : NetworkBehaviour
                     if (itemInSlot.ability.cost <= CurrentRessource && !itemInSlot.isOnCooldown)
                     {
                         AnimationTrigger(itemInSlot.ability.type);
-                        Vector3 target = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
-                        AbilityManager.instance.UseAbility(target, transform.position);                        
+                        //Vector3 target = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
+                        AbilityManager.instance.UseAbility(transform.position);                        
                         LoseRessource(itemInSlot.ability.cost);
                     }
 
@@ -245,12 +267,19 @@ public class PlayerClass : NetworkBehaviour
         }
     }
 
-    private void CheckIfDead()
+    private async void CheckIfDead()
     {
         if (CurrentHp <= 0)
         {
             alive = false;
             anim.SetBool("Alive", false);
+            await Task.Delay(5000);
+            alive = true;
+            control = true;
+            anim.SetBool("Alive", true);
+            CurrentHp = MaxHp / 2;
+            CurrentRessource = MaxRessource / 2;
+            transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
         }
     }
 

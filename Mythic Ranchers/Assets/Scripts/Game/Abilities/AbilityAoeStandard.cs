@@ -5,11 +5,12 @@ using Unity.Netcode;
 
 public class AbilityAoeStandard : NetworkBehaviour
 {
+    [SerializeField]
     private Ability ability;
 
     public void Start()
     {
-        transform.localScale *= ability.aoeRange;
+        transform.localScale *= ability.radius;
         Destroy(gameObject, ability.duration);
     }
 
@@ -22,9 +23,9 @@ public class AbilityAoeStandard : NetworkBehaviour
         }
     }
 
-    public Ability Ability
-    {
-        get { return ability; }
-        set { ability = value; }
-    }
+    //public Ability Ability
+    //{
+    //    get { return ability; }
+    //    set { ability = value; }
+    //}
 }

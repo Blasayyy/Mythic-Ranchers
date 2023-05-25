@@ -10,7 +10,7 @@ public class Ability : ScriptableObject
     public string abilityName;
     public float range;
     public float damage;
-    public float aoeRange;
+    public float radius;
     public float cooldown;
     public float cost;
     public float duration;

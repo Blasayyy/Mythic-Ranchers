@@ -16,7 +16,7 @@ MonoBehaviour:
   abilityName: Fel Bomb
   range: 4
   damage: 2
-  aoeRange: 2
+  radius: 2
   cooldown: 10
   cost: 4
   duration: 5
