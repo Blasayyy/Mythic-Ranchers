@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 [CreateAssetMenu(menuName = "Scriptable object/Abilities")]
 public class Ability : ScriptableObject

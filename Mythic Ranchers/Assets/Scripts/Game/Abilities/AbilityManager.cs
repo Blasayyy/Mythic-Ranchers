@@ -76,7 +76,8 @@ public class AbilityManager : MonoBehaviour
             string abilityName = ability.abilityName;
             if (abilityName == itemInSlot.ability.abilityName)
             {
-                Instantiate(abilitiesPrefab[counter], playerPos, Quaternion.identity);
+                var abilityInstance = Instantiate(abilitiesPrefab[counter], playerPos, Quaternion.identity);
+                abilityInstance.GetComponent<NetworkObject>().Spawn();
                 return true;
             }
             counter++;
