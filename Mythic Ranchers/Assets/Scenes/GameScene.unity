@@ -16262,6 +16262,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6b2ab6a94e75a6841b6ce850dc17f538, type: 2}
   - {fileID: 11400000, guid: fa47c34d0fda16f4994c9b6fb9d4f0dd, type: 2}
   - {fileID: 11400000, guid: 9cf16aeaf1a641b4fa15115f85080f45, type: 2}
+  - {fileID: 11400000, guid: f5f02508e1b88b841af211df96c8a9be, type: 2}
   - {fileID: 11400000, guid: 163f428c75ade7a48aaa8f7d81c68677, type: 2}
   talentTreeSlots:
   - {fileID: 1863434498}
@@ -16282,13 +16283,8 @@ MonoBehaviour:
   - {fileID: 7754910131343894669, guid: 9e830c47724f45d4d93fa736ec863b16, type: 3}
   - {fileID: 1850953107961914946, guid: dcd6f281da0c5eb40bf07b451eb08683, type: 3}
   - {fileID: 519648873323228977, guid: c9f4648dd9d2eca40a4a7df6212b4a95, type: 3}
+  - {fileID: 1850953107961914946, guid: 2b825db783f58894dba49835f562fca0, type: 3}
   - {fileID: 1850953107961914946, guid: 3d874e1cb32d4bf4f8e17d1918d8b223, type: 3}
-  felBombPrefab: {fileID: 1850953107961914946, guid: dcd6f281da0c5eb40bf07b451eb08683,
-    type: 3}
-  voidboltPrefab: {fileID: 1850953107961914946, guid: 3d874e1cb32d4bf4f8e17d1918d8b223,
-    type: 3}
-  arcaneNovaPrefab: {fileID: 7754910131343894669, guid: 9e830c47724f45d4d93fa736ec863b16,
-    type: 3}
 --- !u!4 &1640677791
 Transform:
   m_ObjectHideFlags: 0
@@ -17968,6 +17964,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1902850298973444487, guid: 018475c990f93ed4b8da5079ca3aa6c0,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 104852540225654764, guid: 018475c990f93ed4b8da5079ca3aa6c0,
         type: 3}
       propertyPath: GlobalObjectIdHash

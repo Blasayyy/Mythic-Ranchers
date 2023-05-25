@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e66be03168e97c346a3aefd115a9a542, type: 3}
-  m_Name: ArcaneNova
+  m_Name: UnstableCore
   m_EditorClassIdentifier: 
-  type: 3
-  abilityName: Arcane Nova
-  range: 0
-  damage: 6
-  radius: 4
+  type: 0
+  abilityName: Unstable Core
+  range: 6
+  damage: 3
+  radius: 2
   cooldown: 10
-  cost: 6
+  cost: 10
   duration: 3
-  tick: 0
-  image: {fileID: 1574953989, guid: 6264a84849fa3f04ea57f86bc952ced2, type: 3}
-  tooltip: Emits a burst of arcane energy, damaging nearby enemies for 5 damage.
+  tick: 0.5
+  image: {fileID: 21300000, guid: 0b25c5811a72cbd4383296cd174fbad3, type: 3}
+  tooltip: Twists the nether and spawns an unstable core, damaging nearby enemies
+    rapidly
