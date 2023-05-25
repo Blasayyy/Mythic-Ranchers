@@ -25,14 +25,13 @@ public class PlayerClass : NetworkBehaviour
 
     private string playerName;
     private string className;
-    //private Controller controller; ??
     private Vector3 position;
     private float moveSpeed;
     private float maxHp;
-    private float currentHp;
+    public NetworkVariable<float> currentHp;
+    public NetworkVariable<float> currentRessource;
     private float basicAtkDmg;
     private float basicAtkSpeed;
-    private float currentRessource;
     private float maxRessource;
     private string ressourceType;
     private int level;
@@ -64,7 +63,7 @@ public class PlayerClass : NetworkBehaviour
         alive = true;
         control = true;
         facingRight = true;
-        healthBar.SetHealth(currentHp, maxHp);
+        healthBar.SetHealth(CurrentHp, maxHp);
         ressourceBar.SetRessource(CurrentRessource, MaxRessource, RessourceType);
     }
 
@@ -191,8 +190,7 @@ public class PlayerClass : NetworkBehaviour
                 {
                     if (itemInSlot.ability.cost <= CurrentRessource && !itemInSlot.isOnCooldown)
                     {
-                        AnimationTrigger(itemInSlot.ability.type);
-                        //Vector3 target = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
+                        AnimationTrigger(itemInSlot.ability.type);                        
                         AbilityManager.instance.UseAbility(transform.position);                        
                         LoseRessource(itemInSlot.ability.cost);
                     }
@@ -282,7 +280,6 @@ public class PlayerClass : NetworkBehaviour
             CurrentHp = MaxHp / 2;
             CurrentRessource = MaxRessource / 2;
             anim.SetBool("Alive", true);
-
         }
     }
 
@@ -396,8 +393,8 @@ public class PlayerClass : NetworkBehaviour
 
     public float CurrentHp
     {
-        get { return currentHp; }
-        set { currentHp = value; }
+        get { return currentHp.Value; }
+        set { currentHp.Value = value; }
     }
 
     public float BasicAtkDmg
@@ -414,8 +411,8 @@ public class PlayerClass : NetworkBehaviour
 
     public float CurrentRessource
     {
-        get { return currentRessource; }
-        set { currentRessource = value; }
+        get { return currentRessource.Value; }
+        set { currentRessource.Value = value; }
     }
 
     public float MaxRessource

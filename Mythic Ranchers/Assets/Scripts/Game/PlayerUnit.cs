@@ -20,7 +20,6 @@ public class PlayerUnit : PlayerClass
     public void SetCharacterData(CharacterData characterData)
     {
         this.CharacterData = characterData;
-
         this.PlayerName = characterData.Name;
         this.ClassName = characterData.ClassName;
         this.Position = new Vector3(0, 0, 0);
