@@ -187,7 +187,7 @@ public class InventoryManager : MonoBehaviour
             Item item = itemInSlot.item;
             if (use)
             {
-                player.GetHealed(item.RestoresHealth);
+                player.GainHealth(item.RestoresHealth);
                 player.GainRessource(item.RestoresMana);
 
                 Debug.Log("mana pot consumed + " + item.RestoresMana + " mana");

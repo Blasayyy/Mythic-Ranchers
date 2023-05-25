@@ -4895,6 +4895,7 @@ MonoBehaviour:
     type: 3}
   hotkey: 
   selectedSlot: -1
+  uiGroup: {fileID: 1031393079}
   player: {fileID: 0}
 --- !u!4 &525875333
 Transform:
@@ -16278,6 +16279,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6b2ab6a94e75a6841b6ce850dc17f538, type: 2}
   - {fileID: 11400000, guid: fa47c34d0fda16f4994c9b6fb9d4f0dd, type: 2}
   - {fileID: 11400000, guid: 2f64fc2f10b0b4a4a972946eb02d82d9, type: 2}
+  - {fileID: 11400000, guid: 09f419646b1373a4d9719ccd75960595, type: 2}
+  - {fileID: 11400000, guid: 4b0726f85b5644f41ac1b50cfb5cbb6b, type: 2}
   - {fileID: 11400000, guid: 9cf16aeaf1a641b4fa15115f85080f45, type: 2}
   - {fileID: 11400000, guid: f5f02508e1b88b841af211df96c8a9be, type: 2}
   - {fileID: 11400000, guid: 163f428c75ade7a48aaa8f7d81c68677, type: 2}
@@ -16300,6 +16303,8 @@ MonoBehaviour:
   - {fileID: 7754910131343894669, guid: 9e830c47724f45d4d93fa736ec863b16, type: 3}
   - {fileID: 1850953107961914946, guid: dcd6f281da0c5eb40bf07b451eb08683, type: 3}
   - {fileID: 1850953107961914946, guid: 7ba433c32c489b141887b286f855433d, type: 3}
+  - {fileID: 1850953107961914946, guid: 6cf42ac06a234d1428c0ce7e518708e6, type: 3}
+  - {fileID: 1850953107961914946, guid: a0286000c8432ac48b2ebb763a397238, type: 3}
   - {fileID: 519648873323228977, guid: c9f4648dd9d2eca40a4a7df6212b4a95, type: 3}
   - {fileID: 1850953107961914946, guid: 2b825db783f58894dba49835f562fca0, type: 3}
   - {fileID: 1850953107961914946, guid: 3d874e1cb32d4bf4f8e17d1918d8b223, type: 3}

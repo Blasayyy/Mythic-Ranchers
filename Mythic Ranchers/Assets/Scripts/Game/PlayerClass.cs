@@ -102,7 +102,7 @@ public class PlayerClass : NetworkBehaviour
         CurrentRessource -= amount;
     }
 
-    public void GetHealed(float hp)
+    public void GainHealth(float hp)
     {
         float healthAfterHeal = CurrentHp + hp;
         if (healthAfterHeal > MaxHp)
@@ -143,7 +143,7 @@ public class PlayerClass : NetworkBehaviour
 
     public void Regeneration()
     {
-        GetHealed(Stats["stamina"] * 0.1f);
+        GainHealth(Stats["stamina"] * 0.1f);
         GainRessource(Stats["intellect"] * 0.5f);
     }
 

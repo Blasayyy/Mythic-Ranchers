@@ -15,12 +15,13 @@ MonoBehaviour:
   type: 0
   abilityName: Void Bolt
   range: 7
-  damage: 2
-  radius: 0
+  potency: 0
+  radius: 1
   cooldown: 2
   cost: 2
   duration: 0
   tick: 0
+  helpful: 0
   image: {fileID: 515776072, guid: 75a86578299c2f74e8da3a215b5fa665, type: 3}
   tooltip: 'Void Bolt
 

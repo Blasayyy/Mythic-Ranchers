@@ -14,8 +14,8 @@ TagManager:
   - Player
   - Ennemies
   - Items
-  - Spells
-  - EnemySpells
+  - HarmfulSpells
+  - HelpfulSpells
   - 
   - 
   - 
@@ -53,12 +53,9 @@ TagManager:
   - name: Spells
     uniqueID: 1645966409
     locked: 0
-  - name: EnemySpells
-    uniqueID: 955061729
-    locked: 0
   - name: Player
     uniqueID: 4250941897
     locked: 0
-  - name: New Layer 7
-    uniqueID: 1266535229
+  - name: New Layer 6
+    uniqueID: 955061729
     locked: 0
