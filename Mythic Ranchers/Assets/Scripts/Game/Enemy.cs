@@ -75,6 +75,7 @@ public class Enemy : NetworkBehaviour
                 if(random > 8)
                 {
                     GameObject projectile = Instantiate(abilityPrefab, transform.position, Quaternion.identity);
+                    projectile.GetComponent<NetworkObject>().Spawn();
                     projectile.GetComponent<EnemyProjectile>().SetDirection(target.position);
                 }
                 
