@@ -274,12 +274,12 @@ public class PlayerClass : NetworkBehaviour
             alive = false;
             anim.SetBool("Alive", false);
             await Task.Delay(3000);
+            transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
             alive = true;
             control = true;
-            anim.SetBool("Alive", true);
             CurrentHp = MaxHp / 2;
             CurrentRessource = MaxRessource / 2;
-            transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
+            anim.SetBool("Alive", true);
         }
     }
 

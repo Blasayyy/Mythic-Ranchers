@@ -64,6 +64,7 @@ public class Enemy : NetworkBehaviour
         {
             Vector2 direction = (target.position - transform.position).normalized;
             rb.velocity = direction * moveSpeed;
+            StopCoroutine(Wander());
 
             if(type == "ghast")
             {

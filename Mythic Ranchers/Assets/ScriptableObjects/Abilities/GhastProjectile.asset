@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   abilityName: GhastProjectile
-  range: 6
-  damage: 2
+  range: 10
+  potency: 2
   radius: 1
   cooldown: 0
   cost: 0
   duration: 0
   tick: 0
+  helpful: 0
   image: {fileID: 0}
   tooltip: 
