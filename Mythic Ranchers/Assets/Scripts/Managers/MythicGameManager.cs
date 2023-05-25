@@ -17,7 +17,7 @@ public class MythicGameManager : NetworkBehaviour
     private Transform berzerkerPrefab, necroPrefab;
 
     [SerializeField]
-    private Transform ghoulPrefab;
+    private Transform[] enemyPrefabs;
 
     private bool hasLoaded = false;
 
@@ -90,7 +90,7 @@ public class MythicGameManager : NetworkBehaviour
 
         const float enemySpawnPercentage = 0.2f;
 
-        var enemyPrefab = ghoulPrefab;
+        
 
         for (int roomIndex = 1; roomIndex < roomsList.Count; roomIndex++)
         {
@@ -114,6 +114,8 @@ public class MythicGameManager : NetworkBehaviour
 
             for (int i = 0; i < enemiesToSpawn; i++)
             {
+                Transform enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+
                 if (floorTilesInRoom.Count == 0)
                     break;
 
@@ -121,7 +123,7 @@ public class MythicGameManager : NetworkBehaviour
 
                 Vector2Int tileToSpawnOn = floorTilesInRoom[randomIndex];
 
-                var enemyTransform = Instantiate(enemyPrefab, new Vector3(tileToSpawnOn.x, tileToSpawnOn.y, 0), Quaternion.identity);
+                var enemyTransform = Instantiate(enemyPrefab, new Vector3(tileToSpawnOn.x + 0.5f, tileToSpawnOn.y + 0.5f, 0), Quaternion.identity);
                 enemyTransform.GetComponent<NetworkObject>().Spawn();
 
                 floorTilesInRoom.RemoveAt(randomIndex);

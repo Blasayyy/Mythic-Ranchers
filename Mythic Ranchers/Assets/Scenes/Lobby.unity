@@ -5797,8 +5797,10 @@ MonoBehaviour:
     type: 3}
   necroPrefab: {fileID: 4687180269806577471, guid: 9bd30bcf351aca54d8e21c04bda4f315,
     type: 3}
-  ghoulPrefab: {fileID: 2378052055699585594, guid: 018475c990f93ed4b8da5079ca3aa6c0,
-    type: 3}
+  enemyPrefabs:
+  - {fileID: 2378052055699585594, guid: 018475c990f93ed4b8da5079ca3aa6c0, type: 3}
+  - {fileID: 2378052055699585594, guid: d7fcd6bf8e2789c43a3f7488e116a5da, type: 3}
+  - {fileID: 2378052055699585594, guid: c2287aad0f8506f46b24efd27c7e42a0, type: 3}
 --- !u!4 &2008329251
 Transform:
   m_ObjectHideFlags: 0

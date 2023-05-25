@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 313718024571396091}
   - component: {fileID: -1357579179047993823}
   - component: {fileID: 7335917828652878057}
+  - component: {fileID: 2576205599652764852}
   m_Layer: 7
   m_Name: Ghoul
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 3388312178692389136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6747295897077884819}
@@ -52,7 +53,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.013508201, y: -0.2927164}
+  m_Offset: {x: 0.00974606, y: -0.07784945}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -63,7 +64,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2632199, y: 0.33885854}
+  m_Size: {x: 0.75154245, y: 0.7685925}
   m_EdgeRadius: 0
 --- !u!50 &-8447469601843224889
 Rigidbody2D:
@@ -127,7 +128,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -240162011, guid: edf69e6bad47d7647a4bfd6957997bba, type: 3}
+  m_Sprite: {fileID: -452763521, guid: 7073dba02869d34439199ac3e5f68909, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -157,6 +158,7 @@ MonoBehaviour:
   moveSpeed: 1.5
   waitTimeMin: 1
   waitTimeMax: 3
+  type: ghoul
   healthBar: {fileID: 7755802456960329756}
   ressourceBar: {fileID: 1146966077849260367}
 --- !u!114 &313718024571396091
@@ -213,6 +215,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &2576205599652764852
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388312178692389136}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 6
 --- !u!1001 &2010458980018416164
 PrefabInstance:
   m_ObjectHideFlags: 0
