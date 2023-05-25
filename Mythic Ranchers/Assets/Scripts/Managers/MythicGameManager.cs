@@ -102,7 +102,6 @@ public class MythicGameManager : NetworkBehaviour
                 bool isTrue = tile.x >= room.xMin && tile.x < room.xMax && tile.y >= room.yMin && tile.y < room.yMax;
                 if (isTrue)
                 {
-                    Debug.Log("contianed");
                     if (!mapData.propData.Contains(tile))
                     {
                         floorTilesInRoom.Add(tile);
@@ -110,28 +109,21 @@ public class MythicGameManager : NetworkBehaviour
                 }
             }
 
-            // Calculate how many enemies to spawn in this room.
             int enemiesToSpawn = Mathf.CeilToInt(floorTilesInRoom.Count * enemySpawnPercentage);
 
-            // Randomly pick tiles to spawn enemies on.
+
             for (int i = 0; i < enemiesToSpawn; i++)
             {
-                // If there are no floor tiles left, break out of the loop.
                 if (floorTilesInRoom.Count == 0)
                     break;
 
-                // Randomly pick a tile index.
-                int randomIndex = UnityEngine.Random.Range(0, floorTilesInRoom.Count);
+                int randomIndex = Random.Range(0, floorTilesInRoom.Count);
 
-                // Get the tile at the randomly chosen index.
                 Vector2Int tileToSpawnOn = floorTilesInRoom[randomIndex];
 
-                // Instantiate or spawn your enemy on this tile.
-                // This will depend on your implementation.
                 var enemyTransform = Instantiate(enemyPrefab, new Vector3(tileToSpawnOn.x, tileToSpawnOn.y, 0), Quaternion.identity);
                 enemyTransform.GetComponent<NetworkObject>().Spawn();
 
-                // Remove the chosen tile from the list to avoid spawning multiple enemies on the same tile.
                 floorTilesInRoom.RemoveAt(randomIndex);
             }
         }

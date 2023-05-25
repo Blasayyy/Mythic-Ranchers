@@ -85,7 +85,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!212 &7074622070564483529
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -154,6 +154,9 @@ MonoBehaviour:
   maxHp: 40
   currentRessource: 0
   maxRessource: 5
+  moveSpeed: 1.5
+  waitTimeMin: 1
+  waitTimeMax: 3
   healthBar: {fileID: 7755802456960329756}
   ressourceBar: {fileID: 1146966077849260367}
 --- !u!114 &313718024571396091
