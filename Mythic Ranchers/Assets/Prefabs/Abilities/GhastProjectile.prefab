@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 6990594668371729917}
   - component: {fileID: -5793713242073453342}
   - component: {fileID: 889317811374819721}
-  - component: {fileID: -5052373086186855525}
   m_Layer: 11
   m_Name: GhastProjectile
   m_TagString: Untagged
@@ -191,8 +190,8 @@ MonoBehaviour:
   SyncPositionX: 1
   SyncPositionY: 1
   SyncPositionZ: 0
-  SyncRotAngleX: 0
-  SyncRotAngleY: 0
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
   SyncRotAngleZ: 0
   SyncScaleX: 1
   SyncScaleY: 1
@@ -227,17 +226,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: ac01e6e0a86404940b2d97c9508ed570, type: 2}
---- !u!114 &-5052373086186855525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850953107961914946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TransitionStateInfoList: []
-  m_Animator: {fileID: 4729888347030225804}
