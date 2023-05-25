@@ -26,6 +26,7 @@ public class PlayerUnit : PlayerClass
         this.Position = new Vector3(0, 0, 0);
         this.MoveSpeed = characterData.Stats["haste"] + 2.0f;
         this.MaxHp = characterData.Stats["stamina"] * 10 + 100;
+        this.CurrentHp = MaxHp;
         this.BasicAtkDmg = characterData.Stats["strength"] * 1.5f + 5f;
         this.BasicAtkSpeed = characterData.Stats["haste"] + 5f;
         this.MaxRessource = characterData.Stats["intellect"] * 10 + 100f;
@@ -65,9 +66,9 @@ public class PlayerUnit : PlayerClass
 
 
         // temporaire pour tester
-        MaxHp = 5;
-        CurrentHp = MaxHp;
-        MaxRessource = 20;
+        //MaxHp = 5;
+        //CurrentHp = MaxHp;
+        //MaxRessource = 20;
         CurrentRessource = MaxRessource;
         RessourceType = "mana";
         //
