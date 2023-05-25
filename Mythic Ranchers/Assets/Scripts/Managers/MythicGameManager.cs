@@ -47,8 +47,14 @@ public class MythicGameManager : NetworkBehaviour
         hasLoaded = true;
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
         {
-            CharacterData data = AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter];
-            if (data.ClassName == "berzerker")
+            if (!MythicGameManagerMultiplayer.Instance.playerCharacterClasses.ContainsKey(clientId))
+            {
+                Debug.Log("No character data found for client ID: " + clientId);
+                continue;
+            }
+
+            string characterClass = MythicGameManagerMultiplayer.Instance.playerCharacterClasses[clientId];
+            if (characterClass == "Berzerker")
             {
                  playerTransform = Instantiate(berzerkerPrefab);
             } 

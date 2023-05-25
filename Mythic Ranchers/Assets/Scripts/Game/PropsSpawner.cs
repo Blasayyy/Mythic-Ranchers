@@ -57,7 +57,7 @@ public class PropsSpawner : MonoBehaviour
     public static void SpawnSprites(Vector2Int position, GameObject spriteGameObjectPrefab)
     {
         GameObject newGameObject = Instantiate(spriteGameObjectPrefab, new Vector3(position.x, position.y, 0), Quaternion.identity);
-
+        newGameObject.GetComponent<NetworkObject>().Spawn();
     }
 
 
