@@ -5,7 +5,7 @@ using Unity.Netcode;
 
 public class Enemy : NetworkBehaviour
 {
-    public float currentHp;
+    public NetworkVariable<float> currentHp;
     public float maxHp;
     public float currentRessource;
     public float maxRessource;
@@ -42,9 +42,9 @@ public class Enemy : NetworkBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHp = maxHp;
+        currentHp.Value = maxHp;
         currentRessource = maxRessource;
-        healthBar.SetHealth(currentHp, maxHp);
+        healthBar.SetHealth(currentHp.Value, maxHp);
         ressourceBar.SetRessource(currentRessource, maxRessource);
         if (IsServer)
         {
@@ -57,7 +57,7 @@ public class Enemy : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBar.SetHealth(currentHp, maxHp);
+        healthBar.SetHealth(currentHp.Value, maxHp);
         ressourceBar.SetRessource(currentRessource, maxRessource);
 
         if (IsHost && currentState == EnemyState.Chasing)
@@ -83,7 +83,7 @@ public class Enemy : NetworkBehaviour
             StartCoroutine(Wander());
         }
 
-        if(currentHp <= 0)
+        if(currentHp.Value <= 0)
         {
             NetworkObject netO = GetComponent<NetworkObject>();
             netO.Despawn();
@@ -198,8 +198,8 @@ public class Enemy : NetworkBehaviour
 
     public float CurrentHp
     {
-        get { return currentHp; }
-        set { currentHp = value; }
+        get { return currentHp.Value; }
+        set { currentHp.Value = value; }
     }
 
     public float MaxHp
