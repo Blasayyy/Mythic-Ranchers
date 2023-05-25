@@ -8,33 +8,24 @@ public class RessourceBar : NetworkBehaviour
 {
     public Slider ressourceSlider;
     [SerializeField]
-    public Color manaColor, rageColor, energyColor;    
+    public Color manaColor, rageColor, energyColor;
     [SerializeField]
     public Vector3 offset;
-    private PlayerUnit player;
 
-
-    private void Start()
-    {
-        if (GetComponentInParent<PlayerUnit>())
-        {
-            player = GetComponentInParent<PlayerUnit>();
-        }
-    }
-
-    public void SetRessource(float currentRessource, float maxRessource)
+    public void SetRessource(float currentRessource, float maxRessource, string ressourceType)
     {
         ressourceSlider.value = currentRessource;
         ressourceSlider.maxValue = maxRessource;
-        if (!player || player.RessourceType == "mana")
+        ressourceSlider.fillRect.GetComponentInChildren<Image>().color = manaColor;
+        if (ressourceType == "mana")
         {
             ressourceSlider.fillRect.GetComponentInChildren<Image>().color = manaColor;
         }
-        else if (player.RessourceType == "rage")
+        else if (ressourceType == "rage")
         {
             ressourceSlider.fillRect.GetComponentInChildren<Image>().color = rageColor;
         }
-        else if (player.RessourceType == "energy")
+        else if (ressourceType == "energy")
         {
             ressourceSlider.fillRect.GetComponentInChildren<Image>().color = energyColor;
         }
@@ -44,4 +35,9 @@ public class RessourceBar : NetworkBehaviour
     {
         ressourceSlider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
     }
+
+    //private void Update()
+    //{        
+    //    ressourceSlider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
+    //}
 }
