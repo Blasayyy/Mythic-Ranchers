@@ -151,10 +151,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099f35f65ba2a0648808f33b568febd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHp: 0
+  currentHp:
+    m_InternalValue: 0
   maxHp: 40
   currentRessource: 0
   maxRessource: 5
+  ressourceType: mana
   moveSpeed: 1.5
   waitTimeMin: 1
   waitTimeMax: 3
@@ -164,6 +166,9 @@ MonoBehaviour:
   abilityScriptable: {fileID: 11400000, guid: ac01e6e0a86404940b2d97c9508ed570, type: 2}
   healthBar: {fileID: 7755802456960329756}
   ressourceBar: {fileID: 1146966077849260367}
+  flickerDuration: 0.1
+  flickerCount: 2
+  boxCollider: {fileID: 0}
 --- !u!114 &313718024571396091
 MonoBehaviour:
   m_ObjectHideFlags: 0

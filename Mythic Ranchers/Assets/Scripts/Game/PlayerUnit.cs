@@ -24,6 +24,7 @@ public class PlayerUnit : PlayerClass
         this.ClassName = characterData.ClassName;
         this.Position = new Vector3(0, 0, 0);
         this.MoveSpeed = characterData.Stats["haste"] + 2.0f;
+        this.InitialMoveSpeed = characterData.Stats["haste"] + 2.0f;
         this.MaxHp = characterData.Stats["stamina"] * 10 + 100;
         this.CurrentHp = MaxHp;
         this.BasicAtkDmg = characterData.Stats["strength"] * 1.5f + 5f;

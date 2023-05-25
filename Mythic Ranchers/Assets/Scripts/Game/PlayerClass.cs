@@ -27,6 +27,7 @@ public class PlayerClass : NetworkBehaviour
     private string className;
     private Vector3 position;
     private float moveSpeed;
+    private float initialMoveSpeed;
     private float maxHp;
     public NetworkVariable<float> currentHp;
     public NetworkVariable<float> currentRessource;
@@ -267,18 +268,27 @@ public class PlayerClass : NetworkBehaviour
 
     private async void CheckIfDead()
     {
+        if (!alive)
+        {
+            return;
+        }
+
         if (CurrentHp <= 0)
         {
-            MythicGameManagerMultiplayer.Instance.DeathsCount.Value += 1;
-            MythicGameManagerMultiplayer.Instance.TimerCount.Value -= 10;
             alive = false;
             anim.SetBool("Alive", false);
+            rig.constraints = RigidbodyConstraints2D.FreezeAll;
             await Task.Delay(3000);
             transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
             alive = true;
             control = true;
             CurrentHp = MaxHp / 2;
             CurrentRessource = MaxRessource / 2;
+            MoveSpeed = InitialMoveSpeed;
+            rig.constraints = RigidbodyConstraints2D.FreezeRotation;
+            StopAllCoroutines();
+            MythicGameManagerMultiplayer.Instance.DeathsCount.Value += 1;
+            MythicGameManagerMultiplayer.Instance.TimerCount.Value -= 10;
             anim.SetBool("Alive", true);
         }
     }
@@ -383,6 +393,12 @@ public class PlayerClass : NetworkBehaviour
     {
         get { return moveSpeed; }
         set { moveSpeed = value; }
+    }
+
+    public float InitialMoveSpeed
+    {
+        get { return initialMoveSpeed; }
+        set { initialMoveSpeed = value; }
     }
 
     public float MaxHp
