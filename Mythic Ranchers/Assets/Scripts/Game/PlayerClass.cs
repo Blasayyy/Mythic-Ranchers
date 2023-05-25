@@ -292,7 +292,6 @@ public class PlayerClass : NetworkBehaviour
         {
             float damage = 15;
             LoseHealth(damage);
-            healthBar.SetHealth(CurrentHp, MaxHp);
             StartCoroutine(Slowed(2f, 0.25f));
             if (!slowed)
             {

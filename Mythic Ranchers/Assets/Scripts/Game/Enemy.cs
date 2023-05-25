@@ -48,7 +48,7 @@ public class Enemy : NetworkBehaviour
         currentHp.Value = maxHp;
         currentRessource = maxRessource;
         healthBar.SetHealth(currentHp.Value, maxHp);
-        ressourceBar.SetRessource(currentRessource, maxRessource);
+        ressourceBar.SetRessource(currentRessource, maxRessource, ressourceType);
         if (IsServer)
         {
             StartCoroutine(Wander());
@@ -61,7 +61,7 @@ public class Enemy : NetworkBehaviour
     void Update()
     {
         healthBar.SetHealth(currentHp.Value, maxHp);
-        ressourceBar.SetRessource(currentRessource, maxRessource);
+        ressourceBar.SetRessource(currentRessource, maxRessource, ressourceType);
 
         if (IsHost && currentState == EnemyState.Chasing)
         {
