@@ -15,6 +15,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject voidboltPrefab;
     public string hotkey;
     public int selectedSlot = -1;
+    public GameObject uiGroup;
 
     public PlayerUnit player;
 
@@ -106,6 +107,11 @@ public class InventoryManager : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.V))
             {
                 ChangeSelectedSlot(10);
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                bool isActive = uiGroup.activeSelf;
+                uiGroup.SetActive(!isActive);
             }
         }
 
