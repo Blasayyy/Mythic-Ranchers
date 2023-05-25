@@ -16,8 +16,7 @@ public class AbilityAoeTargeted : NetworkBehaviour
         cursorWorldPosition.z = 0;
         playerPosition = transform.position;
 
-        direction = cursorWorldPosition - playerPosition;
-        direction.Normalize();
+        direction = (cursorWorldPosition - playerPosition).normalized;
         transform.localScale *= ability.radius;
 
         // Check if the target position is within the range
@@ -41,32 +40,37 @@ public class AbilityAoeTargeted : NetworkBehaviour
         {
             return;
         }
-        if (collision.gameObject.GetComponent<Enemy>())
-        {            
+        if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>())
+        {
             collision.gameObject.GetComponent<Rigidbody2D>().WakeUp();
             timer += Time.deltaTime;
             if (timer >= ability.tick)
             {
-                collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.damage);
+                collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);
                 timer = 0f;
             }            
+        }
+        if (!ability.helpful && collision.gameObject.GetComponent<Enemy>())
+        {
+            collision.gameObject.GetComponent<Rigidbody2D>().WakeUp();
+            timer += Time.deltaTime;
+            if (timer >= ability.tick)
+            {
+                collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);
+                timer = 0f;
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Enemy>())
-        {
-            if (ability.tick == 0)
-            {
-                collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.damage);
-            }
+        if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>() && ability.tick == 0)
+        {            
+            collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);                        
         }
-    }
-
-    public Ability Ability
-    {
-        get { return ability; }
-        set { ability = value; }
+        if (!ability.helpful && collision.gameObject.GetComponent<Enemy>() && ability.tick ==0)
+        {            
+            collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);            
+        }
     }
 }

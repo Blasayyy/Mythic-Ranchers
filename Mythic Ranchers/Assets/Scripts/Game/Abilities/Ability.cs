@@ -9,12 +9,13 @@ public class Ability : ScriptableObject
     public AbilityType type;
     public string abilityName;
     public float range;
-    public float damage;
+    public float potency;
     public float radius;
     public float cooldown;
     public float cost;
     public float duration;
     public float tick;
+    public bool helpful;
 
     [Header("UI")]
     public Sprite image;

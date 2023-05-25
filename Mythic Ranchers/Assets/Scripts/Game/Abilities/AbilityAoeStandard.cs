@@ -17,15 +17,13 @@ public class AbilityAoeStandard : NetworkBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Enemy>())
+        if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>())
         {
-            collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.damage);
+            collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);
+        }
+        if (!ability.helpful && collision.gameObject.GetComponent<Enemy>())
+        {
+            collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);
         }
     }
-
-    //public Ability Ability
-    //{
-    //    get { return ability; }
-    //    set { ability = value; }
-    //}
 }

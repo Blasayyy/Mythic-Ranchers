@@ -15,12 +15,13 @@ MonoBehaviour:
   type: 2
   abilityName: Goblin Charge
   range: 4
-  damage: 8
+  potency: 8
   radius: 5
   cooldown: 8
   cost: 4
   duration: 1
   tick: 0
+  helpful: 0
   image: {fileID: 21300000, guid: 9ac2965dd6ad5174aaaa53d964f56a25, type: 3}
   tooltip: 'Goblin Charge
 
