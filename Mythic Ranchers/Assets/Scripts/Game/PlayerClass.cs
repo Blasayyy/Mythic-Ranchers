@@ -273,7 +273,7 @@ public class PlayerClass : NetworkBehaviour
         {
             alive = false;
             anim.SetBool("Alive", false);
-            await Task.Delay(5000);
+            await Task.Delay(3000);
             alive = true;
             control = true;
             anim.SetBool("Alive", true);

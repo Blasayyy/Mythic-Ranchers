@@ -82,6 +82,13 @@ public class Enemy : NetworkBehaviour
             StartCoroutine(Wander());
         }
 
+        if(currentHp <= 0)
+        {
+            NetworkObject netO = GetComponent<NetworkObject>();
+            netO.Despawn();
+            
+        }
+
     }
 
     IEnumerator DamageFlicker()
