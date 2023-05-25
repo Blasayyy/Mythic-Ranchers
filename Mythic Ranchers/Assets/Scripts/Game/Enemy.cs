@@ -9,6 +9,7 @@ public class Enemy : NetworkBehaviour
     public float maxHp;
     public float currentRessource;
     public float maxRessource;
+    public string ressourceType;
     public float moveSpeed = 2f;
     public float waitTimeMin = 1.0f;
     public float waitTimeMax = 3.0f;
@@ -25,6 +26,8 @@ public class Enemy : NetworkBehaviour
     public float flickerDuration = 0.1f;
     public int flickerCount = 2;
     private bool slowed;
+
+    public BoxCollider2D boxCollider;
 
     public enum EnemyState
     {
@@ -108,6 +111,14 @@ public class Enemy : NetworkBehaviour
         
     }
 
+    public IEnumerator PreventKnockback()
+    {
+        rig.isKinematic = false;
+        yield return new WaitForSeconds(0.1f);
+        rig.isKinematic = true;
+
+    }
+
     IEnumerator Slowed(float slowDuration, float slowAmount)
     {
         slowed = true;
@@ -185,6 +196,11 @@ public class Enemy : NetworkBehaviour
         StartCoroutine(Slowed(slowDuration, slowAmount));
     }
 
+    public void NoKnockback()
+    {
+        StartCoroutine(PreventKnockback());
+    }
+
     public void LoseHealth(float amount)
     {
         CurrentHp -= amount;
@@ -218,6 +234,12 @@ public class Enemy : NetworkBehaviour
     {
         get { return maxRessource; }
         set { maxRessource = value; }
+    }
+
+    public string RessourceType
+    {
+        get { return ressourceType; }
+        set { ressourceType = value; }
     }
 
     public float MoveSpeed

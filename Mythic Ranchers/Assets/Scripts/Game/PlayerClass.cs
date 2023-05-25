@@ -65,7 +65,7 @@ public class PlayerClass : NetworkBehaviour
         control = true;
         facingRight = true;
         healthBar.SetHealth(currentHp, maxHp);
-        ressourceBar.SetRessource(CurrentRessource, MaxRessource);
+        ressourceBar.SetRessource(CurrentRessource, MaxRessource, RessourceType);
     }
 
     public void Update()
@@ -75,7 +75,7 @@ public class PlayerClass : NetworkBehaviour
             CheckIfDead();
             GetInput();
             healthBar.SetHealth(CurrentHp, MaxHp);
-            ressourceBar.SetRessource(CurrentRessource, MaxRessource);
+            ressourceBar.SetRessource(CurrentRessource, MaxRessource, RessourceType);
         }
         
     }
@@ -150,11 +150,11 @@ public class PlayerClass : NetworkBehaviour
 
     public void AnimationTrigger(AbilityType abilityType)
     {
-        if (ClassName == "berzerker")
+        if (ClassName == "Berzerker")
         {
             anim.SetTrigger("Attacking");
         }
-        else if (ClassName == "necromancer")
+        else if (ClassName == "Necromancer")
         {
             switch (abilityType)
             {
@@ -290,8 +290,7 @@ public class PlayerClass : NetworkBehaviour
     {
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Ennemies" && control && !invulnerable)
         {
-            Debug.Log(currentHp);
-            float damage = 1;
+            float damage = 15;
             LoseHealth(damage);
             healthBar.SetHealth(CurrentHp, MaxHp);
             StartCoroutine(Slowed(2f, 0.25f));

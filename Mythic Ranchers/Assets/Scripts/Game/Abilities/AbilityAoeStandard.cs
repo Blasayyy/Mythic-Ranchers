@@ -14,10 +14,18 @@ public class AbilityAoeStandard : NetworkBehaviour
         Destroy(gameObject, ability.duration);
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetContact(0).collider is BoxCollider2D)
+        BoxCollider2D boxCollider = collision.gameObject.GetComponent<BoxCollider2D>();
+        if (boxCollider == null)
+            return;
+        float distance = Vector2.Distance(this.transform.position, boxCollider.bounds.center);
+        if (distance > 2)            
+            return;
+            
+        Debug.Log(distance + " from enemy --------------------------");
+
+        if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>())
         {
             collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);
         }
@@ -28,6 +36,6 @@ public class AbilityAoeStandard : NetworkBehaviour
                 collision.gameObject.GetComponent<Enemy>().GetSlowed(ability.slowDuration, ability.slowAmount);
             }
             collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);
-        }
+        }        
     }
 }

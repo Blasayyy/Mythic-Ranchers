@@ -155,6 +155,7 @@ MonoBehaviour:
   maxHp: 40
   currentRessource: 0
   maxRessource: 5
+  ressourceType: mana
   moveSpeed: 1.5
   waitTimeMin: 1
   waitTimeMax: 3

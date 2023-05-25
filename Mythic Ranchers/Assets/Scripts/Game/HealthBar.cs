@@ -12,20 +12,20 @@ public class HealthBar : NetworkBehaviour
     [SerializeField]
     public Vector3 offset;
 
-    private float health, maxHealth;
-
     public void SetHealth(float health, float maxHealth)
     {
-        this.health = health;
-        this.maxHealth = maxHealth;
         healthSlider.value = health;
         healthSlider.maxValue = maxHealth;
         healthSlider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(lowColor, highColor, healthSlider.normalizedValue);
     }
 
+    private void FixedUpdate()
+    {
+        healthSlider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
+    }
+
     //private void Update()
     //{
-    //    healthSlider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
-
+    //    healthSlider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position);
     //}
 }
