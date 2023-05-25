@@ -45,9 +45,9 @@ public class Enemy : NetworkBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHp.Value = maxHp;
+        CurrentHp = maxHp;
         currentRessource = maxRessource;
-        healthBar.SetHealth(currentHp.Value, maxHp);
+        healthBar.SetHealth(CurrentHp, maxHp);
         ressourceBar.SetRessource(currentRessource, maxRessource, ressourceType);
         if (IsServer)
         {
@@ -60,7 +60,7 @@ public class Enemy : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBar.SetHealth(currentHp.Value, maxHp);
+        healthBar.SetHealth(CurrentHp, maxHp);
         ressourceBar.SetRessource(currentRessource, maxRessource, ressourceType);
 
         if (IsHost && currentState == EnemyState.Chasing)
@@ -87,7 +87,7 @@ public class Enemy : NetworkBehaviour
             StartCoroutine(Wander());
         }
 
-        if(currentHp.Value <= 0)
+        if(CurrentHp <= 0)
         {
             NetworkObject netO = GetComponent<NetworkObject>();
             netO.Despawn();
