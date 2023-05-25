@@ -28,12 +28,12 @@ public class PlayerClass : NetworkBehaviour
     private Vector3 position;
     private float moveSpeed;
     private float initialMoveSpeed;
-    private float maxHp;
     public NetworkVariable<float> currentHp;
+    public NetworkVariable<float> maxHp;
     public NetworkVariable<float> currentRessource;
+    public NetworkVariable<float> maxRessource;
     private float basicAtkDmg;
     private float basicAtkSpeed;
-    private float maxRessource;
     private string ressourceType;
     private int level;
     private string talents;
@@ -64,7 +64,7 @@ public class PlayerClass : NetworkBehaviour
         alive = true;
         control = true;
         facingRight = true;
-        healthBar.SetHealth(CurrentHp, maxHp);
+        healthBar.SetHealth(CurrentHp, MaxHp);
         ressourceBar.SetRessource(CurrentRessource, MaxRessource, RessourceType);
     }
 
@@ -73,11 +73,10 @@ public class PlayerClass : NetworkBehaviour
         if (IsOwner)
         {            
             CheckIfDead();
-            GetInput();
-            healthBar.SetHealth(CurrentHp, MaxHp);
-            ressourceBar.SetRessource(CurrentRessource, MaxRessource, RessourceType);
+            GetInput();            
         }
-        
+        healthBar.SetHealth(CurrentHp, MaxHp);
+        ressourceBar.SetRessource(CurrentRessource, MaxRessource, RessourceType);
     }
 
     public void FixedUpdate()
@@ -94,7 +93,8 @@ public class PlayerClass : NetworkBehaviour
 
     public void LoseHealth(float amount)
     {
-        CurrentHp -= amount * (1 - 0.01f * stats["armor"]);
+        //CurrentHp -= amount * (1 - 0.01f * stats["armor"]);
+        CurrentHp -= amount;
     }
 
     public void LoseRessource(float amount)
@@ -147,7 +147,6 @@ public class PlayerClass : NetworkBehaviour
         GainRessource(Stats["intellect"] * 0.5f);
     }
 
-
     public void AnimationTrigger(AbilityType abilityType)
     {
         if (ClassName == "Berzerker")
@@ -172,7 +171,6 @@ public class PlayerClass : NetworkBehaviour
                     break;
             }
         }
-
     }
 
     private void GetInput()
@@ -403,8 +401,8 @@ public class PlayerClass : NetworkBehaviour
 
     public float MaxHp
     {
-        get { return maxHp; }
-        set { maxHp = value; }
+        get { return maxHp.Value; }
+        set { maxHp.Value = value; }
     }
 
     public float CurrentHp
@@ -433,8 +431,8 @@ public class PlayerClass : NetworkBehaviour
 
     public float MaxRessource
     {
-        get { return maxRessource; }
-        set { maxRessource = value; }
+        get { return maxRessource.Value; }
+        set { maxRessource.Value = value; }
     }
 
     public string RessourceType
