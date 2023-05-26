@@ -20,6 +20,7 @@ public class Ability : ScriptableObject
     public bool slow;
     public float slowDuration;
     public float slowAmount;
+    public string className;
 
     [Header("UI")]
     public Sprite image;

@@ -16,15 +16,16 @@ MonoBehaviour:
   abilityName: Titanic Impact
   range: 0
   potency: 10
-  radius: 2
+  radius: 1.5
   cooldown: 10
   cost: 3
-  duration: 1
+  duration: 0.7
   tick: 0
   helpful: 0
   slow: 0
   slowDuration: 0
   slowAmount: 0
+  className: Berzerker
   image: {fileID: 21300000, guid: 8347f15af9064b8469c27bd285ea7b76, type: 3}
   tooltip: 'Titanic Impact
 

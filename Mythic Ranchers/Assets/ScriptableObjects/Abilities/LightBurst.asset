@@ -22,6 +22,10 @@ MonoBehaviour:
   duration: 1
   tick: 0
   helpful: 1
+  slow: 0
+  slowDuration: 0
+  slowAmount: 0
+  className: Mage
   image: {fileID: -906923749, guid: 3b306df1be9ce244e9ef296730d9190f, type: 3}
   tooltip: "Light Burst\n-\nAoE Targeted\n-\nCosts: 8 Mana\n-\nEmits a burst of holy
     light, healing friendly \nunits in its area for 10 health"

@@ -25,6 +25,7 @@ MonoBehaviour:
   slow: 0
   slowDuration: 0
   slowAmount: 0
+  className: Necromancer
   image: {fileID: 515776072, guid: 75a86578299c2f74e8da3a215b5fa665, type: 3}
   tooltip: 'Void Bolt
 

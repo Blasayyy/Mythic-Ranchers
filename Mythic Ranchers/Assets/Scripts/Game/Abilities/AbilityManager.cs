@@ -12,25 +12,27 @@ public class AbilityManager : MonoBehaviour
     public InventorySlot[] talentTreeSlots;
     public GameObject inventoryItemPrefab;
     public GameObject[] abilitiesPrefab;
+    public PlayerUnit player;
+
+    public void SetPlayerUnit(PlayerUnit playerUnit)
+    {
+        this.player = playerUnit;
+        foreach (Ability ability in abilities)
+        {
+            if (ability.className == player.ClassName)
+                FindSlot(ability);
+        }
+    }
 
     private void Awake()
     {
         instance = this;
     }
 
-    void Start()
-    {
-        for (int i = 0; i < abilities.Length; i++)
-        {
-            FindSlot(abilities[i]);
-        }
-    }
-
     public void FindSlot(Ability ability)
     {
-        for (int i = 0; i < talentTreeSlots.Length; i++)
+        foreach (InventorySlot slot in talentTreeSlots)
         {
-            InventorySlot slot = talentTreeSlots[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot == null)
             {

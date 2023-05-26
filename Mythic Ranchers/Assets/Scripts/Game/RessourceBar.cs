@@ -8,7 +8,7 @@ public class RessourceBar : NetworkBehaviour
 {
     public Slider ressourceSlider;
     [SerializeField]
-    public Color manaColor, rageColor, energyColor;
+    public Color manaColor, energyColor;
     [SerializeField]
     public Vector3 offset;
 
@@ -20,10 +20,6 @@ public class RessourceBar : NetworkBehaviour
         if (ressourceType == "mana")
         {
             ressourceSlider.fillRect.GetComponentInChildren<Image>().color = manaColor;
-        }
-        else if (ressourceType == "rage")
-        {
-            ressourceSlider.fillRect.GetComponentInChildren<Image>().color = rageColor;
         }
         else if (ressourceType == "energy")
         {

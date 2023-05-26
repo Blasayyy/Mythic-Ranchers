@@ -6,7 +6,6 @@ using TMPro;
 
 public class GearManager : MonoBehaviour
 {
-
     public static GearManager instance;
 
     public Item[] gear;
@@ -17,7 +16,6 @@ public class GearManager : MonoBehaviour
     public TextMeshProUGUI staminaValue, strengthValue, intellectValue, agilityValue, armorValue, hasteValue, leechValue;
     [SerializeField]
     public StatText staminaText, strengthText, intellectText, agilityText, armorText, hasteText, leechText;
-
     private PlayerUnit player;
 
     public void SetPlayerUnit(PlayerUnit playerUnit)

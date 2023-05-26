@@ -25,6 +25,7 @@ MonoBehaviour:
   slow: 1
   slowDuration: 3
   slowAmount: 1
+  className: Mage
   image: {fileID: 884788823, guid: 25c0447bc1710724f82fd0aba96eff61, type: 3}
   tooltip: 'Frost Nova
 

@@ -25,6 +25,7 @@ MonoBehaviour:
   slow: 0
   slowDuration: 0
   slowAmount: 0
+  className: Mage
   image: {fileID: 21300000, guid: 0b25c5811a72cbd4383296cd174fbad3, type: 3}
   tooltip: 'Unstable Core
 

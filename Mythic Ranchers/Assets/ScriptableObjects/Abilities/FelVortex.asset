@@ -22,6 +22,10 @@ MonoBehaviour:
   duration: 5
   tick: 1
   helpful: 0
+  slow: 0
+  slowDuration: 0
+  slowAmount: 0
+  className: Necromancer
   image: {fileID: -1188426393, guid: 7d763f88190d8e348b945e0df40550c9, type: 3}
   tooltip: 'Fel Vortex
 
