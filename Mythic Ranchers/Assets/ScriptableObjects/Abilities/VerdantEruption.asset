@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 2
   abilityName: Verdant Eruption
   range: 6
-  potency: 20
+  potency: 15
   radius: 3
   cooldown: 10
   cost: 8

@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 3
   abilityName: Fel Burst
   range: 0
-  potency: 5
+  potency: 8
   radius: 3
   cooldown: 8
   cost: 6
