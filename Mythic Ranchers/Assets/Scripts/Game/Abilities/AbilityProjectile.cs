@@ -8,24 +8,37 @@ public class AbilityProjectile : NetworkBehaviour
     [SerializeField]
     private Ability ability;
     private Rigidbody2D rig;
-    Vector3 initialPosition;
+    Vector3 initialPosition, cursorPosition;
+    private bool isInitialized = false;
 
     public void Start()
     {
         rig = GetComponent<Rigidbody2D>();
-        Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        cursorPosition.z = 0;
-        Vector3 direction = (cursorPosition - transform.position).normalized;
-        initialPosition = transform.position;
         transform.localScale *= ability.radius;
-        rig.velocity = direction * 5.0f;
+    }
 
-        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+    public void InitializeProjectile()
+    {
+        if (!isInitialized)
+        {
+            cursorPosition.z = 0;
+            Vector3 direction = (cursorPosition - initialPosition).normalized;
+            rig.velocity = direction * 5.0f;
+
+            var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+            isInitialized = true;
+        }
     }
 
     private void Update()
     {
+        // Call InitializeProjectile if it wasn't initialized yet
+        if (!isInitialized)
+        {
+            InitializeProjectile();
+        }
+
         float distanceTravelled = Vector3.Distance(transform.position, initialPosition);
 
         if (distanceTravelled >= ability.range)
@@ -52,5 +65,15 @@ public class AbilityProjectile : NetworkBehaviour
             }
         }
         Destroy(this.gameObject);
+    }
+
+    public void SetCursorPos(Vector3 cursorPos)
+    {
+        cursorPosition = cursorPos;
+    }
+
+    public void SetInitialPosition(Vector3 position)
+    {
+        initialPosition = position;
     }
 }

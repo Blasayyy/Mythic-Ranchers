@@ -19,6 +19,7 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
     public NetworkVariable<float> TimerCount { get; private set; } = new NetworkVariable<float>(0f);
 
     public string mapDataJson;
+    public GameObject[] abilitiesPrefab;
 
     public const int MAX_CHUNK_SIZE = 900;
     private Dictionary<ulong, List<string>> mapDataChunks = new Dictionary<ulong, List<string>>();
@@ -173,6 +174,37 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
         StartCoroutine(TimerRoutine());
     }
 
+    public void RequestUseAbility(int abilityIndex, Vector3 playerPos, Vector3 cursorPos)
+    {
+        ServerUseAbilityServerRpc(abilityIndex, playerPos, cursorPos);
+    }
+
+
+    [ServerRpc(RequireOwnership = false)]
+    public void ServerUseAbilityServerRpc(int abilityIndex, Vector3 playerPos, Vector3 cursorPos, ServerRpcParams serverRpcParams = default)
+    {
+        // Instantiate the corresponding ability prefab.
+        var abilityInstance = Instantiate(AbilityManager.instance.abilitiesPrefab[abilityIndex], playerPos, Quaternion.identity);
+
+        var abilityAoeTargeted = abilityInstance.GetComponent<AbilityAoeTargeted>();
+        if(abilityAoeTargeted != null)
+        {
+            abilityAoeTargeted.SetCursorPos(cursorPos);
+        }
+        else
+        {
+            var abilityProjectile = abilityInstance.GetComponent<AbilityProjectile>();
+            if(abilityProjectile != null)
+            {
+                abilityProjectile.SetCursorPos(cursorPos);
+                abilityProjectile.SetInitialPosition(playerPos);
+                abilityProjectile.InitializeProjectile();
+            }
+        }
+
+        abilityInstance.GetComponent<NetworkObject>().Spawn();
+    }
+
     private IEnumerator TimerRoutine()
     {
         while (TimerCount.Value > 0)
@@ -182,6 +214,8 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
         }
     }
 
+
+
     public void AddHostCharacterClass()
     {
         ulong clientId = NetworkManager.Singleton.LocalClientId;
@@ -189,5 +223,4 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
         DungeonKeyLevel.Value = AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter].Current_key;
 
     }
-
 }
