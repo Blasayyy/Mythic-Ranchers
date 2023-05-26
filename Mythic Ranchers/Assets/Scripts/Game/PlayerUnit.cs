@@ -29,8 +29,6 @@ public class PlayerUnit : PlayerClass
         this.CurrentHp = MaxHp;
         this.BasicAtkDmg = characterData.Stats["strength"] * 1.5f + 5f;
         this.BasicAtkSpeed = characterData.Stats["haste"] + 5f;
-        this.MaxRessource = characterData.Stats["intellect"] * 10 + 100f;
-        this.CurrentRessource = MaxRessource;
         this.Level = characterData.Level;
         this.Talents = characterData.Talents;
         this.Xp = characterData.Experience_points;
@@ -42,14 +40,24 @@ public class PlayerUnit : PlayerClass
         this.ArmorType = ArmorType.Mail; // todo
         this.KeyLevel = characterData.Current_key;
 
-        if (ClassName == "Berseker")
+        if (ClassName == "Berzerker")
+        {
+            this.MaxRessource = characterData.Stats["intellect"] * 2 + 40f;
+            this.CurrentRessource = MaxRessource;
             this.RessourceType = "energy";
-
+        }
         else if (ClassName == "Necromancer")
+        {
+            this.MaxRessource = characterData.Stats["intellect"] * 10 + 100f;
+            this.CurrentRessource = MaxRessource;
             this.RessourceType = "mana";
-
+        }
         else if (ClassName == "Mage")
+        {
+            this.MaxRessource = characterData.Stats["intellect"] * 10 + 100f;
+            this.CurrentRessource = MaxRessource;
             this.RessourceType = "mana";
+        }
     }
 
     void Start()
@@ -65,10 +73,11 @@ public class PlayerUnit : PlayerClass
             GearManager.instance.SetPlayerUnit(this);
             InventoryManager.instance.SetPlayerUnit(this);
             CameraFollowPlayer.instance.SetPlayerUnit(this);
+            AbilityManager.instance.SetPlayerUnit(this);
         }
 
         //transform.position = new Vector3(0, 0, 0);
-        this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
+        //this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
         Rigidbody2D rig = GetComponent<Rigidbody2D>();
         rig.bodyType = RigidbodyType2D.Dynamic;
         rig.interpolation = RigidbodyInterpolation2D.Interpolate;

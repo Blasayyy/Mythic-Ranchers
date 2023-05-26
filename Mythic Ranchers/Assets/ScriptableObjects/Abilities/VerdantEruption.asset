@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66be03168e97c346a3aefd115a9a542, type: 3}
+  m_Name: VerdantEruption
+  m_EditorClassIdentifier: 
+  type: 2
+  abilityName: Verdant Eruption
+  range: 0
+  potency: 10
+  radius: 3
+  cooldown: 10
+  cost: 8
+  duration: 2.1
+  tick: 0
+  helpful: 1
+  slow: 0
+  slowDuration: 0
+  slowAmount: 0
+  className: Necromancer
+  image: {fileID: 21300000, guid: fb63fa7391fc2a847986680c81472667, type: 3}
+  tooltip: 'Verdant Eruption
+
+    -
+
+    AoE Targeted Heal
+
+    -
+
+    Costs: 8 Mana
+
+    -
+
+    Erupts
+    a powerful fel tornado at the target location, restoring 10 Health to players
+    within it'

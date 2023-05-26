@@ -144,7 +144,14 @@ public class PlayerClass : NetworkBehaviour
     public void Regeneration()
     {
         GainHealth(Stats["stamina"] * 0.1f);
-        GainRessource(Stats["intellect"] * 0.5f);
+        if (ClassName == "Necromancer" || ClassName == "Mage")
+        {
+            GainRessource(Stats["intellect"] * 0.5f);
+        }
+        else if (ClassName == "Berzerker")
+        {
+            GainRessource(Stats["intellect"] * 0.2f + 5f);
+        }
     }
 
     public void AnimationTrigger(AbilityType abilityType)

@@ -22,6 +22,10 @@ MonoBehaviour:
   duration: 3
   tick: 0
   helpful: 0
+  slow: 0
+  slowDuration: 0
+  slowAmount: 0
+  className: Mage
   image: {fileID: 1574953989, guid: 6264a84849fa3f04ea57f86bc952ced2, type: 3}
   tooltip: "Arcane Nova\n-\nAoE\n-\nCosts: 6 Mana\n-\nEmits a burst of arcane energy,
     knocking and \ndamaging nearby enemies for 5 damage"

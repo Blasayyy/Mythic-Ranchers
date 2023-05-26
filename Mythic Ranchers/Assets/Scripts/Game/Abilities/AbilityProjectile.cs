@@ -26,7 +26,10 @@ public class AbilityProjectile : NetworkBehaviour
             rig.velocity = direction * 5.0f;
 
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+            if (ability.name == "Burning Bolt")
+                transform.rotation = Quaternion.Euler(Vector3.forward * (angle + 270));
+            else
+                transform.rotation = Quaternion.Euler(Vector3.forward * angle);
             isInitialized = true;
         }
     }

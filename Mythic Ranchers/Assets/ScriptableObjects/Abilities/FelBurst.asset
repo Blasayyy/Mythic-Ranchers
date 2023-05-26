@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66be03168e97c346a3aefd115a9a542, type: 3}
+  m_Name: FelBurst
+  m_EditorClassIdentifier: 
+  type: 3
+  abilityName: Fel Burst
+  range: 0
+  potency: 5
+  radius: 3
+  cooldown: 8
+  cost: 6
+  duration: 1.04
+  tick: 0
+  helpful: 0
+  slow: 0
+  slowDuration: 0
+  slowAmount: 0
+  className: Necromancer
+  image: {fileID: 1984020111, guid: 584d0ce934e827145a1f44b72ec45455, type: 3}
+  tooltip: 'Fel Burst
+
+    -
+
+    AoE
+
+    -
+
+    Costs: 6 Mana
+
+    -
+
+    Emits
+    a vicious fel energy burst around
+
+    you, dealing 5 damage to nearby enemies'
