@@ -16,6 +16,7 @@ public class InventoryManager : MonoBehaviour
     public string hotkey;
     public int selectedSlot = -1;
     public GameObject uiGroup;
+    public GameObject demoGroup;
 
     public PlayerUnit player;
 
@@ -112,6 +113,11 @@ public class InventoryManager : MonoBehaviour
             {
                 bool isActive = uiGroup.activeSelf;
                 uiGroup.SetActive(!isActive);
+            }
+            else if (Input.GetKeyDown(KeyCode.P))
+            {
+                bool isDemoActive = demoGroup.activeSelf;
+                demoGroup.SetActive(!isDemoActive);
             }
         }
 
