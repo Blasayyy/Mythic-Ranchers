@@ -44,12 +44,13 @@ public class PlayerUnit : PlayerClass
 
         if (ClassName == "Berseker")
             this.RessourceType = "energy";
+
         else if (ClassName == "Necromancer")
             this.RessourceType = "mana";
+
         else if (ClassName == "Mage")
             this.RessourceType = "mana";
     }
-
 
     void Start()
     {
