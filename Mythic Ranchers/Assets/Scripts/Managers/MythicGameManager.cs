@@ -10,8 +10,7 @@ public class MythicGameManager : NetworkBehaviour
 
     private Dictionary<ulong, CharacterData> playerCharacterData = new Dictionary<ulong, CharacterData>();
 
-    public (List<BoundsInt> roomsList, List<Vector2Int> roomsCenters, HashSet<Vector2Int> floor, (List<(Vector2Int, string)>, List<(Vector2Int, string)>) wallData, HashSet<Vector2Int> propData) mapData; 
-
+    public (List<BoundsInt> roomsList, List<Vector2Int> roomsCenters, HashSet<Vector2Int> floor, (List<(Vector2Int, string)>, List<(Vector2Int, string)>) wallData, HashSet<Vector2Int> propData) mapData;
 
     [SerializeField]
     private Transform berzerkerPrefab, necroPrefab;
@@ -26,7 +25,6 @@ public class MythicGameManager : NetworkBehaviour
         Instance = this;
         DontDestroyOnLoad(this);
     }
-
 
     public override void OnNetworkSpawn()
     {
@@ -72,10 +70,9 @@ public class MythicGameManager : NetworkBehaviour
             playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
             Vector3 firstRoomCenter = mapData.Item1[0].center;
             MythicGameManagerMultiplayer.Instance.PlayerCount.Value += 1;
-            playerTransform.position = firstRoomCenter;
+            //playerTransform.position = firstRoomCenter;
 
             Debug.Log("player : " + clientId + "spawned at location " + playerTransform.position);
-
         }
 
         SpawnEnemiesOnMap();
