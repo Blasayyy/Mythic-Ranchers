@@ -5,6 +5,8 @@ using System.Text;
 
 public class TooltipFormater : MonoBehaviour
 {
+    public static TooltipFormater Instance { get; set; }
+
     [SerializeField]
     private Item[] itemList;
     [SerializeField]
@@ -14,6 +16,7 @@ public class TooltipFormater : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         DontDestroyOnLoad(this);
         foreach (Item item in itemList)
         {

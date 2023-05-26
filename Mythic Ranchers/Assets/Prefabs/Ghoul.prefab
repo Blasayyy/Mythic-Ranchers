@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2576205599652764852}
   m_Layer: 7
   m_Name: Ghoul
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,8 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099f35f65ba2a0648808f33b568febd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHp: 0
-  maxHp: 40
+  currentHp:
+    m_InternalValue: 0
+  maxHp: 20
   currentRessource: 0
   maxRessource: 5
   ressourceType: mana
@@ -166,6 +167,7 @@ MonoBehaviour:
   ressourceBar: {fileID: 1146966077849260367}
   flickerDuration: 0.1
   flickerCount: 2
+  boxCollider: {fileID: 0}
 --- !u!114 &313718024571396091
 MonoBehaviour:
   m_ObjectHideFlags: 0
