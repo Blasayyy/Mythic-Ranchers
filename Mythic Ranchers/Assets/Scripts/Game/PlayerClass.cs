@@ -307,7 +307,7 @@ public class PlayerClass : NetworkBehaviour
         {
             float damage = 15;
             LoseHealth(damage);
-            StartCoroutine(Slowed(2f, 0.25f));
+            //StartCoroutine(Slowed(2f, 0.25f));
             if (!slowed)
             {
                 StartCoroutine(DamageFlicker());
