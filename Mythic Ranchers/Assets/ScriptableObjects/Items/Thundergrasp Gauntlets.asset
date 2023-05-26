@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcc91c4f79c92a40860da0d88696c0b, type: 3}
+  m_Name: Thundergrasp Gauntlets
+  m_EditorClassIdentifier: 
+  itemName: Thundergrasp Gauntlets
+  type: 0
+  gearSlot: 5
+  ArmorType: 1
+  RestoresHealth: 0
+  RestoresMana: 0
+  RestoresEnergy: 0
+  stackable: 0
+  useable: 0
+  image: {fileID: 21300000, guid: 75bcbbc2a7a1f8a44bdad0ac59493c10, type: 3}
+  tooltip: 'Thundergrasp Gauntlets
+
+    -
+
+    Armor - Leather - Gloves
+
+    -
+
+    Useable
+    by: Mage
+
+    -
+
+    +1 Strength
+
+    +1 Haste
+
+    +1 Intellect'
+  stamina: 1
+  strength: 0
+  intellect: 1
+  agility: 0
+  armor: 0
+  haste: 1
+  leech: 0

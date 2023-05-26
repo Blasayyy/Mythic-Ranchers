@@ -12,6 +12,7 @@ public class Item : ScriptableObject
     public ArmorType ArmorType;
     public float RestoresHealth;
     public float RestoresMana;
+    public float RestoresEnergy;
 
     [Header("Only UI")]
     public bool stackable;

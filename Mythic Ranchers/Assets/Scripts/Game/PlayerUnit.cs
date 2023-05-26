@@ -37,7 +37,6 @@ public class PlayerUnit : PlayerClass
         this.Abilities = null; //todo
         this.Stats = characterData.Stats;
         this.InitialStats = characterData.Stats;
-        this.ArmorType = ArmorType.Mail; // todo
         this.KeyLevel = characterData.Current_key;
 
         if (ClassName == "Berzerker")
@@ -45,18 +44,21 @@ public class PlayerUnit : PlayerClass
             this.MaxRessource = characterData.Stats["intellect"] * 2 + 40f;
             this.CurrentRessource = MaxRessource;
             this.RessourceType = "energy";
+            this.ArmorType = ArmorType.Mail;
         }
         else if (ClassName == "Necromancer")
         {
             this.MaxRessource = characterData.Stats["intellect"] * 10 + 100f;
             this.CurrentRessource = MaxRessource;
             this.RessourceType = "mana";
+            this.ArmorType = ArmorType.Cloth;
         }
         else if (ClassName == "Mage")
         {
             this.MaxRessource = characterData.Stats["intellect"] * 10 + 100f;
             this.CurrentRessource = MaxRessource;
             this.RessourceType = "mana";
+            this.ArmorType = ArmorType.Leather;
         }
     }
 

@@ -188,9 +188,10 @@ public class InventoryManager : MonoBehaviour
             if (use)
             {
                 player.GainHealth(item.RestoresHealth);
-                player.GainRessource(item.RestoresMana);
-
-                Debug.Log("mana pot consumed + " + item.RestoresMana + " mana");
+                if (player.ClassName == "Berzerker")
+                    player.GainRessource(item.RestoresEnergy);
+                else
+                    player.GainRessource(item.RestoresMana);
 
 
                 itemInSlot.count--;

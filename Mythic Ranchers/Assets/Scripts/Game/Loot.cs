@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class Loot : MonoBehaviour
+public class Loot : NetworkBehaviour
 {
 
     [SerializeField]
@@ -13,7 +14,15 @@ public class Loot : MonoBehaviour
     private float moveSpeed;
 
     [SerializeField]
+    private Item[] itemList;
+    [SerializeField]
     private Item item;
+
+    private void Start()
+    {
+        int rand = Random.Range(0, itemList.Length + 1);
+        Initialize(itemList[rand]);
+    }
 
     public void Initialize(Item item)
     {

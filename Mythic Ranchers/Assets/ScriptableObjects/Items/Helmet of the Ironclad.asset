@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcc91c4f79c92a40860da0d88696c0b, type: 3}
+  m_Name: Helmet of the Ironclad
+  m_EditorClassIdentifier: 
+  itemName: 'Helmet of the Ironclad '
+  type: 0
+  gearSlot: 0
+  ArmorType: 2
+  RestoresHealth: 0
+  RestoresMana: 0
+  RestoresEnergy: 0
+  stackable: 0
+  useable: 0
+  image: {fileID: 1155963317, guid: e1b2719642a27584cbe694cde8c76de1, type: 3}
+  tooltip: 'Helmet of the Ironclad
+
+    -
+
+    Armor - Mail - Head
+
+    -
+
+    Useable
+    by: Berzerker
+
+    -
+
+    +1 Armor
+
+    +2 Strength'
+  stamina: 0
+  strength: 2
+  intellect: 0
+  agility: 0
+  armor: 1
+  haste: 0
+  leech: 0

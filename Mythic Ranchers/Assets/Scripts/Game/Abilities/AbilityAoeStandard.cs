@@ -16,6 +16,12 @@ public class AbilityAoeStandard : NetworkBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>())
+        {
+            collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);
+            return;
+        }
+
         BoxCollider2D boxCollider = collision.gameObject.GetComponent<BoxCollider2D>();
         if (boxCollider == null)
             return;
@@ -25,10 +31,6 @@ public class AbilityAoeStandard : NetworkBehaviour
             
         Debug.Log(distance + " from enemy --------------------------");
 
-        if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>())
-        {
-            collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);
-        }
         if (!ability.helpful && collision.gameObject.GetComponent<Enemy>())
         {
             if (ability.slow)

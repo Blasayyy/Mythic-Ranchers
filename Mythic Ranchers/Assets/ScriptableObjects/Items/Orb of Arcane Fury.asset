@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcc91c4f79c92a40860da0d88696c0b, type: 3}
+  m_Name: Orb of Arcane Fury
+  m_EditorClassIdentifier: 
+  itemName: Orb of Arcane Fury
+  type: 0
+  gearSlot: 6
+  ArmorType: 1
+  RestoresHealth: 0
+  RestoresMana: 0
+  RestoresEnergy: 0
+  stackable: 0
+  useable: 0
+  image: {fileID: -1109686603, guid: e1b2719642a27584cbe694cde8c76de1, type: 3}
+  tooltip: 'Orb of Arcane Fury
+
+    -
+
+    Weapon - Off-Hand
+
+    -
+
+    Useable
+    by: Mage
+
+    -
+
+    +3 Intellect
+
+    +1 Agility'
+  stamina: 0
+  strength: 0
+  intellect: 3
+  agility: 1
+  armor: 0
+  haste: 0
+  leech: 0

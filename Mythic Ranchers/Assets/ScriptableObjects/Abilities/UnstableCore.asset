@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 2
   abilityName: Unstable Core
   range: 3
-  potency: 2
+  potency: 1
   radius: 4
   cooldown: 10
   cost: 10
@@ -31,16 +31,16 @@ MonoBehaviour:
 
     -
 
-    AoE Targeted
+    AoE Targeted - Periodic
 
     -
 
-    Costs: 10 Mana
+    Costs:
+    10 Mana
 
     -
 
-    Twists
-    the nether and spawns an unstable core, damaging nearby
+    Twists the nether and spawns an unstable core, damaging nearby
 
-    enemies rapidly
-    for 2 damage every 0.25 seconds for 2 seconds'
+    enemies
+    rapidly for 2 damage every 0.25 seconds for 2 seconds'

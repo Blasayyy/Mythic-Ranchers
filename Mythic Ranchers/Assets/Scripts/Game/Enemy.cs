@@ -26,6 +26,9 @@ public class Enemy : NetworkBehaviour
     public float flickerDuration = 0.1f;
     public int flickerCount = 2;
     private bool slowed;
+    public GameObject loot;
+    public GameObject[] potions;
+
 
     public BoxCollider2D boxCollider;
 
@@ -91,9 +94,28 @@ public class Enemy : NetworkBehaviour
         {
             NetworkObject netO = GetComponent<NetworkObject>();
             netO.Despawn();
+            int rand = Random.Range(0, 10);
+            if (rand < 1)
+            {                
+                Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0f);         
+                GameObject spawnedLoot = Instantiate(loot, pos, Quaternion.identity);                                
+                spawnedLoot.GetComponent<NetworkObject>().Spawn();
+            }
+            else if (rand > 7) 
+            {
+                GameObject spawnedLoot = null;
+                Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0f);
+
+                int randItem = Random.Range(0, 2);
+                if (randItem == 0)
+                    spawnedLoot = Instantiate(potions[0], pos, Quaternion.identity);
+                else
+                    spawnedLoot = Instantiate(potions[1], pos, Quaternion.identity);
+
+                spawnedLoot.GetComponent<NetworkObject>().Spawn();
+            }
             MythicGameManagerMultiplayer.Instance.EnemiesCount.Value -= 1;
         }
-
     }
 
     IEnumerator DamageFlicker()

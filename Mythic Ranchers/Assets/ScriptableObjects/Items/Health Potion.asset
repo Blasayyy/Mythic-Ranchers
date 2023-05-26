@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efcc91c4f79c92a40860da0d88696c0b, type: 3}
   m_Name: Health Potion
   m_EditorClassIdentifier: 
-  tile: {fileID: 0}
+  itemName: 
   type: 2
   gearSlot: 7
   ArmorType: 4
-  RestoresHealth: 5
+  RestoresHealth: 20
   RestoresMana: 0
   stackable: 1
   useable: 1
   image: {fileID: 1496030373, guid: e1b2719642a27584cbe694cde8c76de1, type: 3}
-  tooltip: Health Potion - Restores 5 health
+  tooltip: Health Potion - Restores 20 health
   stamina: 0
   strength: 0
   intellect: 0

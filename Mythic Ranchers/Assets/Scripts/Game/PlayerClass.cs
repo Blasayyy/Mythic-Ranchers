@@ -93,8 +93,7 @@ public class PlayerClass : NetworkBehaviour
 
     public void LoseHealth(float amount)
     {
-        //CurrentHp -= amount * (1 - 0.01f * stats["armor"]);
-        CurrentHp -= amount;
+        CurrentHp -= amount * (1 - 0.01f * stats["armor"]);
     }
 
     public void LoseRessource(float amount)
@@ -146,11 +145,11 @@ public class PlayerClass : NetworkBehaviour
         GainHealth(Stats["stamina"] * 0.1f);
         if (ClassName == "Necromancer" || ClassName == "Mage")
         {
-            GainRessource(Stats["intellect"] * 0.5f);
+            GainRessource(Stats["intellect"] * 1f);
         }
         else if (ClassName == "Berzerker")
         {
-            GainRessource(Stats["intellect"] * 0.2f + 5f);
+            GainRessource(Stats["intellect"] * 0.4f + 6f);
         }
     }
 

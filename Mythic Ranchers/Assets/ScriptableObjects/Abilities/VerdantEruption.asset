@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 2
   abilityName: Verdant Eruption
   range: 6
-  potency: 10
+  potency: 20
   radius: 3
   cooldown: 10
   cost: 8
@@ -31,16 +31,16 @@ MonoBehaviour:
 
     -
 
-    AoE Targeted Heal
+    AoE Targeted - Heal
 
     -
 
-    Costs: 8 Mana
+    Costs: 8
+    Mana
 
     -
 
-    Erupts
-    a powerful fel tornado at the target location,
+    Erupts a powerful fel tornado at the target location,
 
-    restoring 10 Health to players
-    within it'
+    restoring
+    10 Health to players within it'

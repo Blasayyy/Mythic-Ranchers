@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4715323597696667931}
   - component: {fileID: -7982022814682550941}
   - component: {fileID: 5811978859807423329}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: VerdantEruption
   m_TagString: Untagged
   m_Icon: {fileID: 0}

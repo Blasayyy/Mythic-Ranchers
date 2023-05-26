@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcc91c4f79c92a40860da0d88696c0b, type: 3}
+  m_Name: Warbringer's Battle Axe
+  m_EditorClassIdentifier: 
+  itemName: Warbringer's Battle Axe
+  type: 0
+  gearSlot: 2
+  ArmorType: 2
+  RestoresHealth: 0
+  RestoresMana: 0
+  RestoresEnergy: 0
+  stackable: 0
+  useable: 0
+  image: {fileID: 1862921697, guid: dbe0e5f51ba527a47a5dc9393d195d8d, type: 3}
+  tooltip: 'Warbringer''s Battle Axe
+
+    -
+
+    Weapon - Mail
+
+    -
+
+    Useable
+    by: Berzerker
+
+    -
+
+    +6 Strength'
+  stamina: 0
+  strength: 2
+  intellect: 0
+  agility: 0
+  armor: 0
+  haste: 0
+  leech: 0

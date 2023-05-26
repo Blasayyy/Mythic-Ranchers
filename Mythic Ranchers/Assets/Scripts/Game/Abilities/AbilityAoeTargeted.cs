@@ -40,15 +40,6 @@ public class AbilityAoeTargeted : NetworkBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        BoxCollider2D boxCollider = collision.gameObject.GetComponent<BoxCollider2D>();
-        if (boxCollider == null)
-            return;
-        float distance = Vector2.Distance(this.transform.position, boxCollider.bounds.center);
-        if (distance > 2)
-            return;        
-        if (ability.tick == 0)        
-            return;        
-
         if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>())
         {
             collision.gameObject.GetComponent<Rigidbody2D>().WakeUp();
@@ -58,7 +49,18 @@ public class AbilityAoeTargeted : NetworkBehaviour
                 collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);
                 timer = 0f;
             }
-        }                
+            return;
+        }     
+        
+        BoxCollider2D boxCollider = collision.gameObject.GetComponent<BoxCollider2D>();
+        if (boxCollider == null)
+            return;
+        float distance = Vector2.Distance(this.transform.position, boxCollider.bounds.center);
+        if (distance > 2)
+            return;        
+        if (ability.tick == 0)        
+            return;        
+
         if (!ability.helpful && collision.gameObject.GetComponent<Enemy>())
         {
             collision.gameObject.GetComponent<Rigidbody2D>().WakeUp();
@@ -73,6 +75,11 @@ public class AbilityAoeTargeted : NetworkBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>() && ability.tick == 0)
+        {
+            collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);
+        }
+
         BoxCollider2D boxCollider = collision.gameObject.GetComponent<BoxCollider2D>();
         if (boxCollider == null)
             return;
@@ -82,10 +89,6 @@ public class AbilityAoeTargeted : NetworkBehaviour
 
         Debug.Log(distance + " from enemy --------------------------");
 
-        if (ability.helpful && collision.gameObject.GetComponent<PlayerUnit>() && ability.tick == 0)
-        {
-            collision.gameObject.GetComponent<PlayerUnit>().GainHealth(ability.potency);
-        }
         if (!ability.helpful && collision.gameObject.GetComponent<Enemy>() && ability.tick == 0)
         {
             collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);

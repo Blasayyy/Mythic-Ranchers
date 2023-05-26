@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 2
   abilityName: Divine Favor
   range: 7
-  potency: 2
+  potency: 5
   radius: 2
   cooldown: 20
   cost: 15
@@ -31,16 +31,17 @@ MonoBehaviour:
 
     -
 
-    AoE Targeted Heal
+    AoE Targeted - Heal - Periodic
 
     -
 
-    Costs: 10 Energy
+    Costs:
+    10 Energy
 
     -
 
-    Calls
-    down upon the favor of the gods, spawning a healing sphere at the target location,
-    healing nearby
+    Calls down upon the favor of the gods, spawning a healing
+    sphere at the target location, healing nearby
 
-    injured players for 2 health every second for 8 seconds'
+    injured players for 2 health
+    every second for 8 seconds'

@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 0
   abilityName: Void Bolt
   range: 7
-  potency: 2
+  potency: 3
   radius: 4
   cooldown: 2
   cost: 2
@@ -42,5 +42,5 @@ MonoBehaviour:
     Launches
     a void bolt at the target location,
 
-    dealing 2 damage at the first enemy
+    dealing 3 damage at the first enemy
     hit'

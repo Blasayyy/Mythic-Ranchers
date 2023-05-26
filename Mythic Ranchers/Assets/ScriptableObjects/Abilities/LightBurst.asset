@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 2
   abilityName: Light Burst
   range: 7
-  potency: 10
+  potency: 20
   radius: 4
   cooldown: 10
   cost: 8
@@ -27,5 +27,5 @@ MonoBehaviour:
   slowAmount: 0
   className: Mage
   image: {fileID: -906923749, guid: 3b306df1be9ce244e9ef296730d9190f, type: 3}
-  tooltip: "Light Burst\n-\nAoE Targeted\n-\nCosts: 8 Mana\n-\nEmits a burst of holy
-    light, healing friendly \nunits in its area for 10 health"
+  tooltip: "Light Burst\n-\nAoE Targeted - Heal\n-\nCosts: 8 Mana\n-\nEmits a burst
+    of holy light, healing friendly \nunits in its area for 10 health"

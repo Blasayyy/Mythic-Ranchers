@@ -168,6 +168,10 @@ MonoBehaviour:
   ressourceBar: {fileID: 1146966077849260367}
   flickerDuration: 0.1
   flickerCount: 2
+  loot: {fileID: 8812734566059645414, guid: 2b2d7170dcd6a544ea1c7fa04ad78715, type: 3}
+  potions:
+  - {fileID: 8812734566059645414, guid: 7ba8ba041daff994286f3a12257febab, type: 3}
+  - {fileID: 8812734566059645414, guid: fa6589f6fe7e11a4aa877c42c90f6d79, type: 3}
   boxCollider: {fileID: 0}
 --- !u!114 &313718024571396091
 MonoBehaviour:
