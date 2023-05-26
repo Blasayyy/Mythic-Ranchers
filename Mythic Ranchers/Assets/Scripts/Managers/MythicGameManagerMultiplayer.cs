@@ -198,7 +198,7 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
             {
                 abilityProjectile.SetCursorPos(cursorPos);
                 abilityProjectile.SetInitialPosition(playerPos);
-                abilityProjectile.InitializeProjectile();
+                //abilityProjectile.InitializeProjectile();
             }
         }
 

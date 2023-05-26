@@ -6,9 +6,9 @@ using Unity.Netcode;
 public class Enemy : NetworkBehaviour
 {
     public NetworkVariable<float> currentHp;
-    public NetworkVariable<float> maxHp;
-    public NetworkVariable<float> currentRessource;
-    public NetworkVariable<float> maxRessource;
+    public float maxHp;
+    public float currentRessource;
+    public float maxRessource;
     public string ressourceType;
     public float moveSpeed = 2f;
     public float waitTimeMin = 1.0f;
@@ -45,21 +45,23 @@ public class Enemy : NetworkBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        CurrentHp = MaxHp;
+        currentHp.Value = maxHp;
         currentRessource = maxRessource;
-        healthBar.SetHealth(CurrentHp, MaxHp);
-        ressourceBar.SetRessource(CurrentRessource, MaxRessource, RessourceType);
+        healthBar.SetHealth(currentHp.Value, maxHp);
+        ressourceBar.SetRessource(currentRessource, maxRessource, ressourceType);
         if (IsServer)
         {
             StartCoroutine(Wander());
-        }        
+        }
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthBar.SetHealth(CurrentHp, MaxHp);
-        ressourceBar.SetRessource(CurrentRessource, MaxRessource, RessourceType);
+        healthBar.SetHealth(currentHp.Value, maxHp);
+        ressourceBar.SetRessource(currentRessource, maxRessource, ressourceType);
 
         if (IsHost && currentState == EnemyState.Chasing)
         {
@@ -85,7 +87,7 @@ public class Enemy : NetworkBehaviour
             StartCoroutine(Wander());
         }
 
-        if(CurrentHp <= 0)
+        if(currentHp.Value <= 0)
         {
             NetworkObject netO = GetComponent<NetworkObject>();
             netO.Despawn();
@@ -206,20 +208,20 @@ public class Enemy : NetworkBehaviour
 
     public float MaxHp
     {
-        get { return maxHp.Value; }
-        set { maxHp.Value = value; }
+        get { return maxHp; }
+        set { maxHp = value; }
     }
 
     public float CurrentRessource
     {
-        get { return currentRessource.Value; }
-        set { currentRessource.Value = value; }
+        get { return currentRessource; }
+        set { currentRessource = value; }
     }
 
     public float MaxRessource
     {
-        get { return maxRessource.Value; }
-        set { maxRessource.Value = value; }
+        get { return maxRessource; }
+        set { maxRessource = value; }
     }
 
     public string RessourceType

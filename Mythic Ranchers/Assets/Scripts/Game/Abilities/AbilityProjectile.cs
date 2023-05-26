@@ -8,12 +8,14 @@ public class AbilityProjectile : NetworkBehaviour
     [SerializeField]
     private Ability ability;
     private Rigidbody2D rig;
-    Vector3 initialPosition, cursorPosition;
+    private NetworkVariable<Vector3> cursorPosition = new NetworkVariable<Vector3>(new Vector3());
+    private NetworkVariable<Vector3> initialPosition = new NetworkVariable<Vector3>(new Vector3());
     private bool isInitialized = false;
+    private NetworkVariable<bool> isSetUp = new NetworkVariable<bool>(false);
 
     public void Start()
     {
-        rig = GetComponent<Rigidbody2D>();
+
         transform.localScale *= ability.radius;
     }
 
@@ -21,8 +23,8 @@ public class AbilityProjectile : NetworkBehaviour
     {
         if (!isInitialized)
         {
-            cursorPosition.z = 0;
-            Vector3 direction = (cursorPosition - initialPosition).normalized;
+            rig = GetComponent<Rigidbody2D>();
+            Vector3 direction = (cursorPosition.Value - initialPosition.Value).normalized;
             rig.velocity = direction * 5.0f;
 
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -36,17 +38,18 @@ public class AbilityProjectile : NetworkBehaviour
 
     private void Update()
     {
-        // Call InitializeProjectile if it wasn't initialized yet
-        if (!isInitialized)
+        if (isSetUp.Value)
         {
             InitializeProjectile();
+            isSetUp.Value = false;
         }
 
-        float distanceTravelled = Vector3.Distance(transform.position, initialPosition);
+        float distanceTravelled = Vector3.Distance(transform.position, initialPosition.Value);
 
         if (distanceTravelled >= ability.range)
         {
-            Destroy(gameObject);
+            NetworkObject obj = GetComponent<NetworkObject>();
+            obj.Despawn();
         }
     }
 
@@ -67,16 +70,18 @@ public class AbilityProjectile : NetworkBehaviour
                 collision.gameObject.GetComponent<Enemy>().LoseHealth(ability.potency);
             }
         }
-        Destroy(this.gameObject);
+        NetworkObject obj = GetComponent<NetworkObject>();
+        obj.Despawn();
     }
 
     public void SetCursorPos(Vector3 cursorPos)
     {
-        cursorPosition = cursorPos;
+        cursorPosition.Value = cursorPos;
     }
 
     public void SetInitialPosition(Vector3 position)
     {
-        initialPosition = position;
+        initialPosition.Value = position;
+        isSetUp.Value = true;
     }
 }
