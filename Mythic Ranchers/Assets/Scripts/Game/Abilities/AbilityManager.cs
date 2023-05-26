@@ -76,8 +76,9 @@ public class AbilityManager : MonoBehaviour
             string abilityName = ability.abilityName;
             if (abilityName == itemInSlot.ability.abilityName)
             {
-                var abilityInstance = Instantiate(abilitiesPrefab[counter], playerPos, Quaternion.identity);
-                abilityInstance.GetComponent<NetworkObject>().Spawn();
+                Vector3 cursorWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                cursorWorldPosition.z = 0;
+                MythicGameManagerMultiplayer.Instance.RequestUseAbility(counter, playerPos, cursorWorldPosition);
                 return true;
             }
             counter++;

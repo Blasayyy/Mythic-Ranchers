@@ -12,7 +12,6 @@ public class AbilityAoeTargeted : NetworkBehaviour
 
     public void Start()
     {
-        cursorWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorWorldPosition.z = 0;
         playerPosition = transform.position;
 
@@ -32,6 +31,11 @@ public class AbilityAoeTargeted : NetworkBehaviour
         target.z = 0;
         this.transform.position = target;
         Destroy(gameObject, ability.duration);
+    }
+
+    public void SetCursorPos(Vector3 cursorPos)
+    {
+        cursorWorldPosition = cursorPos;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
