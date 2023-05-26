@@ -16,9 +16,9 @@ MonoBehaviour:
   abilityName: Divine Favor
   range: 7
   potency: 2
-  radius: 3
+  radius: 2
   cooldown: 20
-  cost: 10
+  cost: 15
   duration: 8
   tick: 1
   helpful: 1

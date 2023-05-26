@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   abilityName: Spectral Shatter
-  range: 8
+  range: 6
   potency: 3
   radius: 3
   cooldown: 10
-  cost: 7
+  cost: 10
   duration: 2.02
   tick: 0
   helpful: 0

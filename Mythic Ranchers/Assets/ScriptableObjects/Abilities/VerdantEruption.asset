@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   abilityName: Verdant Eruption
-  range: 0
+  range: 6
   potency: 10
   radius: 3
   cooldown: 10
@@ -40,5 +40,7 @@ MonoBehaviour:
     -
 
     Erupts
-    a powerful fel tornado at the target location, restoring 10 Health to players
+    a powerful fel tornado at the target location,
+
+    restoring 10 Health to players
     within it'

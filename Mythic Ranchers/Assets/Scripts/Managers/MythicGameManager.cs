@@ -13,7 +13,7 @@ public class MythicGameManager : NetworkBehaviour
     public (List<BoundsInt> roomsList, List<Vector2Int> roomsCenters, HashSet<Vector2Int> floor, (List<(Vector2Int, string)>, List<(Vector2Int, string)>) wallData, HashSet<Vector2Int> propData) mapData;
 
     [SerializeField]
-    private Transform berzerkerPrefab, necroPrefab;
+    private Transform berzerkerPrefab, necroPrefab, magePrefab;
 
     [SerializeField]
     private Transform[] enemyPrefabs;
@@ -59,10 +59,13 @@ public class MythicGameManager : NetworkBehaviour
             {
                  playerTransform = Instantiate(berzerkerPrefab);
             } 
-            else
-                //(data.ClassName == "necromancer")
+            else if (characterClass == "Necromancer")
             {
                 playerTransform = Instantiate(necroPrefab);
+            }
+            else     // mage
+            {
+                playerTransform = Instantiate(magePrefab);
             }
             PlayerUnit player = playerTransform.GetComponent<PlayerUnit>();
 

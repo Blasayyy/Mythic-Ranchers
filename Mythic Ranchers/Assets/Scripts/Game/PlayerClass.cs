@@ -160,6 +160,10 @@ public class PlayerClass : NetworkBehaviour
         {
             anim.SetTrigger("Attacking");
         }
+        else if (ClassName == "Mage")
+        {
+            anim.SetTrigger("Cast");
+        }
         else if (ClassName == "Necromancer")
         {
             switch (abilityType)

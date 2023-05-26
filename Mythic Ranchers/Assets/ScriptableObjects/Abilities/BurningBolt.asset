@@ -16,8 +16,8 @@ MonoBehaviour:
   abilityName: Burning Bolt
   range: 7
   potency: 5
-  radius: 1
-  cooldown: 6
+  radius: 2
+  cooldown: 3
   cost: 5
   duration: 0
   tick: 0

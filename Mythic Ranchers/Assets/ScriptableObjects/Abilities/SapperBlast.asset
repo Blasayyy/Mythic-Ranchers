@@ -16,7 +16,7 @@ MonoBehaviour:
   abilityName: Sapper Blast
   range: 0
   potency: 5
-  radius: 3
+  radius: 4
   cooldown: 10
   cost: 10
   duration: 1.35
@@ -35,7 +35,7 @@ MonoBehaviour:
 
     -
 
-    Costs: 10 energy
+    Costs: 10 Energy
 
     -
 
