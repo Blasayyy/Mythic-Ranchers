@@ -346,6 +346,69 @@ public class DatabaseManager : MonoBehaviour
         return false;
     }
 
+
+    public async Task<bool> UpdateCharacter(CharacterData characterData)
+    {
+        try
+        {
+            var collection = GetCollection(CHARACTERS_COLLECTION);
+
+            var filter = Builders<BsonDocument>.Filter.Eq("name", characterData.Name);
+
+            BsonArray equipmentArray = new BsonArray();
+            foreach (var equipment in characterData.EquipmentList)
+            {
+                equipmentArray.Add(new BsonDocument {
+                { "name", equipment.Name },
+                { "slot", equipment.Slot },
+                { "stamina", equipment.Stamina },
+                { "strength", equipment.Strength },
+                { "intellect", equipment.Intellect },
+                { "agility", equipment.Agility },
+                { "armor", equipment.Armor },
+                { "haste", equipment.Haste },
+                { "leech", equipment.Leech }
+            });
+            }
+
+            var update = Builders<BsonDocument>.Update
+                .Set("username", characterData.Username)
+                .Set("class", characterData.ClassName)
+                .Set("level", characterData.Level)
+                .Set("experiencePoints", characterData.Experience_points)
+                .Set("currentKey", characterData.Current_key)
+                .Set("equipmentList", equipmentArray)
+                .Set("talents", characterData.Talents);
+
+            var result = await collection.UpdateOneAsync(filter, update);
+
+            if (result.IsAcknowledged && result.ModifiedCount > 0)
+            {
+                Debug.Log("Character updated successfully");
+                return true;
+            }
+            else
+            {
+                Debug.LogError("Character not found or could not be updated");
+            }
+        }
+        catch (MongoConfigurationException ex)
+        {
+            Debug.LogError("MongoDB configuration exception: " + ex.Message);
+        }
+        catch (MongoConnectionException ex)
+        {
+            Debug.LogError("MongoDB connection exception: " + ex.Message);
+        }
+        catch (MongoException ex)
+        {
+            Debug.LogError("MongoDB exception: " + ex.Message);
+        }
+
+        return false;
+    }
+
+
 }
 
 

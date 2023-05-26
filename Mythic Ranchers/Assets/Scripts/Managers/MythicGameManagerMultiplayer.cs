@@ -21,6 +21,9 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
     public string mapDataJson;
     public GameObject[] abilitiesPrefab;
 
+    public int totalEnemyCount = 0;
+    public NetworkVariable<bool> enemiesSpawned = new NetworkVariable<bool>(false);
+
     public const int MAX_CHUNK_SIZE = 900;
     private Dictionary<ulong, List<string>> mapDataChunks = new Dictionary<ulong, List<string>>();
     public Dictionary<ulong, string> playerCharacterClasses = new Dictionary<ulong, string>();
@@ -29,6 +32,14 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Update()
+    {
+        if(EnemiesCount.Value <= 0 && enemiesSpawned.Value)
+        {
+            Loader.LoadNetwork(Loader.Scene.EndOfGameScene);
+        }
     }
 
     public void StartHost()

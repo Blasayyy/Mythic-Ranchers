@@ -138,6 +138,9 @@ public class MythicGameManager : NetworkBehaviour
 
                 floorTilesInRoom.RemoveAt(randomIndex);
             }
+
+            MythicGameManagerMultiplayer.Instance.totalEnemyCount = MythicGameManagerMultiplayer.Instance.EnemiesCount.Value;
+            MythicGameManagerMultiplayer.Instance.enemiesSpawned.Value = true;
         }
     }
 

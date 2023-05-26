@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5896740700783022449}
   m_Layer: 0
   m_Name: moveablePropPrefab
-  m_TagString: Untagged
+  m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,3 +209,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8bb59574067e1eb46a78eb82b6ae05a6, type: 3}
   - {fileID: 21300000, guid: 54a45d033779fc442a0707d1aaa85b73, type: 3}
   - {fileID: 21300000, guid: 4cc488ce89888a84c9b70677ced40377, type: 3}
+  isNonMoveable: 0

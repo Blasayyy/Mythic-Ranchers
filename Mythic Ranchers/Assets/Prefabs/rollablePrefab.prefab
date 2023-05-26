@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8120455305157388809}
   m_Layer: 0
   m_Name: rollablePrefab
-  m_TagString: Untagged
+  m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,3 +207,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d20dc587555b46645a7717f280c9f9ea, type: 3}
   - {fileID: 21300000, guid: 856e7886319e1004da3bfd57f8a3d8ac, type: 3}
   - {fileID: 21300000, guid: d80aa54db9d2b3d47b5b13841ff38372, type: 3}
+  isNonMoveable: 0
