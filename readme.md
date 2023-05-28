@@ -13,10 +13,15 @@ Pour jouer à notre jeu, il vous suffit d'ouvrir le dossier Current Build sous D
 
 ### Références:
 Documentation Unity:
+
 https://docs-multiplayer.unity3d.com/netcode/current/about/
+
 https://docs.unity.com/relay/en/manual/introduction
+
 https://docs.unity.com/lobby/en/manual/unity-lobby-service
+
 Chaîne Youtube avec des tutoriels utiles pour nous:
+
 https://www.youtube.com/@CodeMonkeyUnity
 
 ### Contact:
