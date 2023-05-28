@@ -17,8 +17,11 @@ using Random = UnityEngine.Random;
 
 public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
 {
+    [SerializeField]
     private int iterations = 10;
+    [SerializeField]
     public int walkLength = 10;
+    [SerializeField]
     public bool startRandomlyEachIteration = true;
 
     protected override void RunProceduralGeneration()
