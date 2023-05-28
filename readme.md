@@ -24,6 +24,10 @@ Chaîne Youtube avec des tutoriels utiles pour nous:
 
 https://www.youtube.com/@CodeMonkeyUnity
 
+https://www.youtube.com/@Dani_Krossing
+
+https://www.youtube.com/@CocoCode
+
 ### Contact:
 Blasayy#6359 sur discord
 
