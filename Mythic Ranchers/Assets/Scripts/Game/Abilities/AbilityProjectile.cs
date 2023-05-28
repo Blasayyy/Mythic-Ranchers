@@ -1,7 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+
+/*******************************************************************************
+
+   Nom du fichier: AbilityProjectile.cs
+   
+   Contexte: Cette classe représente une ability de type projectile
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class AbilityProjectile : NetworkBehaviour
 {

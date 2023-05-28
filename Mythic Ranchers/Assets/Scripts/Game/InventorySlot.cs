@@ -1,17 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
+/*******************************************************************************
+
+   Nom du fichier: InventorySlot.cs
+   
+   Contexte: Cette classe représente un slot dans l'inventaire ou dans l'action bar du joueur
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
+
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
-    [SerializeField]
     public TMP_Text hotkeyText;
     public SlotType slotType;
     public GearSlot gearSlot;
-
 
     public Image image;
     public Color selectedColor, notSelectedColor, noRessourceColor, noRessourceSelectedColor;
@@ -76,7 +84,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         }
     }
 
-
     public void OnDrop(PointerEventData eventData)
     {
         GameObject dropped = eventData.pointerDrag;
@@ -99,7 +106,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             {
                 if (inventoryItem.item.gearSlot == this.gearSlot)
                 {
-                    //success
                     inventoryItem.parentAfterDrag = transform;
                 }
                 else
@@ -117,13 +123,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             inventoryItem.parentAfterDrag = transform;
         }
         
+        // stacking items that are the same but in two different slots -- to be implemented
         //else if (transform.childCount == (2) && inventoryItem.item == transform.GetChild(1).item && inventoryItem.count < InventoryManager.instance.maxItemStacks)
         //{
         //    inventoryItem.parentAfterDrag = transform;
         //    inventoryItem.count++;
         //    inventoryItem.RefreshCount();
         //}
-
-
     }
 }

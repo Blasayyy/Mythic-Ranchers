@@ -1,8 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
+/*******************************************************************************
+
+   Nom du fichier: RegisterUI.cs
+   
+   Contexte: Cette classe sert a gérer le UI pour se faire un compte
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class RegisterUI : MonoBehaviour
 {

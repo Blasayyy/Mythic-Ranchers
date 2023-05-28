@@ -1,7 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+
+/*******************************************************************************
+
+   Nom du fichier: ProceduralGenerationAlgorithm.cs
+   
+   Contexte: Cette classe sert a créer un algorithme de génération aléatoire de niveau
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public static class ProceduralGenerationAlgorithm 
 {

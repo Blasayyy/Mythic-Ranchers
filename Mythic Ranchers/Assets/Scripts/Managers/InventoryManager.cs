@@ -1,7 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+
+/*******************************************************************************
+
+   Nom du fichier: InventoryManager.cs
+   
+   Contexte: Cette classe sert à gérer l'inventaire du joueur
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class InventoryManager : MonoBehaviour
 {
@@ -199,7 +208,6 @@ public class InventoryManager : MonoBehaviour
                 else
                     player.GainRessource(item.RestoresMana);
 
-
                 itemInSlot.count--;
                 if (itemInSlot.count <= 0)
                 {
@@ -210,7 +218,6 @@ public class InventoryManager : MonoBehaviour
                     itemInSlot.RefreshCount();
                 }
             }
-
             return item;
         }
         return null;

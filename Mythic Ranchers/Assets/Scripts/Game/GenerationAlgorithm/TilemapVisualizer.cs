@@ -1,8 +1,20 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+
+/*******************************************************************************
+
+   Nom du fichier: TilemapVisualizer.cs
+   
+   Contexte: Cette classe sert a mettre les bonnes tuiles au bon dendroit pendant
+             la génération du niveau
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class TilemapVisualizer : MonoBehaviour
 {
@@ -181,7 +193,7 @@ public class TilemapVisualizer : MonoBehaviour
         }
         catch
         {
-            
+            //todo
         }
     }
 

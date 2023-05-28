@@ -1,15 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
-using System.Linq;
 
+/*******************************************************************************
+
+   Nom du fichier: InventoryItem.cs
+   
+   Contexte: Cette classe représente un item ou une ability dans un des inventory slots
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
-
     [Header("UI")]
     public Image image;
     public TMP_Text countText;
@@ -58,8 +65,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (isOnCooldown)
         {
-            // sound effect? spell is on cd
-            Debug.Log("Spell is on cd");
             return false;
         }
         else
@@ -73,7 +78,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     void ApplyCooldown()
     {
-        // substract time since last called
         cooldownTimer -= Time.deltaTime;
 
         if (cooldownTimer < 0.0f)

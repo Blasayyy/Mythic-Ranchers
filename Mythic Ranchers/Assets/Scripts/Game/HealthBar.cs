@@ -1,15 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.Netcode;
 
+/*******************************************************************************
+
+   Nom du fichier: HealthBar.cs
+   
+   Contexte: Cette classe sert à informer le joueur sur le nombre de vie restantes aux
+             unités dans le jeu
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
+
 public class HealthBar : NetworkBehaviour
 {
     public Slider healthSlider;
-    [SerializeField]
     public Color lowColor, highColor;
-    [SerializeField]
     public Vector3 offset;
 
     public void SetHealth(float health, float maxHealth)
@@ -23,9 +32,4 @@ public class HealthBar : NetworkBehaviour
     {
         healthSlider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
     }
-
-    //private void Update()
-    //{
-    //    healthSlider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position);
-    //}
 }

@@ -1,6 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/*******************************************************************************
+
+   Nom du fichier: CameraFollowPlayer.cs
+   
+   Contexte: Cette classe sert à faire en sorte que la caméra suive le bon joueur
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class CameraFollowPlayer : MonoBehaviour
 {

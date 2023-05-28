@@ -1,9 +1,20 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Services.Lobbies.Models;
 using UnityEngine.UI;
+
+/*******************************************************************************
+
+   Nom du fichier: LobbyListUI.cs
+   
+   Contexte: Cette classe sert a gérer le UI lorsqu'on browse la liste des lobbies
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class LobbyListUI : MonoBehaviour
 {
@@ -21,7 +32,6 @@ public class LobbyListUI : MonoBehaviour
     [SerializeField]
     private Button createLobbyButton;
 
-
     private void Awake()
     {
         Instance = this;
@@ -31,14 +41,12 @@ public class LobbyListUI : MonoBehaviour
         createLobbyButton.onClick.AddListener(CreateLobbyButtonClick);
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         LobbyManager.Instance.OnLobbyListChanged += LM_OnLobbyListChanged;
         LobbyManager.Instance.OnJoinedLobby += LM_OnJoinedLobby;
         LobbyManager.Instance.OnKickFromLobby += LM_OnKickFromLobby;
         LobbyManager.Instance.OnLeaveLobby += LM_OnLeaveLobby;
-
     }
 
     private void OnDestroy()
@@ -88,8 +96,7 @@ public class LobbyListUI : MonoBehaviour
             lobbyListEntryUI.UpdateLobby(lobby);
 
             Debug.Log(lobby.Name);
-        }
-        
+        }        
     }
 
     private void RefreshButtonClick()

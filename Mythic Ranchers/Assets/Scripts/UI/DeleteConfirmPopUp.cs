@@ -1,7 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+/*******************************************************************************
+
+   Nom du fichier: DeleteConfirmPopUp.cs
+   
+   Contexte: Cette classe sert a gérer les popups UI pour supprimer des characters
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class DeleteConfirmPopUp : MonoBehaviour
 {
@@ -12,7 +22,6 @@ public class DeleteConfirmPopUp : MonoBehaviour
 
     [SerializeField]
     private Button noButton;
-
 
     private void Awake()
     {

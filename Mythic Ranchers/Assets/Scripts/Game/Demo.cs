@@ -1,17 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
+
+/*******************************************************************************
+
+   Nom du fichier: Demo.cs
+   
+   Contexte: Cette classe est un genre de "cheat code" qui permet de générer des
+             potions et des items dans le but de démontrer ces features lorsque le
+             temps de jeu est limité
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class Demo : MonoBehaviour
 {
-
     public InventoryManager inventoryManager;
     public Item[] itemsToPickup;
     [SerializeField]
     private Transform playerPrefab;
     public Item[] testGear;
-
 
     public void PickupItems(int id)
     {

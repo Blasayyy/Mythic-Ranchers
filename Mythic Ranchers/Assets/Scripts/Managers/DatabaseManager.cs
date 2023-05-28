@@ -1,20 +1,30 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using System;
 using System.Threading.Tasks;
+
+/*******************************************************************************
+
+   Nom du fichier: DatabaseManager.cs
+   
+   Contexte: Cette classe sert a gérer la base donnée
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
+
 public class DatabaseManager : MonoBehaviour
 {
-
     public static DatabaseManager Instance { get; private set; }
 
     private const string CONNECTION_STRING = "mongodb+srv://Blasayy:Tisanerie1998@mythicranchers.r7dxreu.mongodb.net/?retryWrites=true&w=majority";
     private const string DB_NAME = "MythicRanchers";
     private const string USERS_COLLECTION = "Users";
     private const string CHARACTERS_COLLECTION = "Characters";
-
 
     private void Awake()
     {
@@ -220,7 +230,6 @@ public class DatabaseManager : MonoBehaviour
         return false;
     }
 
-
     public async void DeleteCharacter(string username, string characterName)
     {
         try
@@ -283,7 +292,6 @@ public class DatabaseManager : MonoBehaviour
         return false;
     }
 
-
     public async Task<List<BsonDocument>> GetCharactersForAccount(string username)
     {
         try
@@ -310,7 +318,6 @@ public class DatabaseManager : MonoBehaviour
 
         return null;
     }
-
 
     public async Task<bool> DeleteCharacter(string characterName)
     {
@@ -345,7 +352,6 @@ public class DatabaseManager : MonoBehaviour
 
         return false;
     }
-
 
     public async Task<bool> UpdateCharacter(CharacterData characterData)
     {
@@ -407,8 +413,4 @@ public class DatabaseManager : MonoBehaviour
 
         return false;
     }
-
-
 }
-
-

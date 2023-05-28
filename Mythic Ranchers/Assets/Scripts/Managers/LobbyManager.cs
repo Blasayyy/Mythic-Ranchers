@@ -1,16 +1,22 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Services.Core;
 using Unity.Services.Authentication;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
-using UnityEngine.SceneManagement;
-using Unity.Netcode.Transports.UTP;
-using Unity.Networking.Transport.Relay;
-using Unity.Services.Relay.Models;
-using Unity.Netcode;
+
+/*******************************************************************************
+
+   Nom du fichier: LobbyManager.cs
+   
+   Contexte: Cette classe sert a gérer le système de lobby
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class LobbyManager : MonoBehaviour
 {
@@ -28,7 +34,6 @@ public class LobbyManager : MonoBehaviour
     private float lobbyUpdateTimer;
     private float lobbyUpdateTimerMax = 1.1f;
     private string playerName;
-
 
     public event EventHandler <LobbyEventArgs> OnJoinedLobbyUpdate;
     public event EventHandler <LobbyEventArgs> OnKickFromLobby;
@@ -55,7 +60,6 @@ public class LobbyManager : MonoBehaviour
         InitializeUnityAuthentication();
     }
 
-    // Start is called before the first frame update
     private void Start()
     { 
 
@@ -76,8 +80,7 @@ public class LobbyManager : MonoBehaviour
             await UnityServices.InitializeAsync();
             playerName = AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter].Name;
             Authenticate(playerName);
-        }
-        
+        }        
     }
 
     public async void Authenticate(string playerName)
@@ -103,8 +106,7 @@ public class LobbyManager : MonoBehaviour
         {
             heartBeatTimer = heartBeatTimerMax;
 
-            ListLobbies();
-            
+            ListLobbies();            
         }
     }
 
@@ -154,7 +156,6 @@ public class LobbyManager : MonoBehaviour
             {KEY_PLAYER_CHARACTER, new PlayerDataObject(PlayerDataObject.VisibilityOptions.Public, characterJson) }
         });
     }
-
 
     private bool PlayerInLobby()
     {
@@ -208,16 +209,13 @@ public class LobbyManager : MonoBehaviour
             MapDataClass mapDataClass = new MapDataClass(MythicGameManager.Instance.mapData);
             MythicGameManagerMultiplayer.Instance.mapDataJson = JsonUtility.ToJson(mapDataClass);
 
-
-
             Debug.Log("started host");
             
         }
         catch(LobbyServiceException e )
         {
             Debug.Log(e);
-        }
-        
+        }        
     }
 
     public async void ListLobbies()
@@ -249,7 +247,6 @@ public class LobbyManager : MonoBehaviour
         {
             Debug.Log(e);
         }
-
     }
 
     public async void JoinLobby(Lobby lobby)
@@ -271,7 +268,6 @@ public class LobbyManager : MonoBehaviour
             await Relay.Instance.JoinRelay(relayJoinCode);
 
             MythicGameManagerMultiplayer.Instance.StartClient();
-
 
             Debug.Log("Joined Lobby: " + lobby.Id);
         }
@@ -300,8 +296,7 @@ public class LobbyManager : MonoBehaviour
         catch (LobbyServiceException e)
         {
             Debug.Log(e);
-        }
-        
+        }        
     }
 
     public async void LeaveLobby()

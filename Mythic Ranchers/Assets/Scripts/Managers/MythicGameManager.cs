@@ -1,8 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
-using Unity.Multiplayer.Samples.Utilities.ClientAuthority;
+
+/*******************************************************************************
+
+   Nom du fichier: MythicGameManager.cs
+   
+   Contexte: Cette classe sert a gérer le jeu et ses paramètres
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class MythicGameManager : NetworkBehaviour
 {
@@ -32,13 +42,6 @@ public class MythicGameManager : NetworkBehaviour
         {
             NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += SceneManager_OnLoadEventCompleted1;
         }
-    }
-
-    public enum ArmorTypes
-    {
-        Cloth,
-        Leather,
-        Mail
     }
 
     private void SceneManager_OnLoadEventCompleted1(string sceneName, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
@@ -102,8 +105,6 @@ public class MythicGameManager : NetworkBehaviour
 
         const float enemySpawnPercentage = 0.2f;
 
-        
-
         for (int roomIndex = 1; roomIndex < roomsList.Count; roomIndex++)
         {
             BoundsInt room = roomsList[roomIndex];
@@ -122,7 +123,6 @@ public class MythicGameManager : NetworkBehaviour
             }
 
             int enemiesToSpawn = Mathf.CeilToInt(floorTilesInRoom.Count * enemySpawnPercentage);
-
 
             for (int i = 0; i < enemiesToSpawn; i++)
             {
@@ -146,7 +146,4 @@ public class MythicGameManager : NetworkBehaviour
             MythicGameManagerMultiplayer.Instance.enemiesSpawned.Value = true;
         }
     }
-
-
-
 }

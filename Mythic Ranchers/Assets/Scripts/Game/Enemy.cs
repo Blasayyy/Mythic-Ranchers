@@ -1,7 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+
+/*******************************************************************************
+
+   Nom du fichier: Enemy.cs
+   
+   Contexte: Cette classe représente les ennemis dans le jeu
+   
+   Auteur: Christophe Auclair, Matei Pelletier
+
+*******************************************************************************/
 
 public class Enemy : NetworkBehaviour
 {
@@ -28,8 +37,6 @@ public class Enemy : NetworkBehaviour
     private bool slowed;
     public GameObject loot;
     public GameObject[] potions;
-
-
     public BoxCollider2D boxCollider;
 
     public enum EnemyState
@@ -56,8 +63,6 @@ public class Enemy : NetworkBehaviour
         {
             StartCoroutine(Wander());
         }
-
-        
     }
 
     // Update is called once per frame
@@ -130,8 +135,7 @@ public class Enemy : NetworkBehaviour
 
             spriteRenderer.color = Color.white;
             yield return new WaitForSeconds(flickerDuration);
-        }
-        
+        } 
     }
 
     IEnumerator Slowed(float slowDuration, float slowAmount)

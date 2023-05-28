@@ -1,7 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+
+/*******************************************************************************
+
+   Nom du fichier: EnemyProjectile.cs
+   
+   Contexte: Cette classe représente une ability de type projectile d'un enemi
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class EnemyProjectile : NetworkBehaviour
 {

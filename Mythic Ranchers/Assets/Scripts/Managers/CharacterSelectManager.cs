@@ -1,14 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/*******************************************************************************
+
+   Nom du fichier: CharacterSelectManager.cs
+   
+   Contexte: Cette classe sert a gérer la sélection du character que le joueur 
+             souhaite jouer
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
+
 public class CharacterSelectManager : MonoBehaviour
 {
     public static CharacterSelectManager Instance { get; private set; }
-
 
     [SerializeField]
     private TextMeshProUGUI nameText;
@@ -109,7 +119,6 @@ public class CharacterSelectManager : MonoBehaviour
         }
 
         SetInfo(currentIndex);
-
     }
 
     private void SetInfo(int index)
@@ -152,7 +161,6 @@ public class CharacterSelectManager : MonoBehaviour
     {
         AccountManager.Instance.SelectedCharacter = currentIndex;
         SetInfo(currentIndex);
-
     }
 
     private void GoToCharacterCreation()
@@ -181,8 +189,7 @@ public class CharacterSelectManager : MonoBehaviour
                 AccountManager.Instance.SelectedCharacter = 0;
             }
             currentIndex = 0;
-            SetInfo(currentIndex);
-            
+            SetInfo(currentIndex);            
         }
     }
 }

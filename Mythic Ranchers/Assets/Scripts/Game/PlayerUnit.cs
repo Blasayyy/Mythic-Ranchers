@@ -1,12 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Threading.Tasks;
+﻿using UnityEngine;
+
+/*******************************************************************************
+
+   Nom du fichier: PlayerUnit.cs
+   
+   Contexte: Cette classe représente la classe d'un playable character
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class PlayerUnit : PlayerClass
 {
-
     public static PlayerUnit instance;
     private CharacterData CharacterData;
 
@@ -78,7 +85,6 @@ public class PlayerUnit : PlayerClass
             AbilityManager.instance.SetPlayerUnit(this);
         }
 
-        //transform.position = new Vector3(0, 0, 0);
         this.transform.position = MythicGameManager.Instance.mapData.Item1[0].center;
         Rigidbody2D rig = GetComponent<Rigidbody2D>();
         rig.bodyType = RigidbodyType2D.Dynamic;

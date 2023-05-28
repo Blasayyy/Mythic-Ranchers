@@ -2,6 +2,18 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
+/*******************************************************************************
+
+   Nom du fichier: PropsSpawner.cs
+   
+   Contexte: Cette classe sert à populer le niveau avec des décorations
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
+
 public class PropsSpawner : MonoBehaviour
 {
     public static PropsSpawner Instance { get; set; }
@@ -18,7 +30,6 @@ public class PropsSpawner : MonoBehaviour
     {
         Instance = this;
     }
-
 
     public void SpawnProps(HashSet<Vector2Int> propData)
     {
@@ -42,13 +53,11 @@ public class PropsSpawner : MonoBehaviour
             {
                 SpawnSprites(position, torchPrefab);
             }
-
         }
     }
 
     public static void SpawnSprites(Vector2Int position, GameObject spriteGameObjectPrefab, List<Sprite> sprites)
     {
-
         GameObject newGameObject = Instantiate(spriteGameObjectPrefab, new Vector3(position.x, position.y, 0), Quaternion.identity);
         newGameObject.GetComponent<NetworkObject>().Spawn();
     }
@@ -59,6 +68,4 @@ public class PropsSpawner : MonoBehaviour
         GameObject newGameObject = Instantiate(spriteGameObjectPrefab, new Vector3(position.x, position.y, 0), Quaternion.identity);
         newGameObject.GetComponent<NetworkObject>().Spawn();
     }
-
-
 }

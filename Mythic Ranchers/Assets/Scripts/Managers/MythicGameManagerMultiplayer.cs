@@ -5,9 +5,20 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.SceneManagement;
 
+/*******************************************************************************
+
+   Nom du fichier: MythicGameManagerMultiplayer.cs
+   
+   Contexte: Cette classe sert a gérer le côté synchronisation multijoueur du jeu
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
+
 public class MythicGameManagerMultiplayer : NetworkBehaviour
 {
-
     public static MythicGameManagerMultiplayer Instance { get; private set; }
 
     private const int MAX_PLAYER_COUNT = 4;
@@ -92,7 +103,6 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
         MythicGameManager.Instance.mapData = mapData;
     }
 
-
     [ServerRpc(RequireOwnership = false)]
     public void RequestToJoinServerRpc(ServerRpcParams serverRpcParams = default)
     {
@@ -103,7 +113,6 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
             SendMapDataChunkServerRpc(i, chunks[i], senderId);
         }
     }
-
 
     private string[] Chunkify(string str, int chunkSize)
     {
@@ -116,14 +125,11 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
         return chunks;
     }
 
-
     [ServerRpc(RequireOwnership = false)]
     public void SendMapDataChunkServerRpc(int chunkId, string chunk, ulong targetClientId, ServerRpcParams serverRpcParams = default)
     {
         SendMapDataChunkClientRpc(NetworkManager.Singleton.LocalClientId, chunkId, chunk, new ClientRpcParams { Send = new ClientRpcSendParams { TargetClientIds = new ulong[] { targetClientId } } });
     }
-
-
 
     [ClientRpc]
     public void SendMapDataChunkClientRpc(ulong senderId, int chunkId, string chunk, ClientRpcParams clientRpcParams = default)
@@ -190,7 +196,6 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
         ServerUseAbilityServerRpc(abilityIndex, playerPos, cursorPos);
     }
 
-
     [ServerRpc(RequireOwnership = false)]
     public void ServerUseAbilityServerRpc(int abilityIndex, Vector3 playerPos, Vector3 cursorPos, ServerRpcParams serverRpcParams = default)
     {
@@ -209,7 +214,6 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
             {
                 abilityProjectile.SetCursorPos(cursorPos);
                 abilityProjectile.SetInitialPosition(playerPos);
-                //abilityProjectile.InitializeProjectile();
             }
         }
 
@@ -225,13 +229,10 @@ public class MythicGameManagerMultiplayer : NetworkBehaviour
         }
     }
 
-
-
     public void AddHostCharacterClass()
     {
         ulong clientId = NetworkManager.Singleton.LocalClientId;
         playerCharacterClasses[clientId] = AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter].ClassName;
         DungeonKeyLevel.Value = AccountManager.Instance.CharacterDatas[AccountManager.Instance.SelectedCharacter].Current_key;
-
     }
 }

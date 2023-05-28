@@ -1,7 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
+
+/*******************************************************************************
+
+   Nom du fichier: TooltipFormater.cs
+   
+   Contexte: Cette classe sert à formater les tooltips d'une certaine manière de sorte
+             à ce qu'ils soient consistents à travers le jeu
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class TooltipFormater : MonoBehaviour
 {

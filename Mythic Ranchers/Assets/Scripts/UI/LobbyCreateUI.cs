@@ -1,9 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
+/*******************************************************************************
+
+   Nom du fichier: LobbyCreateUI.cs
+   
+   Contexte: Cette classe sert a gérer le UI lors de la création d'un lobby
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class LobbyCreateUI : MonoBehaviour
 {
@@ -18,7 +27,6 @@ public class LobbyCreateUI : MonoBehaviour
     [SerializeField]
     private Button publicPrivateButton;
 
-
     [SerializeField]
     private TextMeshProUGUI lobbyNameText;
 
@@ -27,9 +35,7 @@ public class LobbyCreateUI : MonoBehaviour
 
     private string lobbyName;
     private bool isPrivate;
-    private int keyLevel;
-
-        
+    private int keyLevel;        
 
     private void Awake()
     {
@@ -49,21 +55,17 @@ public class LobbyCreateUI : MonoBehaviour
             HideUI();
         });
 
-
         publicPrivateButton.onClick.AddListener(() =>
         {
             isPrivate = !isPrivate;
             UpdateText();
         });
-
     }
-
 
     private void UpdateText()
     {
         lobbyNameText.text = lobbyName;
         publicPrivateText.text = isPrivate ? "Private" : "Public";
-
     }
 
     public void HideUI()
@@ -76,7 +78,6 @@ public class LobbyCreateUI : MonoBehaviour
         gameObject.SetActive(true);
         lobbyName = "Lobby Name";
         isPrivate = false;
-
         UpdateText();
     }
 }

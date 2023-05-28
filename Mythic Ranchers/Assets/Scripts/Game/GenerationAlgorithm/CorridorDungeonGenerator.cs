@@ -1,8 +1,19 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
+/*******************************************************************************
+
+   Nom du fichier: CorridorDungeonGenerator.cs
+   
+   Contexte: Cette classe sert a générer les corridors lors de la génération aléatoire de niveau
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class CorridorDungeonGenerator : SimpleRandomWalkDungeonGenerator
 {

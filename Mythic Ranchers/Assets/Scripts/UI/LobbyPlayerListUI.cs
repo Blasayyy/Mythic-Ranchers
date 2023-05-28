@@ -1,9 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.Services.Lobbies.Models;
 using UnityEngine.UI;
+
+/*******************************************************************************
+
+   Nom du fichier: LobbyPlayerListUI.cs
+   
+   Contexte: Cette classe sert a gérer le UI des joueurs a l'intérieur d'un lobby
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class LobbyPlayerListUI : MonoBehaviour
 {
@@ -28,8 +38,7 @@ public class LobbyPlayerListUI : MonoBehaviour
     public void UpdatePlayer(Player player)
     {
         this.player = player;
-        playerText.text = player.Data[LobbyManager.KEY_PLAYER_NAME].Value;
-        
+        playerText.text = player.Data[LobbyManager.KEY_PLAYER_NAME].Value;        
     }
 
     private void KickPlayer()

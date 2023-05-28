@@ -1,8 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
+/*******************************************************************************
+
+   Nom du fichier: GearManager.cs
+   
+   Contexte: Cette classe sert à gérer l'équipement du joueur
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class GearManager : MonoBehaviour
 {
@@ -12,9 +23,7 @@ public class GearManager : MonoBehaviour
     public InventorySlot[] gearSlots;
     public GameObject inventoryItemPrefab;
     public Image[] iconList;
-    [SerializeField]
     public TextMeshProUGUI staminaValue, strengthValue, intellectValue, agilityValue, armorValue, hasteValue, leechValue;
-    [SerializeField]
     public StatText staminaText, strengthText, intellectText, agilityText, armorText, hasteText, leechText;
     private PlayerUnit player;
 
@@ -60,7 +69,6 @@ public class GearManager : MonoBehaviour
         player.Stats["armor"] += item.armor;
         player.Stats["haste"] += item.haste;
         player.Stats["leech"] += item.leech;
-        
     }
 
     public void UpdateStatsUI()
@@ -80,5 +88,4 @@ public class GearManager : MonoBehaviour
         leechValue.SetText(player.Stats["leech"].ToString());
         leechText.tooltipText = ("Increases leech by " + player.Stats["leech"].ToString());
     }
-
 }

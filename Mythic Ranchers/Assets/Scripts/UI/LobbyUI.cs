@@ -1,10 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Services.Authentication;
 using Unity.Services.Lobbies.Models;
 using UnityEngine.UI;
 using TMPro;
+
+/*******************************************************************************
+
+   Nom du fichier: LobbyUI.cs
+   
+   Contexte: Cette classe sert a gérer le UI à l'intérieur d'un lobby
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class LobbyUI : MonoBehaviour
 {

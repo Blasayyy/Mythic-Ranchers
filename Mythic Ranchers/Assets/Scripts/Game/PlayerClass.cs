@@ -1,9 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Unity.Netcode;
 using System.Threading.Tasks;
+
+/*******************************************************************************
+
+   Nom du fichier: PlayerClass.cs
+   
+   Contexte: Cette classe représente la classe parent d'un playable character
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class PlayerClass : NetworkBehaviour
 {
@@ -93,7 +104,7 @@ public class PlayerClass : NetworkBehaviour
 
     public void LoseHealth(float amount)
     {
-        CurrentHp -= amount * (1 - 0.01f * stats["armor"]);
+        CurrentHp -= amount * (1 - 0.01f * Stats["armor"]);
     }
 
     public void LoseRessource(float amount)
@@ -307,17 +318,10 @@ public class PlayerClass : NetworkBehaviour
         {
             float damage = 15;
             LoseHealth(damage);
-            //StartCoroutine(Slowed(2f, 0.25f));
             if (!slowed)
             {
                 StartCoroutine(DamageFlicker());
             }
-
-        }
-        if (LayerMask.LayerToName(collision.gameObject.layer) == "Items" && control)
-        {
-            //bool canAdd = InventoryManager.instance.AddItem()
-            Debug.Log("Collision with pot");
         }
     }
 

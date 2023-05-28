@@ -1,9 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
+/*******************************************************************************
+
+   Nom du fichier: LoginUI.cs
+   
+   Contexte: Cette classe sert a gérer le UI lorsqu'on se connecte au programme
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class LoginUI : MonoBehaviour
 {
@@ -63,9 +73,7 @@ public class LoginUI : MonoBehaviour
                 if (AccountManager.Instance.CharacterDatas == null || AccountManager.Instance.CharacterDatas.Count <= 0)
                 {
                     SceneManager.LoadScene("CharacterCreationScene");
-                }
-                    
-
+                }                    
             }
             else
             {
@@ -84,7 +92,6 @@ public class LoginUI : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
     public void ShowUI()
     {
         gameObject.SetActive(true);

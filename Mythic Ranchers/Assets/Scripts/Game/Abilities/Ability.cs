@@ -1,7 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
+
+/*******************************************************************************
+
+   Nom du fichier: Ability.cs
+   
+   Contexte: Cette classe représente un patron pour la création d'une ability
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 [CreateAssetMenu(menuName = "Scriptable object/Abilities")]
 public class Ability : ScriptableObject

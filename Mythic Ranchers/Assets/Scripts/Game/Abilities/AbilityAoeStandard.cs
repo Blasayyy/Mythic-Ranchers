@@ -1,7 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+
+/*******************************************************************************
+
+   Nom du fichier: AbilityAoeStandard.cs
+   
+   Contexte: Cette classe représente une ability de type area of effect autour du joueur
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class AbilityAoeStandard : NetworkBehaviour
 {
@@ -22,14 +32,13 @@ public class AbilityAoeStandard : NetworkBehaviour
             return;
         }
 
+        // check pour voir si le bon collider est touché
         BoxCollider2D boxCollider = collision.gameObject.GetComponent<BoxCollider2D>();
         if (boxCollider == null)
             return;
         float distance = Vector2.Distance(this.transform.position, boxCollider.bounds.center);
         if (distance > 2)            
             return;
-            
-        Debug.Log(distance + " from enemy --------------------------");
 
         if (!ability.helpful && collision.gameObject.GetComponent<Enemy>())
         {

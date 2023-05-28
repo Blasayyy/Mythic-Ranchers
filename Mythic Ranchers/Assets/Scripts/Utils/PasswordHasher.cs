@@ -3,6 +3,18 @@ using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
 
+/*******************************************************************************
+
+   Nom du fichier: PasswordHasher.cs
+   
+   Contexte: Cette classe sert à hasher les passwords avant de les envoyer dans la DB
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
+
 public class PasswordHasher: MonoBehaviour
 {
     public static PasswordHasher Instance { get; private set; }

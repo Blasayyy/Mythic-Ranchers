@@ -1,7 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+
+/*******************************************************************************
+
+   Nom du fichier: Trash.cs
+   
+   Contexte: Cette classe représente l'endroit ou le joueur peut jeter des items
+             non voulus
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class Trash : MonoBehaviour, IDropHandler
 {

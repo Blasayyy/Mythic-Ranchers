@@ -1,23 +1,31 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/*******************************************************************************
+
+   Nom du fichier: EndGameManager.cs
+   
+   Contexte: Cette classe sert a gérer les évènnement à la fin du niveau
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
+
 public class EndGameManager : MonoBehaviour
 {
-
     [SerializeField]
     private TextMeshProUGUI titleText, dungeonLevelText, expGainText, levelUpText, timeLeftText, lootUnlockedText;
     [SerializeField]
     private Button continueButton;
     [SerializeField]
     private Image lootImage;
-    // Start is called before the first frame update
+
     void Start()
     {
         continueButton.onClick.AddListener(GoToHome);
@@ -119,7 +127,6 @@ public class EndGameManager : MonoBehaviour
         {
             Destroy(CursorManager.Instance.gameObject);
         }
-
 
         SceneManager.LoadScene("MenuScene");
     }

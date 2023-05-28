@@ -1,6 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/*******************************************************************************
+
+   Nom du fichier: Item.cs
+   
+   Contexte: Cette classe représente un patron pour la création d'un item
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 [CreateAssetMenu(menuName = "Scriptable object/Item")]
 public class Item : ScriptableObject

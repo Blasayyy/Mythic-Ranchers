@@ -1,8 +1,19 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+
+/*******************************************************************************
+
+   Nom du fichier: RoomFirstDungeonGenerator.cs
+   
+   Contexte: Cette classe sert a l'algorithme de génération aléatoire de niveau
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 {
@@ -26,7 +37,6 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         Instance = this;
     }
 
-
     protected override void RunProceduralGeneration()
     {
         CreateRooms();
@@ -46,7 +56,6 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         {
             floor = CreateSimpleRooms(roomList);
         }
-
 
         List<Vector2Int> roomCenters = new List<Vector2Int>();
 
@@ -100,7 +109,6 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             currentRoomCenter = closest;
             corridors.UnionWith(newCorridor);
         }
-
         return corridors;
     }
 
@@ -133,7 +141,6 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             }
             corridor.Add(position);
         }
-
         return corridor;
     }
 
@@ -150,7 +157,6 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                 closest = position;
             }
         }
-
         return closest;
     }
 
@@ -185,7 +191,6 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                 }
             }
         }
-
         return floor;
     }
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Services.Core;
 using Unity.Services.Authentication;
 using Unity.Services.Relay;
@@ -10,6 +8,19 @@ using Unity.Networking.Transport.Relay;
 using System.Threading.Tasks;
 using UnityEngine;
 
+/*******************************************************************************
+
+   Nom du fichier: Relay.cs
+   
+   Contexte: Cette classe sert à ce que les joueurs puissent rejoindre le même relay
+             pour tous avoir la connection au serveur approprié
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
+
 public class Relay : MonoBehaviour
 {
     public static Relay Instance { get; private set; }
@@ -19,7 +30,7 @@ public class Relay : MonoBehaviour
     {
         Instance = this;
     }
-    // Start is called before the first frame update
+
     async void Start()
     {
         await UnityServices.InitializeAsync();
@@ -51,15 +62,12 @@ public class Relay : MonoBehaviour
             Debug.Log(e);
             return null;
         }
-
-
     }
 
     public async Task<JoinAllocation> JoinRelay(string joinCode)
     {
         try
-        {
-            
+        {            
             JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
 
             RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
@@ -91,5 +99,4 @@ public class Relay : MonoBehaviour
             return default;
         }
     }
-
 }

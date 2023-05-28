@@ -2,6 +2,18 @@ using System;
 using TMPro;
 using UnityEngine;
 
+/*******************************************************************************
+
+   Nom du fichier: GameStatusTextUpdater.cs
+   
+   Contexte: Cette classe sert a afficher les informations sur la partie courante
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
+
 public class GameStatusTextUpdater : MonoBehaviour
 {
     [SerializeField]

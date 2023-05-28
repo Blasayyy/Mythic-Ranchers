@@ -2,6 +2,18 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/*******************************************************************************
+
+   Nom du fichier: MapData.cs
+   
+   Contexte: Cette classe représente les informations d'une map générée aléatoirement
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
+
 [System.Serializable]
 public class Vector2IntClass
 {

@@ -1,10 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using Unity.Netcode;
 using TMPro;
 
+/*******************************************************************************
+
+   Nom du fichier: Tooltip.cs
+   
+   Contexte: Cette classe représente le text que le joueur voit quand il hover un
+             item/stat/ability
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class Tooltip : MonoBehaviour
 {
@@ -38,7 +46,7 @@ public class Tooltip : MonoBehaviour
     {
         Vector2 anchoredPosition = Input.mousePosition / canvasRect.localScale.x;
 
-        //tooltip on the right side of the sreen
+        //tooltip on the far right side of the sreen
         if (anchoredPosition.x + backgroundRect.rect.width > canvasRect.rect.width)
         {
             anchoredPosition.x = canvasRect.rect.width - backgroundRect.rect.width;
@@ -62,6 +70,4 @@ public class Tooltip : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
-
 }

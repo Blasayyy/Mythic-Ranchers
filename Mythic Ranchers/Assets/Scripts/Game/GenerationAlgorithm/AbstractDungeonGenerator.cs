@@ -1,6 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/*******************************************************************************
+
+   Nom du fichier: AbstractDengeonGenerator.cs
+   
+   Contexte: Cette classe sert à l'algorithme de génération aléatoire de niveau
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public abstract class AbstractDungeonGenerator : MonoBehaviour
 {

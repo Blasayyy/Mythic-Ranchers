@@ -1,8 +1,19 @@
 using MongoDB.Bson;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+
+/*******************************************************************************
+
+   Nom du fichier: AccountManager.cs
+   
+   Contexte: Cette classe sert a gérer les comptes et les informations des joueurs
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class AccountManager : MonoBehaviour
 {
@@ -59,6 +70,7 @@ public class AccountManager : MonoBehaviour
         BsonArray equipmentBsonArray = bsonDocument.GetValue("equipmentList").AsBsonArray;
         List<EquipmentData> equipmentList = new List<EquipmentData>();
 
+        // not implemented
         //foreach (BsonDocument equipmentBson in equipmentBsonArray)
         //{
         //    string equipmentName = equipmentBson.GetValue("name").AsString;
@@ -70,5 +82,4 @@ public class AccountManager : MonoBehaviour
 
         return new CharacterData(name, username, level, experiencePoints, className, currentKey, equipmentList, talents);
     }
-
 }

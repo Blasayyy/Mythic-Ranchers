@@ -2,6 +2,18 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
+/*******************************************************************************
+
+   Nom du fichier: NetworkedSprite.cs
+   
+   Contexte: Cette classe représente un sprite qui sera synchroniser sur le server
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
+
 public class NetworkedSprite : NetworkBehaviour
 {
     [SerializeField]

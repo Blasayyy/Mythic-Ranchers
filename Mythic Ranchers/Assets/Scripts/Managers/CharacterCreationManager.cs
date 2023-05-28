@@ -1,9 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
+/*******************************************************************************
+
+   Nom du fichier: CharacterCreationManager.cs
+   
+   Contexte: Cette classe sert a gérer la création de nouveau character
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class CharacterCreationManager : MonoBehaviour
 {
@@ -75,8 +86,6 @@ public class CharacterCreationManager : MonoBehaviour
         }
     }
 
-
-
     private void GoLeft()
     {
         currentIndex--;
@@ -99,7 +108,6 @@ public class CharacterCreationManager : MonoBehaviour
         }
 
         SetInfo(currentIndex);
-
     }
 
     private async void CreateCharacter()
@@ -126,21 +134,29 @@ public class CharacterCreationManager : MonoBehaviour
         if(className == "Berzerker")
         {
             characterImage.sprite = BerzerkerSprite;
-            description = "The berserker class is a fearsome group of warriors who are known for their mastery of rage and ferocity in battle. With a deep understanding of their inner fury, berserkers are able to tap into this power and unleash devastating attacks upon their enemies. Their strength and endurance are unparalleled on the battlefield, as they are able to push themselves beyond their physical limits. Some view the berserker's rage as a gift, while others see it as a curse that they must learn to control. Regardless, all berserkers are respected for their unmatched power and are feared by enemies who face them in combat.";
+            description = "The berserker class is a fearsome group of warriors who are known for their mastery of rage and ferocity in battle. With a deep understanding of their" +
+                " inner fury, berserkers are able to tap into this power and unleash devastating attacks upon their enemies. Their strength and endurance are unparalleled on the battlefield," +
+                " as they are able to push themselves beyond their physical limits. Some view the berserker's rage as a gift, while others see it as a curse that they must learn to control. " +
+                "Regardless, all berserkers are respected for their unmatched power and are feared by enemies who face them in combat.";
         }
         else if(className == "Mage")
         {
             characterImage.sprite = MageSprite;
-            description = "The mage class is a group of powerful spellcasters who wield the magical energies of the universe. Through intense study and meditation, mages are able to manipulate the elements, control the minds of their enemies, and call forth devastating displays of arcane power. Mages are often seen as enigmatic and mysterious, as their abilities are beyond the understanding of most mortals. Despite this, they are highly respected for their immense knowledge and mastery of the arcane arts. Many seek to learn from mages, as their abilities offer a path to great power and influence. However, the path to becoming a mage is a difficult one, as it requires great discipline and dedication to unlock the secrets of the universe.";
+            description = "The mage class is a group of powerful spellcasters who wield the magical energies of the universe. Through intense study and meditation, mages are able to manipulate the" +
+                " elements, control the minds of their enemies, and call forth devastating displays of arcane power. Mages are often seen as enigmatic and mysterious, as their abilities are beyond the" +
+                " understanding of most mortals. Despite this, they are highly respected for their immense knowledge and mastery of the arcane arts. Many seek to learn from mages, as their abilities offer" +
+                " a path to great power and influence. However, the path to becoming a mage is a difficult one, as it requires great discipline and dedication to unlock the secrets of the universe.";
         }
         else if(className == "Necromancer")
         {
             characterImage.sprite = NecromancerSprite;
-            description = "The necromancer class is a group of dark magic users who have learned to harness the power of death and decay. Necromancers are feared and reviled by many, as their abilities allow them to manipulate the souls and bodies of the dead. They are known for their ability to summon undead minions, drain the life force of their enemies, and even raise the dead to fight on their behalf. Necromancers are often seen as dangerous and unstable, as their powers can corrupt both their bodies and their souls. However, those who are able to master the dark arts of necromancy can become immensely powerful, wielding abilities that are unmatched by any other class. Despite their fearsome reputation, there are some who seek to learn from necromancers, hoping to unlock the secrets of life and death.";
+            description = "The necromancer class is a group of dark magic users who have learned to harness the power of death and decay. Necromancers are feared and reviled by many, as their abilities " +
+                "allow them to manipulate the souls and bodies of the dead. They are known for their ability to summon undead minions, drain the life force of their enemies, and even raise the dead to fight" +
+                " on their behalf. Necromancers are often seen as dangerous and unstable, as their powers can corrupt both their bodies and their souls. However, those who are able to master the dark arts of" +
+                " necromancy can become immensely powerful, wielding abilities that are unmatched by any other class. Despite their fearsome reputation, there are some who seek to learn from necromancers, hoping" +
+                " to unlock the secrets of life and death.";
         }
         classDecription.text = description;
-
-
     }
 
     private void Back()

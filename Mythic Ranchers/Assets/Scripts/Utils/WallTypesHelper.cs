@@ -1,6 +1,17 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+
+/*******************************************************************************
+
+   Nom du fichier: WallTypesHelper.cs
+   
+   Contexte: Cette classe sert à aider la classe WallGenerator a savoir quelles tuiles
+             vont où
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public static class WallTypesHelper
 {
@@ -79,7 +90,6 @@ public static class WallTypesHelper
         0b10000110,
         0b11000100,
         0b01000010
-
     };
 
     public static HashSet<int> wallInnerCornerUpLeft = new HashSet<int>
@@ -125,7 +135,6 @@ public static class WallTypesHelper
         0b1101,
         0b0101,
         0b1001
-
     };
 
     public static HashSet<int> wallFullEightDirections = new HashSet<int>
@@ -164,12 +173,10 @@ public static class WallTypesHelper
         0b11010101,
         0b11010100,
         0b10010101
-
     };
 
     public static HashSet<int> wallBottmEightDirections = new HashSet<int>
     {
         0b01000001
     };
-
 }

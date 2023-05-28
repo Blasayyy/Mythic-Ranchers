@@ -1,15 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.UI;
 
+/*******************************************************************************
+
+   Nom du fichier: Ressource.cs
+   
+   Contexte: Cette classe sert à informer le joueur sur le nombre de ressources
+             restantes aux unités dans le jeu
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
+
 public class RessourceBar : NetworkBehaviour
 {
     public Slider ressourceSlider;
-    [SerializeField]
     public Color manaColor, energyColor;
-    [SerializeField]
     public Vector3 offset;
 
     public void SetRessource(float currentRessource, float maxRessource, string ressourceType)
@@ -31,9 +40,4 @@ public class RessourceBar : NetworkBehaviour
     {
         ressourceSlider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
     }
-
-    //private void Update()
-    //{        
-    //    ressourceSlider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
-    //}
 }

@@ -1,19 +1,24 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/*******************************************************************************
+
+   Nom du fichier: SimpleRandomWalkDengeonGenerator.cs
+   
+   Contexte: Cette classe sert a l'algorithme de génération aléatoire de niveau
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
+
 public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
 {
-    [SerializeField]
     private int iterations = 10;
-
-    [SerializeField]
     public int walkLength = 10;
-
-    [SerializeField]
     public bool startRandomlyEachIteration = true;
 
     protected override void RunProceduralGeneration()
@@ -40,5 +45,4 @@ public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
         }
         return floorPositions;
     }
-
 }

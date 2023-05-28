@@ -1,8 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using Unity.Netcode;
+
+/*******************************************************************************
+
+   Nom du fichier: AbilityManager.cs
+   
+   Contexte: Cette classe gère les abilities des joueurs, pour les instancier et
+             les donner aux bonnes classes au début
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class AbilityManager : MonoBehaviour
 {

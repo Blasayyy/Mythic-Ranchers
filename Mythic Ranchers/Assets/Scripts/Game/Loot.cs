@@ -1,11 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
+/*******************************************************************************
+
+   Nom du fichier: Loot.cs
+   
+   Contexte: Cette classe représente un item/potion qui drop d'un ennemi dans le jeu
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
+
 public class Loot : NetworkBehaviour
 {
-
     [SerializeField]
     private SpriteRenderer sr;
     [SerializeField]
@@ -64,5 +74,4 @@ public class Loot : NetworkBehaviour
     {
         Tooltip.instance.HideTooltip();
     }
-
 }

@@ -1,8 +1,18 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
+/*******************************************************************************
+
+   Nom du fichier: CharacterData.cs
+   
+   Contexte: Cette classe représente les stats d'un personnage dans le jeu ainsi
+             que ces multiplicateur pour chaque niveau
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class CharacterData 
 {
@@ -101,10 +111,8 @@ public class CharacterData
         Stats["leech"] = (int)Math.Round(Level * assignedDict["leechMultiplier"]) +1;
     }
 
-
     private Dictionary<string, int> GetEquipmentStats()
     {
         return null;
     }
-
 }

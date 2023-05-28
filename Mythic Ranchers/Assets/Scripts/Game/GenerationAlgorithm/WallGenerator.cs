@@ -1,7 +1,17 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+/*******************************************************************************
+
+   Nom du fichier: WallGenerator.cs
+   
+   Contexte: Cette classe sert a l'algorithme de génération aléatoire de niveau
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public static class WallGenerator
 {
@@ -12,7 +22,6 @@ public static class WallGenerator
         List<(Vector2Int, string)> basicWalls = CreateBasicWallsMethod(tilemapVisualizer, basicWallPositions, floorPositions);
         List<(Vector2Int, string)> cornerWalls = CreateCornerWalls(tilemapVisualizer, cornerWallPositions, floorPositions);
         
-
         return (basicWalls, cornerWalls);
     }
 
@@ -34,9 +43,6 @@ public static class WallGenerator
                     neighboursBinaryType += "0";
                 }
             }
-
-
-            //tilemapVisualizer.PaintSingleCornerWall(position, neighboursBinaryType);
             result.Add((position, neighboursBinaryType));
         }
         return result;
@@ -60,7 +66,6 @@ public static class WallGenerator
                     neighboursBinaryValue += "0";
                 }
             }
-            //tilemapVisualizer.PaintSingleBasicWall(position, neighboursBinaryValue);
             result.Add((position, neighboursBinaryValue));
         }
         return result;

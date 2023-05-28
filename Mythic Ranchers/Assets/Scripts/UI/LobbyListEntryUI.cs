@@ -1,9 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.Services.Lobbies.Models;
 using UnityEngine.UI;
+
+/*******************************************************************************
+
+   Nom du fichier: LobbyListEntryUI.cs
+   
+   Contexte: Cette classe sert a gérer le UI lorsqu'on entre dans un lobby
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class LobbyListEntryUI : MonoBehaviour
 {

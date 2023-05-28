@@ -1,6 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+
+/*******************************************************************************
+
+   Nom du fichier: EquipementData.cs
+   
+   Contexte: Cette classe représente les stats d'un item dans le jeu
+   
+   Auteur: Matei Pelletier
+   
+   Collaborateurs: Christophe Auclair
+
+*******************************************************************************/
 
 public class EquipmentData
 {

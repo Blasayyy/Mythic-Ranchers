@@ -1,12 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
+
+/*******************************************************************************
+
+   Nom du fichier: StatText.cs
+   
+   Contexte: Cette classe représente un des character stats dans le UI pour le joueur
+   
+   Auteur: Christophe Auclair
+   
+   Collaborateurs: Matei Pelletier
+
+*******************************************************************************/
 
 public class StatText : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField]
     public string tooltipText = "";
 
     public void OnPointerEnter(PointerEventData eventData)
